@@ -1,0 +1,123 @@
+CSIRX
+=====
+
+Introduction
+------------
+
+CSI (Camera Serial Interface) module allows device to stream video inputs from one or more cameras.
+CSIRX has four streams:
+
+- one capture stream
+- one loopback stream
+- two OTF streams
+
+- If capture stream is enabled, video input from camera modules are captured and stored
+  in DRAM location provided by the application.
+- If loopback stream is enabled, video input from camera modules are redirected to CSITX.
+- If OTF streams are enabled, video input is redirected to video accelerator.
+
+.. NOTE::
+
+   CSIRX driver supports only capture and loopback streams. OTF is not yet enabled.
+
+.. NOTE::
+
+   CSIRX RTOS driver is not supported on AM68 and AM69 devices.
+
+User Interface
+--------------
+
+For details about individual fields of this library structure, see the
+PDK doxygen documentation
+
+APIs
+^^^^
+
+CSIRX driver APIs are integrated with FVID2 interface.
+Hence application writer can directly use FVID2 APIs to create & delete
+the driver instance, Start and stop a particular stream etc.
+
+For reference, here are the top-level driver APIs for CSIRX
+
+::
+
+    #include <ti/drv/csirx/csirx.h>
+
+Application
+-----------
+
+Examples
+^^^^^^^^
+
++-----------------------+-----------------------+-----------------------+
+| | Name                | | Description         | | Expected Results    |
++=======================+=======================+=======================+
+| | CSIRX capture       | | Example             | | Application shows   |
+|   application         |   demonstrating       |   FPS for each channel|
+|                       |   capture             |   and total frames    |
+|                       |   of RAW12 frames from|   captured. Also shows|
+|                       |   camera sensors and  |   how many number of  |
+|                       |   store them in DRAM. |   error events has    |
+|                       |   Reference example   |   occurred            |
+|                       |   for developers      |                       |
++-----------------------+-----------------------+-----------------------+
+| | CSIRX Unit test     | | Example             | | Application shows   |
+|   application         |   verifies            |   FPS for each channel|
+|                       |   various configurat  |   and total frames    |
+|                       |   ion to CSIRX driver.|   captured            |
+|                       |   such as different   |                       |
+|                       |   data types and      |                       |
+|                       |   no of DPHY lanes etc|                       |
++-----------------------+-----------------------+-----------------------+
+| | CSIRX to CSITX      | | Example             | | Application shows   |
+|   loopback application|   demonstrates        |   number of frames    |
+|                       |   CSIRX to CSITX      |   transmitted by CSITX|
+|                       |   loopback stream.    |   per one second      |
+|                       |   RAW12 frames are    |   on CCS console.     |
+|                       |   captured and through|                       |
+|                       |   loopback stream,    |                       |
+|                       |   CSITX transmits the |                       |
+|                       |   received frames     |                       |
++-----------------------+-----------------------+-----------------------+
+
+CSIRX examples
+^^^^^^^^^^^^^^
+
+.. rubric::  *Description*
+   :name: csirx-description
+
+CSIRX examples require a hardware setup (details discussed as part of *Test setup*)
+The example application captures frames from camera module in real-time and store 
+those frames in a DRAM location mentioned in the application. It also shows the number
+of frames captured and error frames information on the console output.
+
+.. rubric::  **Running the Capture examples**
+   :name: csirx-running-the-capture-examples
+
+**Test Setup**:
+
+
+For applications that use only single channel, pattern generator sequence is enabled.
+With this, the De-serializer in Fusion-1 board will generate color bar patterns for the desired data type.
+this eliminates the need of camera modules. 
+
+so, for applications that use Pattern generator:
+
+- Make sure to connect Fusion-1/Fusion-2 board to the EVM through CSI expansion connector(J52)
+
+for applications that do not use Pattern generator:
+
+- Make sure to connect Fusion-1/Fusion-2 board to the EVM through CSI expansion connector(J52)
+- Connect camera modules (D3_IMX390_CM/D3_IMX390_RCM) to the Fusion-1/Fusion-2 board
+
+.. NOTE::
+
+   To use input from camera module for single-channel tests without pattern generator,
+   disable the UB960_USE_PATTERN_GENERATOR flag in the application.
+
+
+**CCS connection**:
+
+-  Load the System firmware as specified in SCICLIENT documentation
+-  Load the generated executable file in CCS
+-  Run the application.

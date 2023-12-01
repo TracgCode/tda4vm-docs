@@ -1,0 +1,1155 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.17. OTP KEYWRITER &mdash; Platform Development Kit (PDK) - JACINTO User Guide</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Platform Development Kit (PDK) - JACINTO User Guide" href="../index.html"/>
+        <link rel="up" title="4. Modules" href="../family_cfg/jacinto/index_modules_jacinto.html"/>
+        <link rel="next" title="4.18. SPI" href="spi.html"/>
+        <link rel="prev" title="4.16.7.2. J721e Peripheral Interrupt Destination Descriptions" href="sciclient/irq_dsts_jacinto.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index_jacinto.html" class="icon icon-home"> Platform Development Kit (PDK) - JACINTO User Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09_00_01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_release_notes_jacinto.html">2. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">3. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../family_cfg/jacinto/index_modules_jacinto.html">4. Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="csl.html">4.1. CSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freertos.html">4.2. FreeRTOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../family_cfg/jacinto/index_modules_safertos_jacinto.html">4.3. SafeRTOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osal.html">4.4. OSAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dss.html">4.5. DSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="csirx.html">4.6. CSIRX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enet/enet.html">4.7. ENET</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fvid2.html">4.8. FVID2 User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpio.html">4.9. GPIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i2c.html">4.10. I2C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipc.html">4.11. IPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcan.html">4.12. MCAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcasp.html">4.13. McASP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pm.html">4.14. PM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sa.html">4.15. SA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../family_cfg/jacinto/index_modules_sciclient_jacinto.html">4.16. SCICLIENT</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.17. OTP KEYWRITER</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">4.17.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#components">4.17.2. Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#directory-structure">4.17.3. Directory Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#important-features-details">4.17.4. Important Features &amp; Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-procedure">4.17.5. Build Procedure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#generating-x509-certificate-from-customer-hsm">4.17.5.1. Generating x509 certificate from customer HSM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extended-otp">4.17.5.2. Extended OTP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#building-pdk-keywriter-app">4.17.5.3. Building PDK Keywriter app</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-on-soc-using-a-boot-mode-of-choice">4.17.5.4. Running on SoC, using a boot mode of choice</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging">4.17.6. Debugging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#appendix">4.17.7. Appendix</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#using-ti-dummy-keys-from-pdk-code-base">4.17.7.1. Using TI dummy keys from PDK code base</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-x509-certificates-for-incremental-programming">4.17.7.2. Creating x509 certificates for Incremental Programming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#x509-configuration-template">4.17.7.3. X509 Configuration Template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#otp-keywriter-logs">4.17.7.4. OTP KEYWRITER LOGS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#otp-keywriter-example-app-memory-layout">4.17.7.5. OTP Keywriter example app memory layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#otp-keywriter-validation">4.17.7.6. OTP Keywriter validation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="spi.html">4.18. SPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ospi.html">4.19. OSPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uart.html">4.20. UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../family_cfg/jacinto/index_modules_udma_jacinto.html">4.21. UDMA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pmic.html">4.22. PMIC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmcsd.html">4.23. MMCSD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../family_cfg/jacinto/index_modules_lpm_jacinto.html">4.24. Low Power Manager (LPM)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_boot_jacinto.html">5. Bootloader (SBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_board_jacinto.html">6. Board/EVM Abstraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_howto_jacinto.html">7. How to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_faq_jacinto.html">8. Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_developer_notes_jacinto.html">9. Developer Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index_jacinto.html">Platform Development Kit (PDK) - JACINTO User Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index_jacinto.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../family_cfg/jacinto/index_modules_jacinto.html"><span class="section-number">4. </span>Modules</a> &raquo;</li>
+      
+    <li><span class="section-number">4.17. </span>OTP KEYWRITER</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="otp-keywriter">
+<h1><a class="toc-backref" href="#toc-entry-1" role="doc-backlink"><span class="section-number">4.17. </span>OTP KEYWRITER</a><a class="headerlink" href="#otp-keywriter" title="Permalink to this headline">¶</a></h1>
+<nav class="contents" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#otp-keywriter" id="toc-entry-1">OTP KEYWRITER</a></p>
+<ul>
+<li><p><a class="reference internal" href="#introduction" id="toc-entry-2">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#components" id="toc-entry-3">Components</a></p></li>
+<li><p><a class="reference internal" href="#directory-structure" id="toc-entry-4">Directory Structure</a></p></li>
+<li><p><a class="reference internal" href="#important-features-details" id="toc-entry-5">Important Features &amp; Details</a></p></li>
+<li><p><a class="reference internal" href="#build-procedure" id="toc-entry-6">Build Procedure</a></p>
+<ul>
+<li><p><a class="reference internal" href="#generating-x509-certificate-from-customer-hsm" id="toc-entry-7">Generating x509 certificate from customer HSM</a></p></li>
+<li><p><a class="reference internal" href="#extended-otp" id="toc-entry-8">Extended OTP</a></p></li>
+<li><p><a class="reference internal" href="#building-pdk-keywriter-app" id="toc-entry-9">Building PDK Keywriter app</a></p></li>
+<li><p><a class="reference internal" href="#running-on-soc-using-a-boot-mode-of-choice" id="toc-entry-10">Running on SoC, using a boot mode of choice</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#debugging" id="toc-entry-11">Debugging</a></p></li>
+<li><p><a class="reference internal" href="#appendix" id="toc-entry-12">Appendix</a></p>
+<ul>
+<li><p><a class="reference internal" href="#using-ti-dummy-keys-from-pdk-code-base" id="toc-entry-13">Using TI dummy keys from PDK code base</a></p></li>
+<li><p><a class="reference internal" href="#creating-x509-certificates-for-incremental-programming" id="toc-entry-14">Creating x509 certificates for Incremental Programming</a></p></li>
+<li><p><a class="reference internal" href="#x509-configuration-template" id="toc-entry-15">X509 Configuration Template</a></p></li>
+<li><p><a class="reference internal" href="#otp-keywriter-logs" id="toc-entry-16">OTP KEYWRITER LOGS</a></p></li>
+<li><p><a class="reference internal" href="#otp-keywriter-example-app-memory-layout" id="toc-entry-17">OTP Keywriter example app memory layout</a></p></li>
+<li><p><a class="reference internal" href="#otp-keywriter-validation" id="toc-entry-18">OTP Keywriter validation</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="introduction">
+<h2><a class="toc-backref" href="#toc-entry-2" role="doc-backlink"><span class="section-number">4.17.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This document is applicable to High Secure (HS) device variants.</p>
+</aside>
+<p>OTP (One Time Programmable) Keywriter is the software tool, used to provision
+customer keys into the device eFuses for enforcing secure boot and establishing
+root of trust. Secure boot requires an image to be <a class="reference external" href="http://downloads.ti.com/tisci/esd/latest/6_topic_user_guides/secure_boot_signing.html">encrypted (optional) and signed using
+customer keys</a>,
+which will be verified by the SoC using the active MEK (for decryption) and MPK Hash (to
+verify the signature). In case the customer’s MPK and MEK are compromised, there is a second
+set of backup MPK and MEK fields that can be used, after applying a keyrevision update.</p>
+<p>In order to burn the 2 sets (active and backup) of customer key information into the SoC,
+OTP Keywriter requires a x509 format certificate, signed using customer key(s)
+(Programming of <em>backup key set</em> is optional).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This action is irreversible, so there is no going back once the keys are burned into
+SoC eFuses.</p>
+</aside>
+<table class="docutils align-default" id="table-1">
+<caption><span class="caption-number">Table 4.2 </span><span class="caption-text">Supported OTP keys</span><a class="headerlink" href="#table-1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 35%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SMPKH</p></td>
+<td><p>Secondary Manufacturer Public Key Hash</p></td>
+<td><p>SMPK is 4096-bit customer RSA signing key</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMEK</p></td>
+<td><p>Secondary Manufacturer Encryption Key</p></td>
+<td><p>256-bit Customer encryption key for encrypted boot</p></td>
+</tr>
+<tr class="row-even"><td><p>BMPKH</p></td>
+<td><p>Backup Manufacturer Public Key Hash</p></td>
+<td><p>BMPK is 4096-bit customer RSA signing key</p></td>
+</tr>
+<tr class="row-odd"><td><p>BMEK</p></td>
+<td><p>Backup Manufacturer Encryption Key</p></td>
+<td><p>256-bit Customer encryption key for encrypted boot</p></td>
+</tr>
+<tr class="row-even"><td><p>KEYCNT</p></td>
+<td><p>Key count</p></td>
+<td><p>2 if both BMPK &amp; SMPK are used, 1 if only SMPK is used</p></td>
+</tr>
+<tr class="row-odd"><td><p>KEYREV</p></td>
+<td><p>Key revision</p></td>
+<td><p>Active key revesion, 1 for SMPK, 2 for BMPK (can only be incremented - so keywriter should set to 1)</p></td>
+</tr>
+<tr class="row-even"><td><p>MSV</p></td>
+<td><p>Model specific value</p></td>
+<td><p>20 bit value with 12 bit BCH code</p></td>
+</tr>
+<tr class="row-odd"><td><p>MEK Options</p></td>
+<td><p>SMEK/BMEK options</p></td>
+<td><p>(Reserved for future use) 5 bit value</p></td>
+</tr>
+<tr class="row-even"><td><p>MPK Options</p></td>
+<td><p>SMPK/BMPK options</p></td>
+<td><p>(Reserved for future use) 10 bit value (split into 2 parts)</p></td>
+</tr>
+<tr class="row-odd"><td><p>SWREV-BOARDCONFIG</p></td>
+<td><p>Secure Board Configuration software revision</p></td>
+<td><p>128 bit value (64 without double redundancy) <em>DO NOT PROGRAM</em> - initial values set by TI</p></td>
+</tr>
+<tr class="row-even"><td><p>SWREV-SBL</p></td>
+<td><p>SBL software revision</p></td>
+<td><p>96 bit value (48 without double redundancy) <em>DO NOT PROGRAM</em> - initial values set by TI</p></td>
+</tr>
+<tr class="row-odd"><td><p>SWREV-SYSFW</p></td>
+<td><p>Firmware software revision</p></td>
+<td><p>96 bit value (48 without double redundancy) <em>DO NOT PROGRAM</em> - initial values set by TI</p></td>
+</tr>
+<tr class="row-even"><td><p>EXTENDED OTP</p></td>
+<td><p>(Reserved for future use) Extended OTP array</p></td>
+<td><p>1024 bit extended otp array</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-limitations admonition">
+<p class="admonition-title">Limitations</p>
+<p>The current version of OTP Keywriter only supports 4096 bit RSA format for
+SMPK and BMPK. Support for ECDSA and different key lengths will be available
+in subsequent versions.</p>
+</aside>
+</section>
+<section id="components">
+<h2><a class="toc-backref" href="#toc-entry-3" role="doc-backlink"><span class="section-number">4.17.2. </span>Components</a><a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h2>
+<p>OTP Keywriter contents include:</p>
+<ul>
+<li><p><strong>PDK keywriter app</strong> source code</p>
+<p>This is the public keywriter application.
+It boots directly on the primary boot core of the device (generically,
+not necessarily R5) without any other bootloader. It is responsible for sending the
+OTP configuration to the secure keywriter component running on the security subsystem
+to blow the keys into the device eFuses.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>x509 certificate</strong> configuration template, and <strong>generation script</strong> as
+a part of source code</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a reference script. It can either be used as-is with the customer’s keys
+or integrated within the customer’s HSM environment.</p>
+</aside>
+</div></blockquote>
+</li>
+<li><p>Encrypted <strong>TIFS keywriter binary</strong></p>
+<p>This is the secure OTP keywriter firmware, and
+runs on the secure subsystem of the device (not necessarily M3, or even DMSC).
+It is responsible for verifying the OTP configuration from x509 certificate
+and blowing the data into the device efuses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This binary differs from the standard TIFS binary used in production.</p>
+</aside>
+</li>
+<li><p><strong>TI FEK (public) key</strong> - TI Field Encryption Key</p>
+<p>This will be required by the certificate generation script, to
+ensure confidentiality of the customer’s key material.
+TI FEK Public key will be used to encrypt content (refer
+<a class="reference internal" href="#pdk-keywr-cert-gen-procedure"><span class="std std-numref">Fig. 4.8</span></a>), and TI FEK private key (not shared,
+but accessible by encrypted TIFS keywriter binary) will be used to decrypt it
+(inside the secure subsystem).</p>
+</li>
+</ul>
+</section>
+<section id="directory-structure">
+<h2><a class="toc-backref" href="#toc-entry-4" role="doc-backlink"><span class="section-number">4.17.3. </span>Directory Structure</a><a class="headerlink" href="#directory-structure" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>keywriter/
+    |-- binary
+    |   |-- j7200
+    |   `-- j721e
+    |-- boardcfgs
+    |   |-- j7200
+    |   |   |-- keywr_defaultBoardcfg_hex.h
+    |   |   |-- keywr_defaultBoardcfg_pm_hex.h
+    |   |   |-- keywr_defaultBoardcfg_rm_hex.h
+    |   |   `-- keywr_defaultBoardcfg_security_hex.h
+    |   `-- j721e
+    |       |-- keywr_defaultBoardcfg_hex.h
+    |       |-- keywr_defaultBoardcfg_pm_hex.h
+    |       |-- keywr_defaultBoardcfg_rm_hex.h
+    |       `-- keywr_defaultBoardcfg_security_hex.h
+    |-- build
+    |   |-- bin2c.mk
+    |   `-- keywriter.mk
+    |-- init.asm
+    |-- keywriter_component.mk
+    |-- main.c
+    |-- main.h
+    |-- scripts
+    |   |-- construct_ext_otp_data.sh
+    |   |-- generate_test_binaries.sh
+    |   |-- gen_keywr_cert_helpers.sh
+    |   |-- gen_keywr_cert.sh
+    |   |-- templates
+    |   |   |-- config_bmpk_template.txt
+    |   |   `-- config_template.txt
+    |-- soc
+    |   |-- common
+    |   |   |-- linker.lds
+    |   |   `-- pmic_example.c
+    |   |-- j7200
+    |   |   |-- keywriter_utils.c
+    |   |   `-- keywriter_utils.h
+    |   `-- j721e
+    |       |-- keywriter_utils.c
+    |       `-- keywriter_utils.h
+    |-- tifs_bin
+    |   |-- j7200
+    |   `-- j721e
+    `-- x509cert
+</pre></div>
+</div>
+</section>
+<section id="important-features-details">
+<h2><a class="toc-backref" href="#toc-entry-5" role="doc-backlink"><span class="section-number">4.17.4. </span>Important Features &amp; Details</a><a class="headerlink" href="#important-features-details" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>VPP must be powered (1.8v) when the efuses are programmed. Refer to device
+datasheet for details on VPP requirements.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Refer <code class="docutils literal notranslate"><span class="pre">soc/$(SOC)/keywriter_utils.c</span></code> for an example usage of I2C request
+to enable VPP power from PMIC under I2C control.
+Alternately, direct control of an LDO via GPIO can be used.</p>
+</aside>
+<ul class="simple">
+<li><p>OTP keywriter firmware supports a maximum certificate length of 5400 bytes.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This length is for individual certificates, and not the <code class="docutils literal notranslate"><span class="pre">x509cert/final_certificate.bin</span></code>.
+Check size of <code class="docutils literal notranslate"><span class="pre">primary_cert.bin</span></code> and <code class="docutils literal notranslate"><span class="pre">seconday_cert.bin</span></code> (optional depending on
+BMPK). If certificate length exceeds the supported limit, the keys can be programmed
+using <a class="reference internal" href="#kw-incr-programming"><span class="std std-ref">incremental approach</span></a>.</p>
+</aside>
+<ul class="simple">
+<li><p>Incremental programming - Until the KEYREV value is set to either 1 or 2, the device
+is considered as HS-FS and key values can continue to be programmed incrementally.
+This allows key programming to be done in multiple
+passes. Refer <a class="reference internal" href="#kw-incr-programming"><span class="std std-ref">this</span></a> for detailed examples.</p></li>
+</ul>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<p>Different offsets of extended OTP array could be programmed, followed by
+other keys such as MSV, SWREV etc.</p>
+</aside>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Once the KEYREV is set to 1 or 2, the device becomes HS-SE, and OTP keywriter
+application will no longer boot as the user root key takes over as root of trust.
+So programming KEYREV should be done in the last step.</p>
+</aside>
+<ul class="simple">
+<li><p>OTP keywriter supports J7200 &amp; J721e SoCs</p></li>
+</ul>
+</section>
+<section id="build-procedure">
+<h2><a class="toc-backref" href="#toc-entry-6" role="doc-backlink"><span class="section-number">4.17.5. </span>Build Procedure</a><a class="headerlink" href="#build-procedure" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Download the OTP Keywriter add-on package, and copy the folders <code class="docutils literal notranslate"><span class="pre">docs</span></code> and
+<code class="docutils literal notranslate"><span class="pre">packages</span></code> to PDK code base.</p></li>
+<li><p><a class="reference internal" href="#pdk-keywr-gen-x509-cert-from-cust-hsm"><span class="std std-ref">Generate x509 certificate</span></a>
+containing key/efuse values from customer HSM</p></li>
+<li><p><a class="reference internal" href="#pdk-keywr-build-app"><span class="std std-ref">Build PDK</span></a> Keywriter app</p></li>
+<li><p>With the addition of J7200. Default is still J721e. For Building J7200 please specify SOC=j7200 BOARD=j7200_evm.</p></li>
+<li><p>Run on SoC, using a boot mode of choice</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>OTP keywriter add-on package has the necessary firmware and TI FEK public key
+required to build the OTP keywriter example application.</p>
+</aside>
+<section id="generating-x509-certificate-from-customer-hsm">
+<span id="pdk-keywr-gen-x509-cert-from-cust-hsm"></span><h3><a class="toc-backref" href="#toc-entry-7" role="doc-backlink"><span class="section-number">4.17.5.1. </span>Generating x509 certificate from customer HSM</a><a class="headerlink" href="#generating-x509-certificate-from-customer-hsm" title="Permalink to this headline">¶</a></h3>
+<p>The Customer keys are supposed to be private, and not to be distributed out in open.
+For the scope of this document, <strong>Customer HSM</strong> would mean <em>The secure server/
+system</em> where the customer intends to generate the x509 certificate.
+Once the certificate is generated, since the customer key information is encrypted,
+it is safe to share the certificate in open without revealing the actual keys.</p>
+<p>The customer provided key material consists of both Public Key hashes (xMPKH)
+and secret/secure symmetric keys (xMEK). In order to maintain security, the
+symmetric keys are encrypted on the secure server (referred to here as Customer HSM),
+so that the resulting X509 certificate can be exported and embedded in the Keywriter
+binary without exposing the secret keys.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>OpenSSL (1.1.1  11 Sep 2018) is required for building the OTP Keywriter. Check if OpenSSL is installed
+by typing “openssl version” at the comamnd prompt. If OpenSSL is not installed,
+download and install OpenSSL for your OS.</p>
+<ul class="simple">
+<li><p>For Windows : The easiest way is to download and install
+<a class="reference external" href="http://strawberryperl.com/download/5.28.0.1/strawberry-perl-5.28.0.1-64bit.msi">Strawberry Perl</a>
+The Strawberry Perl installer automatically installs and sets up OpenSSL.
+Alternately, users can also use any of these
+<a class="reference external" href="https://wiki.openssl.org/index.php/Binaries">Third Party OpenSSL Distributions</a>
+for Windows. Refer individual links for instructions on how to setup OpensSSL
+using a particular distribution.</p></li>
+<li><p>For Linux : Execute the command <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">openssl</span></code> at the linux command prompt.</p></li>
+</ul>
+</aside>
+<figure class="align-default" id="figure-1">
+<span id="pdk-keywr-cert-gen-procedure"></span><img alt="../_images/key_writer_procedure.png" src="../_images/key_writer_procedure.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 4.8 </span><span class="caption-text">X509 Certificate generation procedure.</span><a class="headerlink" href="#figure-1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>OEM generates a random 256-bit number to be used as an AES encryption key for
+protecting the OTP data.</p></li>
+<li><p>The AES-256 key from step 1 is used to encrypt all X509 extension fields,
+which require encryption protection.</p></li>
+<li><p>Following X509 extensions are created, using TI FEK (public):</p>
+<ul class="simple">
+<li><p>Encrypting the AES-256 key with TI FEK</p></li>
+<li><p>Signing the AES-256 key with the SMPK, and encrypting that with the TI FEK</p></li>
+<li><p>(optionally, refer step 6) signing the AES-256 key with the BMPK, and encrypting
+that with the TI FEK</p></li>
+</ul>
+</li>
+<li><p>All of the extensions from steps 1-3 are combined into a X.509 configuration which
+is used to generate and sign a certificate with the SMPK.</p></li>
+<li><p>This X509 config is sigend using SMPK (priv).</p></li>
+<li><p>(Optional) If the OEM chooses to write BMPK/BMEK fields, X509 config from step 5
+needs to be signed using BMPK (priv).</p></li>
+</ol>
+<p>The <strong>scripts</strong> folder has the necessary tools for generating x509 certificate for
+eFuse programming. It can be copied to a secure server (customer HSM) where the
+customer keys are stored, and used to generate the x509 certificate.</p>
+<p>Run the <code class="docutils literal notranslate"><span class="pre">gen_keywr_cert.sh</span></code> shell script, to create the certificate.
+Modify the path arguments to specific keys as necessary. Use <code class="docutils literal notranslate"><span class="pre">-h</span></code> option for help.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="o">/</span><span class="n">gen_keywr_cert</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="o">-</span><span class="n">h</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">./gen_keywr_cert.sh</span> <span class="pre">-g</span></code> will generate dummy keys for testing, in <code class="docutils literal notranslate"><span class="pre">keys/</span></code> folder</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gen_keywr_cert.sh</span></code> will also generate SHA-512 hash of SMPK, SMEK, BMPK, and
+BMEK and store them in <code class="docutils literal notranslate"><span class="pre">verify_hash.csv</span></code>. M3 UART logs will also print out SHA-512
+hash of the keys. <code class="docutils literal notranslate"><span class="pre">verify_hash.csv</span></code> can be used for quick comparision with
+<a class="reference internal" href="#pdk-keywr-logs"><span class="std std-ref">M3 logs</span></a></p></li>
+</ul>
+</aside>
+<p>The final certificate will be available in <code class="docutils literal notranslate"><span class="pre">x509cert/final_certificate.bin</span></code> in
+customer HSM, which needs to be exported to PDK Keywriter app directory
+<code class="docutils literal notranslate"><span class="pre">x509cert/final_certificate.bin</span></code>.</p>
+</section>
+<section id="extended-otp">
+<h3><a class="toc-backref" href="#toc-entry-8" role="doc-backlink"><span class="section-number">4.17.5.2. </span>Extended OTP</a><a class="headerlink" href="#extended-otp" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This extension is currently not supported, and reserved for future.</p>
+</aside>
+<p>1024 bits are provided as input, out of which <code class="docutils literal notranslate"><span class="pre">size</span></code> number of bits starting from
+<code class="docutils literal notranslate"><span class="pre">index</span></code> are programmed into efuses. Following figure illustrates the bit mapping
+from byte array (input) to efuse array (efuse rows).</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/efuse_32_to_25_example.png"><img alt="../_images/efuse_32_to_25_example.png" src="../_images/efuse_32_to_25_example.png" style="width: 100%;" /></a>
+</figure>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<p>If only byte array indexes 2 and 3 were to be programmed (0xCC, 0xDD respectively)
+from the above figure, we can see that efuse rows 0 and 1 would be programmed
+as (0x01CC0000) and (0x0000006E) with masks (0x01FF0000) and (0x0000007F)
+respectively.</p>
+<p>If they were to be write protected, we have to write protect both row 0 and
+row 1.</p>
+<p>So, we need to set <code class="docutils literal notranslate"><span class="pre">wprp</span></code> to <code class="docutils literal notranslate"><span class="pre">0000000000000003</span> <span class="pre">0000000000000000</span></code>
+The MSB 16 octets are for wp, LSB 16 octets are for rp.
+bits 0 and 1 are set in wp, to write protect efuse row 0 and row 1.</p>
+<p>Please note that this would cause the remaining bits of row 0 and row 1
+also to be write protected.</p>
+</aside>
+</section>
+<section id="building-pdk-keywriter-app">
+<span id="pdk-keywr-build-app"></span><h3><a class="toc-backref" href="#toc-entry-9" role="doc-backlink"><span class="section-number">4.17.5.3. </span>Building PDK Keywriter app</a><a class="headerlink" href="#building-pdk-keywriter-app" title="Permalink to this headline">¶</a></h3>
+<p>The keywriter app can be built with the following commands. In all below commands “make”
+can be replaced with “gmake” for Windows machine build. For more details about building
+the PDK, refer <a class="reference internal" href="../getting_started.html"><span class="doc">here</span></a>.</p>
+<p>Following files are needed before building keywriter example application</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x509cert/final_certificate.bin</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tifs_bin/j721e/ti-fs-keywriter.bin</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x509cert/final_certificate.bin</span></code></p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span><span class="w"> </span><span class="o">&lt;</span><span class="n">pdk</span><span class="o">-</span><span class="n">install</span><span class="o">-</span><span class="n">path</span><span class="o">&gt;/</span><span class="n">packages</span><span class="o">/</span><span class="n">ti</span><span class="o">/</span><span class="n">build</span><span class="o">/</span>
+<span class="n">make</span><span class="w"> </span><span class="n">keywriter_img_clean</span>
+<span class="n">make</span><span class="w"> </span><span class="n">keywriter_img</span><span class="w"> </span><span class="o">-</span><span class="n">j4</span>
+</pre></div>
+</div>
+<p>Final <code class="docutils literal notranslate"><span class="pre">keywriter_img_&lt;SoC&gt;_release.tiimage</span></code> is available at
+<code class="docutils literal notranslate"><span class="pre">&lt;pdk-install-path&gt;/packages/ti/boot/keywriter/binary/$(SOC)</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The OTP Keywriter certificate from <code class="docutils literal notranslate"><span class="pre">x509cert/final_certificate.bin</span></code> is appended to the pdk binary
+<code class="docutils literal notranslate"><span class="pre">&lt;pdk-install-path&gt;/packages/ti/boot/keywriter/binary/keywriter_img_j721e_release.bin</span></code>
+and signed. So that the source code does not need to be compiled each time there is a change
+in the OTP Keywriter certificate.</p>
+</aside>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Building <code class="docutils literal notranslate"><span class="pre">sciclient_boardcfg</span></code> and <code class="docutils literal notranslate"><span class="pre">sciclient_direct</span></code> modules
+before <code class="docutils literal notranslate"><span class="pre">keywriter_img</span></code> is no longer necessary, as the compiled <code class="docutils literal notranslate"><span class="pre">.h</span></code> files
+for board config are included in <code class="docutils literal notranslate"><span class="pre">&lt;pdk-packages&gt;/ti/boot/keywriter/boardcfgs/j721e</span></code></p>
+</aside>
+</section>
+<section id="running-on-soc-using-a-boot-mode-of-choice">
+<h3><a class="toc-backref" href="#toc-entry-10" role="doc-backlink"><span class="section-number">4.17.5.4. </span>Running on SoC, using a boot mode of choice</a><a class="headerlink" href="#running-on-soc-using-a-boot-mode-of-choice" title="Permalink to this headline">¶</a></h3>
+<p>The final <code class="docutils literal notranslate"><span class="pre">keywriter_img_$(SOC)_release.tiimage</span></code> is a standalone (without need for any SBL)
+bootable keywriter applcation image containing the encrypted OTP keywrtiter firmware binary,
+and OTP configuration (x509 certificate).</p>
+<p>The PDK Keywriter app will load OTP Keywriter binary, and call
+<a class="reference external" href="http://downloads.ti.com/tisci/esd/latest/2_tisci_msgs/security/keywriter.html#sec-api-keywr-program-keys">OTP keywriter API</a>
+using <a class="reference internal" href="../family_cfg/jacinto/index_modules_sciclient_jacinto.html#sciclient-service"><span class="std std-ref">Sciclient service</span></a></p>
+<p>The response from <code class="docutils literal notranslate"><span class="pre">TISCI_MSG_KEY_WRITER</span></code>, gives information about success/failure in customer key
+programming in SoC eFuses.</p>
+<p>This is logged on R5 UART Port, for confirmation to the user.</p>
+</section>
+</section>
+<section id="debugging">
+<h2><a class="toc-backref" href="#toc-entry-11" role="doc-backlink"><span class="section-number">4.17.6. </span>Debugging</a><a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">debug_response</span></code> from
+<a class="reference external" href="http://downloads.ti.com/tisci/esd/latest/2_tisci_msgs/security/keywriter.html#sec-api-keywr-program-keys">TISCI_MSG_KEY_WRITER</a>
+has detailed information about success / failure in blowing eFuses.</p>
+<p>The enumeration documented <a class="reference external" href="http://downloads.ti.com/tisci/esd/latest/6_topic_user_guides/key_writer.html#otp-key-writer-error-codes">here</a>
+has the bit positions, which are set in <code class="docutils literal notranslate"><span class="pre">debug_response</span></code> according to specific issue while programming customer keys.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">debug_response</span></code> of 0x00 means programming was successful.</p>
+<p>Apart from debug_response, there are MCU R5 and M3 UART logs which help in debugging.</p>
+<p>Example logs, after a successful OTP Keywriter operation can be found <a class="reference internal" href="#pdk-keywr-logs"><span class="std std-ref">here</span></a></p>
+</section>
+<section id="appendix">
+<h2><a class="toc-backref" href="#toc-entry-12" role="doc-backlink"><span class="section-number">4.17.7. </span>Appendix</a><a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h2>
+<section id="using-ti-dummy-keys-from-pdk-code-base">
+<h3><a class="toc-backref" href="#toc-entry-13" role="doc-backlink"><span class="section-number">4.17.7.1. </span>Using TI dummy keys from PDK code base</a><a class="headerlink" href="#using-ti-dummy-keys-from-pdk-code-base" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>&lt;PDK-INSTALL-PATH&gt;
+
+<span class="c1"># Copy the customer dummy private key (SMPK private key, PEM format)</span>
+cp<span class="w"> </span>build/makerules/k3_dev_mpk.pem<span class="w"> </span>boot/keywriter/scripts/keys/smpk.pem
+
+<span class="c1"># Copy the customer dummy encryption key (SMEK, converted to binary file)</span>
+xxd<span class="w"> </span>-p<span class="w"> </span>-r<span class="w"> </span>build/makerules/k3_dev_mek.txt<span class="w"> </span>&gt;<span class="w"> </span>boot/keywriter/scripts/keys/smek.key
+</pre></div>
+</div>
+</section>
+<section id="creating-x509-certificates-for-incremental-programming">
+<span id="kw-incr-programming"></span><h3><a class="toc-backref" href="#toc-entry-14" role="doc-backlink"><span class="section-number">4.17.7.2. </span>Creating x509 certificates for Incremental Programming</a><a class="headerlink" href="#creating-x509-certificates-for-incremental-programming" title="Permalink to this headline">¶</a></h3>
+<section id="pass-1">
+<h4><span class="section-number">4.17.7.2.1. </span>Pass 1<a class="headerlink" href="#pass-1" title="Permalink to this headline">¶</a></h4>
+<p>OTP keywriter can program extended otp array, when supplied with an index, and
+size of bits to program (both index and size have to be muliples of 8).</p>
+<p>Constructing extended otp array</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 1: Generate 1024 bit array ext_otp_data.bin</span>
+./construct_ext_otp_data.sh<span class="w"> </span>-extotp<span class="w"> </span>0xFF<span class="w"> </span>-indx<span class="w"> </span><span class="m">0</span><span class="w"> </span>-size<span class="w"> </span><span class="m">8</span>
+
+<span class="c1"># Step 2: Edit ext_otp_data.txt for any more changes</span>
+vim<span class="w"> </span>ext_otp_data.txt
+
+<span class="c1"># Step 3: Convert txt to bin file</span>
+xxd<span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span>ext_otp_data.txt<span class="w"> </span>&gt;<span class="w"> </span>ext_otp_data.bin
+
+<span class="c1"># Setp 4: Generate x509 certificate</span>
+./gen_keywr_cert.sh<span class="w"> </span>-t<span class="w"> </span>ti_fek_public.pem<span class="w"> </span>--ext-otp<span class="w"> </span>ext_otp_data.bin<span class="w"> </span>--ext-otp-indx<span class="w"> </span><span class="m">0</span><span class="w"> </span>--ext-otp-size<span class="w"> </span><span class="m">8</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Steps 2, 3 can be skipped if no changes are needed in extended OTP array</p>
+</aside>
+<p>After creating this certificate, building the example keywriter app, and programming
+ext_otp[0:7], we could also program another offset of ext_otp</p>
+</section>
+<section id="pass-2">
+<h4><span class="section-number">4.17.7.2.2. </span>Pass 2<a class="headerlink" href="#pass-2" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./construct_ext_otp_data.sh<span class="w"> </span>-extotp<span class="w"> </span>0x1234<span class="w"> </span>-indx<span class="w"> </span><span class="m">8</span><span class="w"> </span>-size<span class="w"> </span><span class="m">16</span>
+./gen_keywr_cert.sh<span class="w"> </span>-t<span class="w"> </span>ti_fek_public.pem<span class="w"> </span>--ext-otp<span class="w"> </span>ext_otp_data.bin<span class="w"> </span>--ext-otp-indx<span class="w"> </span><span class="m">8</span><span class="w"> </span>--ext-otp-size<span class="w"> </span><span class="m">16</span><span class="w"> </span>--ext-otp-wprp<span class="w"> </span><span class="m">00000000000000010000000000000000</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The index and size arguments should be same in both the commands</p>
+</aside>
+<p>This will create another certificate. Keywriter example app needs to be built
+after every change in certificate. This could be reapeated many times, but without
+any overlap in the ext_otp index, size parameters.</p>
+</section>
+<section id="pass-3">
+<h4><span class="section-number">4.17.7.2.3. </span>Pass 3<a class="headerlink" href="#pass-3" title="Permalink to this headline">¶</a></h4>
+<p>Since the KEYREV value is not modified until now, we can still use OTP keywriter
+to program other keys.</p>
+<p>Following code snippet would set SMPKH, SMEK, MSV, KEYCNT and KEYREV.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is recommended to write protect SMPKH, SMEK, BMPKH, BMEK efuse rows by
+providing the specific arguments to <code class="docutils literal notranslate"><span class="pre">gen_keywr_cert.sh</span></code> script.</p>
+</aside>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./gen_keywr_cert.sh<span class="w"> </span>-s<span class="w"> </span>keys/smpk.pem<span class="w"> </span>-s-wp
+--smek<span class="w"> </span>keys/smek.key<span class="w"> </span>--smek-wp<span class="w"> </span>-t<span class="w"> </span>ti_fek_public.pem
+-a<span class="w"> </span>keys/aes256.key<span class="w"> </span>--msv<span class="w"> </span>0xC0FFE<span class="w"> </span>--msv-wp<span class="w"> </span>--keycnt<span class="w"> </span><span class="m">1</span><span class="w"> </span>--keyrev<span class="w"> </span><span class="m">1</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>KEYCNT should match the number of keys programmed into efuses.</p></li>
+<li><p>KEYREV should always be <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> KEYCNT</p></li>
+<li><p>It is recommended to write protect KEYCNT</p></li>
+<li><p>KEYREV could be left without write protection, if a run time KEYREV update is needed.</p></li>
+</ul>
+</aside>
+</section>
+</section>
+<section id="x509-configuration-template">
+<h3><a class="toc-backref" href="#toc-entry-15" role="doc-backlink"><span class="section-number">4.17.7.3. </span>X509 Configuration Template</a><a class="headerlink" href="#x509-configuration-template" title="Permalink to this headline">¶</a></h3>
+<p>The following x509 configuration template is used, by <code class="docutils literal notranslate"><span class="pre">gen_keywr_cert.sh</span></code> file,
+to create the x509 certificate. Each key has an extension field
+(OID 1.3.6.1.4.1.294.1.64 - 1.3.6.1.4.1.294.1.81), mentioning information such as SHA-512
+value, size, IV, RS used in AES encryption.</p>
+<p>Details about individual extensions can be obtained form
+<a class="reference external" href="http://downloads.ti.com/tisci/esd/latest/2_tisci_msgs/security/sec_cert_format.html#extensions">Security x509 Certificate Documentation</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span><span class="w"> </span>req<span class="w"> </span><span class="o">]</span>
+<span class="nv">distinguished_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>req_distinguished_name
+<span class="nv">x509_extensions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>v3_ca
+<span class="nv">prompt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>no
+<span class="nv">dirstring_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>nobmp
+
+<span class="c1"># This information will be filled by the end user.</span>
+<span class="c1"># The current data is only a place holder.</span>
+<span class="c1"># System firmware does not make decisions based</span>
+<span class="c1"># on the contents of this distinguished name block.</span>
+<span class="o">[</span><span class="w"> </span>req_distinguished_name<span class="w"> </span><span class="o">]</span>
+<span class="nv">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>oR
+<span class="nv">ST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>rx
+<span class="nv">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>gQE843yQV0sag
+<span class="nv">O</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>dqhGYAQ2Y4gFfCq0t1yABCYxex9eAxt71f
+<span class="nv">OU</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>a87RB35W
+<span class="nv">CN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>x0FSqGTPWbGpuiV
+<span class="nv">emailAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>kFp5uGcgWXxcfxi@vsHs9C9qQWGrBs.com
+
+<span class="o">[</span><span class="w"> </span>v3_ca<span class="w"> </span><span class="o">]</span>
+<span class="nv">basicConstraints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>CA:true
+<span class="m">1</span>.3.6.1.4.1.294.1.64<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:enc_aes_key
+<span class="m">1</span>.3.6.1.4.1.294.1.65<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:enc_smpk_signed_aes_key
+<span class="m">1</span>.3.6.1.4.1.294.1.66<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:enc_bmpk_signed_aes_key
+<span class="m">1</span>.3.6.1.4.1.294.1.67<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:aesenc_smpkh
+<span class="m">1</span>.3.6.1.4.1.294.1.68<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:aesenc_smek
+<span class="m">1</span>.3.6.1.4.1.294.1.69<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:plain_mpk_options
+<span class="m">1</span>.3.6.1.4.1.294.1.70<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:aesenc_bmpkh
+<span class="m">1</span>.3.6.1.4.1.294.1.71<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:aesenc_bmek
+<span class="m">1</span>.3.6.1.4.1.294.1.72<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:plain_mek_options
+<span class="m">1</span>.3.6.1.4.1.294.1.73<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:aesenc_user_otp
+<span class="m">1</span>.3.6.1.4.1.294.1.74<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:plain_key_rev
+<span class="m">1</span>.3.6.1.4.1.294.1.76<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:plain_msv
+<span class="m">1</span>.3.6.1.4.1.294.1.77<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:plain_key_cnt
+<span class="m">1</span>.3.6.1.4.1.294.1.78<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:plain_swrev_sysfw
+<span class="m">1</span>.3.6.1.4.1.294.1.79<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:plain_swrev_sbl
+<span class="m">1</span>.3.6.1.4.1.294.1.80<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:plain_swrev_sec_brdcfg
+<span class="m">1</span>.3.6.1.4.1.294.1.81<span class="w"> </span><span class="o">=</span><span class="w"> </span>ASN1:SEQUENCE:plain_keywr_min_version
+
+<span class="o">[</span><span class="w"> </span>enc_aes_key<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-ENC-AES-KEY with acutal Encrypted AES Key</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_ENC_AES_KEY
+<span class="nv">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_SIZE_ENC_AES
+
+<span class="o">[</span><span class="w"> </span>enc_bmpk_signed_aes_key<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-ENC-BMPK-SIGNED-AES-KEY with acutal Encrypted BMPK signed AES Key</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_ENC_BMPK_SIGNED_AES_KEY
+<span class="nv">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_SIZE_ENC_BMPK_SIGNED_AES
+
+<span class="o">[</span><span class="w"> </span>enc_smpk_signed_aes_key<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-ENC-SMPK-SIGNED-AES-KEY with acutal Encrypted SMPK signed AES Key</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_ENC_SMPK_SIGNED_AES_KEY
+<span class="nv">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_SIZE_ENC_SMPK_SIGNED_AES
+
+<span class="o">[</span><span class="w"> </span>aesenc_smpkh<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-AESENC-SPMKH with acutal Encrypted AES Key</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_AESENC_SMPKH
+<span class="nv">iv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_IV_AESENC_SMPKH
+<span class="nv">rs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_RS_AESENC_SMPKH
+<span class="nv">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_SIZE_AESENC_SMPKH
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_AESENC_SMPKH
+
+<span class="o">[</span><span class="w"> </span>aesenc_smek<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-AESENC-SMEK with acutal Encrypted AES Key</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_AESENC_SMEK
+<span class="nv">iv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_IV_AESENC_SMEK
+<span class="nv">rs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_RS_AESENC_SMEK
+<span class="nv">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_SIZE_AESENC_SMEK
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_AESENC_SMEK
+
+<span class="o">[</span><span class="w"> </span>aesenc_bmpkh<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-AESENC-BMPKH with acutal Encrypted BMPKH</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_AESENC_BMPKH
+<span class="nv">iv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_IV_AESENC_BMPKH
+<span class="nv">rs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_RS_AESENC_BMPKH
+<span class="nv">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_SIZE_AESENC_BMPKH
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_AESENC_BMPKH
+
+<span class="o">[</span><span class="w"> </span>aesenc_bmek<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-AESENC-BMEK with acutal Encrypted BMEK</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_AESENC_BMEK
+<span class="nv">iv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_IV_AESENC_BMEK
+<span class="nv">rs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_RS_AESENC_BMEK
+<span class="nv">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_SIZE_AESENC_BMEK
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_AESENC_BMEK
+
+<span class="o">[</span><span class="w"> </span>plain_msv<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-PLAIN-MSV with actual MSV value</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_PLAIN_MSV
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_PLAIN_MSV
+
+<span class="o">[</span><span class="w"> </span>plain_mpk_options<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-PLAIN-MPK-OPT with actual MPK OPT value</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_PLAIN_MPK_OPT
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_PLAIN_MPK_OPT
+
+<span class="o">[</span><span class="w"> </span>plain_mek_options<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-PLAIN-MEK-OPT with actual MEK OPT value</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_PLAIN_MEK_OPT
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_PLAIN_MEK_OPT
+
+<span class="o">[</span><span class="w"> </span>plain_key_rev<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-PLAIN-KEY-REV with actual Key Rev value</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_PLAIN_KEY_REV
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_PLAIN_KEY_REV
+
+<span class="o">[</span><span class="w"> </span>plain_key_cnt<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-PLAIN-KEY-CNT with actual Key Count value</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_PLAIN_KEY_CNT
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_PLAIN_KEY_CNT
+
+<span class="o">[</span><span class="w"> </span>plain_swrev_sysfw<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-PLAIN-SWREV-SYSFW with actual SWREV SYSFW value</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_PLAIN_SWREV_SYSFW
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_PLAIN_SWREV_SYSFW
+
+<span class="o">[</span><span class="w"> </span>plain_swrev_sbl<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-PLAIN-SWREV-SBL with actual SWREV SBL value</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_PLAIN_SWREV_SBL
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_PLAIN_SWREV_SBL
+
+<span class="o">[</span><span class="w"> </span>plain_swrev_sec_brdcfg<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-PLAIN-SWREV-SEC-BRDCFG with actual SWREV SEC BRDCFG value</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_PLAIN_SWREV_SEC_BRDCFG
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_PLAIN_SWREV_SEC_BRDCFG
+
+<span class="o">[</span>plain_keywr_min_version<span class="w"> </span><span class="o">]</span><span class="w"> </span>
+<span class="c1"># Replace PUT-PLAIN-KEYWR-MIN-VER with actual KEYWR-MIN-VER value</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_PLAIN_KEYWR_MIN_VER
+
+<span class="o">[</span><span class="w"> </span>aesenc_user_otp<span class="w"> </span><span class="o">]</span>
+<span class="c1"># Replace PUT-AESENC-USER-OTP with actual Encrypted OTP</span>
+<span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_AESENC_USER_OTP
+<span class="nv">iv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_IV_AESENC_USER_OTP
+<span class="nv">rs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_RS_AESENC_USER_OTP
+<span class="nv">wprp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FORMAT:HEX,OCT:PUT_WPRP_AESENC_USER_OTP
+<span class="nv">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_INDX_AESENC_USER_OTP
+<span class="nv">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_SIZE_AESENC_USER_OTP
+<span class="nv">action_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:PUT_ACTFLAG_AESENC_USER_OTP
+</pre></div>
+</div>
+</section>
+<section id="otp-keywriter-logs">
+<span id="pdk-keywr-logs"></span><h3><a class="toc-backref" href="#toc-entry-16" role="doc-backlink"><span class="section-number">4.17.7.4. </span>OTP KEYWRITER LOGS</a><a class="headerlink" href="#otp-keywriter-logs" title="Permalink to this headline">¶</a></h3>
+<p><strong>R5 Log</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>OTP<span class="w"> </span>Keywriter<span class="w"> </span>Version:<span class="w"> </span><span class="m">02</span>.00.00.00<span class="w"> </span><span class="o">(</span>Jun<span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">2021</span><span class="w"> </span>-<span class="w"> </span><span class="m">10</span>:59:55<span class="o">)</span>
+
+<span class="w"> </span>OTP<span class="w"> </span>Keywriter<span class="w"> </span>ver:<span class="w"> </span><span class="m">21</span>.5.0-v2021.05-9-gde058<span class="w"> </span><span class="o">(</span>Terri
+OTP_VppEn
+test_pmic_i2c_lld_intf_setup<span class="o">()</span>:<span class="w"> </span><span class="m">496</span>:<span class="w"> </span>PMIC_MAIN_INST<span class="w"> </span>I2C<span class="w"> </span>Setup...
+test_pmic_i2c_lld_intf_setup<span class="o">()</span>:<span class="w"> </span><span class="m">536</span>:<span class="w"> </span><span class="k">done</span>...
+I2C1:<span class="w"> </span>Passed<span class="w"> </span><span class="k">for</span><span class="w"> </span>address<span class="w"> </span>0x4c<span class="w"> </span>!!!<span class="w"> </span>
+I2C1:<span class="w"> </span>Passed<span class="w"> </span><span class="k">for</span><span class="w"> </span>address<span class="w"> </span>0x13<span class="w"> </span>!!!<span class="w"> </span>
+INT<span class="w"> </span>STAT<span class="o">[</span><span class="m">0</span><span class="o">]</span>:<span class="w"> </span>0x00000000
+INT<span class="w"> </span>STAT<span class="o">[</span><span class="m">1</span><span class="o">]</span>:<span class="w"> </span>0x00000000
+INT<span class="w"> </span>STAT<span class="o">[</span><span class="m">2</span><span class="o">]</span>:<span class="w"> </span>0x00000000
+INT<span class="w"> </span>STAT<span class="o">[</span><span class="m">3</span><span class="o">]</span>:<span class="w"> </span>0x00000000
+
+volate_mV:<span class="w"> </span><span class="m">1800</span>
+Key<span class="w"> </span>programming<span class="w"> </span>sequence<span class="w"> </span>initialted
+Taking<span class="w"> </span>OTP<span class="w"> </span>certificate<span class="w"> </span>from<span class="w"> </span>0x41c73004
+Debug<span class="w"> </span>response:<span class="w"> </span>0x0
+Key<span class="w"> </span>programming<span class="w"> </span>sequence<span class="w"> </span>completed
+</pre></div>
+</div>
+<p><strong>M3 Log</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># Decrypting extensions..</span>
+<span class="c1">#</span>
+MPK<span class="w"> </span>Options:<span class="w">  </span>0x21
+MEK<span class="w"> </span>Options:<span class="w">  </span>0x1
+MPK<span class="w"> </span>Opt<span class="w"> </span>P1:<span class="w">  </span>0x1
+MPK<span class="w"> </span>Opt<span class="w"> </span>P2:<span class="w">  </span>0x1
+MEK<span class="w"> </span>Opt<span class="w">   </span>:<span class="w">  </span>0x1
+SMPKH<span class="w"> </span>extension<span class="w"> </span>disabled
+SMEK<span class="w"> </span>extension<span class="w"> </span>disabled
+*<span class="w"> </span>BMPKH<span class="w"> </span>Part<span class="w"> </span><span class="m">1</span><span class="w"> </span>BCH<span class="w"> </span>code:<span class="w"> </span>8180dd66
+
+*<span class="w"> </span>BMPKH<span class="w"> </span>Part<span class="w"> </span><span class="m">2</span><span class="w"> </span>BCH<span class="w"> </span>code:<span class="w"> </span>81873fe5
+
+*<span class="w"> </span>BMPK<span class="w"> </span>Hash<span class="w"> </span><span class="o">(</span>part-1,2<span class="o">)</span>:
+
+384be278a7a50eb25afdffac2e8bd306f82a3b51a770f8056c9ddeb9f31b0d3d01
+
+3ea0063e6de3127a47c8a1443fc7e10dadffb51601aeaeb499d607e02874cd8001
+
+*<span class="w"> </span>BMEK<span class="w"> </span>BCH<span class="w"> </span>code:<span class="w"> </span>c1bbe2be
+
+*<span class="w"> </span>BMEK<span class="w"> </span>Hash:<span class="w"> </span>9352f2c8069698ad4a1e6dfb381723ba4a15948a5e00c5ac004f574f194efe66bc701d378b01ec0bf1a36bef6e7a931d466dbdb38bd2be0aad8afc756aa5ea7a
+
+EXT<span class="w"> </span>OTP<span class="w"> </span>extension<span class="w"> </span>disabled
+MSV<span class="w"> </span>extension<span class="w"> </span>disabled
+
+KEY<span class="w"> </span>CNT<span class="w"> </span>extension<span class="w"> </span>disabled
+
+KEY<span class="w"> </span>REV<span class="w"> </span>extension<span class="w"> </span>disabled
+
+SWREV<span class="w"> </span>extension<span class="w"> </span>disabled
+
+FW<span class="w"> </span>CFG<span class="w"> </span>REV<span class="w"> </span>extension<span class="w"> </span>disabled
+
+*<span class="w"> </span>KEYWR<span class="w"> </span>VERSION:<span class="w">  </span>0x20000
+
+<span class="c1">#</span>
+<span class="c1"># Programming Keys..</span>
+<span class="c1">#</span>
+
+*<span class="w"> </span>MSV:<span class="w"> </span>
+<span class="o">[</span>u32<span class="o">]</span><span class="w"> </span>bch<span class="w"> </span>+<span class="w"> </span>msv:<span class="w">  </span>0x8BAC0FFE
+MSV<span class="w"> </span>extension<span class="w"> </span>disabled
+<span class="o">[</span>u32<span class="o">]</span><span class="w"> </span>bch<span class="w"> </span>+<span class="w"> </span>msv:<span class="w">  </span>0x8BAC0FFE
+
+*<span class="w"> </span>SWREV:<span class="w"> </span>
+SWREV<span class="w"> </span>extension<span class="w"> </span>disabled
+
+*<span class="w"> </span>FW<span class="w"> </span>CFG<span class="w"> </span>REV:<span class="w"> </span>
+SWREV<span class="w"> </span>SEC<span class="w"> </span>BCFG<span class="w"> </span>extension<span class="w"> </span>disabled
+
+*<span class="w"> </span>EXT<span class="w"> </span>OTP:<span class="w"> </span>
+EXT<span class="w"> </span>OTP<span class="w"> </span>extension<span class="w"> </span>disabled
+
+*<span class="w"> </span>BMPKH,<span class="w"> </span>BMEK:<span class="w"> </span>
+Programmed<span class="w"> </span><span class="m">11</span>/11<span class="w"> </span>rows<span class="w"> </span>successfully
+Programmed<span class="w"> </span><span class="m">2</span>/2<span class="w"> </span>rows<span class="w"> </span>successfully
+Programmed<span class="w"> </span><span class="m">11</span>/11<span class="w"> </span>rows<span class="w"> </span>successfully
+Programmed<span class="w"> </span><span class="m">2</span>/2<span class="w"> </span>rows<span class="w"> </span>successfully
+Programmed<span class="w"> </span><span class="m">11</span>/11<span class="w"> </span>rows<span class="w"> </span>successfully
+Programmed<span class="w"> </span><span class="m">2</span>/2<span class="w"> </span>rows<span class="w"> </span>successfully
+
+*<span class="w"> </span>SMPKH,<span class="w"> </span>SMEK:<span class="w"> </span>
+SMPKH<span class="w"> </span>extension<span class="w"> </span>disabled
+SMEK<span class="w"> </span>extension<span class="w"> </span>disabled
+
+*<span class="w"> </span>KEYCNT:<span class="w"> </span>
+<span class="o">[</span>u32<span class="o">]</span><span class="w"> </span>keycnt:<span class="w">  </span>0x0
+KEY<span class="w"> </span>CNT<span class="w"> </span>extension<span class="w"> </span>disabled
+<span class="o">[</span>u32<span class="o">]</span><span class="w"> </span>keycnt:<span class="w">  </span>0x0
+
+*<span class="w"> </span>KEYREV:<span class="w"> </span>
+<span class="o">[</span>u32<span class="o">]</span><span class="w"> </span>keyrev:<span class="w">  </span>0x0
+KEY<span class="w"> </span>REV<span class="w"> </span>extension<span class="w"> </span>disabled
+<span class="o">[</span>u32<span class="o">]</span><span class="w"> </span>keyrev:<span class="w">  </span>0x0
+</pre></div>
+</div>
+</section>
+<section id="otp-keywriter-example-app-memory-layout">
+<h3><a class="toc-backref" href="#toc-entry-17" role="doc-backlink"><span class="section-number">4.17.7.5. </span>OTP Keywriter example app memory layout</a><a class="headerlink" href="#otp-keywriter-example-app-memory-layout" title="Permalink to this headline">¶</a></h3>
+<figure class="align-default">
+<img alt="../_images/kw_mem_layout.png" src="../_images/kw_mem_layout.png" />
+</figure>
+</section>
+<section id="otp-keywriter-validation">
+<h3><a class="toc-backref" href="#toc-entry-18" role="doc-backlink"><span class="section-number">4.17.7.6. </span>OTP Keywriter validation</a><a class="headerlink" href="#otp-keywriter-validation" title="Permalink to this headline">¶</a></h3>
+<p>Following is the validation procedure used on OTP keywriter, these
+steps can be replicated by using the script
+<code class="docutils literal notranslate"><span class="pre">&lt;keywriter_dir&gt;/scripts/generate_test_binaries.sh</span></code></p>
+<table class="docutils align-default" id="table-2">
+<caption><span class="caption-number">Table 4.3 </span><span class="caption-text">Test binaries</span><a class="headerlink" href="#table-2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 30%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pass</p></th>
+<th class="head"><p>Details</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Program MSV</p></td>
+<td><p>0xC0FFE</p></td>
+<td><p>Demonstrates that MSV can be programmed successfully</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>SWREV (SBL+SYSFW)</p></td>
+<td><p>sbl: 3, sysfw: 4</p></td>
+<td><p>Skip this step - <em>DO NOT PROGRAM</em></p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>SWREV (SEC BCFG)</p></td>
+<td><p>sec-bcfg: 5</p></td>
+<td><p>Skip this step - <em>DO NOT PROGRAM</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>EXT OTP (31:0) bits (32 bits)</p></td>
+<td><p>0x80000001</p></td>
+<td><p>Ensures that you can program ext_otp area, of size more than 25 bits correctly</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>EXT OTP (39:32) bits (8 bits)</p></td>
+<td><p>0x81</p></td>
+<td><p>Ensures that incremental programming is possible for ext otp</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>(WP) Program BMPKH, BMEK (set as dummy key bmpk val)</p></td>
+<td></td>
+<td><p>Dummy keys are programmed</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>(WP) Program SMPKH, SMEK (set as dummy key smpk val)</p></td>
+<td></td>
+<td><p>Dummy keys are programmed</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>(WP) Program KEYCNT 2</p></td>
+<td><p>2 (0x0303)</p></td>
+<td><p>Key count progammed</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>(~WP) Program KEYREV 1</p></td>
+<td><p>1 (0x0101)</p></td>
+<td><p>After reboot, device will be HS-SE, use smpk for signing the SBL and boardconfigs</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="spi.html" class="btn btn-neutral float-right" title="4.18. SPI" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sciclient/irq_dsts_jacinto.html" class="btn btn-neutral" title="4.16.7.2. J721e Peripheral Interrupt Destination Descriptions" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2020</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'09_00_01',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

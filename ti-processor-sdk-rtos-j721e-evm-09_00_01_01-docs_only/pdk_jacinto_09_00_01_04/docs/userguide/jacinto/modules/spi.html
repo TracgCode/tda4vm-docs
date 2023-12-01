@@ -1,0 +1,520 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.18. SPI &mdash; Platform Development Kit (PDK) - JACINTO User Guide</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Platform Development Kit (PDK) - JACINTO User Guide" href="../index.html"/>
+        <link rel="up" title="4. Modules" href="../family_cfg/jacinto/index_modules_jacinto.html"/>
+        <link rel="next" title="4.19. OSPI" href="ospi.html"/>
+        <link rel="prev" title="4.17. OTP KEYWRITER" href="keywriter.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index_jacinto.html" class="icon icon-home"> Platform Development Kit (PDK) - JACINTO User Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09_00_01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_release_notes_jacinto.html">2. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">3. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../family_cfg/jacinto/index_modules_jacinto.html">4. Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="csl.html">4.1. CSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freertos.html">4.2. FreeRTOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../family_cfg/jacinto/index_modules_safertos_jacinto.html">4.3. SafeRTOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osal.html">4.4. OSAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dss.html">4.5. DSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="csirx.html">4.6. CSIRX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enet/enet.html">4.7. ENET</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fvid2.html">4.8. FVID2 User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpio.html">4.9. GPIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i2c.html">4.10. I2C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipc.html">4.11. IPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcan.html">4.12. MCAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcasp.html">4.13. McASP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pm.html">4.14. PM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sa.html">4.15. SA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../family_cfg/jacinto/index_modules_sciclient_jacinto.html">4.16. SCICLIENT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keywriter.html">4.17. OTP KEYWRITER</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.18. SPI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">4.18.1. Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#modes-of-operation">4.18.1.1. Modes of Operation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#driver-configuration">4.18.2. Driver Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#board-specific-configuration">4.18.2.1. Board Specific Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#soc-specific-configuration">4.18.2.2. SoC Specific Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spi-configuration-structure">4.18.2.3. SPI Configuration Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#apis">4.18.3. APIs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#open-spi">4.18.3.1. Open SPI</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">4.18.4. Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mcspi">4.18.4.1. MCSPI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ospi.html">4.19. OSPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uart.html">4.20. UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../family_cfg/jacinto/index_modules_udma_jacinto.html">4.21. UDMA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pmic.html">4.22. PMIC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmcsd.html">4.23. MMCSD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../family_cfg/jacinto/index_modules_lpm_jacinto.html">4.24. Low Power Manager (LPM)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_boot_jacinto.html">5. Bootloader (SBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_board_jacinto.html">6. Board/EVM Abstraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_howto_jacinto.html">7. How to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_faq_jacinto.html">8. Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_developer_notes_jacinto.html">9. Developer Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index_jacinto.html">Platform Development Kit (PDK) - JACINTO User Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index_jacinto.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../family_cfg/jacinto/index_modules_jacinto.html"><span class="section-number">4. </span>Modules</a> &raquo;</li>
+      
+    <li><span class="section-number">4.18. </span>SPI</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="spi">
+<h1><span class="section-number">4.18. </span>SPI<a class="headerlink" href="#spi" title="Permalink to this headline">¶</a></h1>
+<section id="introduction">
+<h2><span class="section-number">4.18.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>SPI driver enables communication for general SPI, MCSPI (Multichannel
+SPI) on board through common API to application.
+MCSPI is a generic full-duplex interface supporting transmit and
+receive of data over SPI bus.</p>
+<section id="modes-of-operation">
+<h3><span class="section-number">4.18.1.1. </span>Modes of Operation<a class="headerlink" href="#modes-of-operation" title="Permalink to this headline">¶</a></h3>
+<p>Following modes of operations are supported:</p>
+<p><strong>SPI_MODE_BLOCKING</strong>
+<em>SPI_transfer()</em> API blocks code execution until transaction has
+completed. By default, SPI driver operates in blocking mode. This
+ensures only one SPI transaction operates at a given time. This mode
+is supported in both interrupt or non-interrupt configurations.</p>
+<p><strong>SPI_MODE_CALLBACK</strong>
+<em>SPI_transfer()</em> API returns without waiting for completion of
+transaction in this case. Callback function registered by application
+is invoked once transaction is complete.This mode is supported only in
+interrupt configuration.</p>
+</section>
+</section>
+<section id="driver-configuration">
+<h2><span class="section-number">4.18.2. </span>Driver Configuration<a class="headerlink" href="#driver-configuration" title="Permalink to this headline">¶</a></h2>
+<section id="board-specific-configuration">
+<h3><span class="section-number">4.18.2.1. </span>Board Specific Configuration<a class="headerlink" href="#board-specific-configuration" title="Permalink to this headline">¶</a></h3>
+<p>All board specific configurations eg:enabling clock and pin-mux for SPI
+pins are required before calling any driver APIs.By default Board_Init()
+API supports all initialization sequence for TI supported EVMs. In
+addition it initializes UART instance for Console/STDIO.Refer <a class="reference external" href="../board/board_support.html#board-support">PDK Board Support</a>
+for additional details.Once board specific configuration is
+complete <em>SPI_init()</em> API should be called to initialize driver.</p>
+</section>
+<section id="soc-specific-configuration">
+<h3><span class="section-number">4.18.2.2. </span>SoC Specific Configuration<a class="headerlink" href="#soc-specific-configuration" title="Permalink to this headline">¶</a></h3>
+<p>All SoC specific configurations (eg: SPI module registers base address,
+interrupt configurations, etc.) can be set using SPI_socSetInitCfg() SoC
+driver API before calling any SPI driver APIs. The default SoC specific
+configurations can be retrieved using SPI_socGetInitCfg() SoC driver
+API.</p>
+</section>
+<section id="spi-configuration-structure">
+<h3><span class="section-number">4.18.2.3. </span>SPI Configuration Structure<a class="headerlink" href="#spi-configuration-structure" title="Permalink to this headline">¶</a></h3>
+<p>The <em>SPI_soc.c</em> file binds driver with hardware attributes on the board
+through <em>SPI_config[]</em> structure. This structure must be provided to the
+SPI driver. It must be initialized before the <em>SPI_init()</em> function is
+called and cannot be changed afterwards.</p>
+<p>Driver  requires common <em>SPI_config[]</em>  to configure hardware attributes
+of MCSPI peripherals on SOC and board. Application will need to include
+appropriate offset to instance while invoking <em>SPI_open()</em> API..</p>
+<p>For details about individual fields of this library structure, see the
+PDK doxygen documentation</p>
+</section>
+</section>
+<section id="apis">
+<h2><span class="section-number">4.18.3. </span>APIs<a class="headerlink" href="#apis" title="Permalink to this headline">¶</a></h2>
+<p>API Reference for application:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ti/drv/spi/SPI.h&gt;</span>
+</pre></div>
+</div>
+<p>SPI IP V1 driver also supports multi-channel API’s:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ti/drv/spi/MCSPI.h&gt;</span>
+</pre></div>
+</div>
+<p class="rubric" id="spi-section"><em>Description</em></p>
+<section id="open-spi">
+<h3><span class="section-number">4.18.3.1. </span>Open SPI<a class="headerlink" href="#open-spi" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="n">Board_init</span><span class="p">(</span><span class="n">boardCfg</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">SPI_socGetInitCfg</span><span class="p">(</span><span class="n">SPI_MCSPI_DOMAIN_MCU</span><span class="p">,</span><span class="w"> </span><span class="n">peripheralNum</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">spi_cfg</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">SPI_socSetInitCfg</span><span class="p">(</span><span class="n">SPI_MCSPI_DOMAIN_MCU</span><span class="p">,</span><span class="w"> </span><span class="n">peripheralNum</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">spi_cfg</span><span class="p">);</span>
+<span class="n">SPI_Params_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">spiParams</span><span class="p">);</span>
+<span class="n">spiParams</span><span class="p">.</span><span class="n">transferMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SPI_MODE_BLOCKING</span><span class="p">;</span>
+<span class="n">spiParams</span><span class="p">.</span><span class="n">transferCallbackFxn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<span class="n">handle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SPI_open</span><span class="p">(</span><span class="n">SPI_MCSPI_DOMAIN_MCU</span><span class="p">,</span><span class="w"> </span><span class="n">peripheralNum</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">spiParams</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>SPI IP V1 driver also supports multi-channel open API’s:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="n">Board_init</span><span class="p">(</span><span class="n">boardCfg</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">MCSPI_Params_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">spiParams</span><span class="p">);</span>
+<span class="n">spiParams</span><span class="p">.</span><span class="n">transferMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SPI_MODE_BLOCKING</span><span class="p">;</span>
+<span class="n">spiParams</span><span class="p">.</span><span class="n">transferCallbackFxn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<span class="n">handle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MCSPI_open</span><span class="p">(</span><span class="n">SPI_MCSPI_DOMAIN_MCU</span><span class="p">,</span><span class="w"> </span><span class="n">peripheralNum</span><span class="p">,</span><span class="w"> </span><span class="n">channel</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">spiParams</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>At this point SPI driver is ready for data transfer in blocking mode
+on specific instance identified by handle. Pseudo/Sample code for
+SPI read/write transaction is included below. Refer example for
+additional details</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="n">spiTransaction</span><span class="p">.</span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w">    </span><span class="cm">/* Transfer Length */</span>
+<span class="n">spiTransaction</span><span class="p">.</span><span class="w"> </span><span class="n">txBuf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transmitBuffer</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Buffer to be written */</span>
+<span class="n">spiTransaction</span><span class="p">.</span><span class="n">rxBuf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w">  </span><span class="cm">/* Buffer holding the received data */</span>
+<span class="n">transferOK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SPI_transfer</span><span class="p">(</span><span class="n">spi</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">spiTransaction</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Perform SPI transfer */</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">transferOK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/* SPI transaction failed */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>SPI IP V1 driver also supports multi-channel transfer API’s:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="n">spiTransaction</span><span class="p">.</span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w">    </span><span class="cm">/* Transfer Length */</span>
+<span class="n">spiTransaction</span><span class="p">.</span><span class="w"> </span><span class="n">txBuf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transmitBuffer</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Buffer to be written */</span>
+<span class="n">spiTransaction</span><span class="p">.</span><span class="n">rxBuf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w">  </span><span class="cm">/* Buffer holding the received data */</span>
+<span class="n">transferOK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MCSPI_transfer</span><span class="p">(</span><span class="n">spi</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">spiTransaction</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Perform SPI transfer */</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">transferOK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/* SPI transaction failed */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SPI_open API supports configuration of data word length in the
+SPI_Params. Currently IP V1 driver supports 8/16/32-bit word length.
+8/16-bit word length.</p>
+</aside>
+</section>
+</section>
+<section id="examples">
+<h2><span class="section-number">4.18.4. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<section id="mcspi">
+<h3><span class="section-number">4.18.4.1. </span>MCSPI<a class="headerlink" href="#mcspi" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Additional EVM
+Configuration</p></th>
+<th class="head"><p>Expected
+Results</p></th>
+<th class="head"><p>SoC Supported</p></th>
+<th class="head"><p>Build Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MCSPI_slavemode
+example
+application</p></td>
+<td><p>Application
+demonstrates
+slave recieve
+and transmit
+features of
+McSPI.
+Application use
+case requires
+two cores. One
+acts as Master
+and Another as
+slave.
+connections
+information and
+addtional
+details are as
+follows.</p>
+<p>Note: Run the
+slave mode test
+and then master
+mode test for
+proper execution
+of the test.</p>
+</td>
+<td><p><strong>Core usage:</strong></p>
+<div class="line-block">
+<div class="line"><strong>J721E EVM:</strong></div>
+<div class="line">MCU2_0 (master) ====== MCU2_1(slave)</div>
+<div class="line"><br /></div>
+<div class="line"><strong>J7200 EVM:</strong></div>
+<div class="line">MCU2_0 (master) ====== MCU2_1(slave)</div>
+<div class="line"><br /></div>
+<div class="line"><strong>J721S2 EVM:</strong></div>
+<div class="line">MCU2_0 (master) ====== MCU2_1(slave)</div>
+<div class="line"><br /></div>
+<div class="line"><strong>J784S4 EVM:</strong></div>
+<div class="line">MCU2_0 (master) ====== MCU2_1(slave)</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><strong>On
+slave Core
+console:</strong>
+Starting SPI
+Slave test.</div>
+<div class="line">All tests
+have passed.</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>On Master
+Core console:</strong>
+Starting SPI
+Master test</div>
+</div>
+<div class="line-block">
+<div class="line">All tests
+have passed.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">j721e</div>
+<div class="line">j7200</div>
+<div class="line">j721s2</div>
+<div class="line">j784s4</div>
+</div>
+</td>
+<td><p>makefile</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ospi.html" class="btn btn-neutral float-right" title="4.19. OSPI" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="keywriter.html" class="btn btn-neutral" title="4.17. OTP KEYWRITER" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2020</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'09_00_01',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

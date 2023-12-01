@@ -1,0 +1,2741 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1. J721E Datasheet &mdash; Platform Development Kit (PDK) - JACINTO Datasheet</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Platform Development Kit (PDK) - JACINTO Datasheet" href="index.html"/>
+        <link rel="prev" title="Platform Development Kit (PDK) - J721E Datasheet" href="index_jacinto.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index_jacinto.html" class="icon icon-home"> Platform Development Kit (PDK) - JACINTO Datasheet
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09_00_01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. J721E Datasheet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">1.1. Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setup-details">1.1.1. Setup Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#software-performance-numbers">1.1.2. Software Performance Numbers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dss">1.1.2.1. DSS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csi-rx">1.1.2.2. CSI-Rx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csi-tx">1.1.2.3. CSI-Tx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cpsw-9g">1.1.2.4. CPSW_9G</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#udma">1.1.2.5. UDMA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ipc">1.1.2.6. IPC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ospi">1.1.2.7. OSPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mmcsd">1.1.2.8. MMCSD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csl-fl-based-optimized-ospi-example">1.1.2.9. CSL-FL based Optimized OSPI Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sbl-ospi-boot-performance-app">1.1.2.10. SBL OSPI Boot Performance App</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ospi-memory-configuration-benchmarking">1.1.2.11. OSPI Memory Configuration Benchmarking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#supported-configurations">1.1.2.12. Supported Configurations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index_jacinto.html">Platform Development Kit (PDK) - JACINTO Datasheet</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index_jacinto.html">Docs</a> &raquo;</li>
+      
+    <li><span class="section-number">1. </span>J721E Datasheet</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="j721e-datasheet">
+<h1><span class="section-number">1. </span>J721E Datasheet<a class="headerlink" href="#j721e-datasheet" title="Permalink to this headline">¶</a></h1>
+<section id="introduction">
+<h2><span class="section-number">1.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This section provides the performance numbers of device drivers supported in PDK</p>
+<section id="setup-details">
+<h3><span class="section-number">1.1.1. </span>Setup Details<a class="headerlink" href="#setup-details" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>SOC Details</p></th>
+<th class="head"><p>Values</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Core</p></td>
+<td><p>R5F</p></td>
+</tr>
+<tr class="row-odd"><td><p>Core Operating Speed</p></td>
+<td><p>1GHz</p></td>
+</tr>
+<tr class="row-even"><td><p>DDR Speed</p></td>
+<td><p>4266 MTs</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cache status</p></td>
+<td><p>Enabled</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Optimization Details</p></th>
+<th class="head"><p>Values</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Profile</p></td>
+<td><p>Release</p></td>
+</tr>
+<tr class="row-odd"><td><p>Compile Options for R5F</p></td>
+<td><p>-g -ms -DMAKEFILE_BUILD -c -qq -pdsw225 –endian=little -mv7R5 –abi=eabi
+-eo.oer5f -ea.ser5f –symdebug:dwarf –embed_inline_assembly
+–float_support=vfpv3d16 –emit_warnings_as_errors</p></td>
+</tr>
+<tr class="row-even"><td><p>Linker Options for R5F</p></td>
+<td><p>–emit_warnings_as_errors -w -q -u _c_int00 -c -mv7R5 –diag_suppress=10063
+-x –zero_init=on</p></td>
+</tr>
+<tr class="row-odd"><td><p>Code Placement</p></td>
+<td><p>DDR</p></td>
+</tr>
+<tr class="row-even"><td><p>Data Placement</p></td>
+<td><p>DDR</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="software-performance-numbers">
+<h3><span class="section-number">1.1.2. </span>Software Performance Numbers<a class="headerlink" href="#software-performance-numbers" title="Permalink to this headline">¶</a></h3>
+<section id="dss">
+<h4><span class="section-number">1.1.2.1. </span>DSS<a class="headerlink" href="#dss" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Display Type</p></th>
+<th class="head"><p>Configuration</p></th>
+<th class="head"><p>CPU Load</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HDMI</p></td>
+<td><p>1080P60 RGB888</p></td>
+<td><p>1.0% (MCU2_0)</p></td>
+</tr>
+<tr class="row-odd"><td><p>DP</p></td>
+<td><p>1080P60 BGRA32</p></td>
+<td><p>1.0% (MCU2_0)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="csi-rx">
+<h4><span class="section-number">1.1.2.2. </span>CSI-Rx<a class="headerlink" href="#csi-rx" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Capture Type</p></th>
+<th class="head"><p>Configuration</p></th>
+<th class="head"><p>CPU Load</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CSI2Rx Inst 0</p></td>
+<td><p>4CH 1080P30 IMX390 Sensor Raw12</p></td>
+<td><p>1.2% (MCU2_0)</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Instance</p></th>
+<th class="head"><p>Configuration</p></th>
+<th class="head"><p>Time taken to receive one frame</p></th>
+<th class="head"><p>ISR latency</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CSI2Rx Inst 0</p></td>
+<td><p>1CH 1080P30 IMX390 Sensor Raw12</p></td>
+<td><p>33.3ms (MCU2_0)</p></td>
+<td><p>9us (MCU2_0)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="csi-tx">
+<h4><span class="section-number">1.1.2.3. </span>CSI-Tx<a class="headerlink" href="#csi-tx" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Instance</p></th>
+<th class="head"><p>Configuration</p></th>
+<th class="head"><p>Time taken to Transmit one frame</p></th>
+<th class="head"><p>ISR latency</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CSI2Tx Inst 0</p></td>
+<td><p>1CH 1080P 2.5GBPS IMX390 Sensor Raw12</p></td>
+<td><p>6.7ms (MCU2_0)</p></td>
+<td><p>21us (MCU2_0)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cpsw-9g">
+<h4><span class="section-number">1.1.2.4. </span>CPSW_9G<a class="headerlink" href="#cpsw-9g" title="Permalink to this headline">¶</a></h4>
+<section id="test-setup">
+<h5><span class="section-number">1.1.2.4.1. </span>Test Setup<a class="headerlink" href="#test-setup" title="Permalink to this headline">¶</a></h5>
+<img alt="_images/enet_j721e_cpsw9g_test_setup.png" src="_images/enet_j721e_cpsw9g_test_setup.png" />
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Hardware Configuration</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Processing Core</p></td>
+<td><p>Main R5F0 Core 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Core Frequency</p></td>
+<td><p>1 GHz</p></td>
+</tr>
+<tr class="row-even"><td><p>Ethernet Interface Type</p></td>
+<td><p>RGMII at 1Gbps</p></td>
+</tr>
+<tr class="row-odd"><td><p>Packet buffer memory</p></td>
+<td><p>DDR</p></td>
+</tr>
+<tr class="row-even"><td><p>Hardware checksum offload</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Scatter-gather TX</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p>Scatter-gather RX</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Software Configuration</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RTOS</p></td>
+<td><p>FreeRTOS</p></td>
+</tr>
+<tr class="row-odd"><td><p>RTOS application</p></td>
+<td><p>Enet LLD lwIP example</p></td>
+</tr>
+<tr class="row-even"><td><p>TCP/IP stack</p></td>
+<td><p>lwIP 2.1.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Host PC tool version</p></td>
+<td><p>iperf v2.0.10</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tcp-performance">
+<h5><span class="section-number">1.1.2.4.2. </span>TCP Performance<a class="headerlink" href="#tcp-performance" title="Permalink to this headline">¶</a></h5>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Test</p></th>
+<th class="head"><p>Bandwidth
+(Mbps)</p></th>
+<th class="head"><p>CPU Load
+(%)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TCP RX</p></td>
+<td><p>94.7</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>TCP TX</p></td>
+<td><p>73.5</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-even"><td><p>TCP Bidirectional</p></td>
+<td><p>RX=35.1
+TX=45.3</p></td>
+<td><p>100</p></td>
+</tr>
+</tbody>
+</table>
+<p>Host PC commands:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">iperf</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="n">evm_ip</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">r</span>
+<span class="n">iperf</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="n">evm_ip</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+</section>
+<section id="udp-performance">
+<h5><span class="section-number">1.1.2.4.3. </span>UDP Performance<a class="headerlink" href="#udp-performance" title="Permalink to this headline">¶</a></h5>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head" rowspan="2"><p>Test</p></th>
+<th class="head" colspan="3"><p>Datagram Length = 64B</p></th>
+<th class="head" colspan="3"><p>Datagram Length = 256B</p></th>
+<th class="head" colspan="3"><p>Datagram Length = 512B</p></th>
+<th class="head" colspan="3"><p>Datagram Length = 1470B</p></th>
+</tr>
+<tr class="row-even"><th class="head"><div class="line-block">
+<div class="line">Bandwidth</div>
+<div class="line">(Mbps)</div>
+<div class="line"><br /></div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">CPU</div>
+<div class="line">Load</div>
+<div class="line">(%)</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">Packet</div>
+<div class="line">Loss</div>
+<div class="line">(%)</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">Bandwidth</div>
+<div class="line">(Mbps)</div>
+<div class="line"><br /></div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">CPU</div>
+<div class="line">Load</div>
+<div class="line">(%)</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">Packet</div>
+<div class="line">Loss</div>
+<div class="line">(%)</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">Bandwidth</div>
+<div class="line">(Mbps)</div>
+<div class="line"><br /></div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">CPU</div>
+<div class="line">Load</div>
+<div class="line">(%)</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">Packet</div>
+<div class="line">Loss</div>
+<div class="line">(%)</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">Bandwidth</div>
+<div class="line">(Mbps)</div>
+<div class="line"><br /></div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">CPU</div>
+<div class="line">Load</div>
+<div class="line">(%)</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">Packet</div>
+<div class="line">Loss</div>
+<div class="line">(%)</div>
+</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td rowspan="3"><p>UDP RX</p></td>
+<td><p>5.24</p></td>
+<td><p>50</p></td>
+<td><p>0.0</p></td>
+<td><p>26.2</p></td>
+<td><p>74</p></td>
+<td><p>0.0016</p></td>
+<td><p>26.2</p></td>
+<td><p>53</p></td>
+<td><p>0.0</p></td>
+<td><p>26.2</p></td>
+<td><p>39</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>10.5</p></td>
+<td><p>71</p></td>
+<td><p>0.012</p></td>
+<td><p>52.4</p></td>
+<td></td>
+<td></td>
+<td><p>52.4</p></td>
+<td><p>78</p></td>
+<td><p>0.0021</p></td>
+<td><p>52.4</p></td>
+<td><p>51</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>15.7</p></td>
+<td><p>92</p></td>
+<td><p>0.019</p></td>
+<td><p>105</p></td>
+<td></td>
+<td></td>
+<td><p>105</p></td>
+<td></td>
+<td></td>
+<td><p>105</p></td>
+<td><p>73</p></td>
+<td><p>0.0015</p></td>
+</tr>
+<tr class="row-even"><td><p>UDP RX (Max)</p></td>
+<td><p>16.8</p></td>
+<td><p>96</p></td>
+<td><p>0.0045</p></td>
+<td><p>39.8</p></td>
+<td><p>98</p></td>
+<td><p>0.0</p></td>
+<td><p>73.4</p></td>
+<td><p>98</p></td>
+<td><p>0.0069</p></td>
+<td><p>163</p></td>
+<td><p>97</p></td>
+<td><p>0.014</p></td>
+</tr>
+<tr class="row-odd"><td><p>UDP TX (Max)</p></td>
+<td><p>10.4</p></td>
+<td><p>100</p></td>
+<td><p>0.0</p></td>
+<td><p>25.5</p></td>
+<td><p>100</p></td>
+<td><p>0.0008</p></td>
+<td><p>50.9</p></td>
+<td><p>100</p></td>
+<td><p>0.014</p></td>
+<td><p>145</p></td>
+<td><p>100</p></td>
+<td><p>0.021</p></td>
+</tr>
+</tbody>
+</table>
+<p>Host PC commands:</p>
+<ul>
+<li><p>Test with datagram length of 64B:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">iperf</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="n">evm_ip</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="o">-</span><span class="n">l64</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="o">&lt;</span><span class="n">bw</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">r</span>
+<span class="n">where</span><span class="w"> </span><span class="o">&lt;</span><span class="n">bw</span><span class="o">&gt;</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="mi">5</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="n">etc</span>
+</pre></div>
+</div>
+</li>
+<li><p>Test with datagram length of 256B:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">iperf</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="n">evm_ip</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="o">-</span><span class="n">l256</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="o">&lt;</span><span class="n">bw</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">r</span>
+<span class="n">where</span><span class="w"> </span><span class="o">&lt;</span><span class="n">bw</span><span class="o">&gt;</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="mi">25</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="n">etc</span>
+</pre></div>
+</div>
+</li>
+<li><p>Test with datagram length of 512B:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">iperf</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="n">evm_ip</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="o">-</span><span class="n">l512</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="o">&lt;</span><span class="n">bw</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">r</span>
+<span class="n">where</span><span class="w"> </span><span class="o">&lt;</span><span class="n">bw</span><span class="o">&gt;</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="mi">25</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="n">etc</span>
+</pre></div>
+</div>
+</li>
+<li><p>Test with datagram length of 1470B (max):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">iperf</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="n">evm_ip</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="o">&lt;</span><span class="n">bw</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">r</span>
+<span class="n">where</span><span class="w"> </span><span class="o">&lt;</span><span class="n">bw</span><span class="o">&gt;</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="mi">25</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="n">etc</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="udma">
+<h4><span class="section-number">1.1.2.5. </span>UDMA<a class="headerlink" href="#udma" title="Permalink to this headline">¶</a></h4>
+<section id="dma-parameters">
+<h5><span class="section-number">1.1.2.5.1. </span>DMA Parameters<a class="headerlink" href="#dma-parameters" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>Ring Order ID: 0</p></li>
+<li><p>Channel Order ID: 0</p></li>
+<li><p>Channel DMA Priority: 1</p></li>
+<li><p>Channel Bus Priority: 4</p></li>
+<li><p>Channel BUS QOS: 4</p></li>
+<li><p>Channel TX FIFO depth: 128</p></li>
+<li><p>Channel Fetch Word Size: 16</p></li>
+<li><p>Channel Burst Size: 64 bytes for normal channel, 128 bytes for HC and UHC channels</p></li>
+</ul>
+</section>
+<section id="test-parameters">
+<h5><span class="section-number">1.1.2.5.2. </span>Test Parameters<a class="headerlink" href="#test-parameters" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>Type: TR15 Block copy</p></li>
+<li><p>TR: one TR per TRPD in PBR mode</p></li>
+<li><p>TR Memory: Same as buffer memory (DDR, MSMC or OCMC depends on the test performed)</p></li>
+<li><p>Transfer Size: 1 MB read and 1MB write</p></li>
+<li><p>1MB means 1000x1000 bytes and 1KB means 1000 bytes</p></li>
+</ul>
+<p><strong>Note:</strong>
+Throughput numbers mentioned is the combined memory throughput of both read and write operations</p>
+</section>
+<section id="dru-blockcopy">
+<h5><span class="section-number">1.1.2.5.3. </span>DRU Blockcopy<a class="headerlink" href="#dru-blockcopy" title="Permalink to this headline">¶</a></h5>
+<p>DRU channel performance with TR submitted through ring</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Test Description</p></th>
+<th class="head"><p>Throughput (MCU2)</p></th>
+<th class="head"><p>CPU Load (MCU2)</p></th>
+<th class="head"><p>Throughput (C66x_1/2)</p></th>
+<th class="head"><p>CPU Load (C66x_1/2)</p></th>
+<th class="head"><p>Throughput (C7x_1)</p></th>
+<th class="head"><p>CPU Load (C7x_1)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[PDK-3501] 1CH DDR 1MB to DDR 1MB</p></td>
+<td><p>11554 MB/sec</p></td>
+<td><p>12%</p></td>
+<td><p>11956 MB/sec</p></td>
+<td><p>4%</p></td>
+<td><p>11196 MB/sec</p></td>
+<td><p>7%</p></td>
+</tr>
+<tr class="row-odd"><td><p>[PDK-3502] 1CH MSMC 1KB Circular to DDR 1MB</p></td>
+<td><p>18347 MB/sec</p></td>
+<td><p>13%</p></td>
+<td><p>18477 MB/sec</p></td>
+<td><p>6%</p></td>
+<td><p>17652 MB/sec</p></td>
+<td><p>8%</p></td>
+</tr>
+<tr class="row-even"><td><p>[PDK-3503] 1CH DDR 1MB to MSMC circular 1KB</p></td>
+<td><p>21355 MB/sec</p></td>
+<td><p>15%</p></td>
+<td><p>22477 MB/sec</p></td>
+<td><p>5%</p></td>
+<td><p>20360 MB/sec</p></td>
+<td><p>9%</p></td>
+</tr>
+<tr class="row-odd"><td><p>[PDK-3504] 1CH MSMC 1KB to MSMC circular 1KB (1MB per TR)</p></td>
+<td><p>28649 MB/sec</p></td>
+<td><p>15%</p></td>
+<td><p>28886 MB/sec</p></td>
+<td><p>7%</p></td>
+<td><p>27200 MB/sec</p></td>
+<td><p>9%</p></td>
+</tr>
+<tr class="row-even"><td><p>[PDK-3505] Multi CH DDR 1MB to DDR 1MB</p></td>
+<td><p>12238 MB/sec</p></td>
+<td><p>27%</p></td>
+<td><p>12314 MB/sec (4CH)</p></td>
+<td><p>8%</p></td>
+<td><p>10597 MB/sec (4CH)</p></td>
+<td><p>14%</p></td>
+</tr>
+<tr class="row-odd"><td><p>[PDK-3506] Multi CH MSMC 1KB to MSMC circular 1KB (1 MB per TR)</p></td>
+<td><p>30931 MB/sec</p></td>
+<td><p>29%</p></td>
+<td><p>30988 MB/sec (4CH)</p></td>
+<td><p>20%</p></td>
+<td><p>17962 MB/sec (4CH)</p></td>
+<td><p>14%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="main-navss-blockcopy-normal-channel">
+<h5><span class="section-number">1.1.2.5.4. </span>Main NAVSS Blockcopy (Normal Channel)<a class="headerlink" href="#main-navss-blockcopy-normal-channel" title="Permalink to this headline">¶</a></h5>
+<p>Main NAVSS normal channel performance with TR submitted through ring</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Test Description</p></th>
+<th class="head"><p>Throughput (MCU2/3)</p></th>
+<th class="head"><p>CPU Load (MCU2/3)</p></th>
+<th class="head"><p>Throughput (C66x_1/2)</p></th>
+<th class="head"><p>CPU Load (C66x_1/2)</p></th>
+<th class="head"><p>Throughput (C7x_1)</p></th>
+<th class="head"><p>CPU Load (C7x_1)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[PDK-3485]1CH DDR 1MB to DDR 1MB</p></td>
+<td><p>1044 MB/sec</p></td>
+<td><p>2%</p></td>
+<td><p>1047 MB/sec</p></td>
+<td><p>1%</p></td>
+<td><p>1043 MB/sec</p></td>
+<td><p>1%</p></td>
+</tr>
+<tr class="row-odd"><td><p>[PDK-3486] 1CH MSMC 1KB Circular to DDR 1MB</p></td>
+<td><p>2104 MB/sec</p></td>
+<td><p>5%</p></td>
+<td><p>2144 MB/sec</p></td>
+<td><p>2%</p></td>
+<td><p>2131 MB/sec</p></td>
+<td><p>2%</p></td>
+</tr>
+<tr class="row-even"><td><p>[PDK-3487] 1CH DDR 1MB to MSMC circular 1KB</p></td>
+<td><p>1238 MB/sec</p></td>
+<td><p>2%</p></td>
+<td><p>1241 MB/sec</p></td>
+<td><p>1%</p></td>
+<td><p>1234 MB/sec</p></td>
+<td><p>1%</p></td>
+</tr>
+<tr class="row-odd"><td><p>[PDK-3488] 1CH MSMC 1KB to MSMC circular 1KB (1MB per TR)</p></td>
+<td><p>2103 MB/sec</p></td>
+<td><p>5%</p></td>
+<td><p>2144 MB/sec</p></td>
+<td><p>2%</p></td>
+<td><p>2132 MB/sec</p></td>
+<td><p>2%</p></td>
+</tr>
+<tr class="row-even"><td><p>[PDK-3494] Multi CH DDR 1MB to DDR 1MB</p></td>
+<td><p>3640 MB/sec (4CH)</p></td>
+<td><p>10%</p></td>
+<td><p>1921 MB/sec (2CH)</p></td>
+<td><p>2%</p></td>
+<td><p>1859 MB/sec (2CH)</p></td>
+<td><p>2%</p></td>
+</tr>
+<tr class="row-odd"><td><p>[PDK-3496] Multi CH MSMC 1KB to MSMC circular 1KB (1 MB per TR)</p></td>
+<td><p>7781 MB/sec (4CH)</p></td>
+<td><p>17%</p></td>
+<td><p>4188 MB/sec (2CH)</p></td>
+<td><p>3%</p></td>
+<td><p>3515 MB/sec (2CH)</p></td>
+<td><p>3%</p></td>
+</tr>
+<tr class="row-even"><td><p>[PDK-13173]1CH MAIN OCMC 1MB to DDR 1MB</p></td>
+<td><p>1771 MB/sec</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>[PDK-13173]1CH DDR 1MB to MAIN OCMC 1MB</p></td>
+<td><p>1236 MB/sec</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mcu-navss-blockcopy-normal-channel">
+<h5><span class="section-number">1.1.2.5.5. </span>MCU NAVSS Blockcopy (Normal Channel)<a class="headerlink" href="#mcu-navss-blockcopy-normal-channel" title="Permalink to this headline">¶</a></h5>
+<p>MCU NAVSS normal channel performance with TR submitted through ring</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Test Description</p></th>
+<th class="head"><p>Throughput (MCU1)</p></th>
+<th class="head"><p>CPU Load (MCU1)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[PDK-3490] 1CH DDR 1MB to DDR 1MB</p></td>
+<td><p>661 MB/sec</p></td>
+<td><p>2%</p></td>
+</tr>
+<tr class="row-odd"><td><p>[PDK-3491] 1CH MSMC 1KB Circular to DDR 1MB</p></td>
+<td><p>985 MB/sec</p></td>
+<td><p>2%</p></td>
+</tr>
+<tr class="row-even"><td><p>[PDK-3492] 1CH DDR 1MB to MSMC circular 1KB</p></td>
+<td><p>719 MB/sec</p></td>
+<td><p>2%</p></td>
+</tr>
+<tr class="row-odd"><td><p>[PDK-3493] 1CH MSMC 1KB to MSMC circular 1KB (1MB per TR)</p></td>
+<td><p>963 MB/sec</p></td>
+<td><p>2%</p></td>
+</tr>
+<tr class="row-even"><td><p>[PDK-3489] 1CH OCMC 1KB to OCMC circular 1KB (1MB per TR)</p></td>
+<td><p>2477 MB/sec</p></td>
+<td><p>3%</p></td>
+</tr>
+<tr class="row-odd"><td><p>[PDK-3495] Multi CH DDR 1MB to DDR 1MB</p></td>
+<td><p>1182 MB/sec (2CH)</p></td>
+<td><p>3%</p></td>
+</tr>
+<tr class="row-even"><td><p>[PDK-3497] Multi CH MSMC 1KB to MSMC circular 1KB (1 MB per TR)</p></td>
+<td><p>1627 MB/sec (2CH)</p></td>
+<td><p>4%</p></td>
+</tr>
+<tr class="row-odd"><td><p>[PDK-12918] 1CH MCU OCMC 1MB to DDR 1MB</p></td>
+<td><p>1510  MB/sec</p></td>
+<td><p>3%</p></td>
+</tr>
+<tr class="row-even"><td><p>[PDK-12919] 1CH DDR 1MB to MCU OCMC 1 MB</p></td>
+<td><p>1238 MB/sec</p></td>
+<td><p>2%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="ipc">
+<h4><span class="section-number">1.1.2.6. </span>IPC<a class="headerlink" href="#ipc" title="Permalink to this headline">¶</a></h4>
+<section id="test-set-up">
+<h5><span class="section-number">1.1.2.6.1. </span>Test Set-up<a class="headerlink" href="#test-set-up" title="Permalink to this headline">¶</a></h5>
+<ul>
+<li><p>Release build binaries are used for measurement</p></li>
+<li><p>Ring Buffer : Uncached DDR</p></li>
+<li><p>Buffer to be sent (RPMSG) – Cached DDR</p></li>
+<li><p>C66x  - L2 Cache 128K</p></li>
+<li><p>C7x   - L2 Cache 128K</p></li>
+<li><p>Software/Application Used : ipc_multicore_perf_test loaded through SBL. Output is printed to UART.</p></li>
+<li><p>R5F/MPU config :  DDR config</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>bufferable - 1</p></li>
+<li><p>cacheable  - 1</p></li>
+<li><p>shareable  - 0</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>Capturing Round trip time in us with different data sizes</p>
+</section>
+<section id="performance-host-core-a72-bios-2-ghz">
+<h5><span class="section-number">1.1.2.6.2. </span>Performance - Host Core A72, Bios, 2 GHz<a class="headerlink" href="#performance-host-core-a72-bios-2-ghz" title="Permalink to this headline">¶</a></h5>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Remote Core</p></th>
+<th class="head"><p>4 Bytes</p></th>
+<th class="head"><p>8 Bytes</p></th>
+<th class="head"><p>16 Bytes</p></th>
+<th class="head"><p>32 Bytes</p></th>
+<th class="head"><p>64 Bytes</p></th>
+<th class="head"><p>128 Bytes</p></th>
+<th class="head"><p>256 Bytes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MCU R5F0</p></td>
+<td><p>20</p></td>
+<td><p>20</p></td>
+<td><p>22</p></td>
+<td><p>25</p></td>
+<td><p>32</p></td>
+<td><p>44</p></td>
+<td><p>70</p></td>
+</tr>
+<tr class="row-odd"><td><p>Main R5F0</p></td>
+<td><p>18</p></td>
+<td><p>19</p></td>
+<td><p>20</p></td>
+<td><p>24</p></td>
+<td><p>29</p></td>
+<td><p>41</p></td>
+<td><p>65</p></td>
+</tr>
+<tr class="row-even"><td><p>C66x1</p></td>
+<td><p>17</p></td>
+<td><p>16</p></td>
+<td><p>17</p></td>
+<td><p>16</p></td>
+<td><p>18</p></td>
+<td><p>20</p></td>
+<td><p>25</p></td>
+</tr>
+<tr class="row-odd"><td><p>C7x</p></td>
+<td><p>20</p></td>
+<td><p>20</p></td>
+<td><p>20</p></td>
+<td><p>20</p></td>
+<td><p>23</p></td>
+<td><p>24</p></td>
+<td><p>25</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="performance-host-core-mcu-r5f0-1-ghz">
+<h5><span class="section-number">1.1.2.6.3. </span>Performance - Host Core MCU R5F0, 1 GHz<a class="headerlink" href="#performance-host-core-mcu-r5f0-1-ghz" title="Permalink to this headline">¶</a></h5>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Remote Core</p></th>
+<th class="head"><p>4 Bytes</p></th>
+<th class="head"><p>8 Bytes</p></th>
+<th class="head"><p>16 Bytes</p></th>
+<th class="head"><p>32 Bytes</p></th>
+<th class="head"><p>64 Bytes</p></th>
+<th class="head"><p>128 Bytes</p></th>
+<th class="head"><p>256 Bytes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A72 (bios)</p></td>
+<td><p>21</p></td>
+<td><p>21</p></td>
+<td><p>23</p></td>
+<td><p>26</p></td>
+<td><p>32</p></td>
+<td><p>43</p></td>
+<td><p>68</p></td>
+</tr>
+<tr class="row-odd"><td><p>Main R5F0</p></td>
+<td><p>17</p></td>
+<td><p>18</p></td>
+<td><p>19</p></td>
+<td><p>22</p></td>
+<td><p>28</p></td>
+<td><p>39</p></td>
+<td><p>65</p></td>
+</tr>
+<tr class="row-even"><td><p>C66x1</p></td>
+<td><p>17</p></td>
+<td><p>17</p></td>
+<td><p>19</p></td>
+<td><p>22</p></td>
+<td><p>28</p></td>
+<td><p>40</p></td>
+<td><p>64</p></td>
+</tr>
+<tr class="row-odd"><td><p>C7x</p></td>
+<td><p>18</p></td>
+<td><p>18</p></td>
+<td><p>20</p></td>
+<td><p>23</p></td>
+<td><p>29</p></td>
+<td><p>40</p></td>
+<td><p>66</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="performance-host-core-main-r5f0-1-ghz">
+<h5><span class="section-number">1.1.2.6.4. </span>Performance - Host Core MAIN R5F0, 1 GHz<a class="headerlink" href="#performance-host-core-main-r5f0-1-ghz" title="Permalink to this headline">¶</a></h5>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Remote Core</p></th>
+<th class="head"><p>4 Bytes</p></th>
+<th class="head"><p>8 Bytes</p></th>
+<th class="head"><p>16 Bytes</p></th>
+<th class="head"><p>32 Bytes</p></th>
+<th class="head"><p>64 Bytes</p></th>
+<th class="head"><p>128 Bytes</p></th>
+<th class="head"><p>256 Bytes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A72 (Bios)</p></td>
+<td><p>17</p></td>
+<td><p>17</p></td>
+<td><p>18</p></td>
+<td><p>21</p></td>
+<td><p>26</p></td>
+<td><p>37</p></td>
+<td><p>59</p></td>
+</tr>
+<tr class="row-odd"><td><p>MCU R5F0</p></td>
+<td><p>16</p></td>
+<td><p>15</p></td>
+<td><p>17</p></td>
+<td><p>20</p></td>
+<td><p>25</p></td>
+<td><p>35</p></td>
+<td><p>58</p></td>
+</tr>
+<tr class="row-even"><td><p>Main R5F1</p></td>
+<td><p>16</p></td>
+<td><p>16</p></td>
+<td><p>17</p></td>
+<td><p>21</p></td>
+<td><p>26</p></td>
+<td><p>36</p></td>
+<td><p>59</p></td>
+</tr>
+<tr class="row-odd"><td><p>C66x1</p></td>
+<td><p>16</p></td>
+<td><p>15</p></td>
+<td><p>17</p></td>
+<td><p>20</p></td>
+<td><p>25</p></td>
+<td><p>36</p></td>
+<td><p>58</p></td>
+</tr>
+<tr class="row-even"><td><p>C7x</p></td>
+<td><p>16</p></td>
+<td><p>16</p></td>
+<td><p>17</p></td>
+<td><p>20</p></td>
+<td><p>25</p></td>
+<td><p>36</p></td>
+<td><p>58</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="performance-host-core-c66x1-1-35-ghz">
+<h5><span class="section-number">1.1.2.6.5. </span>Performance - Host Core C66X1, 1.35 GHz<a class="headerlink" href="#performance-host-core-c66x1-1-35-ghz" title="Permalink to this headline">¶</a></h5>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Remote Core</p></th>
+<th class="head"><p>4 Bytes</p></th>
+<th class="head"><p>8 Bytes</p></th>
+<th class="head"><p>16 Bytes</p></th>
+<th class="head"><p>32 Bytes</p></th>
+<th class="head"><p>64 Bytes</p></th>
+<th class="head"><p>128 Bytes</p></th>
+<th class="head"><p>256 Bytes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A72 (Bios)</p></td>
+<td><p>19</p></td>
+<td><p>18</p></td>
+<td><p>18</p></td>
+<td><p>18</p></td>
+<td><p>18</p></td>
+<td><p>22</p></td>
+<td><p>26</p></td>
+</tr>
+<tr class="row-odd"><td><p>MCU R5F0</p></td>
+<td><p>26</p></td>
+<td><p>26</p></td>
+<td><p>28</p></td>
+<td><p>30</p></td>
+<td><p>37</p></td>
+<td><p>52</p></td>
+<td><p>81</p></td>
+</tr>
+<tr class="row-even"><td><p>Main R5F0</p></td>
+<td><p>25</p></td>
+<td><p>25</p></td>
+<td><p>27</p></td>
+<td><p>29</p></td>
+<td><p>35</p></td>
+<td><p>48</p></td>
+<td><p>75</p></td>
+</tr>
+<tr class="row-odd"><td><p>C66x2</p></td>
+<td><p>23</p></td>
+<td><p>22</p></td>
+<td><p>22</p></td>
+<td><p>21</p></td>
+<td><p>23</p></td>
+<td><p>28</p></td>
+<td><p>35</p></td>
+</tr>
+<tr class="row-even"><td><p>C7x</p></td>
+<td><p>30</p></td>
+<td><p>29</p></td>
+<td><p>29</p></td>
+<td><p>28</p></td>
+<td><p>31</p></td>
+<td><p>34</p></td>
+<td><p>37</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="performance-host-core-c7x-1ghz">
+<h5><span class="section-number">1.1.2.6.6. </span>Performance - Host Core C7x, 1GHz<a class="headerlink" href="#performance-host-core-c7x-1ghz" title="Permalink to this headline">¶</a></h5>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Remote Core</p></th>
+<th class="head"><p>4 Bytes</p></th>
+<th class="head"><p>8 Bytes</p></th>
+<th class="head"><p>16 Bytes</p></th>
+<th class="head"><p>32 Bytes</p></th>
+<th class="head"><p>64 Bytes</p></th>
+<th class="head"><p>128 Bytes</p></th>
+<th class="head"><p>256 Bytes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A72 (Bios)</p></td>
+<td><p>21</p></td>
+<td><p>21</p></td>
+<td><p>21</p></td>
+<td><p>21</p></td>
+<td><p>24</p></td>
+<td><p>23</p></td>
+<td><p>25</p></td>
+</tr>
+<tr class="row-odd"><td><p>Mcu R5F0</p></td>
+<td><p>32</p></td>
+<td><p>32</p></td>
+<td><p>34</p></td>
+<td><p>37</p></td>
+<td><p>45</p></td>
+<td><p>55</p></td>
+<td><p>82</p></td>
+</tr>
+<tr class="row-even"><td><p>Main R5F0</p></td>
+<td><p>28</p></td>
+<td><p>29</p></td>
+<td><p>30</p></td>
+<td><p>34</p></td>
+<td><p>42</p></td>
+<td><p>51</p></td>
+<td><p>75</p></td>
+</tr>
+<tr class="row-odd"><td><p>C66x1</p></td>
+<td><p>29</p></td>
+<td><p>28</p></td>
+<td><p>28</p></td>
+<td><p>27</p></td>
+<td><p>20</p></td>
+<td><p>31</p></td>
+<td><p>36</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="ospi">
+<h4><span class="section-number">1.1.2.7. </span>OSPI<a class="headerlink" href="#ospi" title="Permalink to this headline">¶</a></h4>
+<section id="ospi-memory-non-cached-test-set-up">
+<h5><span class="section-number">1.1.2.7.1. </span>OSPI Memory Non Cached Test Set-up<a class="headerlink" href="#ospi-memory-non-cached-test-set-up" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>Platform: J721e EVM.</p></li>
+<li><p>OS Type: Baremetal/FreeRTOS</p></li>
+<li><p>Core : R5F_0 at 1 GHz.</p></li>
+<li><p>Software/Application Used: OSPI_Flash_TestApp/OSPI_Flash_Dma_TestApp</p></li>
+<li><p>System Configuration: Cache OFF, Read/Write Buffer in DDR. DMA Enabled/Disabled, Interrupts ON.</p></li>
+</ul>
+</section>
+<section id="ospi-phy-tuning-time-ddr-octal-mode">
+<h5><span class="section-number">1.1.2.7.2. </span>OSPI Phy Tuning Time (DDR Octal Mode)<a class="headerlink" href="#ospi-phy-tuning-time-ddr-octal-mode" title="Permalink to this headline">¶</a></h5>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>OSPI RCLK</p></th>
+<th class="head"><p>Tuning Time</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>133 MHz</p></td>
+<td><p>3.493</p></td>
+</tr>
+<tr class="row-odd"><td><p>166 MHz</p></td>
+<td><p>3.167</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong>
+PHY tuning time varies across silicon samples and PHY tuning point varies with voltage and temperature.</p>
+</section>
+<section id="ospi-read-write-performance-ddr-octal-mode">
+<h5><span class="section-number">1.1.2.7.3. </span>OSPI Read/Write Performance (DDR Octal Mode)<a class="headerlink" href="#ospi-read-write-performance-ddr-octal-mode" title="Permalink to this headline">¶</a></h5>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>OSPI RCLK</p></th>
+<th class="head"><p>Mode</p></th>
+<th class="head"><p>Write Tput (MB/s)</p></th>
+<th class="head"><p>Write CPU Load</p></th>
+<th class="head"><p>Read Tput (MB/s)</p></th>
+<th class="head"><p>Read CPU Load</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="3"><p>133 MHz</p></td>
+<td><p>DAC</p></td>
+<td><p>0.77</p></td>
+<td><p>100%</p></td>
+<td><p>7.185</p></td>
+<td><p>51%</p></td>
+</tr>
+<tr class="row-odd"><td><p>DAC DMA</p></td>
+<td><p>1.550</p></td>
+<td><p>70%</p></td>
+<td><p>262.735</p></td>
+<td><p>2%</p></td>
+</tr>
+<tr class="row-even"><td><p>INDAC</p></td>
+<td><p>1.554</p></td>
+<td><p>75%</p></td>
+<td><p>8.330</p></td>
+<td><p>0%</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p>166 MHz</p></td>
+<td><p>DAC</p></td>
+<td><p>0.081</p></td>
+<td><p>100%</p></td>
+<td><p>8.212</p></td>
+<td><p>51%</p></td>
+</tr>
+<tr class="row-even"><td><p>DAC DMA</p></td>
+<td><p>1.622</p></td>
+<td><p>71%</p></td>
+<td><p>327.371</p></td>
+<td><p>1%</p></td>
+</tr>
+<tr class="row-odd"><td><p>INDAC</p></td>
+<td><p>1.625</p></td>
+<td><p>76%</p></td>
+<td><p>10.410</p></td>
+<td><p>1%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ospi-memory-cached-test-set-up">
+<h5><span class="section-number">1.1.2.7.4. </span>OSPI Memory Cached Test Set-up<a class="headerlink" href="#ospi-memory-cached-test-set-up" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>Platform: J721e EVM.</p></li>
+<li><p>OS Type: Baremetal/FreeRTOS</p></li>
+<li><p>Core : R5F_0 at 1 GHz.</p></li>
+<li><p>Software/Application Used: OSPI_Flash_Cache_TestApp/OSPI_Flash_Dma_Cache_TestApp</p></li>
+<li><p>System Configuration: Cache ON, Read/Write Buffer in DDR. DMA Enabled/Disabled, Interrupts ON.</p></li>
+</ul>
+</section>
+<section id="ospi-read-write-performance-ddr-octal-mode-1">
+<h5><span class="section-number">1.1.2.7.5. </span>OSPI Read/Write Performance (DDR Octal Mode)<a class="headerlink" href="#ospi-read-write-performance-ddr-octal-mode-1" title="Permalink to this headline">¶</a></h5>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>OSPI RCLK</p></th>
+<th class="head"><p>Mode</p></th>
+<th class="head"><p>Write Tput (MB/s)</p></th>
+<th class="head"><p>Write CPU Load</p></th>
+<th class="head"><p>Read Tput (MB/s)</p></th>
+<th class="head"><p>Read CPU Load</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="3"><p>133 MHz</p></td>
+<td><p>DAC</p></td>
+<td><p>0.314</p></td>
+<td><p>100%</p></td>
+<td><p>46.717</p></td>
+<td><p>51%</p></td>
+</tr>
+<tr class="row-odd"><td><p>DAC DMA</p></td>
+<td><p>1.550</p></td>
+<td><p>75%</p></td>
+<td><p>262.735</p></td>
+<td><p>20%</p></td>
+</tr>
+<tr class="row-even"><td><p>INDAC</p></td>
+<td><p>1.549</p></td>
+<td><p>100%</p></td>
+<td><p>8.330</p></td>
+<td><p>0%</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p>166 MHz</p></td>
+<td><p>DAC</p></td>
+<td><p>0.344</p></td>
+<td><p>100%</p></td>
+<td><p>57.443</p></td>
+<td><p>51%</p></td>
+</tr>
+<tr class="row-even"><td><p>DAC DMA</p></td>
+<td><p>1.623</p></td>
+<td><p>72%</p></td>
+<td><p>327.270</p></td>
+<td><p>2%</p></td>
+</tr>
+<tr class="row-odd"><td><p>INDAC</p></td>
+<td><p>1.623</p></td>
+<td><p>76%</p></td>
+<td><p>10.412</p></td>
+<td><p>0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="mmcsd">
+<h4><span class="section-number">1.1.2.8. </span>MMCSD<a class="headerlink" href="#mmcsd" title="Permalink to this headline">¶</a></h4>
+<section id="test-set-up-1">
+<h5><span class="section-number">1.1.2.8.1. </span>Test Set-up<a class="headerlink" href="#test-set-up-1" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>Platform: J721e EVM.</p></li>
+<li><p>OS Type: Sysbios</p></li>
+<li><p>Core : A72_0, 2 GHz.</p></li>
+<li><p>Software/Application Used: MMCSD_&lt;EMMC&gt;_Regression_TestApp (A menu based application which outputs the benchmark numbers on UART)</p></li>
+<li><p>System Configuration: Cache ON, Read/Write Buffer in DDR. ADMA enabled, Interrupts ON.</p></li>
+<li><p>SD Card used: Sandisk 16GB, Class 10. FAT32 formatted with allocation size = 4K (for optimal FAT32 throughput &amp; compatibility with various cards)</p></li>
+<li><p>EMMC: EMMC on J721E EVM. Please refer to the EVM data sheet for details</p></li>
+</ul>
+</section>
+<section id="sd-card-performance">
+<h5><span class="section-number">1.1.2.8.2. </span>SD Card Performance<a class="headerlink" href="#sd-card-performance" title="Permalink to this headline">¶</a></h5>
+<section id="ds-mode-25-mhz-4-bit-theoretical-max-12-5-mb-s">
+<h6><span class="section-number">1.1.2.8.2.1. </span>DS Mode (25 MHz, 4-bit)  Theoretical Max: 12.5 MB/s<a class="headerlink" href="#ds-mode-25-mhz-4-bit-theoretical-max-12-5-mb-s" title="Permalink to this headline">¶</a></h6>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Size of transfer (KB)</p></th>
+<th class="head"><p>RAW Write Throughput (MB/s)</p></th>
+<th class="head"><p>RAW Read Throughput (MB/s)</p></th>
+<th class="head"><p>FATFS Write Throughput (MB/s)</p></th>
+<th class="head"><p>FATFS Read Throughput (MB/s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>256</p></td>
+<td><p>9.1059</p></td>
+<td><p>9.4340</p></td>
+<td><p>4.1804</p></td>
+<td><p>7.5307</p></td>
+</tr>
+<tr class="row-odd"><td><p>512</p></td>
+<td><p>9.8377</p></td>
+<td><p>10.4257</p></td>
+<td><p>4.5550</p></td>
+<td><p>8.0084</p></td>
+</tr>
+<tr class="row-even"><td><p>1024</p></td>
+<td><p>10.0432</p></td>
+<td><p>10.7388</p></td>
+<td><p>4.9630</p></td>
+<td><p>8.2052</p></td>
+</tr>
+<tr class="row-odd"><td><p>2048</p></td>
+<td><p>10.4119</p></td>
+<td><p>10.9066</p></td>
+<td><p>5.8666</p></td>
+<td><p>8.0361</p></td>
+</tr>
+<tr class="row-even"><td><p>5120</p></td>
+<td><p>10.0376</p></td>
+<td><p>10.9829</p></td>
+<td><p>4.7683</p></td>
+<td><p>8.3273</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="hs-mode-50-mhz-4-bit-theoretical-max-50-mb-s">
+<h6><span class="section-number">1.1.2.8.2.2. </span>HS Mode (50 MHz, 4-bit)  Theoretical Max: 50 MB/s<a class="headerlink" href="#hs-mode-50-mhz-4-bit-theoretical-max-50-mb-s" title="Permalink to this headline">¶</a></h6>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Size of transfer (KB)</p></th>
+<th class="head"><p>RAW Write Throughput (MB/s)</p></th>
+<th class="head"><p>RAW Read Throughput (MB/s)</p></th>
+<th class="head"><p>FATFS Write Throughput (MB/s)</p></th>
+<th class="head"><p>FATFS Read Throughput (MB/s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>256</p></td>
+<td><p>15.9483</p></td>
+<td><p>16.4356</p></td>
+<td><p>4.3909</p></td>
+<td><p>11.8113</p></td>
+</tr>
+<tr class="row-odd"><td><p>512</p></td>
+<td><p>18.5548</p></td>
+<td><p>19.6683</p></td>
+<td><p>6.2893</p></td>
+<td><p>12.6380</p></td>
+</tr>
+<tr class="row-even"><td><p>1024</p></td>
+<td><p>19.9566</p></td>
+<td><p>20.8116</p></td>
+<td><p>6.5560</p></td>
+<td><p>13.1697</p></td>
+</tr>
+<tr class="row-odd"><td><p>2048</p></td>
+<td><p>19.9830</p></td>
+<td><p>21.4463</p></td>
+<td><p>6.5847</p></td>
+<td><p>13.4176</p></td>
+</tr>
+<tr class="row-even"><td><p>5120</p></td>
+<td><p>20.0178</p></td>
+<td><p>21.8337</p></td>
+<td><p>6.2207</p></td>
+<td><p>13.4776</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sdr12-mode-25-mhz-4-bit-theoretical-max-12-5-mb-s">
+<h6><span class="section-number">1.1.2.8.2.3. </span>SDR12 Mode (25 MHz, 4-bit)  Theoretical Max: 12.5 MB/s<a class="headerlink" href="#sdr12-mode-25-mhz-4-bit-theoretical-max-12-5-mb-s" title="Permalink to this headline">¶</a></h6>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Size of transfer (KB)</p></th>
+<th class="head"><p>RAW Write Throughput (MB/s)</p></th>
+<th class="head"><p>RAW Read Throughput (MB/s)</p></th>
+<th class="head"><p>FATFS Write Throughput (MB/s)</p></th>
+<th class="head"><p>FATFS Read Throughput (MB/s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>256</p></td>
+<td><p>9.0146</p></td>
+<td><p>9.4187</p></td>
+<td><p>4.2206</p></td>
+<td><p>7.4148</p></td>
+</tr>
+<tr class="row-odd"><td><p>512</p></td>
+<td><p>9.7703</p></td>
+<td><p>10.4165</p></td>
+<td><p>4.9643</p></td>
+<td><p>8.0081</p></td>
+</tr>
+<tr class="row-even"><td><p>1024</p></td>
+<td><p>10.0714</p></td>
+<td><p>10.7345</p></td>
+<td><p>4.7311</p></td>
+<td><p>8.2015</p></td>
+</tr>
+<tr class="row-odd"><td><p>2048</p></td>
+<td><p>9.6667</p></td>
+<td><p>10.8930</p></td>
+<td><p>5.0503</p></td>
+<td><p>8.3087</p></td>
+</tr>
+<tr class="row-even"><td><p>5120</p></td>
+<td><p>10.0025</p></td>
+<td><p>11.0095</p></td>
+<td><p>4.8343</p></td>
+<td><p>8.3287</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sdr25-mode-50-mhz-4-bit-theoretical-max-25-mb-s">
+<h6><span class="section-number">1.1.2.8.2.4. </span>SDR25 Mode (50 MHz, 4-bit)  Theoretical Max: 25 MB/s<a class="headerlink" href="#sdr25-mode-50-mhz-4-bit-theoretical-max-25-mb-s" title="Permalink to this headline">¶</a></h6>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Size of transfer (KB)</p></th>
+<th class="head"><p>RAW Write Throughput (MB/s)</p></th>
+<th class="head"><p>RAW Read Throughput (MB/s)</p></th>
+<th class="head"><p>FATFS Write Throughput (MB/s)</p></th>
+<th class="head"><p>FATFS Read Throughput (MB/s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>256</p></td>
+<td><p>16.2732</p></td>
+<td><p>16.4143</p></td>
+<td><p>5.6652</p></td>
+<td><p>11.2796</p></td>
+</tr>
+<tr class="row-odd"><td><p>512</p></td>
+<td><p>18.3847</p></td>
+<td><p>19.6669</p></td>
+<td><p>6.3413</p></td>
+<td><p>12.6358</p></td>
+</tr>
+<tr class="row-even"><td><p>1024</p></td>
+<td><p>19.0623</p></td>
+<td><p>20.8100</p></td>
+<td><p>6.5959</p></td>
+<td><p>13.1657</p></td>
+</tr>
+<tr class="row-odd"><td><p>2048</p></td>
+<td><p>17.4704</p></td>
+<td><p>21.3765</p></td>
+<td><p>6.3836</p></td>
+<td><p>13.4073</p></td>
+</tr>
+<tr class="row-even"><td><p>5120</p></td>
+<td><p>19.6133</p></td>
+<td><p>21.8508</p></td>
+<td><p>6.0397</p></td>
+<td><p>12.5147</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sdr50-mode-50-mhz-4-bit-theoretical-max-50-mb-s">
+<h6><span class="section-number">1.1.2.8.2.5. </span>SDR50 Mode (50 MHz, 4-bit)  Theoretical Max: 50 MB/s<a class="headerlink" href="#sdr50-mode-50-mhz-4-bit-theoretical-max-50-mb-s" title="Permalink to this headline">¶</a></h6>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Size of transfer (KB)</p></th>
+<th class="head"><p>RAW Write Throughput (MB/s)</p></th>
+<th class="head"><p>RAW Read Throughput (MB/s)</p></th>
+<th class="head"><p>FATFS Write Throughput (MB/s)</p></th>
+<th class="head"><p>FATFS Read Throughput (MB/s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>256</p></td>
+<td><p>24.6037</p></td>
+<td><p>26.1130</p></td>
+<td><p>4.5208</p></td>
+<td><p>7.6322</p></td>
+</tr>
+<tr class="row-odd"><td><p>512</p></td>
+<td><p>29.9576</p></td>
+<td><p>35.3214</p></td>
+<td><p>4.9401</p></td>
+<td><p>7.9848</p></td>
+</tr>
+<tr class="row-even"><td><p>1024</p></td>
+<td><p>32.6505</p></td>
+<td><p>39.1811</p></td>
+<td><p>4.9564</p></td>
+<td><p>8.1912</p></td>
+</tr>
+<tr class="row-odd"><td><p>2048</p></td>
+<td><p>30.3629</p></td>
+<td><p>41.3373</p></td>
+<td><p>4.9362</p></td>
+<td><p>8.2954</p></td>
+</tr>
+<tr class="row-even"><td><p>5120</p></td>
+<td><p>34.7683</p></td>
+<td><p>43.0374</p></td>
+<td><p>4.8785</p></td>
+<td><p>8.3285</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ddr50-mode-50-mhz-4-bit-theoretical-max-50-mb-s">
+<h6><span class="section-number">1.1.2.8.2.6. </span>DDR50 Mode (50 MHz, 4-bit)  Theoretical Max: 50 MB/s<a class="headerlink" href="#ddr50-mode-50-mhz-4-bit-theoretical-max-50-mb-s" title="Permalink to this headline">¶</a></h6>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Size of transfer (KB)</p></th>
+<th class="head"><p>RAW Write Throughput (MB/s)</p></th>
+<th class="head"><p>RAW Read Throughput (MB/s)</p></th>
+<th class="head"><p>FATFS Write Throughput (MB/s)</p></th>
+<th class="head"><p>FATFS Read Throughput (MB/s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>256</p></td>
+<td><p>23.4774</p></td>
+<td><p>25.6365</p></td>
+<td><p>4.2197</p></td>
+<td><p>7.5511</p></td>
+</tr>
+<tr class="row-odd"><td><p>512</p></td>
+<td><p>26.2276</p></td>
+<td><p>34.4773</p></td>
+<td><p>4.4524</p></td>
+<td><p>7.9936</p></td>
+</tr>
+<tr class="row-even"><td><p>1024</p></td>
+<td><p>34.0707</p></td>
+<td><p>38.1547</p></td>
+<td><p>4.9994</p></td>
+<td><p>8.2083</p></td>
+</tr>
+<tr class="row-odd"><td><p>2048</p></td>
+<td><p>29.2400</p></td>
+<td><p>40.1979</p></td>
+<td><p>5.0277</p></td>
+<td><p>8.3036</p></td>
+</tr>
+<tr class="row-even"><td><p>5120</p></td>
+<td><p>32.5992</p></td>
+<td><p>41.6822</p></td>
+<td><p>4.8337</p></td>
+<td><p>8.3316</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="emmc-performance">
+<h5><span class="section-number">1.1.2.8.3. </span>EMMC Performance<a class="headerlink" href="#emmc-performance" title="Permalink to this headline">¶</a></h5>
+<section id="ds-mode-25-mhz-8-bit-theoretical-max-25-mb-s">
+<h6><span class="section-number">1.1.2.8.3.1. </span>DS Mode (25 MHz, 8-bit)  Theoretical Max: 25 MB/s<a class="headerlink" href="#ds-mode-25-mhz-8-bit-theoretical-max-25-mb-s" title="Permalink to this headline">¶</a></h6>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Size of transfer (KB)</p></td>
+<td><p>RAW Write Throughput (MB/s)</p></td>
+<td><p>RAW Read Throughput (MB/s)</p></td>
+</tr>
+<tr class="row-even"><td><p>256</p></td>
+<td><p>15.9600</p></td>
+<td><p>18.5776</p></td>
+</tr>
+<tr class="row-odd"><td><p>512</p></td>
+<td><p>18.1068</p></td>
+<td><p>20.1941</p></td>
+</tr>
+<tr class="row-even"><td><p>1024</p></td>
+<td><p>19.4310</p></td>
+<td><p>21.1389</p></td>
+</tr>
+<tr class="row-odd"><td><p>2048</p></td>
+<td><p>20.1785</p></td>
+<td><p>21.6574</p></td>
+</tr>
+<tr class="row-even"><td><p>5120</p></td>
+<td><p>20.6573</p></td>
+<td><p>21.9851</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="hs-sdr-mode-50-mhz-8-bit-theoretical-max-50-mb-s">
+<h6><span class="section-number">1.1.2.8.3.2. </span>HS-SDR Mode (50 MHz, 8-bit)  Theoretical Max: 50 MB/s<a class="headerlink" href="#hs-sdr-mode-50-mhz-8-bit-theoretical-max-50-mb-s" title="Permalink to this headline">¶</a></h6>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Size of transfer (KB)</p></td>
+<td><p>RAW Write Throughput (MB/s)</p></td>
+<td><p>RAW Read Throughput (MB/s)</p></td>
+</tr>
+<tr class="row-even"><td><p>256</p></td>
+<td><p>25.6862</p></td>
+<td><p>31.8970</p></td>
+</tr>
+<tr class="row-odd"><td><p>512</p></td>
+<td><p>31.7678</p></td>
+<td><p>36.9522</p></td>
+</tr>
+<tr class="row-even"><td><p>1024</p></td>
+<td><p>36.0882</p></td>
+<td><p>40.2272</p></td>
+</tr>
+<tr class="row-odd"><td><p>2048</p></td>
+<td><p>38.7699</p></td>
+<td><p>42.1508</p></td>
+</tr>
+<tr class="row-even"><td><p>5120</p></td>
+<td><p>39.6647</p></td>
+<td><p>43.3818</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="hs-ddr-mode-50-mhz-8-bit-theoretical-max-100-mb-s">
+<h6><span class="section-number">1.1.2.8.3.3. </span>HS-DDR Mode (50 MHz, 8-bit)  Theoretical Max: 100 MB/s<a class="headerlink" href="#hs-ddr-mode-50-mhz-8-bit-theoretical-max-100-mb-s" title="Permalink to this headline">¶</a></h6>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Size of transfer (KB)</p></td>
+<td><p>RAW Write Throughput (MB/s)</p></td>
+<td><p>RAW Read Throughput (MB/s)</p></td>
+</tr>
+<tr class="row-even"><td><p>256</p></td>
+<td><p>34.8107</p></td>
+<td><p>47.9176</p></td>
+</tr>
+<tr class="row-odd"><td><p>512</p></td>
+<td><p>41.8965</p></td>
+<td><p>60.3240</p></td>
+</tr>
+<tr class="row-even"><td><p>1024</p></td>
+<td><p>48.6215</p></td>
+<td><p>69.5793</p></td>
+</tr>
+<tr class="row-odd"><td><p>2048</p></td>
+<td><p>53.9672</p></td>
+<td><p>75.5317</p></td>
+</tr>
+<tr class="row-even"><td><p>5120</p></td>
+<td><p>56.1397</p></td>
+<td><p>79.6654</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="hs-200-mode-200-mhz-8-bit-theoretical-max-200-mb-s">
+<h6><span class="section-number">1.1.2.8.3.4. </span>HS-200 Mode (200 MHz, 8-bit)  Theoretical Max: 200 MB/s<a class="headerlink" href="#hs-200-mode-200-mhz-8-bit-theoretical-max-200-mb-s" title="Permalink to this headline">¶</a></h6>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Size of transfer (KB)</p></td>
+<td><p>RAW Write Throughput (MB/s)</p></td>
+<td><p>RAW Read Throughput (MB/s)</p></td>
+</tr>
+<tr class="row-even"><td><p>256</p></td>
+<td><p>37.8881</p></td>
+<td><p>68.9168</p></td>
+</tr>
+<tr class="row-odd"><td><p>512</p></td>
+<td><p>46.4331</p></td>
+<td><p>97.8488</p></td>
+</tr>
+<tr class="row-even"><td><p>1024</p></td>
+<td><p>50.7672</p></td>
+<td><p>124.6944</p></td>
+</tr>
+<tr class="row-odd"><td><p>2048</p></td>
+<td><p>54.6804</p></td>
+<td><p>145.1625</p></td>
+</tr>
+<tr class="row-even"><td><p>5120</p></td>
+<td><p>55.0597</p></td>
+<td><p>160.8638</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="hs-400-mode-200-mhz-8-bit-theoretical-max-400-mb-s">
+<h6><span class="section-number">1.1.2.8.3.5. </span>HS-400 Mode (200 MHz, 8-bit)  Theoretical Max: 400 MB/s<a class="headerlink" href="#hs-400-mode-200-mhz-8-bit-theoretical-max-400-mb-s" title="Permalink to this headline">¶</a></h6>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Size of transfer (KB)</p></td>
+<td><p>RAW Write Throughput (MB/s)</p></td>
+<td><p>RAW Read Throughput (MB/s)</p></td>
+</tr>
+<tr class="row-even"><td><p>256</p></td>
+<td><p>36.2206</p></td>
+<td><p>84.0709</p></td>
+</tr>
+<tr class="row-odd"><td><p>512</p></td>
+<td><p>47.7269</p></td>
+<td><p>130.8260</p></td>
+</tr>
+<tr class="row-even"><td><p>1024</p></td>
+<td><p>51.6706</p></td>
+<td><p>184.4708</p></td>
+</tr>
+<tr class="row-odd"><td><p>2048</p></td>
+<td><p>55.3375</p></td>
+<td><p>203.5146</p></td>
+</tr>
+<tr class="row-even"><td><p>5120</p></td>
+<td><p>56.7088</p></td>
+<td><p>208.5778</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="csl-fl-based-optimized-ospi-example">
+<h4><span class="section-number">1.1.2.9. </span>CSL-FL based Optimized OSPI Example<a class="headerlink" href="#csl-fl-based-optimized-ospi-example" title="Permalink to this headline">¶</a></h4>
+<section id="cpu-mode-test-set-up">
+<h5><span class="section-number">1.1.2.9.1. </span>CPU Mode - Test Set-up<a class="headerlink" href="#cpu-mode-test-set-up" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>Platform: J721e EVM.</p></li>
+<li><p>OS Type: Baremetal</p></li>
+<li><p>Core : R5F_0 at 1 GHz</p></li>
+<li><p>Software/Application Used: csl_ospi_flash_app</p></li>
+<li><dl class="simple">
+<dt>System Configuration:</dt><dd><ul>
+<li><p>RCLK 133/166 MHz</p></li>
+<li><p>Cache ON,</p></li>
+<li><p>Buffer &amp; Critical Fxn’s in TCMB,</p></li>
+<li><p>DMA Disabled,</p></li>
+<li><p>Interrupts OFF.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Theoretical Max Throughput:</dt><dd><ul>
+<li><p>133 MHz :- 253.67 MB/s</p></li>
+<li><p>166 MHz :- 316.62 MB/s</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="dac-mode-ospi-read-performance-dual-data-rate-octal-mode">
+<h5><span class="section-number">1.1.2.9.2. </span>DAC Mode OSPI Read Performance (Dual Data Rate - Octal Mode)<a class="headerlink" href="#dac-mode-ospi-read-performance-dual-data-rate-octal-mode" title="Permalink to this headline">¶</a></h5>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>OSPI RCLK</p></th>
+<th class="head"><p>Size of transfer (B)</p></th>
+<th class="head"><p>Read Time (ns)</p></th>
+<th class="head"><p>Throughput (MB/s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="7"><p>133 MHz</p></td>
+<td><p>16</p></td>
+<td><p>815</p></td>
+<td><p>19.6</p></td>
+</tr>
+<tr class="row-odd"><td><p>32</p></td>
+<td><p>1445</p></td>
+<td><p>22.1</p></td>
+</tr>
+<tr class="row-even"><td><p>64</p></td>
+<td><p>2700</p></td>
+<td><p>23.7</p></td>
+</tr>
+<tr class="row-odd"><td><p>128</p></td>
+<td><p>5225</p></td>
+<td><p>24.5</p></td>
+</tr>
+<tr class="row-even"><td><p>256</p></td>
+<td><p>10265</p></td>
+<td><p>24.9</p></td>
+</tr>
+<tr class="row-odd"><td><p>512</p></td>
+<td><p>20360</p></td>
+<td><p>25.1</p></td>
+</tr>
+<tr class="row-even"><td><p>1024</p></td>
+<td><p>40510</p></td>
+<td><p>25.3</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="7"><p>166 MHz</p></td>
+<td><p>16</p></td>
+<td><p>945</p></td>
+<td><p>16.9</p></td>
+</tr>
+<tr class="row-even"><td><p>32</p></td>
+<td><p>2330</p></td>
+<td><p>13.7</p></td>
+</tr>
+<tr class="row-odd"><td><p>64</p></td>
+<td><p>4580</p></td>
+<td><p>14.0</p></td>
+</tr>
+<tr class="row-even"><td><p>128</p></td>
+<td><p>9105</p></td>
+<td><p>14.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>256</p></td>
+<td><p>18145</p></td>
+<td><p>14.1</p></td>
+</tr>
+<tr class="row-even"><td><p>512</p></td>
+<td><p>36185</p></td>
+<td><p>14.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>1024</p></td>
+<td><p>72295</p></td>
+<td><p>14.2</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="dma-mode-test-set-up">
+<h5><span class="section-number">1.1.2.9.3. </span>DMA Mode - Test Set-up<a class="headerlink" href="#dma-mode-test-set-up" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>Platform: J721e EVM.</p></li>
+<li><p>OS Type: Baremetal</p></li>
+<li><p>Core : R5F_0 at 1 GHz</p></li>
+<li><p>Software/Application Used: udma_baremetal_ospi_flash_testapp</p></li>
+<li><dl class="simple">
+<dt>System Configuration:</dt><dd><ul>
+<li><p>RCLK 133/166 MHz</p></li>
+<li><p>Cache ON,</p></li>
+<li><p>Buffer &amp; Critical Fxn’s in TCMB,</p></li>
+<li><p>DMA Enabled - SW Trigger mode,</p></li>
+<li><p>Interrupts OFF.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Theoretical Max Throughput:</dt><dd><ul>
+<li><p>133 MHz :- 253.67 MB/s</p></li>
+<li><p>166 MHz :- 316.62 MB/s</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="dac-dma-mode-ospi-read-performance-dual-data-rate-octal-mode">
+<h5><span class="section-number">1.1.2.9.4. </span>DAC DMA Mode OSPI Read Performance (Dual Data Rate - Octal Mode)<a class="headerlink" href="#dac-dma-mode-ospi-read-performance-dual-data-rate-octal-mode" title="Permalink to this headline">¶</a></h5>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>OSPI RCLK</p></th>
+<th class="head"><p>Size of transfer (B)</p></th>
+<th class="head"><p>Read Time (ns)</p></th>
+<th class="head"><p>Throughput (MB/s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="7"><p>133 MHz</p></td>
+<td><p>16</p></td>
+<td><p>800</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-odd"><td><p>32</p></td>
+<td><p>805</p></td>
+<td><p>39.8</p></td>
+</tr>
+<tr class="row-even"><td><p>64</p></td>
+<td><p>970</p></td>
+<td><p>66</p></td>
+</tr>
+<tr class="row-odd"><td><p>128</p></td>
+<td><p>1315</p></td>
+<td><p>97.3</p></td>
+</tr>
+<tr class="row-even"><td><p>256</p></td>
+<td><p>1955</p></td>
+<td><p>130.9</p></td>
+</tr>
+<tr class="row-odd"><td><p>512</p></td>
+<td><p>3120</p></td>
+<td><p>164.1</p></td>
+</tr>
+<tr class="row-even"><td><p>1024</p></td>
+<td><p>5450</p></td>
+<td><p>187.9</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="7"><p>166 MHz</p></td>
+<td><p>16</p></td>
+<td><p>675</p></td>
+<td><p>23.7</p></td>
+</tr>
+<tr class="row-even"><td><p>32</p></td>
+<td><p>805</p></td>
+<td><p>39.8</p></td>
+</tr>
+<tr class="row-odd"><td><p>64</p></td>
+<td><p>850</p></td>
+<td><p>75.3</p></td>
+</tr>
+<tr class="row-even"><td><p>128</p></td>
+<td><p>1180</p></td>
+<td><p>108.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>256</p></td>
+<td><p>1685</p></td>
+<td><p>151.9</p></td>
+</tr>
+<tr class="row-even"><td><p>512</p></td>
+<td><p>2730</p></td>
+<td><p>187.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>1024</p></td>
+<td><p>4670</p></td>
+<td><p>219.3</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="sbl-ospi-boot-performance-app">
+<h4><span class="section-number">1.1.2.10. </span>SBL OSPI Boot Performance App<a class="headerlink" href="#sbl-ospi-boot-performance-app" title="Permalink to this headline">¶</a></h4>
+<section id="test-set-up-2">
+<h5><span class="section-number">1.1.2.10.1. </span>Test Set-up<a class="headerlink" href="#test-set-up-2" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>Platform: J721e EVM.</p></li>
+<li><p>OS Type: Baremetal</p></li>
+<li><p>Core : R5F_0 at 1 GHz</p></li>
+<li><p>Software/Application Used: sbl_boot_perf_cust_img and sbl_boot_perf_test appimage</p></li>
+<li><p>Note that app image load time could vary depending on the actual image size</p></li>
+</ul>
+</section>
+<section id="gp-evm-performance">
+<h5><span class="section-number">1.1.2.10.2. </span>GP EVM Performance<a class="headerlink" href="#gp-evm-performance" title="Permalink to this headline">¶</a></h5>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>SBL Boot Time Breakdown</p></td>
+<td><p>Time (ms)</p></td>
+</tr>
+<tr class="row-even"><td><p>MCU_PORZ_OUT to MCU_RESETSTATz</p></td>
+<td><p>0.63</p></td>
+</tr>
+<tr class="row-odd"><td><p>ROM : init + SBL load from OSPI</p></td>
+<td><p>12.36</p></td>
+</tr>
+<tr class="row-even"><td><p>SBL : SBL_SciClientInit: ReadSysfwImage</p></td>
+<td><p>8.267</p></td>
+</tr>
+<tr class="row-odd"><td><p>Load/Start SYSFW</p></td>
+<td><p>3.941</p></td>
+</tr>
+<tr class="row-even"><td><p>Sciclient_init</p></td>
+<td><p>3.164</p></td>
+</tr>
+<tr class="row-odd"><td><p>Board Config</p></td>
+<td><p>2.009</p></td>
+</tr>
+<tr class="row-even"><td><p>PM Config</p></td>
+<td><p>0.116</p></td>
+</tr>
+<tr class="row-odd"><td><p>Security Config</p></td>
+<td><p>0.609</p></td>
+</tr>
+<tr class="row-even"><td><p>RM Config</p></td>
+<td><p>0.757</p></td>
+</tr>
+<tr class="row-odd"><td><p>SBL: SoC Late-Init</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>SBL : Board_init (PINMUX)</p></td>
+<td><p>2.819</p></td>
+</tr>
+<tr class="row-odd"><td><p>SBL : Board_init (PLL)</p></td>
+<td><p>1.481</p></td>
+</tr>
+<tr class="row-even"><td><p>SBL: Board_init (CLOCKS)</p></td>
+<td><p>1.033</p></td>
+</tr>
+<tr class="row-odd"><td><p>SBL: OSPI init</p></td>
+<td><p>0.123</p></td>
+</tr>
+<tr class="row-even"><td><p>SBL: App copy to MCU SRAM &amp; Jump to App</p></td>
+<td><p>20.264</p></td>
+</tr>
+<tr class="row-odd"><td><p>Misc</p></td>
+<td><p>0.036</p></td>
+</tr>
+<tr class="row-even"><td><p>TOTAL time</p></td>
+<td><p>57.609</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="early-can-response">
+<h5><span class="section-number">1.1.2.10.3. </span>Early CAN Response<a class="headerlink" href="#early-can-response" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>Early CAN response is the time taken to boot can_boot_app_mcu_rtos application and then pull the CAN-H line out of standby.</p></li>
+<li><p>Below numbers are measured on J721e ES2.0 GP EVM.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Measured Time</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Early CAN</p></td>
+<td><p>51.2 ms</p></td>
+</tr>
+<tr class="row-odd"><td><p>POST + Early CAN</p></td>
+<td><p>78.2 ms</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="ospi-memory-configuration-benchmarking">
+<h4><span class="section-number">1.1.2.11. </span>OSPI Memory Configuration Benchmarking<a class="headerlink" href="#ospi-memory-configuration-benchmarking" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>These numbers were collected from the memory_benchmarking_app demo which provides a means of measuring the performance of a realistic application where the text of the application is sitting in various memory locations and the data is sitting in On-Chip-Memory RAM (referred to as OCM, OCMC or OCMRAM).</p></li>
+<li><p>The application executes 10 different configurations of the same text varying by data vs. instruction cache intensity. Each test calls 16 separate functions 500 total times in random order.</p></li>
+<li><p>The most instruction intensive example achieves a instruction cache miss rate (ICM/sec) of ~3-4 million per second when run entirely from OCMRAM. This is a rate that we have similarly seen in real-world customer examples.</p></li>
+<li><p>More data instensive tests have more repetitive code, achieving much lower ICM rates</p></li>
+<li><p>When “Multicore” Configuration is used, it is defined as the execution of the same AUTOSAR application executed simultaneously by means of a synchronization delay on MCU Core 0 (mcu1_0) and MAIN Core 0 (mcu2_0)</p></li>
+<li><p>The Memcpy size is just a knob to make the synthetic benchmark application more data or instruction centric with no additional significance. (small memcpy size is more instruction centric with more ICM rate and vice versa)</p></li>
+</ul>
+</section>
+<section id="supported-configurations">
+<h4><span class="section-number">1.1.2.12. </span>Supported Configurations<a class="headerlink" href="#supported-configurations" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Core</p></th>
+<th class="head"><p>SOC</p></th>
+<th class="head"><p>Supported Memory Configurations (MEM_CONF)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>mcu1_0</p></td>
+<td><p>j721e</p></td>
+<td><p>ocmc msmc ddr xip</p></td>
+</tr>
+<tr class="row-odd"><td><p>mcu2_0</p></td>
+<td><p>j721e</p></td>
+<td><p>ocmc msmc ddr xip</p></td>
+</tr>
+<tr class="row-even"><td><p>mcu1_0 + mcu2_0</p></td>
+<td><p>j721e</p></td>
+<td><p>ocmc ddr xip</p></td>
+</tr>
+</tbody>
+</table>
+<section id="test-set-up-3">
+<h5><span class="section-number">1.1.2.12.1. </span>Test Set-up<a class="headerlink" href="#test-set-up-3" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>Platform: J721e EVM.</p></li>
+<li><p>OS Type: FreeRTOS</p></li>
+<li><p>Core – MCU Domain R5_0 (MCU1_0) &amp; Main Domain R5_0 (MCU2_0)</p></li>
+<li><p>Software/Application Used: sbl_cust_img and [MEM_CONF]_memory_benchmarking_app_freertos appimage</p></li>
+<li><p>Refer Memory Benchmarking Apps user guide to which SBL variant to use to test different [MEM_CONF]_memory_benchmarking_app_freertos</p></li>
+</ul>
+</section>
+<section id="mcu-domain-single-core-execution">
+<h5><span class="section-number">1.1.2.12.2. </span>MCU Domain Single Core Execution<a class="headerlink" href="#mcu-domain-single-core-execution" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>Cache miss rate of 3M/sec is at memcpy size ~500 bytes.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Memcpy Size</p></th>
+<th class="head"></th>
+<th class="head"><p>0</p></th>
+<th class="head"><p>50</p></th>
+<th class="head"><p>500</p></th>
+<th class="head"><p>1000</p></th>
+<th class="head"><p>2048</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="2"><p>OCMC</p></td>
+<td><p>OCMC Baseline Execution Time (us)</p></td>
+<td><p>4503</p></td>
+<td><p>4661</p></td>
+<td><p>7168</p></td>
+<td><p>8497</p></td>
+<td><p>16820</p></td>
+</tr>
+<tr class="row-odd"><td><p>ICM/sec</p></td>
+<td><p>3781923</p></td>
+<td><p>3591933</p></td>
+<td><p>2292271</p></td>
+<td><p>1971283</p></td>
+<td><p>1026397</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>DDR</p></td>
+<td><p>DDR execution time (us)</p></td>
+<td><p>7668</p></td>
+<td><p>7792</p></td>
+<td><p>9369</p></td>
+<td><p>10677</p></td>
+<td><p>17387</p></td>
+</tr>
+<tr class="row-odd"><td><p>DDR / OCMC Baseline</p></td>
+<td><p>1.703</p></td>
+<td><p>1.672</p></td>
+<td><p>1.307</p></td>
+<td><p>1.257</p></td>
+<td><p>1.034</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>MSMC</p></td>
+<td><p>MSMC execution time (us)</p></td>
+<td><p>6028</p></td>
+<td><p>6148</p></td>
+<td><p>7772</p></td>
+<td><p>9030</p></td>
+<td><p>15770</p></td>
+</tr>
+<tr class="row-odd"><td><p>MSMC / OCMC Baseline</p></td>
+<td><p>1.339</p></td>
+<td><p>1.319</p></td>
+<td><p>1.084</p></td>
+<td><p>1.063</p></td>
+<td><p>0.938</p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><p>XIP</p></td>
+<td><p>XIP 133 MHz execution time (us)</p></td>
+<td><p>14543</p></td>
+<td><p>14756</p></td>
+<td><p>16735</p></td>
+<td><p>18126</p></td>
+<td><p>26758</p></td>
+</tr>
+<tr class="row-odd"><td><p>XIP 133 MHz / OCMC Baseline</p></td>
+<td><p>3.23</p></td>
+<td><p>3.166</p></td>
+<td><p>2.335</p></td>
+<td><p>2.133</p></td>
+<td><p>1.591</p></td>
+</tr>
+<tr class="row-even"><td><p>XIP 166 MHz execution time (us)</p></td>
+<td><p>12527</p></td>
+<td><p>12660</p></td>
+<td><p>14869</p></td>
+<td><p>16070</p></td>
+<td><p>24587</p></td>
+</tr>
+<tr class="row-odd"><td><p>XIP 166 MHz / OCMC Baseline</p></td>
+<td><p>2.782</p></td>
+<td><p>2.716</p></td>
+<td><p>2.074</p></td>
+<td><p>1.891</p></td>
+<td><p>1.462</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="main-domain-single-core-execution">
+<h5><span class="section-number">1.1.2.12.3. </span>MAIN Domain Single Core Execution<a class="headerlink" href="#main-domain-single-core-execution" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>Cache miss rate of 3M/sec is at memcpy size of ~0 bytes.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Memcpy Size</p></th>
+<th class="head"></th>
+<th class="head"><p>0</p></th>
+<th class="head"><p>50</p></th>
+<th class="head"><p>500</p></th>
+<th class="head"><p>1000</p></th>
+<th class="head"><p>2048</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="2"><p>OCMC</p></td>
+<td><p>OCMC Baseline Execution Time (us)</p></td>
+<td><p>4755</p></td>
+<td><p>5016</p></td>
+<td><p>7780</p></td>
+<td><p>9159</p></td>
+<td><p>21841</p></td>
+</tr>
+<tr class="row-odd"><td><p>ICM/sec</p></td>
+<td><p>3354784</p></td>
+<td><p>3130382</p></td>
+<td><p>1967223</p></td>
+<td><p>1671252</p></td>
+<td><p>741678</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>DDR</p></td>
+<td><p>DDR execution time (us)</p></td>
+<td><p>8835</p></td>
+<td><p>8887</p></td>
+<td><p>11203</p></td>
+<td><p>13174</p></td>
+<td><p>25896</p></td>
+</tr>
+<tr class="row-odd"><td><p>DDR / OCMC Baseline</p></td>
+<td><p>1.858</p></td>
+<td><p>1.772</p></td>
+<td><p>1.44</p></td>
+<td><p>1.438</p></td>
+<td><p>1.186</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>MSMC</p></td>
+<td><p>MSMC execution time (us)</p></td>
+<td><p>7033</p></td>
+<td><p>7112</p></td>
+<td><p>9443</p></td>
+<td><p>11388</p></td>
+<td><p>24181</p></td>
+</tr>
+<tr class="row-odd"><td><p>MSMC / OCMC Baseline</p></td>
+<td><p>1.479</p></td>
+<td><p>1.418</p></td>
+<td><p>1.214</p></td>
+<td><p>1.243</p></td>
+<td><p>1.107</p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><p>XIP</p></td>
+<td><p>XIP 133 MHz execution time (us)</p></td>
+<td><p>17505</p></td>
+<td><p>17796</p></td>
+<td><p>20105</p></td>
+<td><p>21662</p></td>
+<td><p>34195</p></td>
+</tr>
+<tr class="row-odd"><td><p>XIP 133 MHz / OCMC Baseline</p></td>
+<td><p>3.681</p></td>
+<td><p>3.548</p></td>
+<td><p>2.584</p></td>
+<td><p>2.365</p></td>
+<td><p>1.566</p></td>
+</tr>
+<tr class="row-even"><td><p>XIP 166 MHz execution time (us)</p></td>
+<td><p>15343</p></td>
+<td><p>15568</p></td>
+<td><p>17856</p></td>
+<td><p>19533</p></td>
+<td><p>31856</p></td>
+</tr>
+<tr class="row-odd"><td><p>XIP 166 MHz / OCMC Baseline</p></td>
+<td><p>3.227</p></td>
+<td><p>3.104</p></td>
+<td><p>2.295</p></td>
+<td><p>2.133</p></td>
+<td><p>1.459</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mcu-domain-multi-core-execution">
+<h5><span class="section-number">1.1.2.12.4. </span>MCU Domain Multi-Core Execution<a class="headerlink" href="#mcu-domain-multi-core-execution" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>Cache miss rate of 3M/sec is at memcpy size ~500 bytes.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Memcpy Size</p></th>
+<th class="head"></th>
+<th class="head"><p>0</p></th>
+<th class="head"><p>50</p></th>
+<th class="head"><p>500</p></th>
+<th class="head"><p>1000</p></th>
+<th class="head"><p>2048</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="2"><p>OCMC</p></td>
+<td><p>OCMC Baseline Execution Time (us)</p></td>
+<td><p>4532</p></td>
+<td><p>4664</p></td>
+<td><p>6970</p></td>
+<td><p>4664</p></td>
+<td><p>6970</p></td>
+</tr>
+<tr class="row-odd"><td><p>ICM/sec</p></td>
+<td><p>4792144</p></td>
+<td><p>4614708</p></td>
+<td><p>3061549</p></td>
+<td><p>4614708</p></td>
+<td><p>3061549</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>DDR</p></td>
+<td><p>DDR execution time (us)</p></td>
+<td><p>7626</p></td>
+<td><p>7785</p></td>
+<td><p>9398</p></td>
+<td><p>10751</p></td>
+<td><p>17428</p></td>
+</tr>
+<tr class="row-odd"><td><p>DDR / OCMC Baseline</p></td>
+<td><p>1.683</p></td>
+<td><p>1.669</p></td>
+<td><p>1.348</p></td>
+<td><p>2.305</p></td>
+<td><p>2.5</p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><p>XIP</p></td>
+<td><p>XIP 133 MHz execution time (us)</p></td>
+<td><p>23869</p></td>
+<td><p>24181</p></td>
+<td><p>24570</p></td>
+<td><p>25662</p></td>
+<td><p>31947</p></td>
+</tr>
+<tr class="row-odd"><td><p>XIP 133 MHz / OCMC Baseline</p></td>
+<td><p>5.267</p></td>
+<td><p>5.185</p></td>
+<td><p>3.525</p></td>
+<td><p>5.502</p></td>
+<td><p>4.584</p></td>
+</tr>
+<tr class="row-even"><td><p>XIP 166 MHz execution time (us)</p></td>
+<td><p>19952</p></td>
+<td><p>20026</p></td>
+<td><p>20367</p></td>
+<td><p>21829</p></td>
+<td><p>28777</p></td>
+</tr>
+<tr class="row-odd"><td><p>XIP 166 MHz / OCMC Baseline</p></td>
+<td><p>4.402</p></td>
+<td><p>4.294</p></td>
+<td><p>2.922</p></td>
+<td><p>4.68</p></td>
+<td><p>4.129</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="main-domain-multi-core-execution">
+<h5><span class="section-number">1.1.2.12.5. </span>MAIN Domain Multi-Core Execution<a class="headerlink" href="#main-domain-multi-core-execution" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>Cache miss rate of 3M/sec is at memcpy size of ~0 bytes.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Memcpy Size</p></th>
+<th class="head"></th>
+<th class="head"><p>0</p></th>
+<th class="head"><p>50</p></th>
+<th class="head"><p>500</p></th>
+<th class="head"><p>1000</p></th>
+<th class="head"><p>2048</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="2"><p>OCMC</p></td>
+<td><p>OCMC Baseline Execution Time (us)</p></td>
+<td><p>4532</p></td>
+<td><p>4664</p></td>
+<td><p>6970</p></td>
+<td><p>4664</p></td>
+<td><p>6970</p></td>
+</tr>
+<tr class="row-odd"><td><p>ICM/sec</p></td>
+<td><p>4792144</p></td>
+<td><p>4614708</p></td>
+<td><p>3061549</p></td>
+<td><p>4614708</p></td>
+<td><p>3061549</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>DDR</p></td>
+<td><p>DDR execution time (us)</p></td>
+<td><p>7626</p></td>
+<td><p>7785</p></td>
+<td><p>9398</p></td>
+<td><p>10751</p></td>
+<td><p>17428</p></td>
+</tr>
+<tr class="row-odd"><td><p>DDR / OCMC Baseline</p></td>
+<td><p>1.683</p></td>
+<td><p>1.669</p></td>
+<td><p>1.348</p></td>
+<td><p>2.305</p></td>
+<td><p>2.5</p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><p>XIP</p></td>
+<td><p>XIP 133 MHz execution time (us)</p></td>
+<td><p>23869</p></td>
+<td><p>24181</p></td>
+<td><p>24570</p></td>
+<td><p>25662</p></td>
+<td><p>31947</p></td>
+</tr>
+<tr class="row-odd"><td><p>XIP 133 MHz / OCMC Baseline</p></td>
+<td><p>5.267</p></td>
+<td><p>5.185</p></td>
+<td><p>3.525</p></td>
+<td><p>5.502</p></td>
+<td><p>4.584</p></td>
+</tr>
+<tr class="row-even"><td><p>XIP 166 MHz execution time (us)</p></td>
+<td><p>19952</p></td>
+<td><p>20026</p></td>
+<td><p>20367</p></td>
+<td><p>21829</p></td>
+<td><p>28777</p></td>
+</tr>
+<tr class="row-odd"><td><p>XIP 166 MHz / OCMC Baseline</p></td>
+<td><p>4.402</p></td>
+<td><p>4.294</p></td>
+<td><p>2.922</p></td>
+<td><p>4.68</p></td>
+<td><p>4.129</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="extra-ocmc-baseline-details-mcu-domain">
+<h5><span class="section-number">1.1.2.12.6. </span>Extra OCMC Baseline Details - MCU Domain<a class="headerlink" href="#extra-ocmc-baseline-details-mcu-domain" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>View ICM/sec row to see that cache miss rate of 3M/sec is at memcpy size of ~500 bytes.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Mem Cpy Size</p></th>
+<th class="head"><p>0</p></th>
+<th class="head"><p>50</p></th>
+<th class="head"><p>100</p></th>
+<th class="head"><p>200</p></th>
+<th class="head"><p>500</p></th>
+<th class="head"><p>750</p></th>
+<th class="head"><p>1000</p></th>
+<th class="head"><p>1250</p></th>
+<th class="head"><p>1500</p></th>
+<th class="head"><p>2048</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Start Time in Usec</p></td>
+<td><p>296045</p></td>
+<td><p>575043</p></td>
+<td><p>856043</p></td>
+<td><p>1138043</p></td>
+<td><p>1422040</p></td>
+<td><p>1708037</p></td>
+<td><p>1995038</p></td>
+<td><p>2283037</p></td>
+<td><p>2574036</p></td>
+<td><p>2867037</p></td>
+</tr>
+<tr class="row-odd"><td><p>Exec Time in Usec</p></td>
+<td><p>4503</p></td>
+<td><p>4661</p></td>
+<td><p>4774</p></td>
+<td><p>5212</p></td>
+<td><p>7168</p></td>
+<td><p>8026</p></td>
+<td><p>8497</p></td>
+<td><p>10369</p></td>
+<td><p>12709</p></td>
+<td><p>16820</p></td>
+</tr>
+<tr class="row-even"><td><p>Task Calls</p></td>
+<td><p>500</p></td>
+<td><p>500</p></td>
+<td><p>500</p></td>
+<td><p>500</p></td>
+<td><p>500</p></td>
+<td><p>500</p></td>
+<td><p>500</p></td>
+<td><p>500</p></td>
+<td><p>500</p></td>
+<td><p>500</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inst Cache Miss</p></td>
+<td><p>17030</p></td>
+<td><p>16742</p></td>
+<td><p>16875</p></td>
+<td><p>17240</p></td>
+<td><p>16431</p></td>
+<td><p>16799</p></td>
+<td><p>16750</p></td>
+<td><p>17323</p></td>
+<td><p>17270</p></td>
+<td><p>17264</p></td>
+</tr>
+<tr class="row-even"><td><p>Inst Cache Acc</p></td>
+<td><p>928477</p></td>
+<td><p>1026107</p></td>
+<td><p>1101537</p></td>
+<td><p>1252913</p></td>
+<td><p>1702944</p></td>
+<td><p>2092579</p></td>
+<td><p>2460912</p></td>
+<td><p>2867884</p></td>
+<td><p>3252649</p></td>
+<td><p>4120334</p></td>
+</tr>
+<tr class="row-odd"><td><p>Num Instr Exec</p></td>
+<td><p>1187563</p></td>
+<td><p>1290639</p></td>
+<td><p>1391196</p></td>
+<td><p>1592077</p></td>
+<td><p>2178848</p></td>
+<td><p>2693781</p></td>
+<td><p>3185292</p></td>
+<td><p>3699083</p></td>
+<td><p>4187637</p></td>
+<td><p>5286011</p></td>
+</tr>
+<tr class="row-even"><td><p>ICM/sec</p></td>
+<td><p>3781923</p></td>
+<td><p>3591933</p></td>
+<td><p>3534771</p></td>
+<td><p>3307751</p></td>
+<td><p>2292271</p></td>
+<td><p>2093072</p></td>
+<td><p>1971283</p></td>
+<td><p>1670652</p></td>
+<td><p>1358879</p></td>
+<td><p>1026397</p></td>
+</tr>
+<tr class="row-odd"><td><p>INST/sec</p></td>
+<td><p>263727070</p></td>
+<td><p>276901737</p></td>
+<td><p>291410976</p></td>
+<td><p>305463737</p></td>
+<td><p>303968750</p></td>
+<td><p>335631821</p></td>
+<td><p>374872543</p></td>
+<td><p>356744430</p></td>
+<td><p>329501691</p></td>
+<td><p>314269381</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="extra-ocmc-baseline-details-main-domain">
+<h5><span class="section-number">1.1.2.12.7. </span>Extra OCMC Baseline Details - MAIN Domain<a class="headerlink" href="#extra-ocmc-baseline-details-main-domain" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>View ICM/sec row to see that cache miss rate of 3M/sec is at memcpy size of ~0 bytes.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Mem Cpy Size</p></th>
+<th class="head"><p>0</p></th>
+<th class="head"><p>50</p></th>
+<th class="head"><p>100</p></th>
+<th class="head"><p>200</p></th>
+<th class="head"><p>500</p></th>
+<th class="head"><p>750</p></th>
+<th class="head"><p>1000</p></th>
+<th class="head"><p>1250</p></th>
+<th class="head"><p>1500</p></th>
+<th class="head"><p>2048</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Start Time in Usec</p></td>
+<td><p>54045</p></td>
+<td><p>331049</p></td>
+<td><p>611049</p></td>
+<td><p>893049</p></td>
+<td><p>1175047</p></td>
+<td><p>1460044</p></td>
+<td><p>1746045</p></td>
+<td><p>2034045</p></td>
+<td><p>2326043</p></td>
+<td><p>2621044</p></td>
+</tr>
+<tr class="row-odd"><td><p>Exec Time in Usec</p></td>
+<td><p>4755</p></td>
+<td><p>5016</p></td>
+<td><p>5231</p></td>
+<td><p>5778</p></td>
+<td><p>7780</p></td>
+<td><p>8611</p></td>
+<td><p>9159</p></td>
+<td><p>12359</p></td>
+<td><p>15796</p></td>
+<td><p>21841</p></td>
+</tr>
+<tr class="row-even"><td><p>Task Calls</p></td>
+<td><p>500</p></td>
+<td><p>500</p></td>
+<td><p>500</p></td>
+<td><p>500</p></td>
+<td><p>500</p></td>
+<td><p>500</p></td>
+<td><p>500</p></td>
+<td><p>500</p></td>
+<td><p>500</p></td>
+<td><p>500</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inst Cache Miss</p></td>
+<td><p>15952</p></td>
+<td><p>15702</p></td>
+<td><p>15759</p></td>
+<td><p>16398</p></td>
+<td><p>15305</p></td>
+<td><p>15663</p></td>
+<td><p>15307</p></td>
+<td><p>16197</p></td>
+<td><p>16268</p></td>
+<td><p>16199</p></td>
+</tr>
+<tr class="row-even"><td><p>Inst Cache Acc</p></td>
+<td><p>881022</p></td>
+<td><p>978305</p></td>
+<td><p>1052676</p></td>
+<td><p>1207579</p></td>
+<td><p>1657392</p></td>
+<td><p>2042623</p></td>
+<td><p>2413726</p></td>
+<td><p>2821927</p></td>
+<td><p>3207843</p></td>
+<td><p>4073250</p></td>
+</tr>
+<tr class="row-odd"><td><p>Num Instr Exec</p></td>
+<td><p>1179744</p></td>
+<td><p>1282453</p></td>
+<td><p>1381771</p></td>
+<td><p>1584135</p></td>
+<td><p>2170653</p></td>
+<td><p>2684999</p></td>
+<td><p>3176592</p></td>
+<td><p>3690479</p></td>
+<td><p>4179477</p></td>
+<td><p>5278239</p></td>
+</tr>
+<tr class="row-even"><td><p>ICM/sec</p></td>
+<td><p>3354784</p></td>
+<td><p>3130382</p></td>
+<td><p>3012617</p></td>
+<td><p>2838006</p></td>
+<td><p>1967223</p></td>
+<td><p>1818952</p></td>
+<td><p>1671252</p></td>
+<td><p>1310542</p></td>
+<td><p>1029880</p></td>
+<td><p>741678</p></td>
+</tr>
+<tr class="row-odd"><td><p>INST/sec</p></td>
+<td><p>248105993</p></td>
+<td><p>255672448</p></td>
+<td><p>264150449</p></td>
+<td><p>274166666</p></td>
+<td><p>279004241</p></td>
+<td><p>311810358</p></td>
+<td><p>346827382</p></td>
+<td><p>298606602</p></td>
+<td><p>264590845</p></td>
+<td><p>241666544</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index_jacinto.html" class="btn btn-neutral" title="Platform Development Kit (PDK) - J721E Datasheet" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2020</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'09_00_01',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,632 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.7. ENET &mdash; Platform Development Kit (PDK) - JACINTO User Guide</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Platform Development Kit (PDK) - JACINTO User Guide" href="../../index.html"/>
+        <link rel="up" title="4. Modules" href="../../family_cfg/jacinto/index_modules_jacinto.html"/>
+        <link rel="next" title="4.7.3.1. lwIP User’s Guide" href="enet_lwip_userguide.html"/>
+        <link rel="prev" title="4.6. CSIRX" href="../csirx.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index_jacinto.html" class="icon icon-home"> Platform Development Kit (PDK) - JACINTO User Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09_00_01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../family_cfg/jacinto/index_release_notes_jacinto.html">2. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">3. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../family_cfg/jacinto/index_modules_jacinto.html">4. Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../csl.html">4.1. CSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../freertos.html">4.2. FreeRTOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../family_cfg/jacinto/index_modules_safertos_jacinto.html">4.3. SafeRTOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../osal.html">4.4. OSAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dss.html">4.5. DSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csirx.html">4.6. CSIRX</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.7. ENET</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">4.7.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-interface">4.7.2. User Interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apis">4.7.2.1. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#lwip-integration">4.7.3. lwIP Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="enet_lwip_userguide.html">4.7.3.1. lwIP User’s Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tsn-integration">4.7.4. TSN Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="enet_tsn_integration.html">4.7.4.1. Enet LLD TSN User’s Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#enet-est-tas-support">4.7.5. Enet EST/TAS Support</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="enet_est_userguide.html">4.7.5.1. Enet EST/TAS Support</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#application">4.7.6. Application</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#examples">4.7.6.1. Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../fvid2.html">4.8. FVID2 User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gpio.html">4.9. GPIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../i2c.html">4.10. I2C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ipc.html">4.11. IPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mcan.html">4.12. MCAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mcasp.html">4.13. McASP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pm.html">4.14. PM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sa.html">4.15. SA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../family_cfg/jacinto/index_modules_sciclient_jacinto.html">4.16. SCICLIENT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../keywriter.html">4.17. OTP KEYWRITER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spi.html">4.18. SPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ospi.html">4.19. OSPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uart.html">4.20. UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../family_cfg/jacinto/index_modules_udma_jacinto.html">4.21. UDMA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pmic.html">4.22. PMIC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mmcsd.html">4.23. MMCSD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../family_cfg/jacinto/index_modules_lpm_jacinto.html">4.24. Low Power Manager (LPM)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../family_cfg/jacinto/index_boot_jacinto.html">5. Bootloader (SBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../family_cfg/jacinto/index_board_jacinto.html">6. Board/EVM Abstraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../family_cfg/jacinto/index_howto_jacinto.html">7. How to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../family_cfg/jacinto/index_faq_jacinto.html">8. Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../family_cfg/jacinto/index_developer_notes_jacinto.html">9. Developer Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index_jacinto.html">Platform Development Kit (PDK) - JACINTO User Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index_jacinto.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../family_cfg/jacinto/index_modules_jacinto.html"><span class="section-number">4. </span>Modules</a> &raquo;</li>
+      
+    <li><span class="section-number">4.7. </span>ENET</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="enet-1">
+<span id="enet"></span><h1><span class="section-number">4.7. </span>ENET<a class="headerlink" href="#enet-1" title="Permalink to this headline">¶</a></h1>
+<section id="introduction">
+<h2><span class="section-number">4.7.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Enet LLD is an unified Ethernet driver that support Ethernet peripherals
+found in TI SoCs, such as CPSW and ICSSG.  Enet LLD supports CPSW_2G and
+CPSW_9G in J721E devices.</p>
+<p>The diagram below shows the overall software architecture of the Enet low-level
+driver.  A top-level driver layer provides the interface that the applications
+can use to configure the switch and to send/receive Ethernet frames.</p>
+<p>For instance, the CPSW support in the Enet driver consists of several software
+submodules that mirror those of the CPSW hardware, like DMA, ALE, MAC port,
+host port, MDIO, etc. Additionally, the Enet driver also includes PHY driver
+support as well as a resource manager to administrate the CPSW resources.</p>
+<p>Enet LLD relies on other PDK drivers like UDMA for data transfer to/from the
+Ethernet peripheral’s host port to the other processing cores inside the TI
+SoC devices. For the lower level access to the hardware registers, Enet LLD
+relies on the Chip Support Library (CSL).</p>
+<img alt="../../_images/EnetLLD_Diagram.png" src="../../_images/EnetLLD_Diagram.png" />
+</section>
+<section id="user-interface">
+<h2><span class="section-number">4.7.2. </span>User Interface<a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h2>
+<p>For details about individual fields of this library structure, see the
+PDK doxygen documentation</p>
+<section id="apis">
+<h3><span class="section-number">4.7.2.1. </span>APIs<a class="headerlink" href="#apis" title="Permalink to this headline">¶</a></h3>
+<p>The Enet LLD APIs can be broadly divided into two categories: control and data
+path.  The control APIs can be used to configure all Ethernet hardware submodules
+like FDB, MAC port, host port, MDIO, statistics, as well as PHY drivers and
+resource management.  The data path APIs are exclusive for the DMA-based
+data transfers between the TI SoC processing cores and the Ethernet peripheral.</p>
+<p>API reference for application:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ti/drv/enet/enet.h&gt;</span>
+</pre></div>
+</div>
+<p>The main APIs of the Enet LLD are the following:</p>
+<ul class="simple">
+<li><p>Enet_open()</p></li>
+<li><p>Enet_close()</p></li>
+<li><p>Enet_ioctl()</p></li>
+<li><p>Enet_poll()</p></li>
+<li><p>Enet_periodicTick()</p></li>
+</ul>
+<section id="data-path-apis">
+<h4><span class="section-number">4.7.2.1.1. </span>Data Path APIs<a class="headerlink" href="#data-path-apis" title="Permalink to this headline">¶</a></h4>
+<p>The main Enet LLD functions used to send and receive packets are:</p>
+<ul class="simple">
+<li><p>EnetDma_openRxCh()</p></li>
+<li><p>EnetDma_closeRxCh()</p></li>
+<li><p>EnetDma_openTxCh()</p></li>
+<li><p>EnetDma_closeTxCh()</p></li>
+<li><p>EnetDma_retrieveRxPktQ()</p></li>
+<li><p>EnetDma_submitRxPktQ()</p></li>
+<li><p>EnetDma_retrieveTxPktQ()</p></li>
+<li><p>EnetDma_submitTxPktQ()</p></li>
+</ul>
+<p>It’s worth noting that the control path APIs are mainly IOCTL-based, and the
+data path APIs are direct functions in order to avoid any additional overhead
+associated with IOCTL calls as DMA data operations occur highly frequently.</p>
+</section>
+<section id="scatter-gather">
+<h4><span class="section-number">4.7.2.1.2. </span>Scatter-Gather<a class="headerlink" href="#scatter-gather" title="Permalink to this headline">¶</a></h4>
+<p>Starting in SDK 8.5, Enet LLD provides support for UDMA scatter-gather feature
+for packet transmission only.  Scatter-gather is currently not supported for
+packet reception.</p>
+<p>There are Enet LLD API changes introduced for scatter-gather which break compatibility
+with previous SDKs.  The main changes in the parameters used by the application to pass
+the Ethernet frame buffer and the buffer length to the driver.</p>
+<p>For the sake of comparison with previous API, let’s consider the case of a single
+continuous buffer (i.e. number of scatter segments of 1).</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>SDK 8.4 or older</p></th>
+<th class="head"><p>SDK 8.5+</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Buffer pointer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EnetDma_PktInfo::bufPtr</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EnetDma_PktInfo::sgList.list[0].bufPtr</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Original buffer length</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EnetDma_PktInfo::orgBufLen</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EnetDma_PktInfo::sgList.list[0].segmentAllocLen</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Filled buffer length</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EnetDma_PktInfo::userBufLen</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EnetDma_PktInfo::sgList.list[0].segmentFilledLen</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>The application can pass up to four segments for packet transmission as defined by
+<code class="docutils literal notranslate"><span class="pre">ENET_UDMA_CPSW_MAX_SG_LIST</span></code>.  It’s worth noting that Enet LLD uses the same
+<code class="docutils literal notranslate"><span class="pre">EnetDma_PktInfo</span></code> type for packet reception but only a single segment is enforced
+as scatter-gather for packet reception is currently not enabled.</p>
+<p>The scatter-gather list information is provided by the application to the driver
+via <code class="docutils literal notranslate"><span class="pre">EnetUdma_PktInfo::sgList</span></code> parameter of the packet info structure.  Application
+must set the number of segments (<code class="docutils literal notranslate"><span class="pre">EnetUdma_PktInfo::sgList.numScatterSegments</span></code>),
+and the buffer pointer and length of each segment in <code class="docutils literal notranslate"><span class="pre">EnetUdma_PktInfo::sgList.list[]</span></code>
+array.</p>
+<p>The relevant structures are shown below:</p>
+<blockquote>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/*! Scatter gather list entry */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">EnetUdma_SGListEntry_s</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cm">/*! Pointer to scatter fragment */</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">bufPtr</span><span class="p">;</span>
+<span class="w">    </span><span class="cm">/*! Length of valid data in the scatter fragment */</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">segmentFilledLen</span><span class="p">;</span>
+<span class="w">    </span><span class="cm">/*! Length of allocated buffer for scatter fragment */</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">segmentAllocLen</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">EnetUdma_SGListEntry</span><span class="p">;</span>
+
+<span class="cm">/*! Packet scatter list info */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">EnetUdma_SGList_s</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cm">/*! Number of valid scatter segments in the packet */</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">numScatterSegments</span><span class="p">;</span>
+<span class="w">    </span><span class="cm">/*! Array of scatterList having info on each individual scatter segement */</span>
+<span class="w">    </span><span class="n">EnetUdma_SGListEntry</span><span class="w"> </span><span class="n">list</span><span class="p">[</span><span class="n">ENET_UDMA_CPSW_MAX_SG_LIST</span><span class="p">];</span>
+<span class="p">}</span><span class="w"> </span><span class="n">EnetUdma_SGList</span><span class="p">;</span>
+
+<span class="cm">/*! Packet data structure */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">EnetUdma_PktInfo_s</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="cm">/*! Scatter Gather list information for packets to be transmitted. */</span>
+<span class="w">    </span><span class="n">EnetUdma_SGList</span><span class="w"> </span><span class="n">sgList</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">EnetUdma_PktInfo</span><span class="p">;</span>
+
+<span class="cm">/*! Opaque handle that represents a DMA packet */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">EnetUdma_PktInfo_s</span><span class="w"> </span><span class="n">EnetDma_Pkt</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Scatter-gather for packet transmission is also enabled in Enet LLD integration with
+lwIP stack.  Note that <code class="docutils literal notranslate"><span class="pre">LWIP_NETIF_TX_SINGLE_PBUF</span></code> must be disabled for lwIP to
+pass multiple segments to the adaptation layer and to the Enet driver.</p>
+<p>Scatter-gather feature is enabled by default in Enet LLD loopback test and lwIP
+example applications.</p>
+</section>
+<section id="ioctl-interface">
+<h4><span class="section-number">4.7.2.1.3. </span>IOCTL Interface<a class="headerlink" href="#ioctl-interface" title="Permalink to this headline">¶</a></h4>
+<p>IOCTLs are system calls that take an argument specifying the command code and
+can take none or additional parameters via <code class="docutils literal notranslate"><span class="pre">Enet_IoctlPrms</span></code> argument.
+IOCTL are used by all Enet submodules except for DMA.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Enet_IoctlPrms</span></code> parameter structure consists of input and output
+argument pointers and their corresponding size.  The following helper macros are
+provided to help construct the IOCTL params:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ENET_IOCTL_SET_NO_ARGS(prms)</span></code>. Used for IOCTL commands that take no parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENET_IOCTL_SET_IN_ARGS(prms,</span> <span class="pre">in)</span></code>. Used for IOCTL commands that take input
+parameters but don’t output any parameter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENET_IOCTL_SET_OUT_ARGS(prms,</span> <span class="pre">out)</span></code>. Used for IOCTL commands that don’t take
+input parameters but return output parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENET_IOCTL_SET_INOUT_ARGS(prms,</span> <span class="pre">in,</span> <span class="pre">out)</span></code>. Used for IOCTL commands that take
+input parameters and also return output parameters.</p></li>
+</ul>
+<p>where <code class="docutils literal notranslate"><span class="pre">prms</span></code> in a pointer to <code class="docutils literal notranslate"><span class="pre">Enet_IoctlPrms</span></code> variable, <code class="docutils literal notranslate"><span class="pre">in</span></code> is the pointer
+to IOCTL input argument and <code class="docutils literal notranslate"><span class="pre">out</span></code> is the pointer to IOCTL output argument.</p>
+<p>It’s recommended that the application doesn’t set the <code class="docutils literal notranslate"><span class="pre">Enet_IoctlPrms</span></code>
+members individually, but only through the helper macros listed above.</p>
+<p>Please refer to the individual IOCTL command to find out if it requires input
+and/or output parameters.</p>
+</section>
+</section>
+</section>
+<section id="lwip-integration">
+<h2><span class="section-number">4.7.3. </span>lwIP Integration<a class="headerlink" href="#lwip-integration" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<p>See <a class="reference internal" href="enet_lwip_userguide.html#enet-lwip-userguide"><span class="std std-ref">lwIP User’s Guide</span></a> for further information about lwIP integration into
+PDK using Enet LLD, and NDK-to-lwIP migration guide.</p>
+</section>
+<section id="tsn-integration">
+<h2><span class="section-number">4.7.4. </span>TSN Integration<a class="headerlink" href="#tsn-integration" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<p>See <a class="reference internal" href="enet_tsn_integration.html#enet-tsn-userguide"><span class="std std-ref">Enet LLD TSN User’s Guide</span></a> for further information about TSN stack integration into
+PDK using Enet LLD.</p>
+<p><strong>Note:</strong> This release integrates gPTP stack only.</p>
+</section>
+<section id="enet-est-tas-support">
+<h2><span class="section-number">4.7.5. </span>Enet EST/TAS Support<a class="headerlink" href="#enet-est-tas-support" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<p>See <a class="reference internal" href="enet_est_userguide.html#enet-est-userguide"><span class="std std-ref">Enet EST/TAS Support</span></a> for further information about EST/TAS implementation for CPSW using Enet LLD.</p>
+</section>
+<section id="application">
+<h2><span class="section-number">4.7.6. </span>Application<a class="headerlink" href="#application" title="Permalink to this headline">¶</a></h2>
+<section id="examples">
+<h3><span class="section-number">4.7.6.1. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<p>Enet LLD comes with a set of examples demonstrating the usage of driver APIs.
+The examples are:</p>
+<ul class="simple">
+<li><p><strong>enet_loopback</strong>: Internal (MAC port) or external loopback test.</p></li>
+<li><p><strong>enet_lwip_example</strong>: TCP/IP stack integration using lwIP.</p></li>
+<li><p><strong>enet_tsn_example</strong>: gPTP stack integration example app.</p></li>
+<li><p><strong>enet_est</strong>: CPSW Time Aware Shaper (EST) test app.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Expected Results</p></th>
+<th class="head"><p>Cores
+Supported</p></th>
+<th class="head"><p>Peripherals</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="3"><p><strong>Loopback</strong></p></td>
+<td rowspan="3"><p>Enet Loopback example demonstrates basic
+packet send and receive on an Ethernet
+peripheral configured in MAC loopback
+or PHY loopback.</p></td>
+<td rowspan="3"><p>All packets sent from the example
+application shall be received back
+after being looped in MAC or PHY.</p></td>
+<td><p>mcu1_0</p></td>
+<td><p>CPSW_2G</p></td>
+</tr>
+<tr class="row-odd"><td><p>mcu2_0</p></td>
+<td><p>CPSW_9G</p></td>
+</tr>
+<tr class="row-even"><td><p>mcu2_1</p></td>
+<td><p>CPSW_2G</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p><strong>lwIP</strong></p></td>
+<td rowspan="3"><p>Enet lwIP example demonstrates Enet driver
+integration with open source lwIP TCP/IP
+stack. The example enables DHCP client,
+it can get an IP address when connected to
+a network.</p></td>
+<td rowspan="3"><p>lwIP example application shall be
+able to get an IP address when
+connected to a network. User can
+test ‘ping’, ‘echo’ and ‘iperf’.</p></td>
+<td><p>mcu1_0</p></td>
+<td><p>CPSW_2G</p></td>
+</tr>
+<tr class="row-even"><td><p>mcu2_0</p></td>
+<td><p>CPSW_9G</p></td>
+</tr>
+<tr class="row-odd"><td><p>mcu2_1</p></td>
+<td><p>CPSW_2G</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>TSN</strong></p></td>
+<td><p>Enet TSN example demonstrates TSN stack
+integration in Enet LLD.
+Note that this release integrantes only
+gPTP stack.</p></td>
+<td><p>TSN example application shall be
+able to exchange gPTP packets with
+a partner devices (EVM or PC) and
+achieve time synchronization.</p></td>
+<td><p>mcu2_0</p></td>
+<td><p>CPSW_9G</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p><strong>EST</strong></p></td>
+<td rowspan="3"><p>Enet EST example demonstrates Traffic Shaping
+and Scheduling the traffic based on 802.1Qbv</p></td>
+<td rowspan="3"><p>This example schedules traffic for
+8 packets with different PCP
+priorities and sent via CPSW.
+Received packets will be discarded
+in this example.</p></td>
+<td><p>mcu1_0</p></td>
+<td><p>CPSW_2G</p></td>
+</tr>
+<tr class="row-even"><td><p>mcu2_0</p></td>
+<td><p>CPSW_9G</p></td>
+</tr>
+<tr class="row-odd"><td><p>mcu2_1</p></td>
+<td><p>CPSW_2G</p></td>
+</tr>
+</tbody>
+</table>
+<section id="enet-loopback">
+<h4><span class="section-number">4.7.6.1.1. </span>Enet loopback<a class="headerlink" href="#enet-loopback" title="Permalink to this headline">¶</a></h4>
+<p>This example exercises the MAC loopback functionality of the hardware. The
+example is developed and tested on both bare metal and TI RTOS code base.
+The Ethernet peripheral is opened with default initialization parameters and
+the MAC loopback is enabled.</p>
+<p>A Tx channel and a Rx flow are opened to enable data transfers.  Packets are
+transmitted from the Switch R5F (Main R5F0_0) to the host port using the Tx
+channel.  These packets are routed back to the host port by the switch
+hardware as the internal loopback feature is enabled.  These packets are then
+transmitted to the Switch R5F by the Rx flow and the application is notified.</p>
+<p>The Tx and Rx functions in the example are set to transmit and receive 10000
+packets.  After reaching the count of 10000, the application closes the Tx
+channel, Rx flow, peripheral (i.e. CPSW) and restarts the application for
+a configurable number of times.  Restarting the loopback test application
+ensures that there aren’t any memory leaks, and the hardware is closed properly
+and can be reopened any time.</p>
+</section>
+<section id="enet-lwip-1">
+<span id="enet-lwip"></span><h4><span class="section-number">4.7.6.1.2. </span>Enet LWIP<a class="headerlink" href="#enet-lwip-1" title="Permalink to this headline">¶</a></h4>
+<div class="toctree-wrapper compound">
+</div>
+<p>See <a class="reference internal" href="enet_lwip_example.html#enet-lwip-example"><span class="std std-ref">Enet lwIP Example</span></a> for further information about lwIP stack Example.</p>
+</section>
+<section id="enet-est">
+<h4><span class="section-number">4.7.6.1.3. </span>Enet EST<a class="headerlink" href="#enet-est" title="Permalink to this headline">¶</a></h4>
+<div class="toctree-wrapper compound">
+</div>
+<p>See <a class="reference internal" href="enet_est_example.html#enet-est-example"><span class="std std-ref">Enet EST Example</span></a> for further information about CPSW EST/TAS Example.</p>
+</section>
+<section id="enet-tsn">
+<h4><span class="section-number">4.7.6.1.4. </span>Enet TSN<a class="headerlink" href="#enet-tsn" title="Permalink to this headline">¶</a></h4>
+<div class="toctree-wrapper compound">
+</div>
+<p>See <a class="reference internal" href="enet_tsn_example.html#enet-tsn-example"><span class="std std-ref">Enet TSN Example</span></a> for further information about TSN stack gPTP Example.</p>
+</section>
+<section id="enet-multiport">
+<h4><span class="section-number">4.7.6.1.5. </span>Enet Multiport<a class="headerlink" href="#enet-multiport" title="Permalink to this headline">¶</a></h4>
+<p>Not supported for this SoC.</p>
+</section>
+<section id="enet-tas">
+<h4><span class="section-number">4.7.6.1.6. </span>Enet TAS<a class="headerlink" href="#enet-tas" title="Permalink to this headline">¶</a></h4>
+<p>Not supported for this SoC.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="enet_lwip_userguide.html" class="btn btn-neutral float-right" title="4.7.3.1. lwIP User’s Guide" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../csirx.html" class="btn btn-neutral" title="4.6. CSIRX" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2020</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'09_00_01',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>
