@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
-<title>PDK API Guide for J721E: GPIO.h File Reference</title>
+<title>PDK API Guide for J721E: gpio.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -68,7 +68,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('GPIO_8h.html','');});
+$(document).ready(function(){initNavTree('gpio_8h.html','');});
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -90,155 +90,103 @@ $(document).ready(function(){initNavTree('GPIO_8h.html','');});
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">GPIO.h File Reference<div class="ingroups"><a class="el" href="group__DRV__GPIO__MODULE.html">GPIO Driver</a> &raquo; <a class="el" href="group__DRV__GPIO__API__MODULE.html">GPIO Driver API</a></div></div>  </div>
+<div class="title">gpio.h File Reference<div class="ingroups"><a class="el" href="group__CSL__IP__MODULE.html">CSL-FL</a> &raquo; <a class="el" href="group__CSL__GPIO.html">GPIO CSL-FL</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Introduction</h2>
-<div class="textblock"><p>GPIO driver. </p>
-<p>============================================================================</p>
-<p>The GPIO header file should be included in an application as follows: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="GPIO_8h.html">ti/drv/gpio/GPIO.h</a>&gt;</span></div></div><!-- fragment --><h1>Operation</h1>
-<p>The GPIO module allows you to manage General Purpose I/O pins via simple and portable APIs. GPIO pin behaviour can be configured completely statically, or dynamically defined at runtime.</p>
-<p>The application is required to supply a device specific GPIOXXX_Config structure to the module. This structure communicates to the GPIO module how to configure the pins that will be used by the application (See the description of GPIO_PinConfig).</p>
-<p>The application is required to call <a class="el" href="group__DRV__GPIO__API__MODULE.html#ga75690af9e89afd801dc40b20b5c813f1" title="Initializes the GPIO module.">GPIO_init()</a>. This function will initialize all the GPIO pins defined in the GPIO_PinConfig table to the configurations specified. Once that is completed the other APIs can be used to access the pins.</p>
-<p>Asserts are used to verify that the driver has been initialized and to validate pin indexes within the various APIs.</p>
-<p>See the device specific GPIO header file for configuration details.</p>
-<hr/>
- </div>
-<p><a href="GPIO_8h_source.html">Go to the source code of this file.</a></p>
+<div class="textblock"><p>File provides functional level API prototypes for GPIO interface. </p>
+</div>
+<p><a href="gpio_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
+GPIO Interrupt mask</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p><a class="anchor" id="amgrpf14fe478994b7a774727c9f20b67b54f"></a><a class="anchor" id="gpioIntrMask_t"></a></p>
+</td></tr>
+<tr class="memitem:ga2a3f84a090b67ae5d35341bd57224d35"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#ga2a3f84a090b67ae5d35341bd57224d35">GPIO_INTR_MASK_NO_EDGE</a>&#160;&#160;&#160;(0x01U)</td></tr>
+<tr class="separator:ga2a3f84a090b67ae5d35341bd57224d35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf0d13e17dfd7cdf1f46e3649b48a2222"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#gaf0d13e17dfd7cdf1f46e3649b48a2222">GPIO_INTR_MASK_RISE_EDGE</a>&#160;&#160;&#160;(0x02U)</td></tr>
+<tr class="separator:gaf0d13e17dfd7cdf1f46e3649b48a2222"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab227f8b4ef66883dc8c40e2f9b3b532a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#gab227f8b4ef66883dc8c40e2f9b3b532a">GPIO_INTR_MASK_FALL_EDGE</a>&#160;&#160;&#160;(0x04U)</td></tr>
+<tr class="separator:gab227f8b4ef66883dc8c40e2f9b3b532a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabba4f86b1b5255d9a005c76f9c9391c8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#gabba4f86b1b5255d9a005c76f9c9391c8">GPIO_INTR_MASK_BOTH_EDGE</a>&#160;&#160;&#160;(0x08U)</td></tr>
+<tr class="separator:gabba4f86b1b5255d9a005c76f9c9391c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6c37ffb5dd0b4f1218457761158bda15"><td class="memItemLeft" align="right" valign="top">typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#ga6c37ffb5dd0b4f1218457761158bda15">gpioIntrMask_t</a></td></tr>
+<tr class="memdesc:ga6c37ffb5dd0b4f1218457761158bda15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerates the possible GPIO interrupt generation events.  <a href="group__CSL__GPIO.html#ga6c37ffb5dd0b4f1218457761158bda15">More...</a><br /></td></tr>
+<tr class="separator:ga6c37ffb5dd0b4f1218457761158bda15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
+GPIO Direction</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p><a class="anchor" id="amgrp5f7f735f6be5131b00b26271e85fb0d0"></a><a class="anchor" id="gpioDirection_t"></a></p>
+</td></tr>
+<tr class="memitem:ga2424a0689fe07d992bec1a7840942613"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#ga2424a0689fe07d992bec1a7840942613">GPIO_DIRECTION_INPUT</a>&#160;&#160;&#160;(<a class="el" href="group__CSL__GPIO.html#ga7f3fb4e33a543817f7f8b34a47a17679">GPIO_OE_OUTPUTEN_N_DISABLED</a>)</td></tr>
+<tr class="separator:ga2424a0689fe07d992bec1a7840942613"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad5672af51b60e9c00ffa9850feb75e37"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#gad5672af51b60e9c00ffa9850feb75e37">GPIO_DIRECTION_OUTPUT</a>&#160;&#160;&#160;(<a class="el" href="group__CSL__GPIO.html#ga1c585c5919ba91059d1ffe411e9d57d7">GPIO_OE_OUTPUTEN_N_ENABLED</a>)</td></tr>
+<tr class="separator:gad5672af51b60e9c00ffa9850feb75e37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac1adf7c4b61347367a7ed449fdd58985"><td class="memItemLeft" align="right" valign="top">typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#gac1adf7c4b61347367a7ed449fdd58985">gpioDirection_t</a></td></tr>
+<tr class="memdesc:gac1adf7c4b61347367a7ed449fdd58985"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerates the direction of GPIO pin.  <a href="group__CSL__GPIO.html#gac1adf7c4b61347367a7ed449fdd58985">More...</a><br /></td></tr>
+<tr class="separator:gac1adf7c4b61347367a7ed449fdd58985"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGPIO__FxnTable.html">GPIO_FxnTable</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The definition of a GPIO function table that contains the required set of functions to control a specific GPIO driver implementation.  <a href="structGPIO__FxnTable.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGPIO__Config.html">GPIO_Config</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO Global configuration.  <a href="structGPIO__Config.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgpioContext__t.html">gpioContext_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure holding the GPIO context.  <a href="structgpioContext__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ga05098c91a3577e43c4a184b4bf1edc8e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga05098c91a3577e43c4a184b4bf1edc8e">GPIO_MAX_CONFIG_CNT</a>&#160;&#160;&#160;(3U)</td></tr>
-<tr class="separator:ga05098c91a3577e43c4a184b4bf1edc8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">GPIO_PinConfig pin direction configuration macros</div></td></tr>
-<tr class="memitem:gaad0c4b9c093f1d57fd03061b7456193a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#gaad0c4b9c093f1d57fd03061b7456193a">GPIO_CFG_OUTPUT</a>&#160;&#160;&#160;(((uint32_t) 0) &lt;&lt; GPIO_CFG_IO_LSB) /*! Pin is an output. */</td></tr>
-<tr class="separator:gaad0c4b9c093f1d57fd03061b7456193a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac52528c42a8eb3be193f49de5ed7d820"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#gac52528c42a8eb3be193f49de5ed7d820">GPIO_CFG_OUT_STD</a>&#160;&#160;&#160;(((uint32_t) 0) &lt;&lt; GPIO_CFG_IO_LSB) /*! Output pin is not Open Drain */</td></tr>
-<tr class="separator:gac52528c42a8eb3be193f49de5ed7d820"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae660060d38901c2370d8f104fbb842a2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#gae660060d38901c2370d8f104fbb842a2">GPIO_CFG_OUT_OD_NOPULL</a>&#160;&#160;&#160;(((uint32_t) 2) &lt;&lt; GPIO_CFG_IO_LSB) /*! Output pin is Open Drain */</td></tr>
-<tr class="separator:gae660060d38901c2370d8f104fbb842a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga16cfdcae58be5f77932b36f43e7c1d2f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga16cfdcae58be5f77932b36f43e7c1d2f">GPIO_CFG_OUT_OD_PU</a>&#160;&#160;&#160;(((uint32_t) 4) &lt;&lt; GPIO_CFG_IO_LSB) /*! Output pin is Open Drain w/ pull <a class="el" href="gptpipc_8h.html#a73726aa673e3bf46f53cd69587131199">up</a> */</td></tr>
-<tr class="separator:ga16cfdcae58be5f77932b36f43e7c1d2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf4e7be1d009ff2c25a048ab7fe401d88"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#gaf4e7be1d009ff2c25a048ab7fe401d88">GPIO_CFG_OUT_OD_PD</a>&#160;&#160;&#160;(((uint32_t) 6) &lt;&lt; GPIO_CFG_IO_LSB) /*! Output pin is Open Drain w/ pull dn */</td></tr>
-<tr class="separator:gaf4e7be1d009ff2c25a048ab7fe401d88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae86eb6dc677c962a9ad94bdad6752dc0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#gae86eb6dc677c962a9ad94bdad6752dc0">GPIO_CFG_OUT_HIGH</a>&#160;&#160;&#160;(((uint32_t) 1) &lt;&lt; GPIO_CFG_OUT_BIT) /*! Set pin's output to 1. */</td></tr>
-<tr class="separator:gae86eb6dc677c962a9ad94bdad6752dc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad4fd3be9a7bec74d862cb1caecc5d4be"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#gad4fd3be9a7bec74d862cb1caecc5d4be">GPIO_CFG_OUT_LOW</a>&#160;&#160;&#160;(((uint32_t) 0) &lt;&lt; GPIO_CFG_OUT_BIT) /*! Set pin's output to 0. */</td></tr>
-<tr class="separator:gad4fd3be9a7bec74d862cb1caecc5d4be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2917f431dff7eb7f5559643bd8df251d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga2917f431dff7eb7f5559643bd8df251d">GPIO_CFG_OUT_STR_LOW</a>&#160;&#160;&#160;(((uint32_t) 0) &lt;&lt; GPIO_CFG_OUT_STRENGTH_LSB)</td></tr>
-<tr class="separator:ga2917f431dff7eb7f5559643bd8df251d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac1d2c5bf8f2359d26d28abc8aa393b3a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#gac1d2c5bf8f2359d26d28abc8aa393b3a">GPIO_CFG_OUT_STR_MED</a>&#160;&#160;&#160;(((uint32_t) 1) &lt;&lt; GPIO_CFG_OUT_STRENGTH_LSB)</td></tr>
-<tr class="separator:gac1d2c5bf8f2359d26d28abc8aa393b3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga25609d59d41f081ae9759d5862dc9dd9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga25609d59d41f081ae9759d5862dc9dd9">GPIO_CFG_OUT_STR_HIGH</a>&#160;&#160;&#160;(((uint32_t) 2) &lt;&lt; GPIO_CFG_OUT_STRENGTH_LSB)</td></tr>
-<tr class="separator:ga25609d59d41f081ae9759d5862dc9dd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga874e34de3bef2d9415b4311dd6bed234"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga874e34de3bef2d9415b4311dd6bed234">GPIO_CFG_INPUT</a>&#160;&#160;&#160;(((uint32_t) 1) &lt;&lt; GPIO_CFG_IO_LSB) /*! Pin is an input. */</td></tr>
-<tr class="separator:ga874e34de3bef2d9415b4311dd6bed234"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad2e8d27bfc96ef0de4dd35db10055412"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#gad2e8d27bfc96ef0de4dd35db10055412">GPIO_CFG_IN_NOPULL</a>&#160;&#160;&#160;(((uint32_t) 1) &lt;&lt; GPIO_CFG_IO_LSB) /*! Input pin has no PU/PD */</td></tr>
-<tr class="separator:gad2e8d27bfc96ef0de4dd35db10055412"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4fb7b60751481b6988049fe8fa94a7d7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga4fb7b60751481b6988049fe8fa94a7d7">GPIO_CFG_IN_PU</a>&#160;&#160;&#160;(((uint32_t) 3) &lt;&lt; GPIO_CFG_IO_LSB) /*! Input pin has Pullup */</td></tr>
-<tr class="separator:ga4fb7b60751481b6988049fe8fa94a7d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad09e6716ad1b54cb6509b8c92a6567c6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#gad09e6716ad1b54cb6509b8c92a6567c6">GPIO_CFG_IN_PD</a>&#160;&#160;&#160;(((uint32_t) 5) &lt;&lt; GPIO_CFG_IO_LSB) /*! Input pin has Pulldown */</td></tr>
-<tr class="separator:gad09e6716ad1b54cb6509b8c92a6567c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">GPIO_PinConfig pin interrupt configuration macros</div></td></tr>
-<tr class="memitem:ga666c6995ed5737b43a707d1cacd9fe69"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga666c6995ed5737b43a707d1cacd9fe69">GPIO_CFG_IN_INT_NONE</a>&#160;&#160;&#160;(((uint32_t) 0) &lt;&lt; GPIO_CFG_INT_LSB)    /*! No Interrupt */</td></tr>
-<tr class="separator:ga666c6995ed5737b43a707d1cacd9fe69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7a69ee26049dc2f8b5059b00a24b9f74"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga7a69ee26049dc2f8b5059b00a24b9f74">GPIO_CFG_IN_INT_FALLING</a>&#160;&#160;&#160;(((uint32_t) 1) &lt;&lt; GPIO_CFG_INT_LSB)    /*! Interrupt on falling edge */</td></tr>
-<tr class="separator:ga7a69ee26049dc2f8b5059b00a24b9f74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4a9f53e525d1f1659b485274d08ff91f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga4a9f53e525d1f1659b485274d08ff91f">GPIO_CFG_IN_INT_RISING</a>&#160;&#160;&#160;(((uint32_t) 2) &lt;&lt; GPIO_CFG_INT_LSB)    /*! Interrupt on rising edge */</td></tr>
-<tr class="separator:ga4a9f53e525d1f1659b485274d08ff91f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0829900a2dd949219edc6ddc8d928f3c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga0829900a2dd949219edc6ddc8d928f3c">GPIO_CFG_IN_INT_BOTH_EDGES</a>&#160;&#160;&#160;(((uint32_t) 3) &lt;&lt; GPIO_CFG_INT_LSB)    /*! Interrupt on both edges */</td></tr>
-<tr class="separator:ga0829900a2dd949219edc6ddc8d928f3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab0f05c331bb66230f175e574d0d317a6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#gab0f05c331bb66230f175e574d0d317a6">GPIO_CFG_IN_INT_LOW</a>&#160;&#160;&#160;(((uint32_t) 4) &lt;&lt; GPIO_CFG_INT_LSB)    /*! Interrupt on low level */</td></tr>
-<tr class="separator:gab0f05c331bb66230f175e574d0d317a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga669d2e840e0f934426670a069a5efe0e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga669d2e840e0f934426670a069a5efe0e">GPIO_CFG_IN_INT_HIGH</a>&#160;&#160;&#160;(((uint32_t) 5) &lt;&lt; GPIO_CFG_INT_LSB)    /*! Interrupt on high level */</td></tr>
-<tr class="separator:ga669d2e840e0f934426670a069a5efe0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Special GPIO_PinConfig configuration macros</div></td></tr>
-<tr class="memitem:gac8df4b49e09cb612275ed7d00e8cc1cf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#gac8df4b49e09cb612275ed7d00e8cc1cf">GPIO_CFG_IN_INT_ONLY</a>&#160;&#160;&#160;(((uint32_t) 1) &lt;&lt; 27)                  /*! configure interrupt only */</td></tr>
-<tr class="memdesc:gac8df4b49e09cb612275ed7d00e8cc1cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">'Or' in this GPIO_PinConfig definition to inform <a class="el" href="group__DRV__GPIO__API__MODULE.html#ga1c5234f4bd42d0cfd2521ab30b695e6a" title="Configure the gpio pin.">GPIO_setConfig()</a> to only configure the interrupt attributes of a GPIO input pin.  <a href="group__DRV__GPIO__API__MODULE.html#gac8df4b49e09cb612275ed7d00e8cc1cf">More...</a><br /></td></tr>
-<tr class="separator:gac8df4b49e09cb612275ed7d00e8cc1cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0974eb3af57b7bccef9ac749d4cf23a7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga0974eb3af57b7bccef9ac749d4cf23a7">GPIO_DO_NOT_CONFIG</a>&#160;&#160;&#160;0x7fff0001U                             /*! Do not configure this Pin */</td></tr>
-<tr class="memdesc:ga0974eb3af57b7bccef9ac749d4cf23a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use this GPIO_PinConfig definition to inform <a class="el" href="group__DRV__GPIO__API__MODULE.html#ga75690af9e89afd801dc40b20b5c813f1" title="Initializes the GPIO module.">GPIO_init()</a> NOT to configure the corresponding pin.  <a href="group__DRV__GPIO__API__MODULE.html#ga0974eb3af57b7bccef9ac749d4cf23a7">More...</a><br /></td></tr>
-<tr class="separator:ga0974eb3af57b7bccef9ac749d4cf23a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:ga7f5d979226db633309b3fdc0f4a8aef6"><td class="memItemLeft" align="right" valign="top">typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga7f5d979226db633309b3fdc0f4a8aef6">GPIO_PinConfig</a></td></tr>
-<tr class="memdesc:ga7f5d979226db633309b3fdc0f4a8aef6"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO pin configuration settings.  <a href="group__DRV__GPIO__API__MODULE.html#ga7f5d979226db633309b3fdc0f4a8aef6">More...</a><br /></td></tr>
-<tr class="separator:ga7f5d979226db633309b3fdc0f4a8aef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga033bc79f1a530381da2b74711e6b8971"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga033bc79f1a530381da2b74711e6b8971">GPIO_CallbackFxn</a>) (void)</td></tr>
-<tr class="memdesc:ga033bc79f1a530381da2b74711e6b8971"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO callback function type.  <a href="group__DRV__GPIO__API__MODULE.html#ga033bc79f1a530381da2b74711e6b8971">More...</a><br /></td></tr>
-<tr class="separator:ga033bc79f1a530381da2b74711e6b8971"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga64c7e54f2edc78e7029b17da673d8eaf"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga64c7e54f2edc78e7029b17da673d8eaf">GPIO_InitFxn</a>) (void)</td></tr>
-<tr class="memdesc:ga64c7e54f2edc78e7029b17da673d8eaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the GPIO module.  <a href="group__DRV__GPIO__API__MODULE.html#ga64c7e54f2edc78e7029b17da673d8eaf">More...</a><br /></td></tr>
-<tr class="separator:ga64c7e54f2edc78e7029b17da673d8eaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9595e3a7c840dbd52d02759c283f94e2"><td class="memItemLeft" align="right" valign="top">typedef uint32_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga9595e3a7c840dbd52d02759c283f94e2">GPIO_ReadFxn</a>) (uint32_t idx)</td></tr>
-<tr class="memdesc:ga9595e3a7c840dbd52d02759c283f94e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the value of a GPIO pin.  <a href="group__DRV__GPIO__API__MODULE.html#ga9595e3a7c840dbd52d02759c283f94e2">More...</a><br /></td></tr>
-<tr class="separator:ga9595e3a7c840dbd52d02759c283f94e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaad2c3a9d0d2322f520cd5204cda0e058"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#gaad2c3a9d0d2322f520cd5204cda0e058">GPIO_WriteFxn</a>) (uint32_t idx, uint32_t <a class="el" href="tisci__otp__revision_8h.html#ae7f66047e6e39ba2bb6af8b95f00d1dd">value</a>)</td></tr>
-<tr class="memdesc:gaad2c3a9d0d2322f520cd5204cda0e058"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the value to a GPIO pin.  <a href="group__DRV__GPIO__API__MODULE.html#gaad2c3a9d0d2322f520cd5204cda0e058">More...</a><br /></td></tr>
-<tr class="separator:gaad2c3a9d0d2322f520cd5204cda0e058"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5739216d049a78a8707086c004042940"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga5739216d049a78a8707086c004042940">GPIO_clearIntFxn</a>) (uint32_t idx)</td></tr>
-<tr class="memdesc:ga5739216d049a78a8707086c004042940"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear a GPIO pin interrupt flag.  <a href="group__DRV__GPIO__API__MODULE.html#ga5739216d049a78a8707086c004042940">More...</a><br /></td></tr>
-<tr class="separator:ga5739216d049a78a8707086c004042940"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga866c40a5387bc02e438542cf6268aa96"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga866c40a5387bc02e438542cf6268aa96">GPIO_disableIntFxn</a>) (uint32_t idx)</td></tr>
-<tr class="memdesc:ga866c40a5387bc02e438542cf6268aa96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable a GPIO pin interrupt.  <a href="group__DRV__GPIO__API__MODULE.html#ga866c40a5387bc02e438542cf6268aa96">More...</a><br /></td></tr>
-<tr class="separator:ga866c40a5387bc02e438542cf6268aa96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2f98965bf1bc1748467be0587273af7f"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga2f98965bf1bc1748467be0587273af7f">GPIO_enableIntFxn</a>) (uint32_t idx)</td></tr>
-<tr class="memdesc:ga2f98965bf1bc1748467be0587273af7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable a GPIO pin interrupt.  <a href="group__DRV__GPIO__API__MODULE.html#ga2f98965bf1bc1748467be0587273af7f">More...</a><br /></td></tr>
-<tr class="separator:ga2f98965bf1bc1748467be0587273af7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4ffc07770c3df5c0ff5ff19049ca374d"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga4ffc07770c3df5c0ff5ff19049ca374d">GPIO_setCallbackFxn</a>) (uint32_t idx, <a class="el" href="group__DRV__GPIO__API__MODULE.html#ga033bc79f1a530381da2b74711e6b8971">GPIO_CallbackFxn</a> callback)</td></tr>
-<tr class="memdesc:ga4ffc07770c3df5c0ff5ff19049ca374d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind a callback function to a GPIO pin interrupt.  <a href="group__DRV__GPIO__API__MODULE.html#ga4ffc07770c3df5c0ff5ff19049ca374d">More...</a><br /></td></tr>
-<tr class="separator:ga4ffc07770c3df5c0ff5ff19049ca374d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab1c6ed26c5c7b0d0990a03bf99673d88"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#gab1c6ed26c5c7b0d0990a03bf99673d88">GPIO_setConfigFxn</a>) (uint32_t idx, <a class="el" href="group__DRV__GPIO__API__MODULE.html#ga7f5d979226db633309b3fdc0f4a8aef6">GPIO_PinConfig</a> pinConfig)</td></tr>
-<tr class="memdesc:gab1c6ed26c5c7b0d0990a03bf99673d88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure the gpio pin.  <a href="group__DRV__GPIO__API__MODULE.html#gab1c6ed26c5c7b0d0990a03bf99673d88">More...</a><br /></td></tr>
-<tr class="separator:gab1c6ed26c5c7b0d0990a03bf99673d88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf5f6e4fd3bc07f297bb99075ecb7fca5"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#gaf5f6e4fd3bc07f297bb99075ecb7fca5">GPIO_toggleFxn</a>) (uint32_t idx)</td></tr>
-<tr class="memdesc:gaf5f6e4fd3bc07f297bb99075ecb7fca5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggles the current state of a GPIO.  <a href="group__DRV__GPIO__API__MODULE.html#gaf5f6e4fd3bc07f297bb99075ecb7fca5">More...</a><br /></td></tr>
-<tr class="separator:gaf5f6e4fd3bc07f297bb99075ecb7fca5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga61c7fa112b070e97233727de9a5475ea"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="structGPIO__Config.html">GPIO_Config</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga61c7fa112b070e97233727de9a5475ea">GPIOConfigList</a>[<a class="el" href="group__DRV__GPIO__API__MODULE.html#ga05098c91a3577e43c4a184b4bf1edc8e">GPIO_MAX_CONFIG_CNT</a>]</td></tr>
-<tr class="separator:ga61c7fa112b070e97233727de9a5475ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaad2f86d2d324c35f49f90fe0d4a262af"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#gaad2f86d2d324c35f49f90fe0d4a262af">GPIO_PIN_LOW</a>&#160;&#160;&#160;(0x0U)</td></tr>
+<tr class="memdesc:gaad2f86d2d324c35f49f90fe0d4a262af"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO pin is at logic low.  <a href="group__CSL__GPIO.html#gaad2f86d2d324c35f49f90fe0d4a262af">More...</a><br /></td></tr>
+<tr class="separator:gaad2f86d2d324c35f49f90fe0d4a262af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9ae19577951cc497ee2ed22d1911c680"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#ga9ae19577951cc497ee2ed22d1911c680">GPIO_PIN_HIGH</a>&#160;&#160;&#160;(0x1U)</td></tr>
+<tr class="memdesc:ga9ae19577951cc497ee2ed22d1911c680"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO pin is at logic high.  <a href="group__CSL__GPIO.html#ga9ae19577951cc497ee2ed22d1911c680">More...</a><br /></td></tr>
+<tr class="separator:ga9ae19577951cc497ee2ed22d1911c680"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1c585c5919ba91059d1ffe411e9d57d7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#ga1c585c5919ba91059d1ffe411e9d57d7">GPIO_OE_OUTPUTEN_N_ENABLED</a>&#160;&#160;&#160;(0U)</td></tr>
+<tr class="memdesc:ga1c585c5919ba91059d1ffe411e9d57d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to configure GPIO pin as output.  <a href="group__CSL__GPIO.html#ga1c585c5919ba91059d1ffe411e9d57d7">More...</a><br /></td></tr>
+<tr class="separator:ga1c585c5919ba91059d1ffe411e9d57d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7f3fb4e33a543817f7f8b34a47a17679"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#ga7f3fb4e33a543817f7f8b34a47a17679">GPIO_OE_OUTPUTEN_N_DISABLED</a>&#160;&#160;&#160;(1U)</td></tr>
+<tr class="memdesc:ga7f3fb4e33a543817f7f8b34a47a17679"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to configure GPIO pin as input.  <a href="group__CSL__GPIO.html#ga7f3fb4e33a543817f7f8b34a47a17679">More...</a><br /></td></tr>
+<tr class="separator:ga7f3fb4e33a543817f7f8b34a47a17679"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabeade2167928c29518c803bfb1794ae4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#gabeade2167928c29518c803bfb1794ae4">GPIO_PIN_MASK_ALL</a>&#160;&#160;&#160;0xFF</td></tr>
+<tr class="memdesc:gabeade2167928c29518c803bfb1794ae4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mask for all pins of single gpio port.  <a href="group__CSL__GPIO.html#gabeade2167928c29518c803bfb1794ae4">More...</a><br /></td></tr>
+<tr class="separator:gabeade2167928c29518c803bfb1794ae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gac53469d3e94ec2ecf2ad46e521cbf863"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#gac53469d3e94ec2ecf2ad46e521cbf863">GPIO_clearInt</a> (uint32_t idx)</td></tr>
-<tr class="memdesc:gac53469d3e94ec2ecf2ad46e521cbf863"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear a GPIO pin interrupt flag.  <a href="group__DRV__GPIO__API__MODULE.html#gac53469d3e94ec2ecf2ad46e521cbf863">More...</a><br /></td></tr>
-<tr class="separator:gac53469d3e94ec2ecf2ad46e521cbf863"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacc6fe5bccea1e5ee27965b8a4f3bc303"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#gacc6fe5bccea1e5ee27965b8a4f3bc303">GPIO_disableInt</a> (uint32_t idx)</td></tr>
-<tr class="memdesc:gacc6fe5bccea1e5ee27965b8a4f3bc303"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable a GPIO pin interrupt.  <a href="group__DRV__GPIO__API__MODULE.html#gacc6fe5bccea1e5ee27965b8a4f3bc303">More...</a><br /></td></tr>
-<tr class="separator:gacc6fe5bccea1e5ee27965b8a4f3bc303"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga029fc3584b0e38b9ec1d7be8fed21735"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga029fc3584b0e38b9ec1d7be8fed21735">GPIO_enableInt</a> (uint32_t idx)</td></tr>
-<tr class="memdesc:ga029fc3584b0e38b9ec1d7be8fed21735"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable a GPIO pin interrupt.  <a href="group__DRV__GPIO__API__MODULE.html#ga029fc3584b0e38b9ec1d7be8fed21735">More...</a><br /></td></tr>
-<tr class="separator:ga029fc3584b0e38b9ec1d7be8fed21735"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga75690af9e89afd801dc40b20b5c813f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga75690af9e89afd801dc40b20b5c813f1">GPIO_init</a> (void)</td></tr>
-<tr class="memdesc:ga75690af9e89afd801dc40b20b5c813f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the GPIO module.  <a href="group__DRV__GPIO__API__MODULE.html#ga75690af9e89afd801dc40b20b5c813f1">More...</a><br /></td></tr>
-<tr class="separator:ga75690af9e89afd801dc40b20b5c813f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga22d35758a600f30d0370103e14a8b7ae"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga22d35758a600f30d0370103e14a8b7ae">GPIO_read</a> (uint32_t idx)</td></tr>
-<tr class="memdesc:ga22d35758a600f30d0370103e14a8b7ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the value of a GPIO pin.  <a href="group__DRV__GPIO__API__MODULE.html#ga22d35758a600f30d0370103e14a8b7ae">More...</a><br /></td></tr>
-<tr class="separator:ga22d35758a600f30d0370103e14a8b7ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8c0a60a91d139398c41683a873af4d17"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga8c0a60a91d139398c41683a873af4d17">GPIO_setCallback</a> (uint32_t idx, <a class="el" href="group__DRV__GPIO__API__MODULE.html#ga033bc79f1a530381da2b74711e6b8971">GPIO_CallbackFxn</a> callback)</td></tr>
-<tr class="memdesc:ga8c0a60a91d139398c41683a873af4d17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind a callback function to a GPIO pin interrupt.  <a href="group__DRV__GPIO__API__MODULE.html#ga8c0a60a91d139398c41683a873af4d17">More...</a><br /></td></tr>
-<tr class="separator:ga8c0a60a91d139398c41683a873af4d17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1c5234f4bd42d0cfd2521ab30b695e6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#ga1c5234f4bd42d0cfd2521ab30b695e6a">GPIO_setConfig</a> (uint32_t idx, <a class="el" href="group__DRV__GPIO__API__MODULE.html#ga7f5d979226db633309b3fdc0f4a8aef6">GPIO_PinConfig</a> pinConfig)</td></tr>
-<tr class="memdesc:ga1c5234f4bd42d0cfd2521ab30b695e6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure the gpio pin.  <a href="group__DRV__GPIO__API__MODULE.html#ga1c5234f4bd42d0cfd2521ab30b695e6a">More...</a><br /></td></tr>
-<tr class="separator:ga1c5234f4bd42d0cfd2521ab30b695e6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf459ac669296235a488f0476debc6945"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#gaf459ac669296235a488f0476debc6945">GPIO_toggle</a> (uint32_t idx)</td></tr>
-<tr class="memdesc:gaf459ac669296235a488f0476debc6945"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggles the current state of a GPIO.  <a href="group__DRV__GPIO__API__MODULE.html#gaf459ac669296235a488f0476debc6945">More...</a><br /></td></tr>
-<tr class="separator:gaf459ac669296235a488f0476debc6945"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaea8d6d7df8395262a99ea4b462ec6a5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DRV__GPIO__API__MODULE.html#gaea8d6d7df8395262a99ea4b462ec6a5a">GPIO_write</a> (uint32_t idx, uint32_t <a class="el" href="tisci__otp__revision_8h.html#ae7f66047e6e39ba2bb6af8b95f00d1dd">value</a>)</td></tr>
-<tr class="memdesc:gaea8d6d7df8395262a99ea4b462ec6a5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the value to a GPIO pin.  <a href="group__DRV__GPIO__API__MODULE.html#gaea8d6d7df8395262a99ea4b462ec6a5a">More...</a><br /></td></tr>
-<tr class="separator:gaea8d6d7df8395262a99ea4b462ec6a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3f1c1ef2f623af6fb543c619ad766bae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#ga3f1c1ef2f623af6fb543c619ad766bae">GPIOSetDirMode_v0</a> (uint32_t baseAddr, uint32_t pinNumber, uint32_t pinDirection)</td></tr>
+<tr class="memdesc:ga3f1c1ef2f623af6fb543c619ad766bae"><td class="mdescLeft">&#160;</td><td class="mdescRight">This API configures the direction of a specified GPIO pin as being either input or output.  <a href="group__CSL__GPIO.html#ga3f1c1ef2f623af6fb543c619ad766bae">More...</a><br /></td></tr>
+<tr class="separator:ga3f1c1ef2f623af6fb543c619ad766bae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga590d7d5948be5d650b34e4a93ebe977c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#ga590d7d5948be5d650b34e4a93ebe977c">GPIOPinWrite_v0</a> (uint32_t baseAddr, uint32_t pinNumber, uint32_t pinValue)</td></tr>
+<tr class="memdesc:ga590d7d5948be5d650b34e4a93ebe977c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This API drives an output GPIO pin to a logic HIGH or a logic LOW state.  <a href="group__CSL__GPIO.html#ga590d7d5948be5d650b34e4a93ebe977c">More...</a><br /></td></tr>
+<tr class="separator:ga590d7d5948be5d650b34e4a93ebe977c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadb95634b44da492d117beb409eda8ee2"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#gadb95634b44da492d117beb409eda8ee2">GPIOPinRead_v0</a> (uint32_t baseAddr, uint32_t pinNumber)</td></tr>
+<tr class="memdesc:gadb95634b44da492d117beb409eda8ee2"><td class="mdescLeft">&#160;</td><td class="mdescRight">This API determines the logic level(value) on a specified GPIO pin.  <a href="group__CSL__GPIO.html#gadb95634b44da492d117beb409eda8ee2">More...</a><br /></td></tr>
+<tr class="separator:gadb95634b44da492d117beb409eda8ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3d7a47135d7f565007e6b3b5f9f47598"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#ga3d7a47135d7f565007e6b3b5f9f47598">GPIOPinOutValueRead_v0</a> (uint32_t baseAddr, uint32_t pinNumber)</td></tr>
+<tr class="memdesc:ga3d7a47135d7f565007e6b3b5f9f47598"><td class="mdescLeft">&#160;</td><td class="mdescRight">This API determines the output logic level(value) on a specified GPIO pin.  <a href="group__CSL__GPIO.html#ga3d7a47135d7f565007e6b3b5f9f47598">More...</a><br /></td></tr>
+<tr class="separator:ga3d7a47135d7f565007e6b3b5f9f47598"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7e2450da547bea3df6740acf830ee282"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#ga7e2450da547bea3df6740acf830ee282">GPIOSetIntrType_v0</a> (uint32_t baseAddr, uint32_t pinNumber, uint32_t eventType)</td></tr>
+<tr class="memdesc:ga7e2450da547bea3df6740acf830ee282"><td class="mdescLeft">&#160;</td><td class="mdescRight">This API configures the event type for a specified input GPIO pin. Whenever the selected event occurs on that GPIO pin and if interrupt generation is enabled for that pin, the GPIO module will send an interrupt to CPU.  <a href="group__CSL__GPIO.html#ga7e2450da547bea3df6740acf830ee282">More...</a><br /></td></tr>
+<tr class="separator:ga7e2450da547bea3df6740acf830ee282"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga37d673ab0f1d7aa578bbe9c4ab2ebe81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#ga37d673ab0f1d7aa578bbe9c4ab2ebe81">GPIOIntrEnable_v0</a> (uint32_t baseAddr, uint32_t pinNumber, uint32_t eventType)</td></tr>
+<tr class="memdesc:ga37d673ab0f1d7aa578bbe9c4ab2ebe81"><td class="mdescLeft">&#160;</td><td class="mdescRight">This API enables the configured interrupt event on a specified input GPIO pin to trigger an interrupt request.  <a href="group__CSL__GPIO.html#ga37d673ab0f1d7aa578bbe9c4ab2ebe81">More...</a><br /></td></tr>
+<tr class="separator:ga37d673ab0f1d7aa578bbe9c4ab2ebe81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaa19bf24ccc8507fa3c7106356a49cff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#gaaa19bf24ccc8507fa3c7106356a49cff">GPIOIntrDisable_v0</a> (uint32_t baseAddr, uint32_t pinNumber)</td></tr>
+<tr class="memdesc:gaaa19bf24ccc8507fa3c7106356a49cff"><td class="mdescLeft">&#160;</td><td class="mdescRight">This API disables interrupt generation due to the detection of any event on a specified input GPIO pin.  <a href="group__CSL__GPIO.html#gaaa19bf24ccc8507fa3c7106356a49cff">More...</a><br /></td></tr>
+<tr class="separator:gaaa19bf24ccc8507fa3c7106356a49cff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga29c618bb339d4f835fe1e104d5d1629d"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#ga29c618bb339d4f835fe1e104d5d1629d">GPIOIntrStatus_v0</a> (uint32_t baseAddr, uint32_t pinNumber)</td></tr>
+<tr class="memdesc:ga29c618bb339d4f835fe1e104d5d1629d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This API determines the enabled interrupt status of a specified pin.  <a href="group__CSL__GPIO.html#ga29c618bb339d4f835fe1e104d5d1629d">More...</a><br /></td></tr>
+<tr class="separator:ga29c618bb339d4f835fe1e104d5d1629d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae65c5a17b60ca19ea78c409a56404921"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#gae65c5a17b60ca19ea78c409a56404921">GPIOIntrStatusMask_v0</a> (uint32_t baseAddr, uint32_t bankIdx, uint32_t *intrStatusMask)</td></tr>
+<tr class="memdesc:gae65c5a17b60ca19ea78c409a56404921"><td class="mdescLeft">&#160;</td><td class="mdescRight">This API determines the enabled interrupt status of a specified pin.  <a href="group__CSL__GPIO.html#gae65c5a17b60ca19ea78c409a56404921">More...</a><br /></td></tr>
+<tr class="separator:gae65c5a17b60ca19ea78c409a56404921"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga062378461b97a8547530802d83c9ba7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#ga062378461b97a8547530802d83c9ba7c">GPIOIntrClear_v0</a> (uint32_t baseAddr, uint32_t pinNumber)</td></tr>
+<tr class="memdesc:ga062378461b97a8547530802d83c9ba7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This API clears the enabled interrupt status of a specified GPIO pin.  <a href="group__CSL__GPIO.html#ga062378461b97a8547530802d83c9ba7c">More...</a><br /></td></tr>
+<tr class="separator:ga062378461b97a8547530802d83c9ba7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1cfbe5586a5e24854cda81196f562a61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CSL__GPIO.html#ga1cfbe5586a5e24854cda81196f562a61">GPIOIntrClearMask_v0</a> (uint32_t baseAddr, uint32_t bankIdx, uint32_t pinMask)</td></tr>
+<tr class="memdesc:ga1cfbe5586a5e24854cda81196f562a61"><td class="mdescLeft">&#160;</td><td class="mdescRight">This API clears the enabled interrupt status of specified GPIO pins.  <a href="group__CSL__GPIO.html#ga1cfbe5586a5e24854cda81196f562a61">More...</a><br /></td></tr>
+<tr class="separator:ga1cfbe5586a5e24854cda81196f562a61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -246,7 +194,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_93501a11e921083efbd154e0cdff5f10.html">packages</a></li><li class="navelem"><a class="el" href="dir_b59fa847594ba2e55d37d32c1afb17da.html">ti</a></li><li class="navelem"><a class="el" href="dir_942fd6eb55710291a36b82388287297e.html">drv</a></li><li class="navelem"><a class="el" href="dir_44fc603b449cd2debbe3f8b8d8870215.html">gpio</a></li><li class="navelem"><a class="el" href="GPIO_8h.html">GPIO.h</a></li>
+    <li class="navelem"><a class="el" href="dir_93501a11e921083efbd154e0cdff5f10.html">packages</a></li><li class="navelem"><a class="el" href="dir_b59fa847594ba2e55d37d32c1afb17da.html">ti</a></li><li class="navelem"><a class="el" href="dir_6714554a377e9eea584c5edeb2f684c7.html">csl</a></li><li class="navelem"><a class="el" href="dir_d7c4508447702eee9f9e2fb20993bd7e.html">src</a></li><li class="navelem"><a class="el" href="dir_af962a7d312e0da9e8f277325625cc72.html">ip</a></li><li class="navelem"><a class="el" href="dir_0010db6dd7bd1b631ee0499c1a8cc686.html">gpio</a></li><li class="navelem"><a class="el" href="dir_9cc2d083ac2763451e2e62b10925b5df.html">V0</a></li><li class="navelem"><a class="el" href="gpio_8h.html">gpio.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
