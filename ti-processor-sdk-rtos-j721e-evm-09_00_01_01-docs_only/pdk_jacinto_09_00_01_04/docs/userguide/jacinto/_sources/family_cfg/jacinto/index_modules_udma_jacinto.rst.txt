@@ -1,4 +1,0 @@
-
-.. include:: ../../modules/udma/udma_common_intro.rst.inc
-.. include:: ../../modules/udma/udma_common_footer.rst.inc
-    
