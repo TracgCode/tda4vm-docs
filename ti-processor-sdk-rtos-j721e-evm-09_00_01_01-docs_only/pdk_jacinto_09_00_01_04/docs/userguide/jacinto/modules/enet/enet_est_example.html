@@ -1,0 +1,592 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.7.6.1.3.1. Enet EST Example &mdash; Platform Development Kit (PDK) - JACINTO User Guide</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Platform Development Kit (PDK) - JACINTO User Guide" href="../../index.html"/>
+        <link rel="up" title="4.7. ENET" href="enet.html"/>
+        <link rel="next" title="4.7.6.1.4.1. Enet TSN Example" href="enet_tsn_example.html"/>
+        <link rel="prev" title="4.7.6.1.2.1. Enet lwIP Example" href="enet_lwip_example.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index_jacinto.html" class="icon icon-home"> Platform Development Kit (PDK) - JACINTO User Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09_00_01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../family_cfg/jacinto/index_release_notes_jacinto.html">2. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">3. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../family_cfg/jacinto/index_modules_jacinto.html">4. Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../csl.html">4.1. CSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../freertos.html">4.2. FreeRTOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../family_cfg/jacinto/index_modules_safertos_jacinto.html">4.3. SafeRTOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../osal.html">4.4. OSAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dss.html">4.5. DSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csirx.html">4.6. CSIRX</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="enet.html">4.7. ENET</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="enet.html#introduction">4.7.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enet.html#user-interface">4.7.2. User Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enet.html#lwip-integration">4.7.3. lwIP Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enet.html#tsn-integration">4.7.4. TSN Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enet.html#enet-est-tas-support">4.7.5. Enet EST/TAS Support</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="enet.html#application">4.7.6. Application</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="enet.html#examples">4.7.6.1. Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../fvid2.html">4.8. FVID2 User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gpio.html">4.9. GPIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../i2c.html">4.10. I2C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ipc.html">4.11. IPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mcan.html">4.12. MCAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mcasp.html">4.13. McASP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pm.html">4.14. PM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sa.html">4.15. SA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../family_cfg/jacinto/index_modules_sciclient_jacinto.html">4.16. SCICLIENT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../keywriter.html">4.17. OTP KEYWRITER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spi.html">4.18. SPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ospi.html">4.19. OSPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uart.html">4.20. UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../family_cfg/jacinto/index_modules_udma_jacinto.html">4.21. UDMA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pmic.html">4.22. PMIC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mmcsd.html">4.23. MMCSD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../family_cfg/jacinto/index_modules_lpm_jacinto.html">4.24. Low Power Manager (LPM)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../family_cfg/jacinto/index_boot_jacinto.html">5. Bootloader (SBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../family_cfg/jacinto/index_board_jacinto.html">6. Board/EVM Abstraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../family_cfg/jacinto/index_howto_jacinto.html">7. How to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../family_cfg/jacinto/index_faq_jacinto.html">8. Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../family_cfg/jacinto/index_developer_notes_jacinto.html">9. Developer Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index_jacinto.html">Platform Development Kit (PDK) - JACINTO User Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index_jacinto.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../family_cfg/jacinto/index_modules_jacinto.html"><span class="section-number">4. </span>Modules</a> &raquo;</li>
+      
+          <li><a href="enet.html"><span class="section-number">4.7. </span>ENET</a> &raquo;</li>
+      
+    <li><span class="section-number">4.7.6.1.3.1. </span>Enet EST Example</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="enet-est-example-1">
+<span id="enet-est-example"></span><h1><span class="section-number">4.7.6.1.3.1. </span>Enet EST Example<a class="headerlink" href="#enet-est-example-1" title="Permalink to this headline">¶</a></h1>
+<p>This example application illustrates the configuration and usage of 802.1Qbv Enhanced Scheduled Traffic (EST) with
+CPSW through Enet LLD. The example application opens one DMA TX channel and one DMA RX channel. The TX channel will
+be used to inject test packets into CPSW host port. The RX channel receives packets and just drops them as this
+example doesn’t focus on RX data path.</p>
+<p>The application will also open the MAC port and will wait until the port gets link up with a remote partner (i.e. PC).
+The application then configures the same default EST schedule on the enabled MAC port.</p>
+<img alt="../../_images/est_example_topology.png" src="../../_images/est_example_topology.png" />
+<p>The application uses <code class="docutils literal notranslate"><span class="pre">ENET_MOD_TAS</span></code> API for EST configuration
+and <code class="docutils literal notranslate"><span class="pre">ENET_DMA_API</span></code> for packet transmission.</p>
+<p>It’s worth noting that this example application does not integrate time
+synchronization.  This is relevant when more than one MAC port is enabled and an
+external device (i.e. PC) is used to verify if the transmitted packets are
+meeting the programmed EST schedule (cycle time and time intervals), as CPSW
+CPTS internal clock might be off with respect to the external device’s clock.</p>
+<section id="building-est-example">
+<h2><span class="section-number">4.7.6.1.3.1.1. </span>Building EST example<a class="headerlink" href="#building-est-example" title="Permalink to this headline">¶</a></h2>
+<p>To build the EST example app in PDK, use the following command:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="o">-</span><span class="n">s</span><span class="w"> </span><span class="o">-</span><span class="n">j8</span><span class="w"> </span><span class="n">enet_est_test_freertos</span><span class="w"> </span><span class="n">BOARD</span><span class="o">=&lt;</span><span class="n">BOARD</span><span class="o">&gt;</span><span class="w"> </span><span class="n">CORE</span><span class="o">=&lt;</span><span class="n">CORE</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The example app binary file can be found at the following location:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pdk</span><span class="o">&gt;/</span><span class="n">packages</span><span class="o">/</span><span class="n">ti</span><span class="o">/</span><span class="n">binary</span><span class="o">/</span><span class="n">enet_est_test_freertos</span><span class="o">/</span><span class="n">bin</span><span class="o">/&lt;</span><span class="n">BOARD</span><span class="o">&gt;/</span><span class="n">enet_est_test_freertos_</span><span class="o">&lt;</span><span class="n">CORE</span><span class="o">&gt;</span><span class="n">_release</span><span class="p">.</span><span class="n">xer5f</span>
+</pre></div>
+</div>
+<p>This command will build the EST example app (<code class="docutils literal notranslate"><span class="pre">enet_est_test_freertos</span></code>) using
+the FreeRTOS operating system. Adjust the command according to your specific requirements,
+such as selecting a different operating system or core if needed. By default, the release mode is built.
+You can specify build mode by adding <code class="docutils literal notranslate"><span class="pre">BUILD_PROFILE=debug</span></code> in the instruction.</p>
+<p><strong>Configuration Parameters</strong></p>
+<p>Typically, the application’s parameters that a developer may want to change are:</p>
+<ul class="simple">
+<li><p><strong>MAC port number</strong>.  User can select the MAC port number to test via CLI
+based on the board and core in <em>enet_cpsw_est_main.c</em>.</p></li>
+<li><p><strong>EST schedule</strong>.  User can set different EST schedule by setting a new cycle
+time in <cite>testParams.portTestParams[0].tasControlList.cycleTime</cite> and/or new
+gate control list in <cite>testParams.portTestParams[n].tasControlList.gateCmdList</cite>
+and <cite>testParams.portTestParams[n].tasControlList.listLength</cite>.  Note that the
+EST schedule can be different for each MAC port.</p></li>
+<li><p><strong>CPTS event pool size</strong>. User can increase the pool size to 32 or larger via
+<code class="docutils literal notranslate"><span class="pre">ENET_CFG_CPSW_CPTS_EVENTS_POOL_SIZE</span></code> in enet_cfg.h if interested on
+verifying all timestamps generated for all TX test packets.</p></li>
+</ul>
+<p>This application supports different MAC ports based on the core and board it is running.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Core</p></th>
+<th class="head"><p>MAC Ports</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="2"><p>mcu2_0</p></td>
+<td><p>ENET_MAC_PORT_1 [RGMII]</p></td>
+</tr>
+<tr class="row-odd"><td><p>ENET_MAC_PORT_2 [QSGMII]</p></td>
+</tr>
+<tr class="row-even"><td><p>mcu2_1</p></td>
+<td rowspan="2"><p>ENET_MAC_PORT_1 [RGMII]</p></td>
+</tr>
+<tr class="row-odd"><td><p>mcu1_0</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="application-functionality">
+<h2><span class="section-number">4.7.6.1.3.1.2. </span>Application functionality<a class="headerlink" href="#application-functionality" title="Permalink to this headline">¶</a></h2>
+<p>The EST schedule programmed by this example application is shown below:</p>
+<img alt="../../_images/EST_Schedule_Diagram.png" src="../../_images/EST_Schedule_Diagram.png" />
+<p>This EST schedule is 250 usecs long and is composed of 4 intervals, each with a gate mask that enables
+transmission of 2 priorities. There is no interval stretching or truncation in this sample schedule.</p>
+<p>Each of the 8 gates (one per priority) can be in one of two states:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Open: Frames in the corresponding queue can be selected for transmission.
+This is represented by ‘o’ in the Gate Control column of previous table.</p></li>
+<li><p>Closed: Frames in the corresponding queue are not selected for transmission.
+This is represented by ‘C’ in the Gate Control column.</p></li>
+</ul>
+</div></blockquote>
+<p>The gate control list for the mentioned EST schedule will be as follows:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Gate Control</p></th>
+<th class="head"><p>Time Interval</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ooCCCCCC</p></td>
+<td><p>62.5 usecs</p></td>
+</tr>
+<tr class="row-odd"><td><p>CCooCCCC</p></td>
+<td><p>62.5 usecs</p></td>
+</tr>
+<tr class="row-even"><td><p>CCCCooCC</p></td>
+<td><p>62.5 usecs</p></td>
+</tr>
+<tr class="row-odd"><td><p>CCCCCCoo</p></td>
+<td><p>62.5 usecs</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>The <em>priority</em> being referred to in the EST schedule described above corresponds
+to the CPSW destination port hardware <em>switch priority</em>.  For VLAN tagged packets
+that ingress through CPSW host port, the hardware switch priority can be determined
+by either the CPPI channel number (<em>P0_RX_REMAP_VLAN = 0</em>) or the packet priority
+value from the VLAN tag (<em>P0_RX_REMAP_VLAN = 1</em>).</p>
+<p>The IOCTLs used to program the EST schedule are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ENET_TAS_IOCTL_SET_STATE</span></code> to set the EST state to <em>RESET</em>
+(<code class="docutils literal notranslate"><span class="pre">ENET_TAS_RESET</span></code>) before any other EST/TAS IOCTL.  And subsequently,
+after the administrative  list has been programmed, to set EST state to <em>ENABLE</em>
+(<code class="docutils literal notranslate"><span class="pre">ENET_TAS_ENABLE</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENET_TAS_IOCTL_SET_ADMIN_LIST</span></code> to program the default EST administrative
+control list.  The administrative base time, cycle time and gate control list
+are passed via this IOCTL command.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENET_TAS_IOCTL_GET_OPER_LIST_STATUS</span></code> is called as many times as needed to
+check if the operational list has been updated.</p></li>
+</ul>
+<p>Additionally, the following <em>getter</em> IOCTLs are called for informational reasons:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ENET_TAS_IOCTL_GET_STATE</span></code> to get the current EST/TAS state.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENET_TAS_IOCTL_GET_ADMIN_LIST</span></code> to get the driver’s version of the
+administrative list after one has been programmed.  The admin list is then
+printed to serial console.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENET_TAS_IOCTL_GET_OPER_LIST</span></code> to get the driver’s version of the
+operational list after one has been programmed.  The oper list is then
+printed to serial console.</p></li>
+</ul>
+</section>
+<section id="est-packet-timestamping">
+<h2><span class="section-number">4.7.6.1.3.1.3. </span>EST Packet Timestamping<a class="headerlink" href="#est-packet-timestamping" title="Permalink to this headline">¶</a></h2>
+<p>The example application configures the EST administrative base time to be equal to the
+current time + ENET_APP_EST_ADMIN_LIST_DELAY (2 secs).
+This is useful to normalize the timestamps of the transmitted packets and verify that
+they are being sent on the appropriate time intervals.</p>
+<p>When enabled via serial console menu (option ‘t’), CPSW ESTF will be configured to generate timestamps on every express packet.
+Each timestamp generates a CPTS interrupt which the Enet LLD driver services, the driver copies the timestamp event information
+into a software pool where the application can then retrieve. This CPTS event pool is shared among all MAC ports.</p>
+<p>The timestamp option in this example application works together with option ‘T’ which sents a short stream of test packets.
+At the end of the transmission, the application will retrieve the available timestamps and verify if they met the programmed EST schedule.</p>
+<p>Packets are transmitted using regular Enet LLD’s <code class="docutils literal notranslate"><span class="pre">EnetDma_submitTxPktQ()</span></code> API.</p>
+<p>The pool size determines the maximum number of events that the driver can store
+until the application retrieves them.  The default pool size is 32, but it’s
+configurable via <code class="docutils literal notranslate"><span class="pre">ENET_CFG_CPSW_CPTS_EVENTS_POOL_SIZE</span></code> in enet_cfg.h.</p>
+<p>The relevant IOCTLs used by this application for EST timestamping are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CPSW_MACPORT_IOCTL_EST_ENABLE_TIMESTAMP</span></code> to enable timestamping on a given MAC port.
+Application can choose the type of timestamping mode (i.e. timestamp all transmitted packets,
+timestamp only first packet in each interval, etc).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CPSW_MACPORT_IOCTL_EST_DISABLE_TIMESTAMP</span></code> to disable timestamping on a given MAC port.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CPSW_CPTS_IOCTL_LOOKUP_EST_EVENT</span></code> to retrieve timestamp events from the driver’s internal event pool.
+The application must specify the MAC port for which the events must be looked up in the event pool.</p></li>
+</ul>
+<p><strong>EST State Control</strong></p>
+<p>The following options are provided by the application to change the EST state
+on all enabled MAC ports:</p>
+<ul class="simple">
+<li><p>Set EST state to <em>ENABLE</em>.</p></li>
+<li><p>Set EST state to <em>DISABLE</em>.</p></li>
+<li><p>Set EST state to <em>RESET</em>.</p></li>
+</ul>
+<p><strong>Miscellaneous Options</strong></p>
+<p>The following helper options are also provided in the application’s test menu:</p>
+<ul class="simple">
+<li><p>Get current time</p></li>
+<li><p>Print statistics</p></li>
+<li><p>Print statistics</p></li>
+<li><p>Stop the test</p></li>
+<li><p>Print EST status</p></li>
+</ul>
+</section>
+<section id="application-flow">
+<h2><span class="section-number">4.7.6.1.3.1.4. </span>Application Flow<a class="headerlink" href="#application-flow" title="Permalink to this headline">¶</a></h2>
+<p>The most important steps related to the EST configuration performed by the application
+are shown in the following sequence diagram:</p>
+<img alt="../../_images/CpswEst_ExampleApp.png" src="../../_images/CpswEst_ExampleApp.png" />
+</section>
+<section id="running-enet-est-example">
+<h2><span class="section-number">4.7.6.1.3.1.5. </span>Running ENET EST example<a class="headerlink" href="#running-enet-est-example" title="Permalink to this headline">¶</a></h2>
+<p>The simplest test that one can run with the CPSW EST example consists of:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Enabling EST and programming a default EST schedule on the selected MAC port.</p></li>
+<li><p>Sending test packets from example app with different priorities.</p></li>
+<li><p>Verify that packets are transmitted within the time intervals corresponding to the packet priority.</p></li>
+</ul>
+</div></blockquote>
+<p>After building the example, follow the given steps to run the test:</p>
+<blockquote>
+<div><ul>
+<li><p>Launch a CCS debug session, load and run <code class="docutils literal notranslate"><span class="pre">enet_est_test_freertos_&lt;CORE&gt;_release.xer5f</span></code>
+binary file to the respective core in which the binary is built. Alternatively, the example application
+can be loaded using any other boot method such as MMC/SD.</p></li>
+<li><p>Logs will be printed in Main UART port 0 or MCU UART port 1 based on which core you are running the example.
+Below is an example of the log when running EST on J7200 on mcu2_0 core:</p>
+<p>Binary: &lt;pdk&gt;/packages/ti/binary/enet_est_test_freertos/bin/j7200_evm/enet_est_test_freertos_mcu2_0_release.xer5f:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>==========================
+      Enet EST App
+==========================
+
+Select peripheral type
+1: CPSW_5G
+1
+Select MAC port
+0: ENET_MAC_PORT_1 - Q/SGMII (based on which board is attached)
+1: ENET_MAC_PORT_2 - RGMII (GESI)
+0
+EnetBoard_setupPorts: 4 of 4 ports configurations found
+Configuring SerDes lane 2 for QSGMII
+CPSW_5G Test on MAIN NAVSS
+Mdio_open: MDIO manual mode enabled
+EnetPhy_bindDriver: PHY 16: OUI:0001c1 Model:27 Ver:00 &lt;-&gt; &#39;vsc8514&#39; : OK
+initQs() txFreePktInfoQ initialized with 128 pkts
+Port 1: Waiting for link up...
+CpswMacPort_checkSgmiiStatus: MAC 1: SGMII link parter config port: link up: 1-Gbps Full-Duplex
+Cpsw_handleLinkUp: Port 1: Link up: 1-Gbps Full-Duplex
+MAC Port 1: link up
+Port 1: Link is up
+TAS state is set to 2
+MAC Port 1: suggested start time: 5590660154
+
+MAC 1: Admin List
+-------------------------------------------
+Gate mask=ooCCCCCC (0xc0), start=0 ns, end=62499 ns, dur=62500 ns
+Gate mask=CCooCCCC (0x30), start=62500 ns, end=124999 ns, dur=62500 ns
+Gate mask=CCCCooCC (0x0c), start=125000 ns, end=187499 ns, dur=62500 ns
+Gate mask=CCCCCCoo (0x03), start=187500 ns, end=249999 ns, dur=62500 ns
+Gate mask=CCCCCCCC (0x00), start=250000 ns, end=381063 ns, dur=131064 ns
+Cycle time=381064 ns
+Base time=5590660154 ns
+TAS state is set to 1
+
+MAC 1: Oper List
+-------------------------------------------
+Gate mask=ooCCCCCC (0xc0), start=0 ns, end=62503 ns, dur=62504 ns
+Gate mask=CCooCCCC (0x30), start=62504 ns, end=125007 ns, dur=62504 ns
+Gate mask=CCCCooCC (0x0c), start=125008 ns, end=187511 ns, dur=62504 ns
+Gate mask=CCCCCCoo (0x03), start=187512 ns, end=250015 ns, dur=62504 ns
+Gate mask=CCCCCCCC (0x00), start=250016 ns, end=381079 ns, dur=131064 ns
+Cycle time=381064 ns
+Base time=5590660154 ns
+MAC addr: 70:ff:76:1d:88:4a
+
+CPSW EST Test Menu:
+EST control list tests:
+&#39;T&#39;  -  Send test packets from host port
+EST state:
+&#39;E&#39;  -  Set EST state to &#39;ENABLE&#39;
+&#39;D&#39;  -  Set EST state to &#39;DISABLE&#39;
+&#39;R&#39;  -  Set EST state to &#39;RESET&#39;
+Others:
+&#39;c&#39;  -  Get current time
+&#39;t&#39;  -  Toggle printing timestamps
+&#39;S&#39;  -  Print EST status
+&#39;s&#39;  -  Print statistics
+&#39;r&#39;  -  Reset statistics
+&#39;x&#39;  -  Stop the test
+&#39;h&#39;  -  Show this menu
+
+
+Enable timestamp printing
+
+MAC 1: EST timestamp verification
+-------------------------------------------
+Programmed EST time intervals:
+Gate mask=ooCCCCCC (0xc0), start=0 ns, end=62503 ns
+Gate mask=CCooCCCC (0x30), start=62504 ns, end=125007 ns
+Gate mask=CCCCooCC (0x0c), start=125008 ns, end=187511 ns
+Gate mask=CCCCCCoo (0x03), start=187512 ns, end=250015 ns
+Gate mask=CCCCCCCC (0x00), start=250016 ns, end=381064 ns
+
+Retrieved EST timestamps:
+Note: last 8 timestamps per port are stored with current CPTS pool size (128)
+MAC Port 1: packet with seqId 1 priority 7 timestamp 7249051028 (norm 4352, 346) interval (0, 62503) : PASS
+MAC Port 1: packet with seqId 2 priority 6 timestamp 7249051732 (norm 4352, 1050) interval (0, 62503) : PASS
+MAC Port 1: packet with seqId 3 priority 5 timestamp 7249113532 (norm 4352, 62850) interval (62504, 125007) : PASS
+MAC Port 1: packet with seqId 4 priority 4 timestamp 7249114236 (norm 4352, 63554) interval (62504, 125007) : PASS
+MAC Port 1: packet with seqId 5 priority 3 timestamp 7249176044 (norm 4352, 125362) interval (125008, 187511) : PASS
+MAC Port 1: packet with seqId 6 priority 2 timestamp 7249176748 (norm 4352, 126066) interval (125008, 187511) : PASS
+MAC Port 1: packet with seqId 7 priority 1 timestamp 7249238548 (norm 4352, 187866) interval (187512, 250015) : PASS
+MAC Port 1: packet with seqId 8 priority 0 timestamp 7249239252 (norm 4352, 188570) interval (187512, 250015) : PASS
+EST Self Test Result: PASS
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>Verification</strong></p>
+<p>This example supports single Macport at a time right now. By running the example and mentioned above we can check if the traffic
+is sent according to the EST schedule or not by retreiving and checking CPTS hardware timestamp events. If “EST Self Test Result: PASS”
+is printed that means the test has passed by sending the traffic in the scheduled time intervals.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="enet_tsn_example.html" class="btn btn-neutral float-right" title="4.7.6.1.4.1. Enet TSN Example" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="enet_lwip_example.html" class="btn btn-neutral" title="4.7.6.1.2.1. Enet lwIP Example" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2020</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'09_00_01',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

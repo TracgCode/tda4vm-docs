@@ -1,0 +1,509 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.7.6.1.4.1. Enet TSN Example &mdash; Platform Development Kit (PDK) - JACINTO User Guide</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Platform Development Kit (PDK) - JACINTO User Guide" href="../../index.html"/>
+        <link rel="up" title="4.7. ENET" href="enet.html"/>
+        <link rel="next" title="4.8. FVID2 User Guide" href="../fvid2.html"/>
+        <link rel="prev" title="4.7.6.1.3.1. Enet EST Example" href="enet_est_example.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index_jacinto.html" class="icon icon-home"> Platform Development Kit (PDK) - JACINTO User Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09_00_01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../family_cfg/jacinto/index_release_notes_jacinto.html">2. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">3. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../family_cfg/jacinto/index_modules_jacinto.html">4. Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../csl.html">4.1. CSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../freertos.html">4.2. FreeRTOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../family_cfg/jacinto/index_modules_safertos_jacinto.html">4.3. SafeRTOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../osal.html">4.4. OSAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dss.html">4.5. DSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csirx.html">4.6. CSIRX</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="enet.html">4.7. ENET</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="enet.html#introduction">4.7.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enet.html#user-interface">4.7.2. User Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enet.html#lwip-integration">4.7.3. lwIP Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enet.html#tsn-integration">4.7.4. TSN Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enet.html#enet-est-tas-support">4.7.5. Enet EST/TAS Support</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="enet.html#application">4.7.6. Application</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="enet.html#examples">4.7.6.1. Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../fvid2.html">4.8. FVID2 User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gpio.html">4.9. GPIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../i2c.html">4.10. I2C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ipc.html">4.11. IPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mcan.html">4.12. MCAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mcasp.html">4.13. McASP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pm.html">4.14. PM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sa.html">4.15. SA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../family_cfg/jacinto/index_modules_sciclient_jacinto.html">4.16. SCICLIENT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../keywriter.html">4.17. OTP KEYWRITER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spi.html">4.18. SPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ospi.html">4.19. OSPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uart.html">4.20. UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../family_cfg/jacinto/index_modules_udma_jacinto.html">4.21. UDMA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pmic.html">4.22. PMIC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mmcsd.html">4.23. MMCSD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../family_cfg/jacinto/index_modules_lpm_jacinto.html">4.24. Low Power Manager (LPM)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../family_cfg/jacinto/index_boot_jacinto.html">5. Bootloader (SBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../family_cfg/jacinto/index_board_jacinto.html">6. Board/EVM Abstraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../family_cfg/jacinto/index_howto_jacinto.html">7. How to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../family_cfg/jacinto/index_faq_jacinto.html">8. Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../family_cfg/jacinto/index_developer_notes_jacinto.html">9. Developer Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index_jacinto.html">Platform Development Kit (PDK) - JACINTO User Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index_jacinto.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../family_cfg/jacinto/index_modules_jacinto.html"><span class="section-number">4. </span>Modules</a> &raquo;</li>
+      
+          <li><a href="enet.html"><span class="section-number">4.7. </span>ENET</a> &raquo;</li>
+      
+    <li><span class="section-number">4.7.6.1.4.1. </span>Enet TSN Example</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="enet-tsn-example-1">
+<span id="enet-tsn-example"></span><h1><span class="section-number">4.7.6.1.4.1. </span>Enet TSN Example<a class="headerlink" href="#enet-tsn-example-1" title="Permalink to this headline">¶</a></h1>
+<section id="makefile">
+<h2><span class="section-number">4.7.6.1.4.1.1. </span>Makefile<a class="headerlink" href="#makefile" title="Permalink to this headline">¶</a></h2>
+<p>For an example of the app makefile, please refer to <code class="docutils literal notranslate"><span class="pre">&lt;enet&gt;/examples/enet_tsn_example/makefile</span></code>.
+There are some important notes to consider:</p>
+<ul>
+<li><p>To include TSN components, add the following macros:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">INCLUDE_INTERNAL_INTERFACES</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">tsn_gptp</span><span class="w"> </span><span class="n">tsn_combase</span><span class="w"> </span><span class="n">tsn_unibase</span>
+<span class="n">COMP_LIST_COMMON</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">tsn_combase</span><span class="w"> </span><span class="n">tsn_unibase</span><span class="w"> </span><span class="n">tsn_gptp</span>
+</pre></div>
+</div>
+</li>
+<li><p>Ensure that the <code class="docutils literal notranslate"><span class="pre">tsninit.c</span></code> file is included in the app’s source:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">SRCS_COMMON</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">main</span><span class="p">.</span><span class="n">c</span><span class="w"> </span><span class="n">tsninit</span><span class="p">.</span><span class="n">c</span>
+</pre></div>
+</div>
+</li>
+<li><p>If the log task is used, define the <code class="docutils literal notranslate"><span class="pre">TSN_USE_LOG_BUFFER</span></code> macro:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CFLAGS_LOCAL_COMMON</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="o">-</span><span class="n">DTSN_USE_LOG_BUFFER</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</li>
+<li><p>Include the <code class="docutils literal notranslate"><span class="pre">tsn_tilld_include.h</span></code> at the beginning to ensure the correct
+inclusion of <em>combase</em> headers:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CFLAGS_LOCAL_COMMON</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="o">-</span><span class="n">include</span><span class="w"> </span><span class="n">$</span><span class="p">(</span><span class="n">PDK_TSN_COMP_PATH</span><span class="p">)</span><span class="o">/</span><span class="n">tsn</span><span class="o">-</span><span class="n">stack</span><span class="o">/</span><span class="n">tsn_tilld_include</span><span class="p">.</span><span class="n">h</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="build-enet-tsn-example">
+<h2><span class="section-number">4.7.6.1.4.1.2. </span>Build Enet TSN example<a class="headerlink" href="#build-enet-tsn-example" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Navigate to the &lt;pdk&gt;/packages/ti/build directory:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">&lt;</span><span class="n">pdk</span><span class="o">&gt;/</span><span class="n">packages</span><span class="o">/</span><span class="n">ti</span><span class="o">/</span><span class="n">build</span>
+</pre></div>
+</div>
+</li>
+<li><p>Build the TSN modules (tsn_unibase, tsn_combase, tsn_gptp):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">tsn_unibase</span><span class="w"> </span><span class="n">tsn_combase</span><span class="w"> </span><span class="n">tsn_gptp</span>
+</pre></div>
+</div>
+</li>
+<li><p>To clean the build and remove generated files:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">tsn_unibase_clean</span><span class="w"> </span><span class="n">tsn_combase_clean</span><span class="w"> </span><span class="n">tsn_gptp_clean</span>
+</pre></div>
+</div>
+</li>
+<li><p>You can specify the build mode as either release or debug.
+By default, the release mode is built. To build in debug mode,
+use the <code class="docutils literal notranslate"><span class="pre">BUILD_PROFILE=debug</span></code> option:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">tsn_unibase</span><span class="w"> </span><span class="n">tsn_combase</span><span class="w"> </span><span class="n">tsn_gptp</span><span class="w"> </span><span class="n">BUILD_PROFILE</span><span class="o">=</span><span class="n">debug</span>
+</pre></div>
+</div>
+</li>
+<li><p>If you want to build with C++ compiling rules, use the <code class="docutils literal notranslate"><span class="pre">CPLUSPLUS_BUILD=yes</span></code> option:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">tsn_unibase</span><span class="w"> </span><span class="n">tsn_combase</span><span class="w"> </span><span class="n">tsn_gptp</span><span class="w"> </span><span class="n">CPLUSPLUS_BUILD</span><span class="o">=</span><span class="n">yes</span>
+</pre></div>
+</div>
+</li>
+<li><p>To build the TSN example app in the PDK, use the following command:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">enet_tsn_example_freertos</span><span class="w"> </span><span class="n">CORE</span><span class="o">=</span><span class="n">mcu2_0</span>
+</pre></div>
+</div>
+<p>The example app binary file can be found at the following location:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pdk</span><span class="o">&gt;/</span><span class="n">packages</span><span class="o">/</span><span class="n">ti</span><span class="o">/</span><span class="n">binary</span><span class="o">/</span><span class="n">enet_tsn_example_freertos</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">j7200_evm</span><span class="o">/</span><span class="n">enet_tsn_example_freertos_mcu2_0_release</span><span class="p">.</span><span class="n">xer5f</span>
+</pre></div>
+</div>
+<p>This command will build the TSN example app (<code class="docutils literal notranslate"><span class="pre">enet_tsn_example_freertos</span></code>) using
+the FreeRTOS operating system and targeting the <em>mcu2_0</em> core.  Adjust the command
+according to your specific requirements, such as selecting a different operating
+system or core if needed.</p>
+</li>
+</ul>
+</section>
+<section id="running-enet-tsn-example">
+<h2><span class="section-number">4.7.6.1.4.1.3. </span>Running Enet TSN example<a class="headerlink" href="#running-enet-tsn-example" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Launch a CCS debug session, load and run <code class="docutils literal notranslate"><span class="pre">enet_tsn_example_freertos_mcu2_0_release.xer5f</span></code>
+binary file to the <em>MAIN_Cortex_R5_0_0</em>.  Alternatively, the example application
+can be loaded using any other boot method such as MMC/SD.</p></li>
+<li><p>Logs will be printed in Main UART port 0.  Below is an example of the log when
+gPTP works in slave mode:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>==========================
+         TSN App
+==========================
+EnetBoard_setupPorts: 2 of 2 ports configurations found
+main: EnetBoard_setupPorts() done
+main: EnetApp_init() done
+tsnapp_task:gptp start done!
+CPU Load: 2%
+gptp_task: started.
+EnetMcm: CPSW_9G on MAIN NAVSS
+Mdio_open: MDIO manual mode enabled
+PHY 0 is alive
+PHY 4 is alive
+EnetPhy_bindDriver: PHY 0: OUI:080028 Model:29 Ver:00 &lt;-&gt; &#39;Dp83tg721&#39; : OK
+EnetPhy_bindDriver: PHY 4: OUI:080028 Model:29 Ver:00 &lt;-&gt; &#39;Dp83tg721&#39; : OK
+log_task: started.
+unibase-1.1.4-46b7374
+INF:gptp:gptpnet_init:Open lldtsync OK!
+INF:gptp:000000-624234:domainIndex=0, GM changed old=00:00:00:00:00:00:00:00, new=70:FF:76:FF:FE:1D:9B:77
+INF:gptp:set_phase_offsetGM:domainNumber=0, New adjustment(New GM?)
+Cpsw_handleLinkUp: Port 1: Link up: 1-Gbps Full-Duplex
+Cpsw_handleLinkUp: Port 2: Link up: 1-Gbps Full-Duplex
+MAC Port 1: link up
+MAC Port 2: link up
+INF:gptp:index=1 speed=1000, duplex=full, ptpdev=tilld0
+INF:gptp:index=2 speed=1000, duplex=full, ptpdev=tilld1
+...
+INF:gptp:set_phase_offsetGM:domainNumber=0, New adjustment(New GM?)
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment, diff=686848947
+WRN:gptp:gptpclock_setoffset64:clockIndex=1, domainNumber=0, can&#39;t set in the time. the result must be inaccurate
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=210489
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=212961
+INF:gptp:clock_master_sync_receive:computeGmRateRatio:domainNumber=0 unstable rate=19781ppb (timeleap_future)
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 232742ppb
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=201161
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 339521ppb
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=182536
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 373116ppb
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=161714
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 368386ppb
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=141167
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 345162ppb
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=121872
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 314067ppb
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=104701
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 280212ppb
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=89613
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 249210ppb
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=76477
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 220595ppb
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=65129
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 194956ppb
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=55384
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 172395ppb
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=47051
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 152814ppb
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=39952
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 135971ppb
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=33854
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 121469ppb
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=28696
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 108546ppb
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=24363
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 98255ppb
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=20682
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 89492ppb
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=17551
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 81991ppb
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=14889
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 75586ppb
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=12627
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 70128ppb
+INF:gptp:set_phase_offsetGM:domainNumber=0, offset adjustment by Freq., diff=10710
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 65499ppb
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 61563ppb
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 58249ppb
+INF:gptp:domainNumber=0, clock_master_sync_receive:the master clock rate to 55383ppb
+...
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="verification">
+<h2><span class="section-number">4.7.6.1.4.1.4. </span>Verification<a class="headerlink" href="#verification" title="Permalink to this headline">¶</a></h2>
+<p><strong>Single port</strong></p>
+<p>Connect a port to a Linux PC and run <code class="docutils literal notranslate"><span class="pre">gptp2d</span></code> from the PC.
+The expected log from the slave side will be stable and reprinted like this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="nl">INF</span><span class="p">:</span><span class="n">gptp</span><span class="o">:</span><span class="n">domainNumber</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">clock_master_sync_receive</span><span class="o">:</span><span class="n">the</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="n">clock</span><span class="w"> </span><span class="n">rate</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="mi">65499</span><span class="n">ppb</span>
+<span class="nl">INF</span><span class="p">:</span><span class="n">gptp</span><span class="o">:</span><span class="n">domainNumber</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">clock_master_sync_receive</span><span class="o">:</span><span class="n">the</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="n">clock</span><span class="w"> </span><span class="n">rate</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="mi">61563</span><span class="n">ppb</span>
+<span class="nl">INF</span><span class="p">:</span><span class="n">gptp</span><span class="o">:</span><span class="n">domainNumber</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">clock_master_sync_receive</span><span class="o">:</span><span class="n">the</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="n">clock</span><span class="w"> </span><span class="n">rate</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="mi">58249</span><span class="n">ppb</span>
+<span class="nl">INF</span><span class="p">:</span><span class="n">gptp</span><span class="o">:</span><span class="n">domainNumber</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">clock_master_sync_receive</span><span class="o">:</span><span class="n">the</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="n">clock</span><span class="w"> </span><span class="n">rate</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="mi">55383</span><span class="n">ppb</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+<p>Instead of displaying the <code class="docutils literal notranslate"><span class="pre">clock_master_sync_receive:...</span></code> log, the following log
+will be printed in the case of the master log:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">domain</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="n">nsec</span><span class="p">,</span><span class="w"> </span><span class="n">hw</span><span class="o">-</span><span class="n">adjrate</span><span class="o">=</span><span class="mi">0</span><span class="n">ppb</span>
+<span class="w">        </span><span class="n">gmsync</span><span class="o">=</span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="n">last_setts64</span><span class="o">=</span><span class="mi">0</span><span class="n">nsec</span>
+<span class="n">domain</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="n">nsec</span><span class="p">,</span><span class="w"> </span><span class="n">hw</span><span class="o">-</span><span class="n">adjrate</span><span class="o">=</span><span class="mi">0</span><span class="n">ppb</span>
+<span class="w">        </span><span class="n">gmsync</span><span class="o">=</span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="n">last_setts64</span><span class="o">=</span><span class="mi">0</span><span class="n">nsec</span>
+<span class="n">CPU</span><span class="w"> </span><span class="n">Load</span><span class="o">:</span><span class="w"> </span><span class="mi">2</span><span class="o">%</span>
+<span class="n">domain</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="n">nsec</span><span class="p">,</span><span class="w"> </span><span class="n">hw</span><span class="o">-</span><span class="n">adjrate</span><span class="o">=</span><span class="mi">0</span><span class="n">ppb</span>
+<span class="w">        </span><span class="n">gmsync</span><span class="o">=</span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="n">last_setts64</span><span class="o">=</span><span class="mi">0</span><span class="n">nsec</span>
+<span class="n">CPU</span><span class="w"> </span><span class="n">Load</span><span class="o">:</span><span class="w"> </span><span class="mi">2</span><span class="o">%</span>
+<span class="n">domain</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="n">nsec</span><span class="p">,</span><span class="w"> </span><span class="n">hw</span><span class="o">-</span><span class="n">adjrate</span><span class="o">=</span><span class="mi">0</span><span class="n">ppb</span>
+<span class="w">        </span><span class="n">gmsync</span><span class="o">=</span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="n">last_setts64</span><span class="o">=</span><span class="mi">0</span><span class="n">nsec</span>
+<span class="n">CPU</span><span class="w"> </span><span class="n">Load</span><span class="o">:</span><span class="w"> </span><span class="mi">2</span><span class="o">%</span>
+<span class="n">domain</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="n">nsec</span><span class="p">,</span><span class="w"> </span><span class="n">hw</span><span class="o">-</span><span class="n">adjrate</span><span class="o">=</span><span class="mi">0</span><span class="n">ppb</span>
+<span class="w">        </span><span class="n">gmsync</span><span class="o">=</span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="n">last_setts64</span><span class="o">=</span><span class="mi">0</span><span class="n">nsec</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+<p><strong>Multiple ports</strong></p>
+<p>In this function, gPTP is operating as a switch. The availability of this feature
+is determined by the board configuration rather than the gPTP stack.
+If a board enables multiple MAC ports, the gPTP function should operate properly.
+To test this function, please connect two PCs to two ports of the EVM.</p>
+<p>When the EVM board acts as the master, only the master log will be printed out,
+while the two PCs will print the slave log.  On the other hand, if one of the PCs
+acts as the master, the slave log will be printed by the other PC and the EVM,
+while the master PC will print the master log.</p>
+<p>To identify which machine is the master, please check the log:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="nl">INF</span><span class="p">:</span><span class="n">gptp</span><span class="o">:</span><span class="mo">001</span><span class="mi">809-750000</span><span class="o">:</span><span class="n">domainIndex</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">GM</span><span class="w"> </span><span class="n">changed</span><span class="w"> </span><span class="n">old</span><span class="o">=</span><span class="mi">24</span><span class="o">:</span><span class="mi">76</span><span class="o">:</span><span class="mi">25</span><span class="o">:</span><span class="n">FF</span><span class="o">:</span><span class="n">FE</span><span class="o">:</span><span class="mi">96</span><span class="o">:</span><span class="mi">6</span><span class="n">C</span><span class="o">:</span><span class="mi">41</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="o">=</span><span class="mi">70</span><span class="o">:</span><span class="n">FF</span><span class="o">:</span><span class="mi">76</span><span class="o">:</span><span class="n">FF</span><span class="o">:</span><span class="n">FE</span><span class="o">:</span><span class="mi">1</span><span class="n">D</span><span class="o">:</span><span class="mi">9</span><span class="n">B</span><span class="o">:</span><span class="mi">77</span>
+</pre></div>
+</div>
+<p>In this case, the machine with the source MAC address of <code class="docutils literal notranslate"><span class="pre">70:FF:76:FF:FE:1D:9B:77</span></code> is the master.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../fvid2.html" class="btn btn-neutral float-right" title="4.8. FVID2 User Guide" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="enet_est_example.html" class="btn btn-neutral" title="4.7.6.1.3.1. Enet EST Example" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2020</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'09_00_01',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

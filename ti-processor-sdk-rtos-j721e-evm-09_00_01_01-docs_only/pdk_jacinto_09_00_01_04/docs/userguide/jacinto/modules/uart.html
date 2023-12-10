@@ -1,0 +1,534 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.20. UART &mdash; Platform Development Kit (PDK) - JACINTO User Guide</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Platform Development Kit (PDK) - JACINTO User Guide" href="../index.html"/>
+        <link rel="up" title="4. Modules" href="../family_cfg/jacinto/index_modules_jacinto.html"/>
+        <link rel="next" title="4.21. UDMA" href="../family_cfg/jacinto/index_modules_udma_jacinto.html"/>
+        <link rel="prev" title="4.19. OSPI" href="ospi.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index_jacinto.html" class="icon icon-home"> Platform Development Kit (PDK) - JACINTO User Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09_00_01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_release_notes_jacinto.html">2. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">3. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../family_cfg/jacinto/index_modules_jacinto.html">4. Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="csl.html">4.1. CSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freertos.html">4.2. FreeRTOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../family_cfg/jacinto/index_modules_safertos_jacinto.html">4.3. SafeRTOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osal.html">4.4. OSAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dss.html">4.5. DSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="csirx.html">4.6. CSIRX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enet/enet.html">4.7. ENET</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fvid2.html">4.8. FVID2 User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpio.html">4.9. GPIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i2c.html">4.10. I2C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipc.html">4.11. IPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcan.html">4.12. MCAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcasp.html">4.13. McASP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pm.html">4.14. PM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sa.html">4.15. SA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../family_cfg/jacinto/index_modules_sciclient_jacinto.html">4.16. SCICLIENT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keywriter.html">4.17. OTP KEYWRITER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spi.html">4.18. SPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ospi.html">4.19. OSPI</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.20. UART</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">4.20.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-interface">4.20.2. User Interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#driver-configuration">4.20.2.1. Driver Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apis">4.20.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#application">4.20.3. Application</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#examples">4.20.3.1. Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../family_cfg/jacinto/index_modules_udma_jacinto.html">4.21. UDMA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pmic.html">4.22. PMIC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmcsd.html">4.23. MMCSD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../family_cfg/jacinto/index_modules_lpm_jacinto.html">4.24. Low Power Manager (LPM)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_boot_jacinto.html">5. Bootloader (SBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_board_jacinto.html">6. Board/EVM Abstraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_howto_jacinto.html">7. How to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_faq_jacinto.html">8. Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_developer_notes_jacinto.html">9. Developer Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index_jacinto.html">Platform Development Kit (PDK) - JACINTO User Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index_jacinto.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../family_cfg/jacinto/index_modules_jacinto.html"><span class="section-number">4. </span>Modules</a> &raquo;</li>
+      
+    <li><span class="section-number">4.20. </span>UART</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="uart">
+<h1><span class="section-number">4.20. </span>UART<a class="headerlink" href="#uart" title="Permalink to this headline">¶</a></h1>
+<section id="introduction">
+<h2><span class="section-number">4.20.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Driver enables UART’s available on SOC for reading and writing to any
+peripherals on board. Additionally it supports simple APIs for
+Console/STDIO operations.</p>
+<p class="rubric" id="uart-modes-of-operation">Modes of Operation</p>
+<p>Following modes of operations are supported</p>
+<p><strong>UART_MODE_BLOCKING</strong>: In this mode, read and write APIs, blocks on
+semaphore until required operation is complete. By default, UART driver
+operates in blocking mode. In this mode, code execution of a task blocks
+until UART transaction is complete. While transaction is in progress
+additional tasks pending requests will remain in blocked state waiting
+for semaphore.</p>
+<p><strong>UART_MODE_CALLBACK</strong>: In this mode, read and write operation returns
+immediately. On trigger of hardware Interrupt (hwi) callback function
+gets triggered.</p>
+</section>
+<section id="user-interface">
+<h2><span class="section-number">4.20.2. </span>User Interface<a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h2>
+<section id="driver-configuration">
+<h3><span class="section-number">4.20.2.1. </span>Driver Configuration<a class="headerlink" href="#driver-configuration" title="Permalink to this headline">¶</a></h3>
+<p class="rubric" id="uart-board-specific-configuration"><strong>Board Specific Configuration</strong></p>
+<p>All board specific configurations eg:enabling clock and pin-mux for UART
+pins are required before calling any driver APIs.By default Board_Init()
+API supports all initialization sequence for TI supported EVMs. In
+addition it initializes UART instance for Console/STDIO.Refer <a class="reference external" href="../board/board_support.html#board-support">PDK Board Support</a>
+for additional details.Once board specific configuration is complete
+UART_init() API can be called to initialize driver.</p>
+<p class="rubric" id="uart-configuration-structure"><strong>UART Configuration Structure</strong></p>
+<p>The UART_soc.c file binds driver with hardware attributes on the board
+through UART_config structure. This structure must be provided to UART
+driver. It must be initialized before the UART_init() function is called
+and cannot be changed afterwards.</p>
+<p>For details about individual fields of this library structure, see the
+PDK doxygen documentation</p>
+</section>
+<section id="apis">
+<h3><span class="section-number">4.20.2.2. </span>APIs<a class="headerlink" href="#apis" title="Permalink to this headline">¶</a></h3>
+<p>API reference for application:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ti/drv/uart/UART.h&gt;</span>
+</pre></div>
+</div>
+<p>STDIO API reference for application:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ti/drv/uart/UART_stdio.h&gt;</span>
+</pre></div>
+</div>
+<p class="rubric" id="uart-open">Open UART</p>
+<p>There are three ways to open a UART instance:</p>
+<ol class="arabic simple">
+<li><p>UART_open()</p></li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="n">Board_init</span><span class="p">(</span><span class="n">boardCfg</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">UART_socGetInitCfg</span><span class="p">(</span><span class="n">UART_INSTANCE</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">uart_cfg</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">UART_socSetInitCfg</span><span class="p">(</span><span class="n">UART_INSTANCE</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">uart_cfg</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">UART_Params_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">params</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">handle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UART_open</span><span class="p">(</span><span class="n">UART_INSTANCE</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">params</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>At this point UART driver is ready for data transfer on specific
+instance identified by handle. Application can call UART_read/write
+API for read/write operation</p>
+<ol class="arabic simple" start="2">
+<li><p>UART_stdioInit() using the default UART parameters</p></li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="n">Board_init</span><span class="p">(</span><span class="n">boardCfg</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">UART_socGetInitCfg</span><span class="p">(</span><span class="n">UART_INSTANCE</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">uart_cfg</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">UART_socSetInitCfg</span><span class="p">(</span><span class="n">UART_INSTANCE</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">uart_cfg</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">UART_stdioInit</span><span class="p">(</span><span class="n">UART_INSTANCE</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>At this point UART driver is ready for data transfer on specific
+instance. Application can call UART_printf/scanFmt API for read/write
+operation</p>
+<ol class="arabic simple" start="3">
+<li><p>UART_stdioInit2() using Application specified UART parameters</p></li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="n">Board_init</span><span class="p">(</span><span class="n">boardCfg</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">UART_socGetInitCfg</span><span class="p">(</span><span class="n">UART_INSTANCE</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">uart_cfg</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">UART_socSetInitCfg</span><span class="p">(</span><span class="n">UART_INSTANCE</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">uart_cfg</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">UART_Params_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">params</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">UART_stdioInit2</span><span class="p">(</span><span class="n">UART_INSTANCE</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">params</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>At this point UART driver is ready for data transfer on specific
+instance. Application can call UART_printf/scanFmt API for read/write
+operation</p>
+<p class="rubric" id="uart-readwrite-apis">Read/Write APIs</p>
+<p><strong>Interrupt</strong>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">UART_read</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="n">scanPrompt</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">scanPrompt</span><span class="p">));</span><span class="cm">/* Read API */</span>
+<span class="p">...</span>
+<span class="n">UART_write</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">bufferPrompt</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">bufferPrompt</span><span class="p">));</span><span class="cm">/* Write API */</span>
+
+<span class="n">Or</span>
+
+<span class="nf">UART_transactionInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">transaction</span><span class="p">);</span>
+<span class="n">transaction</span><span class="p">.</span><span class="n">buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">scanPrompt</span><span class="p">;</span>
+<span class="n">transaction</span><span class="p">.</span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">scanPrompt</span><span class="p">);</span>
+<span class="n">UART_read2</span><span class="p">(</span><span class="n">uart</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">transaction</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">UART_transactionInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">transaction</span><span class="p">);</span>
+<span class="n">transaction</span><span class="p">.</span><span class="n">buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">bufferPrompt</span><span class="p">;</span>
+<span class="n">transaction</span><span class="p">.</span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">bufferPrompt</span><span class="p">);</span>
+<span class="n">UART_write2</span><span class="p">(</span><span class="n">uart</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">transaction</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Polling</strong>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">UART_readPolling</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="n">scanPrompt</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">scanPrompt</span><span class="p">));</span><span class="cm">/* Read Polling mode API */</span>
+<span class="p">...</span>
+<span class="n">UART_writePolling</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">bufferPrompt</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">bufferPrompt</span><span class="p">));</span><span class="cm">/* Write Polling API */</span>
+</pre></div>
+</div>
+<p class="rubric" id="uart-dma-usage">DMA Usage :</p>
+<p>UART driver supports DMA operations to transfer data between</p>
+<ul class="simple">
+<li><p>Memory and RX FIFO for read transfer</p></li>
+<li><p>Memory and TX FIFO for write transfer.</p></li>
+</ul>
+<p>DMA Driver is DMA family IP (EDMA and UDMA) and UART IP (V0 and V1) specific.
+Refer soc/dma/v#/UART_dma.c for these operations. Application need to
+create DMA handle and update the configuration before UART_init() API.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">uartInitCfg</span><span class="p">[</span><span class="n">UART_INSTANCE</span><span class="p">].</span><span class="n">edmaHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UartApp_edmaInit</span><span class="p">();</span><span class="cm">/* For AM/K1/K2 devices */</span>
+
+<span class="n">or</span>
+
+<span class="n">uartInitCfg</span><span class="p">[</span><span class="n">UART_INSTANCE</span><span class="p">].</span><span class="n">udmaHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UartApp_udmaInit</span><span class="p">();</span><span class="cm">/* For K3 devices */</span>
+
+<span class="n">UART_init</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Refer “UART_BasicExample_[SOC]_[cpu]DMATestproject” or “UART_DMA_[evm]_[cpu]TestApp”
+for additional reference. Refer SDK Release Note for supported EVMs.</p>
+</section>
+</section>
+<section id="application">
+<h2><span class="section-number">4.20.3. </span>Application<a class="headerlink" href="#application" title="Permalink to this headline">¶</a></h2>
+<section id="examples">
+<h3><span class="section-number">4.20.3.1. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Expected Results</p></th>
+<th class="head"><p>SoC Supported</p></th>
+<th class="head"><p>Build Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>UART_Example
+application</p></td>
+<td><p>Example
+demonstrating
+<em>simple</em> UART use
+case. Reference
+example for
+developers</p></td>
+<td><p>Application prompts
+user to enter input
+data in console.</p>
+<p>User can enter up
+to 16 characters or
+terminate with
+enter
+key.Application
+echoes back
+characters.</p>
+</td>
+<td><p>AM335x,
+AM437x,
+AM571x,
+AM572x,
+AM574x,
+k2g,
+k2hk,k2l,k2e,k2l
+c6657,c6678
+omapl137,
+omapl138,</p></td>
+<td><p>CCS project</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>UART_TestApplication</p></td>
+<td rowspan="2"><p>Unit Test
+application to test
+all APIs</p></td>
+<td rowspan="2"><p>User can enter up to
+16 characters using
+serial
+console.Application
+echoes back</p></td>
+<td><p>AM335x,AM437x,AM571x
+AM572x,AM574X
+k2g,k2hk,k2l,k2e,k2l
+c6657,c6678
+omapl137,omapl138</p></td>
+<td><p>CCS project</p></td>
+</tr>
+<tr class="row-even"><td><p>am65xx,j721e,tpr12
+j7200, am64x</p></td>
+<td><p>makefile</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>UART_DMATestApplication</p></td>
+<td rowspan="2"><p>Unit Test
+application with
+DMA mode.</p></td>
+<td rowspan="2"><p>User can enter up to
+16 characters using
+serial
+console.Application
+echoes back</p></td>
+<td><p>AM335x,AM437x,AM571x
+AM572x,AM574X
+k2g,k2hk,k2l,k2e,k2l
+c6657,c6678
+omapl137,omapl138</p></td>
+<td><p>CCS project</p></td>
+</tr>
+<tr class="row-even"><td><p>am65xx,j721e,tpr12,
+j7200, am64x</p></td>
+<td><p>makefile</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../family_cfg/jacinto/index_modules_udma_jacinto.html" class="btn btn-neutral float-right" title="4.21. UDMA" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ospi.html" class="btn btn-neutral" title="4.19. OSPI" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2020</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'09_00_01',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>
