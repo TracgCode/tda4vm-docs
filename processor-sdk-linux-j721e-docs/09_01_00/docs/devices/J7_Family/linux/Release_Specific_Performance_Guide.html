@@ -1,0 +1,5330 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.2. Performance Guide &mdash; Processor SDK Linux for J721e Documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Processor SDK Linux for J721e Documentation" href="../../../index.html"/>
+        <link rel="up" title="2. Release Specific" href="Release_Specific.html"/>
+        <link rel="next" title="2.3. Yocto Layer Configuration" href="Release_Specific_Yocto_layer_Configuration.html"/>
+        <link rel="prev" title="2.1. Release Notes" href="Release_Specific_Release_Notes.html"/> 
+  <script src="https://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../../../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Processor SDK Linux for J721e
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                09_01_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../linux/Overview.html">1. Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Release_Specific.html">2. Release Specific</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Release_Specific_Release_Notes.html">2.1. Release Notes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.2. Performance Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#linux-09-01-00-performance-guide">2.2.1. Linux 09.01.00 Performance Guide</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#system-benchmarks">2.2.1.1. System Benchmarks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#boot-time-measurement">2.2.1.2. Boot-time Measurement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#alsa-soc-audio-driver">2.2.1.3. ALSA SoC Audio Driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#graphics-sgx-rgx-driver">2.2.1.4. Graphics SGX/RGX Driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ethernet">2.2.1.5. Ethernet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pcie-driver">2.2.1.6. PCIe Driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ospi-flash-driver">2.2.1.7. OSPI Flash Driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uboot-qspi-ospi-driver">2.2.1.8. UBoot QSPI/OSPI Driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uboot-ufs-driver">2.2.1.9. UBoot UFS Driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#emmc-driver">2.2.1.10. EMMC Driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uboot-emmc-driver">2.2.1.11. UBoot EMMC Driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mmc-sd-driver">2.2.1.12. MMC/SD Driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uboot-mmc-sd-driver">2.2.1.13. UBoot MMC/SD Driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usb-driver">2.2.1.14. USB Driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#crypto-driver">2.2.1.15. CRYPTO Driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dcan-driver">2.2.1.16. DCAN Driver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rt-linux-09-01-00-performance-guide">2.2.2. RT-linux 09.01.00 Performance Guide</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id26">2.2.2.1. System Benchmarks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id35">2.2.2.2. Boot-time Measurement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id37">2.2.2.3. PCIe Driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cyclic-test">2.2.2.4. Cyclic Test</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id39">2.2.2.5. DCAN Driver</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Release_Specific_Yocto_layer_Configuration.html">2.3. Yocto Layer Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release_Specific_Supported_Platforms_and_Versions.html">2.4. Supported Platforms and Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release_Specific_Migration_Guide.html">2.5. Processor SDK Linux Migration Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../linux/Foundational_Components.html">3. Foundational Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../linux/How_to_Guides.html">4. How to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../linux/Documentation_Tarball.html">5. Documentation Tarball</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Processor SDK Linux for J721e</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="Release_Specific.html"><span class="section-number">2. </span>Release Specific</a> &raquo;</li>
+      
+    <li><span class="section-number">2.2. </span>Performance Guide</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="performance-guide">
+<h1><span class="section-number">2.2. </span>Performance Guide<a class="headerlink" href="#performance-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="linux-09-01-00-performance-guide">
+<h2><span class="section-number">2.2.1. </span>Linux 09.01.00 Performance Guide<a class="headerlink" href="#linux-09-01-00-performance-guide" title="Permalink to this headline">¶</a></h2>
+<p class="rubric" id="read-this-first-kernel-perf-guide"><strong>Read This First</strong></p>
+<p><strong>All performance numbers provided in this document are gathered using
+following Evaluation Modules unless otherwise specified.</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 88%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AM68 SK</p></td>
+<td><p>AM68 SK Evaluation Module  with ARM running at 2GHz, DDR data rate 2666 MT/S, L3 Cache size 3MB</p></td>
+</tr>
+<tr class="row-odd"><td><p>AM69 SK</p></td>
+<td><p>AM69 SK Evaluation Module  with ARM running at 2GHz, DDR data rate 2666 MT/S, L3 Cache size 3MB</p></td>
+</tr>
+<tr class="row-even"><td><p>J721e EVM</p></td>
+<td><p>J721e Evaluation Module rev E2 with ARM running at 2GHz, DDR data rate 4266 MT/S, L3 Cache size 3MB</p></td>
+</tr>
+<tr class="row-odd"><td><p>J7200 EVM</p></td>
+<td><p>J7200 Evaluation Module rev E1 with ARM running at 2GHz, DDR data rate 2666 MT/S, L3 Cache size 3MB</p></td>
+</tr>
+<tr class="row-even"><td><p>J721S2 EVM</p></td>
+<td><p>J721S2 Evaluation Module rev E2 with ARM running at 2GHz, DDR data rate 2666 MT/S, L3 Cache size 3MB</p></td>
+</tr>
+<tr class="row-odd"><td><p>J784S4 EVM</p></td>
+<td><p>J784S4 Evaluation Module Beta rev E1 with ARM running at 2GHz, DDR data rate 2666 MT/S, L3 Cache size 1MB</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  Evaluation Modules</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p class="rubric" id="about-this-manual-kernel-perf-guide">About This Manual</p>
+<p>This document provides performance data for each of the device drivers
+which are part of the Processor SDK Linux package. This document should be
+used in conjunction with release notes and user guides provided with the
+Processor SDK Linux package for information on specific issues present
+with drivers included in a particular release.</p>
+<p class="rubric" id="if-you-need-assistance-kernel-perf-guide">If You Need Assistance</p>
+<p>For further information or to report any problems, contact
+<a class="reference external" href="http://e2e.ti.com/">http://e2e.ti.com/</a> or <a class="reference external" href="http://support.ti.com/">http://support.ti.com/</a></p>
+<div class="section" id="system-benchmarks">
+<h3><span class="section-number">2.2.1.1. </span>System Benchmarks<a class="headerlink" href="#system-benchmarks" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="lmbench">
+<h4><span class="section-number">2.2.1.1.1. </span>LMBench<a class="headerlink" href="#lmbench" title="Permalink to this headline">¶</a></h4>
+<p>LMBench is a collection of microbenchmarks of which the memory bandwidth
+and latency related ones are typically used to estimate processor
+memory system performance. More information about lmbench at
+<a class="reference external" href="http://lmbench.sourceforge.net/whatis_lmbench.html">http://lmbench.sourceforge.net/whatis_lmbench.html</a> and
+<a class="reference external" href="http://lmbench.sourceforge.net/man/lmbench.8.html">http://lmbench.sourceforge.net/man/lmbench.8.html</a></p>
+<p><strong>Latency</strong>: lat_mem_rd-stride128-szN, where N is equal to or smaller than the cache
+size at given level measures the cache miss penalty. N that is at least
+double the size of last level cache is the latency to external memory.</p>
+<p><strong>Bandwidth</strong>: bw_mem_bcopy-N, where N is equal to or smaller than the cache size at
+a given level measures the achievable memory bandwidth from software doing
+a memcpy() type operation. Typical use is for external memory bandwidth
+calculation. The bandwidth is calculated as byte read and written counts
+as 1 which should be roughly half of STREAM copy result.</p>
+<p>Execute the LMBench with the following:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>cd /opt/ltp
+./runltp -P j721e-idk-gw -f ddt/lmbench -s LMBENCH_L_PERF_0001
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Benchmarks</p></th>
+<th class="head"><p>am68_sk-fs: perf</p></th>
+<th class="head"><p>am69_sk-fs: perf</p></th>
+<th class="head"><p>j7200-evm: perf</p></th>
+<th class="head"><p>j721e-idk-gw: perf</p></th>
+<th class="head"><p>j721s2-evm: perf</p></th>
+<th class="head"><p>j784s4-evm: perf</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>af_unix_sock_stream_latency (microsec)</p></td>
+<td><p>15.56</p></td>
+<td><p>18.82</p></td>
+<td><p>17.83</p></td>
+<td><p>15.71</p></td>
+<td><p>15.95</p></td>
+<td><p>15.85</p></td>
+</tr>
+<tr class="row-odd"><td><p>af_unix_socket_stream_bandwidth (MBs)</p></td>
+<td><p>2072.79</p></td>
+<td><p>3520.26</p></td>
+<td><p>1626.69</p></td>
+<td><p>2043.75</p></td>
+<td><p>1896.16</p></td>
+<td><p>3458.34</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_file_rd-io-1mb (MB/s)</p></td>
+<td><p>3013.75</p></td>
+<td><p>3577.82</p></td>
+<td><p>2254.79</p></td>
+<td><p>2922.91</p></td>
+<td><p>2818.49</p></td>
+<td><p>3684.21</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_file_rd-o2c-1mb (MB/s)</p></td>
+<td><p>1260.81</p></td>
+<td><p>323.89</p></td>
+<td><p>1168.42</p></td>
+<td><p>1557.63</p></td>
+<td><p>1270.88</p></td>
+<td><p>982.16</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-bcopy-16mb (MB/s)</p></td>
+<td><p>3395.23</p></td>
+<td><p>3180.91</p></td>
+<td><p>2380.60</p></td>
+<td><p>2858.67</p></td>
+<td><p>3456.84</p></td>
+<td><p>3226.78</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-bcopy-1mb (MB/s)</p></td>
+<td><p>4492.70</p></td>
+<td><p>10149.37</p></td>
+<td><p>3305.79</p></td>
+<td><p>5123.34</p></td>
+<td><p>4535.15</p></td>
+<td><p>9825.33</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-bcopy-2mb (MB/s)</p></td>
+<td><p>3589.38</p></td>
+<td><p>4738.47</p></td>
+<td><p>2496.88</p></td>
+<td><p>4054.74</p></td>
+<td><p>3639.01</p></td>
+<td><p>4982.21</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-bcopy-4mb (MB/s)</p></td>
+<td><p>3414.72</p></td>
+<td><p>3865.48</p></td>
+<td><p>2350.18</p></td>
+<td><p>3734.83</p></td>
+<td><p>3477.05</p></td>
+<td><p>3954.13</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-bcopy-8mb (MB/s)</p></td>
+<td><p>3396.55</p></td>
+<td><p>3337.04</p></td>
+<td><p>2357.45</p></td>
+<td><p>3104.38</p></td>
+<td><p>3439.87</p></td>
+<td><p>3414.91</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-bzero-16mb (MB/s)</p></td>
+<td><p>10491.80</p></td>
+<td><p>10856.66</p></td>
+<td><p>2334.06</p></td>
+<td><p>9657.46</p></td>
+<td><p>10533.25</p></td>
+<td><p>10851.14</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-bzero-1mb (MB/s)</p></td>
+<td><p>8602.66 (min 4492.70, max 12712.62)</p></td>
+<td><p>11957.50 (min 10149.37, max 13765.62)</p></td>
+<td><p>4109.68 (min 3305.79, max 4913.56)</p></td>
+<td><p>8869.34 (min 5123.34, max 12615.33)</p></td>
+<td><p>8611.39 (min 4535.15, max 12687.63)</p></td>
+<td><p>11792.99 (min 9825.33, max 13760.64)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-bzero-2mb (MB/s)</p></td>
+<td><p>7443.35 (min 3589.38, max 11297.31)</p></td>
+<td><p>9201.31 (min 4738.47, max 13664.15)</p></td>
+<td><p>2706.70 (min 2496.88, max 2916.51)</p></td>
+<td><p>8111.44 (min 4054.74, max 12168.14)</p></td>
+<td><p>7420.70 (min 3639.01, max 11202.39)</p></td>
+<td><p>9347.84 (min 4982.21, max 13713.46)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-bzero-4mb (MB/s)</p></td>
+<td><p>7013.34 (min 3414.72, max 10611.96)</p></td>
+<td><p>8083.25 (min 3865.48, max 12301.01)</p></td>
+<td><p>2411.57 (min 2350.18, max 2472.95)</p></td>
+<td><p>7806.54 (min 3734.83, max 11878.25)</p></td>
+<td><p>7055.79 (min 3477.05, max 10634.53)</p></td>
+<td><p>8115.36 (min 3954.13, max 12276.58)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-bzero-8mb (MB/s)</p></td>
+<td><p>6967.38 (min 3396.55, max 10538.20)</p></td>
+<td><p>7339.27 (min 3337.04, max 11341.49)</p></td>
+<td><p>2355.89 (min 2354.33, max 2357.45)</p></td>
+<td><p>7370.37 (min 3104.38, max 11636.36)</p></td>
+<td><p>7010.07 (min 3439.87, max 10580.26)</p></td>
+<td><p>7352.19 (min 3414.91, max 11289.47)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-cp-16mb (MB/s)</p></td>
+<td><p>2112.21</p></td>
+<td><p>2426.08</p></td>
+<td><p>989.18</p></td>
+<td><p>1592.36</p></td>
+<td><p>2157.21</p></td>
+<td><p>2403.85</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-cp-1mb (MB/s)</p></td>
+<td><p>7732.12 (min 2526.23, max 12938.01)</p></td>
+<td><p>8698.15 (min 3663.00, max 13733.29)</p></td>
+<td><p>3058.84 (min 1257.18, max 4860.49)</p></td>
+<td><p>7217.42 (min 1790.33, max 12644.51)</p></td>
+<td><p>7491.85 (min 2401.63, max 12582.06)</p></td>
+<td><p>8711.93 (min 3688.09, max 13735.77)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-cp-2mb (MB/s)</p></td>
+<td><p>6702.26 (min 2067.54, max 11336.98)</p></td>
+<td><p>8191.09 (min 2708.19, max 13673.98)</p></td>
+<td><p>1952.08 (min 1003.51, max 2900.65)</p></td>
+<td><p>6851.59 (min 1444.30, max 12258.88)</p></td>
+<td><p>6744.02 (min 2197.11, max 11290.93)</p></td>
+<td><p>8247.34 (min 2778.74, max 13715.94)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-cp-4mb (MB/s)</p></td>
+<td><p>6321.63 (min 2029.43, max 10613.83)</p></td>
+<td><p>7599.41 (min 2841.92, max 12356.90)</p></td>
+<td><p>1717.41 (min 978.95, max 2455.87)</p></td>
+<td><p>6762.76 (min 1624.92, max 11900.60)</p></td>
+<td><p>6279.20 (min 1938.92, max 10619.47)</p></td>
+<td><p>7794.84 (min 2853.07, max 12736.60)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-cp-8mb (MB/s)</p></td>
+<td><p>6316.27 (min 2087.14, max 10545.39)</p></td>
+<td><p>6952.10 (min 2475.63, max 11428.57)</p></td>
+<td><p>1637.61 (min 987.53, max 2287.68)</p></td>
+<td><p>6574.27 (min 1541.72, max 11606.82)</p></td>
+<td><p>6357.83 (min 2116.12, max 10599.54)</p></td>
+<td><p>6904.54 (min 2449.48, max 11359.60)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-fcp-16mb (MB/s)</p></td>
+<td><p>3362.05</p></td>
+<td><p>3140.95</p></td>
+<td><p>2399.16</p></td>
+<td><p>2830.86</p></td>
+<td><p>3381.59</p></td>
+<td><p>3170.83</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-fcp-1mb (MB/s)</p></td>
+<td><p>8344.74 (min 3976.86, max 12712.62)</p></td>
+<td><p>10022.08 (min 6278.54, max 13765.62)</p></td>
+<td><p>4095.83 (min 3278.09, max 4913.56)</p></td>
+<td><p>8198.88 (min 3782.42, max 12615.33)</p></td>
+<td><p>8272.29 (min 3856.94, max 12687.63)</p></td>
+<td><p>10249.47 (min 6738.30, max 13760.64)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-fcp-2mb (MB/s)</p></td>
+<td><p>7391.16 (min 3485.00, max 11297.31)</p></td>
+<td><p>8715.67 (min 3767.19, max 13664.15)</p></td>
+<td><p>2716.12 (min 2515.72, max 2916.51)</p></td>
+<td><p>8062.13 (min 3956.12, max 12168.14)</p></td>
+<td><p>7366.94 (min 3531.49, max 11202.39)</p></td>
+<td><p>8995.77 (min 4278.07, max 13713.46)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-fcp-4mb (MB/s)</p></td>
+<td><p>7007.82 (min 3403.68, max 10611.96)</p></td>
+<td><p>7981.67 (min 3662.33, max 12301.01)</p></td>
+<td><p>2432.89 (min 2392.82, max 2472.95)</p></td>
+<td><p>7884.65 (min 3891.05, max 11878.25)</p></td>
+<td><p>7001.90 (min 3369.27, max 10634.53)</p></td>
+<td><p>8022.60 (min 3768.61, max 12276.58)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-fcp-8mb (MB/s)</p></td>
+<td><p>6945.78 (min 3353.36, max 10538.20)</p></td>
+<td><p>7315.48 (min 3289.47, max 11341.49)</p></td>
+<td><p>2383.26 (min 2354.33, max 2412.18)</p></td>
+<td><p>7364.18 (min 3091.99, max 11636.36)</p></td>
+<td><p>6996.13 (min 3412.00, max 10580.26)</p></td>
+<td><p>7287.67 (min 3285.87, max 11289.47)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-frd-16mb (MB/s)</p></td>
+<td><p>4156.38</p></td>
+<td><p>3706.28</p></td>
+<td><p>6312.47</p></td>
+<td><p>4801.20</p></td>
+<td><p>4147.76</p></td>
+<td><p>3757.63</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-frd-1mb (MB/s)</p></td>
+<td><p>4716.20 (min 3976.86, max 5455.54)</p></td>
+<td><p>7073.40 (min 6278.54, max 7868.25)</p></td>
+<td><p>5002.49 (min 3278.09, max 6726.89)</p></td>
+<td><p>4480.45 (min 3782.42, max 5178.47)</p></td>
+<td><p>4487.02 (min 3856.94, max 5117.10)</p></td>
+<td><p>7342.42 (min 6738.30, max 7946.54)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-frd-2mb (MB/s)</p></td>
+<td><p>4107.50 (min 3485.00, max 4730.00)</p></td>
+<td><p>4107.72 (min 3767.19, max 4448.25)</p></td>
+<td><p>4461.85 (min 2515.72, max 6407.97)</p></td>
+<td><p>4882.40 (min 3956.12, max 5808.68)</p></td>
+<td><p>4132.14 (min 3531.49, max 4732.79)</p></td>
+<td><p>4696.12 (min 4278.07, max 5114.16)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-frd-4mb (MB/s)</p></td>
+<td><p>3796.45 (min 3403.68, max 4189.21)</p></td>
+<td><p>3913.78 (min 3662.33, max 4165.22)</p></td>
+<td><p>4342.92 (min 2392.82, max 6293.02)</p></td>
+<td><p>4762.92 (min 3891.05, max 5634.79)</p></td>
+<td><p>3778.88 (min 3369.27, max 4188.48)</p></td>
+<td><p>4074.89 (min 3768.61, max 4381.16)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-frd-8mb (MB/s)</p></td>
+<td><p>3760.02 (min 3353.36, max 4166.67)</p></td>
+<td><p>3670.05 (min 3289.47, max 4050.63)</p></td>
+<td><p>4354.21 (min 2412.18, max 6296.24)</p></td>
+<td><p>4243.69 (min 3091.99, max 5395.38)</p></td>
+<td><p>3781.41 (min 3412.00, max 4150.81)</p></td>
+<td><p>3760.46 (min 3285.87, max 4235.04)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-fwr-16mb (MB/s)</p></td>
+<td><p>10529.78</p></td>
+<td><p>10827.27</p></td>
+<td><p>2319.18</p></td>
+<td><p>9637.10</p></td>
+<td><p>10548.87</p></td>
+<td><p>10788.94</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-fwr-1mb (MB/s)</p></td>
+<td><p>9196.78 (min 5455.54, max 12938.01)</p></td>
+<td><p>10800.77 (min 7868.25, max 13733.29)</p></td>
+<td><p>5793.69 (min 4860.49, max 6726.89)</p></td>
+<td><p>8911.49 (min 5178.47, max 12644.51)</p></td>
+<td><p>8849.58 (min 5117.10, max 12582.06)</p></td>
+<td><p>10841.16 (min 7946.54, max 13735.77)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-fwr-2mb (MB/s)</p></td>
+<td><p>8033.49 (min 4730.00, max 11336.98)</p></td>
+<td><p>9061.12 (min 4448.25, max 13673.98)</p></td>
+<td><p>4654.31 (min 2900.65, max 6407.97)</p></td>
+<td><p>9033.78 (min 5808.68, max 12258.88)</p></td>
+<td><p>8011.86 (min 4732.79, max 11290.93)</p></td>
+<td><p>9415.05 (min 5114.16, max 13715.94)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-fwr-4mb (MB/s)</p></td>
+<td><p>7401.52 (min 4189.21, max 10613.83)</p></td>
+<td><p>8261.06 (min 4165.22, max 12356.90)</p></td>
+<td><p>4374.45 (min 2455.87, max 6293.02)</p></td>
+<td><p>8767.70 (min 5634.79, max 11900.60)</p></td>
+<td><p>7403.98 (min 4188.48, max 10619.47)</p></td>
+<td><p>8558.88 (min 4381.16, max 12736.60)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-fwr-8mb (MB/s)</p></td>
+<td><p>7356.03 (min 4166.67, max 10545.39)</p></td>
+<td><p>7739.60 (min 4050.63, max 11428.57)</p></td>
+<td><p>4291.96 (min 2287.68, max 6296.24)</p></td>
+<td><p>8501.10 (min 5395.38, max 11606.82)</p></td>
+<td><p>7375.18 (min 4150.81, max 10599.54)</p></td>
+<td><p>7797.32 (min 4235.04, max 11359.60)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-rd-16mb (MB/s)</p></td>
+<td><p>4879.54</p></td>
+<td><p>4424.17</p></td>
+<td><p>6558.27</p></td>
+<td><p>5117.54</p></td>
+<td><p>4889.98</p></td>
+<td><p>4507.68</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-rd-1mb (MB/s)</p></td>
+<td><p>7372.07 (min 5745.06, max 8999.08)</p></td>
+<td><p>15998.07 (min 14764.13, max 17232.00)</p></td>
+<td><p>13177.14 (min 11446.01, max 14908.26)</p></td>
+<td><p>7757.05 (min 6240.25, max 9273.84)</p></td>
+<td><p>7848.88 (min 6117.38, max 9580.38)</p></td>
+<td><p>16288.46 (min 15269.95, max 17306.96)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-rd-2mb (MB/s)</p></td>
+<td><p>4418.29 (min 2980.63, max 5855.94)</p></td>
+<td><p>5099.74 (min 3926.19, max 6273.28)</p></td>
+<td><p>4025.35 (min 973.55, max 7077.14)</p></td>
+<td><p>3813.60 (min 1367.99, max 6259.20)</p></td>
+<td><p>4379.04 (min 3065.13, max 5692.94)</p></td>
+<td><p>5741.09 (min 4901.96, max 6580.22)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-rd-4mb (MB/s)</p></td>
+<td><p>3625.22 (min 2268.22, max 4982.21)</p></td>
+<td><p>4438.31 (min 3909.43, max 4967.18)</p></td>
+<td><p>3712.52 (min 787.87, max 6637.17)</p></td>
+<td><p>3791.61 (min 1314.71, max 6268.50)</p></td>
+<td><p>3670.04 (min 2354.33, max 4985.75)</p></td>
+<td><p>4716.87 (min 4098.36, max 5335.37)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-rd-8mb (MB/s)</p></td>
+<td><p>3541.03 (min 2236.51, max 4845.55)</p></td>
+<td><p>4372.35 (min 3792.67, max 4952.03)</p></td>
+<td><p>3662.75 (min 748.71, max 6576.78)</p></td>
+<td><p>3583.48 (min 1315.79, max 5851.16)</p></td>
+<td><p>3571.44 (min 2252.89, max 4889.98)</p></td>
+<td><p>4478.75 (min 3750.00, max 5207.49)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-rdwr-16mb (MB/s)</p></td>
+<td><p>2141.90</p></td>
+<td><p>2639.83</p></td>
+<td><p>752.09</p></td>
+<td><p>1919.62</p></td>
+<td><p>2167.73</p></td>
+<td><p>2657.37</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-rdwr-1mb (MB/s)</p></td>
+<td><p>3511.32 (min 2526.23, max 4496.40)</p></td>
+<td><p>6608.86 (min 3663.00, max 9554.71)</p></td>
+<td><p>2534.81 (min 1257.18, max 3812.43)</p></td>
+<td><p>3156.33 (min 1790.33, max 4522.33)</p></td>
+<td><p>3945.05 (min 2401.63, max 5488.47)</p></td>
+<td><p>6594.42 (min 3688.09, max 9500.75)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-rdwr-2mb (MB/s)</p></td>
+<td><p>2357.27 (min 2067.54, max 2647.00)</p></td>
+<td><p>3516.05 (min 2708.19, max 4323.90)</p></td>
+<td><p>995.58 (min 987.65, max 1003.51)</p></td>
+<td><p>1945.89 (min 1444.30, max 2447.48)</p></td>
+<td><p>2611.99 (min 2197.11, max 3026.86)</p></td>
+<td><p>3557.39 (min 2778.74, max 4336.04)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-rdwr-4mb (MB/s)</p></td>
+<td><p>2135.64 (min 2029.43, max 2241.84)</p></td>
+<td><p>3092.09 (min 2841.92, max 3342.25)</p></td>
+<td><p>885.48 (min 792.00, max 978.95)</p></td>
+<td><p>2016.74 (min 1624.92, max 2408.55)</p></td>
+<td><p>2141.97 (min 1938.92, max 2345.01)</p></td>
+<td><p>3155.15 (min 2853.07, max 3457.22)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-rdwr-8mb (MB/s)</p></td>
+<td><p>2140.67 (min 2087.14, max 2194.19)</p></td>
+<td><p>2820.72 (min 2475.63, max 3165.81)</p></td>
+<td><p>871.48 (min 755.43, max 987.53)</p></td>
+<td><p>1936.36 (min 1541.72, max 2331.00)</p></td>
+<td><p>2176.94 (min 2116.12, max 2237.76)</p></td>
+<td><p>2842.43 (min 2449.48, max 3235.37)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-wr-16mb (MB/s)</p></td>
+<td><p>2200.22</p></td>
+<td><p>3061.03</p></td>
+<td><p>742.15</p></td>
+<td><p>1820.87</p></td>
+<td><p>2225.93</p></td>
+<td><p>3030.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-wr-1mb (MB/s)</p></td>
+<td><p>5120.73 (min 4496.40, max 5745.06)</p></td>
+<td><p>13393.36 (min 9554.71, max 17232.00)</p></td>
+<td><p>7629.22 (min 3812.43, max 11446.01)</p></td>
+<td><p>5381.29 (min 4522.33, max 6240.25)</p></td>
+<td><p>5802.93 (min 5488.47, max 6117.38)</p></td>
+<td><p>13403.86 (min 9500.75, max 17306.96)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-wr-2mb (MB/s)</p></td>
+<td><p>2813.82 (min 2647.00, max 2980.63)</p></td>
+<td><p>4125.05 (min 3926.19, max 4323.90)</p></td>
+<td><p>980.60 (min 973.55, max 987.65)</p></td>
+<td><p>1907.74 (min 1367.99, max 2447.48)</p></td>
+<td><p>3046.00 (min 3026.86, max 3065.13)</p></td>
+<td><p>4619.00 (min 4336.04, max 4901.96)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-wr-4mb (MB/s)</p></td>
+<td><p>2255.03 (min 2241.84, max 2268.22)</p></td>
+<td><p>3625.84 (min 3342.25, max 3909.43)</p></td>
+<td><p>789.94 (min 787.87, max 792.00)</p></td>
+<td><p>1861.63 (min 1314.71, max 2408.55)</p></td>
+<td><p>2349.67 (min 2345.01, max 2354.33)</p></td>
+<td><p>3777.79 (min 3457.22, max 4098.36)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-wr-8mb (MB/s)</p></td>
+<td><p>2215.35 (min 2194.19, max 2236.51)</p></td>
+<td><p>3479.24 (min 3165.81, max 3792.67)</p></td>
+<td><p>752.07 (min 748.71, max 755.43)</p></td>
+<td><p>1823.40 (min 1315.79, max 2331.00)</p></td>
+<td><p>2245.33 (min 2237.76, max 2252.89)</p></td>
+<td><p>3492.69 (min 3235.37, max 3750.00)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mmap_rd-mo-1mb (MB/s)</p></td>
+<td><p>8828.72</p></td>
+<td><p>12916.14</p></td>
+<td><p>8124.08</p></td>
+<td><p>8448.12</p></td>
+<td><p>6874.77</p></td>
+<td><p>12917.93</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mmap_rd-o2c-1mb (MB/s)</p></td>
+<td><p>1159.42</p></td>
+<td><p>311.53</p></td>
+<td><p>1587.02</p></td>
+<td><p>1529.57</p></td>
+<td><p>1171.87</p></td>
+<td><p>930.23</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_pipe (MB/s)</p></td>
+<td><p>830.52</p></td>
+<td><p>670.16</p></td>
+<td><p>671.55</p></td>
+<td><p>795.56</p></td>
+<td><p>801.99</p></td>
+<td><p>907.75</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_unix (MB/s)</p></td>
+<td><p>2072.79</p></td>
+<td><p>3520.26</p></td>
+<td><p>1626.69</p></td>
+<td><p>2043.75</p></td>
+<td><p>1896.16</p></td>
+<td><p>3458.34</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_connect (us)</p></td>
+<td><p>35.55</p></td>
+<td><p>34.20</p></td>
+<td><p>35.22</p></td>
+<td><p>34.38</p></td>
+<td><p>35.57</p></td>
+<td><p>34.83</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_ctx-2-128k (us)</p></td>
+<td><p>3.17</p></td>
+<td><p>5.39</p></td>
+<td><p>3.30</p></td>
+<td><p>3.25</p></td>
+<td><p>3.29</p></td>
+<td><p>3.12</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_ctx-2-256k (us)</p></td>
+<td><p>2.49</p></td>
+<td><p>4.86</p></td>
+<td><p>2.56</p></td>
+<td><p>2.55</p></td>
+<td><p>2.56</p></td>
+<td><p>2.42</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_ctx-4-128k (us)</p></td>
+<td><p>3.28</p></td>
+<td><p>4.01</p></td>
+<td><p>3.36</p></td>
+<td><p>3.22</p></td>
+<td><p>3.30</p></td>
+<td><p>3.82</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_ctx-4-256k (us)</p></td>
+<td><p>2.04</p></td>
+<td><p>2.35</p></td>
+<td><p>2.15</p></td>
+<td><p>2.14</p></td>
+<td><p>2.18</p></td>
+<td><p>3.53</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_fs-0k (num_files)</p></td>
+<td><p>530.00</p></td>
+<td><p>562.00</p></td>
+<td><p>435.00</p></td>
+<td><p>557.00</p></td>
+<td><p>544.00</p></td>
+<td><p>450.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_fs-10k (num_files)</p></td>
+<td><p>160.00</p></td>
+<td><p>218.00</p></td>
+<td><p>150.00</p></td>
+<td><p>201.00</p></td>
+<td><p>201.00</p></td>
+<td><p>239.00</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_fs-1k (num_files)</p></td>
+<td><p>269.00</p></td>
+<td><p>265.00</p></td>
+<td><p>277.00</p></td>
+<td><p>270.00</p></td>
+<td><p>287.00</p></td>
+<td><p>296.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_fs-4k (num_files)</p></td>
+<td><p>301.00</p></td>
+<td><p>309.00</p></td>
+<td><p>283.00</p></td>
+<td><p>297.00</p></td>
+<td><p>251.00</p></td>
+<td><p>309.00</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_mem_rd-stride128-sz1000k (ns)</p></td>
+<td><p>12.01</p></td>
+<td><p>5.65</p></td>
+<td><p>10.48</p></td>
+<td><p>11.15</p></td>
+<td><p>13.40</p></td>
+<td><p>5.71</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_mem_rd-stride128-sz125k (ns)</p></td>
+<td><p>5.57</p></td>
+<td><p>5.65</p></td>
+<td><p>5.57</p></td>
+<td><p>5.57</p></td>
+<td><p>5.57</p></td>
+<td><p>5.65</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_mem_rd-stride128-sz250k (ns)</p></td>
+<td><p>5.57</p></td>
+<td><p>5.65</p></td>
+<td><p>5.58</p></td>
+<td><p>5.57</p></td>
+<td><p>5.57</p></td>
+<td><p>5.65</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_mem_rd-stride128-sz31k (ns)</p></td>
+<td><p>3.79</p></td>
+<td><p>4.75</p></td>
+<td><p>2.00</p></td>
+<td><p>4.67</p></td>
+<td><p>3.34</p></td>
+<td><p>4.77</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_mem_rd-stride128-sz50 (ns)</p></td>
+<td><p>2.00</p></td>
+<td><p>2.00</p></td>
+<td><p>2.00</p></td>
+<td><p>2.00</p></td>
+<td><p>2.00</p></td>
+<td><p>2.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_mem_rd-stride128-sz500k (ns)</p></td>
+<td><p>5.57</p></td>
+<td><p>5.65</p></td>
+<td><p>5.57</p></td>
+<td><p>5.57</p></td>
+<td><p>5.57</p></td>
+<td><p>5.65</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_mem_rd-stride128-sz62k (ns)</p></td>
+<td><p>5.57</p></td>
+<td><p>5.20</p></td>
+<td><p>5.58</p></td>
+<td><p>5.12</p></td>
+<td><p>5.12</p></td>
+<td><p>5.20</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_mmap-1m (us)</p></td>
+<td><p>34.00</p></td>
+<td><p>27.00</p></td>
+<td><p>27.00</p></td>
+<td><p>33.00</p></td>
+<td><p>27.00</p></td>
+<td><p>27.00</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_ops-double-add (ns)</p></td>
+<td><p>1.96</p></td>
+<td><p>1.96</p></td>
+<td><p>1.96</p></td>
+<td><p>1.96</p></td>
+<td><p>1.96</p></td>
+<td><p>1.96</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_ops-double-div (ns)</p></td>
+<td><p>9.01</p></td>
+<td><p>9.01</p></td>
+<td><p>9.01</p></td>
+<td><p>9.01</p></td>
+<td><p>9.01</p></td>
+<td><p>9.01</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_ops-double-mul (ns)</p></td>
+<td><p>2.00</p></td>
+<td><p>2.00</p></td>
+<td><p>2.00</p></td>
+<td><p>2.00</p></td>
+<td><p>2.00</p></td>
+<td><p>2.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_ops-float-add (ns)</p></td>
+<td><p>1.96</p></td>
+<td><p>1.96</p></td>
+<td><p>1.96</p></td>
+<td><p>1.96</p></td>
+<td><p>1.96</p></td>
+<td><p>1.96</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_ops-float-div (ns)</p></td>
+<td><p>5.50</p></td>
+<td><p>5.51</p></td>
+<td><p>5.51</p></td>
+<td><p>5.50</p></td>
+<td><p>5.50</p></td>
+<td><p>5.50</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_ops-float-mul (ns)</p></td>
+<td><p>2.00</p></td>
+<td><p>2.00</p></td>
+<td><p>2.02</p></td>
+<td><p>2.00</p></td>
+<td><p>2.01</p></td>
+<td><p>2.00</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_ops-int-add (ns)</p></td>
+<td><p>0.50</p></td>
+<td><p>0.50</p></td>
+<td><p>0.50</p></td>
+<td><p>0.50</p></td>
+<td><p>0.50</p></td>
+<td><p>0.50</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_ops-int-bit (ns)</p></td>
+<td><p>0.33</p></td>
+<td><p>0.33</p></td>
+<td><p>0.33</p></td>
+<td><p>0.33</p></td>
+<td><p>0.33</p></td>
+<td><p>0.33</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_ops-int-div (ns)</p></td>
+<td><p>4.00</p></td>
+<td><p>4.00</p></td>
+<td><p>4.01</p></td>
+<td><p>4.00</p></td>
+<td><p>4.00</p></td>
+<td><p>4.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_ops-int-mod (ns)</p></td>
+<td><p>4.67</p></td>
+<td><p>4.67</p></td>
+<td><p>4.67</p></td>
+<td><p>4.67</p></td>
+<td><p>4.67</p></td>
+<td><p>4.67</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_ops-int-mul (ns)</p></td>
+<td><p>1.52</p></td>
+<td><p>1.52</p></td>
+<td><p>1.52</p></td>
+<td><p>1.52</p></td>
+<td><p>1.52</p></td>
+<td><p>1.52</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_ops-int64-add (ns)</p></td>
+<td><p>0.50</p></td>
+<td><p>0.50</p></td>
+<td><p>0.50</p></td>
+<td><p>0.50</p></td>
+<td><p>0.50</p></td>
+<td><p>0.50</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_ops-int64-bit (ns)</p></td>
+<td><p>0.33</p></td>
+<td><p>0.33</p></td>
+<td><p>0.33</p></td>
+<td><p>0.33</p></td>
+<td><p>0.33</p></td>
+<td><p>0.33</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_ops-int64-div (ns)</p></td>
+<td><p>3.00</p></td>
+<td><p>3.00</p></td>
+<td><p>3.00</p></td>
+<td><p>3.00</p></td>
+<td><p>3.00</p></td>
+<td><p>3.00</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_ops-int64-mod (ns)</p></td>
+<td><p>5.68</p></td>
+<td><p>5.67</p></td>
+<td><p>5.67</p></td>
+<td><p>5.67</p></td>
+<td><p>5.67</p></td>
+<td><p>5.67</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_ops-int64-mul (ns)</p></td>
+<td><p>2.52</p></td>
+<td><p>2.52</p></td>
+<td><p>2.52</p></td>
+<td><p>2.52</p></td>
+<td><p>2.52</p></td>
+<td><p>2.52</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_pagefault (us)</p></td>
+<td><p>0.52</p></td>
+<td><p>0.51</p></td>
+<td><p>0.51</p></td>
+<td><p>0.50</p></td>
+<td><p>0.53</p></td>
+<td><p>0.51</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_pipe (us)</p></td>
+<td><p>11.90</p></td>
+<td><p>12.08</p></td>
+<td><p>11.98</p></td>
+<td><p>11.86</p></td>
+<td><p>11.56</p></td>
+<td><p>12.38</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_proc-exec (us)</p></td>
+<td><p>435.91</p></td>
+<td><p>405.00</p></td>
+<td><p>441.50</p></td>
+<td><p>379.20</p></td>
+<td><p>442.54</p></td>
+<td><p>425.50</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_proc-fork (us)</p></td>
+<td><p>355.31</p></td>
+<td><p>364.00</p></td>
+<td><p>376.43</p></td>
+<td><p>323.88</p></td>
+<td><p>356.21</p></td>
+<td><p>349.27</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_proc-proccall (us)</p></td>
+<td><p>0.00</p></td>
+<td><p>0.00</p></td>
+<td><p>0.00</p></td>
+<td><p>0.00</p></td>
+<td><p>0.00</p></td>
+<td><p>0.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_select (us)</p></td>
+<td><p>10.89</p></td>
+<td><p>13.09</p></td>
+<td><p>10.87</p></td>
+<td><p>10.81</p></td>
+<td><p>10.80</p></td>
+<td><p>10.90</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_sem (us)</p></td>
+<td><p>1.59</p></td>
+<td><p>1.17</p></td>
+<td><p>1.43</p></td>
+<td><p>1.29</p></td>
+<td><p>1.49</p></td>
+<td><p>1.21</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_sig-catch (us)</p></td>
+<td><p>3.06</p></td>
+<td><p>3.24</p></td>
+<td><p>3.14</p></td>
+<td><p>3.05</p></td>
+<td><p>3.06</p></td>
+<td><p>3.09</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_sig-install (us)</p></td>
+<td><p>0.50</p></td>
+<td><p>0.50</p></td>
+<td><p>0.50</p></td>
+<td><p>0.50</p></td>
+<td><p>0.50</p></td>
+<td><p>0.50</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_sig-prot (us)</p></td>
+<td><p>0.48</p></td>
+<td><p>0.30</p></td>
+<td><p>0.45</p></td>
+<td><p>0.52</p></td>
+<td><p>0.49</p></td>
+<td><p>0.45</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_syscall-fstat (us)</p></td>
+<td><p>1.13</p></td>
+<td><p>1.21</p></td>
+<td><p>1.14</p></td>
+<td><p>1.12</p></td>
+<td><p>1.15</p></td>
+<td><p>1.17</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_syscall-null (us)</p></td>
+<td><p>0.37</p></td>
+<td><p>0.37</p></td>
+<td><p>0.37</p></td>
+<td><p>0.37</p></td>
+<td><p>0.37</p></td>
+<td><p>0.37</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_syscall-open (us)</p></td>
+<td><p>110.37</p></td>
+<td><p>2866.00</p></td>
+<td><p>105.18</p></td>
+<td><p>164.79</p></td>
+<td><p>151.26</p></td>
+<td><p>153.57</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_syscall-read (us)</p></td>
+<td><p>0.47</p></td>
+<td><p>0.46</p></td>
+<td><p>0.47</p></td>
+<td><p>0.47</p></td>
+<td><p>0.47</p></td>
+<td><p>0.46</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_syscall-stat (us)</p></td>
+<td><p>1.43</p></td>
+<td><p>1.57</p></td>
+<td><p>1.47</p></td>
+<td><p>1.40</p></td>
+<td><p>1.41</p></td>
+<td><p>1.45</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_syscall-write (us)</p></td>
+<td><p>0.42</p></td>
+<td><p>0.43</p></td>
+<td><p>0.42</p></td>
+<td><p>0.44</p></td>
+<td><p>0.42</p></td>
+<td><p>0.42</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_tcp (us)</p></td>
+<td><p>0.78</p></td>
+<td><p>0.79</p></td>
+<td><p>0.78</p></td>
+<td><p>0.78</p></td>
+<td><p>0.78</p></td>
+<td><p>0.79</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_unix (us)</p></td>
+<td><p>15.56</p></td>
+<td><p>18.82</p></td>
+<td><p>17.83</p></td>
+<td><p>15.71</p></td>
+<td><p>15.95</p></td>
+<td><p>15.85</p></td>
+</tr>
+<tr class="row-even"><td><p>latency_for_0.50_mb_block_size (nanosec)</p></td>
+<td><p>5.57</p></td>
+<td><p>5.65</p></td>
+<td><p>5.57</p></td>
+<td><p>5.57</p></td>
+<td><p>5.57</p></td>
+<td><p>5.65</p></td>
+</tr>
+<tr class="row-odd"><td><p>latency_for_1.00_mb_block_size (nanosec)</p></td>
+<td><p>6.01 (min 0.00, max 12.01)</p></td>
+<td><p>2.82 (min 0.00, max 5.65)</p></td>
+<td><p>5.24 (min 0.00, max 10.48)</p></td>
+<td><p>5.58 (min 0.00, max 11.15)</p></td>
+<td><p>6.70 (min 0.00, max 13.40)</p></td>
+<td><p>2.86 (min 0.00, max 5.71)</p></td>
+</tr>
+<tr class="row-even"><td><p>pipe_bandwidth (MBs)</p></td>
+<td><p>830.52</p></td>
+<td><p>670.16</p></td>
+<td><p>671.55</p></td>
+<td><p>795.56</p></td>
+<td><p>801.99</p></td>
+<td><p>907.75</p></td>
+</tr>
+<tr class="row-odd"><td><p>pipe_latency (microsec)</p></td>
+<td><p>11.90</p></td>
+<td><p>12.08</p></td>
+<td><p>11.98</p></td>
+<td><p>11.86</p></td>
+<td><p>11.56</p></td>
+<td><p>12.38</p></td>
+</tr>
+<tr class="row-even"><td><p>procedure_call (microsec)</p></td>
+<td><p>0.00</p></td>
+<td><p>0.00</p></td>
+<td><p>0.00</p></td>
+<td><p>0.00</p></td>
+<td><p>0.00</p></td>
+<td><p>0.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>select_on_200_tcp_fds (microsec)</p></td>
+<td><p>10.89</p></td>
+<td><p>13.09</p></td>
+<td><p>10.87</p></td>
+<td><p>10.81</p></td>
+<td><p>10.80</p></td>
+<td><p>10.90</p></td>
+</tr>
+<tr class="row-even"><td><p>semaphore_latency (microsec)</p></td>
+<td><p>1.59</p></td>
+<td><p>1.17</p></td>
+<td><p>1.43</p></td>
+<td><p>1.29</p></td>
+<td><p>1.49</p></td>
+<td><p>1.21</p></td>
+</tr>
+<tr class="row-odd"><td><p>signal_handler_latency (microsec)</p></td>
+<td><p>0.50</p></td>
+<td><p>0.50</p></td>
+<td><p>0.50</p></td>
+<td><p>0.50</p></td>
+<td><p>0.50</p></td>
+<td><p>0.50</p></td>
+</tr>
+<tr class="row-even"><td><p>signal_handler_overhead (microsec)</p></td>
+<td><p>3.06</p></td>
+<td><p>3.24</p></td>
+<td><p>3.14</p></td>
+<td><p>3.05</p></td>
+<td><p>3.06</p></td>
+<td><p>3.09</p></td>
+</tr>
+<tr class="row-odd"><td><p>tcp_ip_connection_cost_to_localhost (microsec)</p></td>
+<td><p>35.55</p></td>
+<td><p>34.20</p></td>
+<td><p>35.22</p></td>
+<td><p>34.38</p></td>
+<td><p>35.57</p></td>
+<td><p>34.83</p></td>
+</tr>
+<tr class="row-even"><td><p>tcp_latency_using_localhost (microsec)</p></td>
+<td><p>0.78</p></td>
+<td><p>0.79</p></td>
+<td><p>0.78</p></td>
+<td><p>0.78</p></td>
+<td><p>0.78</p></td>
+<td><p>0.79</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  <strong>LM Bench Metrics</strong></p>
+</div>
+<div class="section" id="dhrystone">
+<h4><span class="section-number">2.2.1.1.2. </span>Dhrystone<a class="headerlink" href="#dhrystone" title="Permalink to this headline">¶</a></h4>
+<p>Dhrystone is a core only benchmark that runs from warm L1 caches in all
+modern processors. It scales linearly with clock speed. For standard ARM
+cores the DMIPS/MHz score will be identical with the same compiler and flags.</p>
+<p>Execute the benchmark with the following:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>runDhrystone
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Benchmarks</p></th>
+<th class="head"><p>am68_sk-fs: perf</p></th>
+<th class="head"><p>am69_sk-fs: perf</p></th>
+<th class="head"><p>j7200-evm: perf</p></th>
+<th class="head"><p>j721e-idk-gw: perf</p></th>
+<th class="head"><p>j721s2-evm: perf</p></th>
+<th class="head"><p>j784s4-evm: perf</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>cpu_clock (MHz)</p></td>
+<td><p>2000.00</p></td>
+<td><p>2000.00</p></td>
+<td><p>2000.00</p></td>
+<td><p>2000.00</p></td>
+<td><p>2000.00</p></td>
+<td><p>2000.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>dhrystone_per_mhz (DMIPS/MHz)</p></td>
+<td><p>5.20</p></td>
+<td><p>4.40</p></td>
+<td><p>5.20</p></td>
+<td><p>4.40</p></td>
+<td><p>4.10</p></td>
+<td><p>4.40</p></td>
+</tr>
+<tr class="row-even"><td><p>dhrystone_per_second (DhrystoneP)</p></td>
+<td><p>18181818.00</p></td>
+<td><p>15384615.00</p></td>
+<td><p>18181818.00</p></td>
+<td><p>15384615.00</p></td>
+<td><p>14285714.00</p></td>
+<td><p>15384615.00</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  <strong>Dhrystone Benchmark</strong></p>
+</div>
+<div class="section" id="whetstone">
+<h4><span class="section-number">2.2.1.1.3. </span>Whetstone<a class="headerlink" href="#whetstone" title="Permalink to this headline">¶</a></h4>
+<p>Whetstone is a benchmark primarily measuring floating-point arithmetic performance.</p>
+<p>Execute the benchmark with the following:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>runWhetstone
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Benchmarks</p></th>
+<th class="head"><p>am68_sk-fs: perf</p></th>
+<th class="head"><p>am69_sk-fs: perf</p></th>
+<th class="head"><p>j7200-evm: perf</p></th>
+<th class="head"><p>j721e-idk-gw: perf</p></th>
+<th class="head"><p>j721s2-evm: perf</p></th>
+<th class="head"><p>j784s4-evm: perf</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>whetstone (MIPS)</p></td>
+<td><p>10000.00</p></td>
+<td><p>10000.00</p></td>
+<td><p>10000.00</p></td>
+<td><p>10000.00</p></td>
+<td><p>10000.00</p></td>
+<td><p>10000.00</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  <strong>Whetstone Benchmark</strong></p>
+</div>
+<div class="section" id="linpack">
+<h4><span class="section-number">2.2.1.1.4. </span>Linpack<a class="headerlink" href="#linpack" title="Permalink to this headline">¶</a></h4>
+<p>Linpack measures peak double precision (64 bit) floating point performance in
+solving a dense linear system.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Benchmarks</p></th>
+<th class="head"><p>am68_sk-fs: perf</p></th>
+<th class="head"><p>am69_sk-fs: perf</p></th>
+<th class="head"><p>j7200-evm: perf</p></th>
+<th class="head"><p>j721e-idk-gw: perf</p></th>
+<th class="head"><p>j721s2-evm: perf</p></th>
+<th class="head"><p>j784s4-evm: perf</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>linpack (Kflops)</p></td>
+<td><p>2592175.00</p></td>
+<td><p>2486122.00</p></td>
+<td><p>2391734.00</p></td>
+<td><p>2459408.00</p></td>
+<td><p>2372725.00</p></td>
+<td><p>2601996.00</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  <strong>Linpack Benchmark</strong></p>
+</div>
+<div class="section" id="nbench">
+<h4><span class="section-number">2.2.1.1.5. </span>NBench<a class="headerlink" href="#nbench" title="Permalink to this headline">¶</a></h4>
+<p>NBench which stands for Native Benchmark is used to measure macro benchmarks
+for commonly used operations such as sorting and analysis algorithms.
+More information about NBench at
+<a class="reference external" href="https://en.wikipedia.org/wiki/NBench">https://en.wikipedia.org/wiki/NBench</a> and
+<a class="reference external" href="https://nbench.io/articles/index.html">https://nbench.io/articles/index.html</a></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Benchmarks</p></th>
+<th class="head"><p>j7200-evm: perf</p></th>
+<th class="head"><p>j721e-idk-gw: perf</p></th>
+<th class="head"><p>j721s2-evm: perf</p></th>
+<th class="head"><p>j784s4-evm: perf</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>assignment (Iterations)</p></td>
+<td><p>30.86</p></td>
+<td><p>30.81</p></td>
+<td><p>30.80</p></td>
+<td><p>30.73</p></td>
+</tr>
+<tr class="row-odd"><td><p>fourier (Iterations)</p></td>
+<td><p>53004.00</p></td>
+<td><p>64902.00</p></td>
+<td><p>65145.00</p></td>
+<td><p>50203.00</p></td>
+</tr>
+<tr class="row-even"><td><p>fp_emulation (Iterations)</p></td>
+<td><p>214.60</p></td>
+<td><p>214.63</p></td>
+<td><p>214.64</p></td>
+<td><p>214.62</p></td>
+</tr>
+<tr class="row-odd"><td><p>huffman (Iterations)</p></td>
+<td><p>2381.20</p></td>
+<td><p>2376.80</p></td>
+<td><p>2383.80</p></td>
+<td><p>2378.00</p></td>
+</tr>
+<tr class="row-even"><td><p>idea (Iterations)</p></td>
+<td><p>7996.80</p></td>
+<td><p>7997.00</p></td>
+<td><p>7996.80</p></td>
+<td><p>7996.70</p></td>
+</tr>
+<tr class="row-odd"><td><p>lu_decomposition (Iterations)</p></td>
+<td><p>1375.00</p></td>
+<td><p>1364.40</p></td>
+<td><p>1360.50</p></td>
+<td><p>1360.80</p></td>
+</tr>
+<tr class="row-even"><td><p>neural_net (Iterations)</p></td>
+<td><p>29.49</p></td>
+<td><p>29.78</p></td>
+<td><p>28.96</p></td>
+<td><p>29.91</p></td>
+</tr>
+<tr class="row-odd"><td><p>numeric_sort (Iterations)</p></td>
+<td><p>855.31</p></td>
+<td><p>848.33</p></td>
+<td><p>854.56</p></td>
+<td><p>853.11</p></td>
+</tr>
+<tr class="row-even"><td><p>string_sort (Iterations)</p></td>
+<td><p>413.85</p></td>
+<td><p>425.25</p></td>
+<td><p>417.58</p></td>
+<td><p>417.49</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  <strong>NBench Benchmarks</strong></p>
+</div>
+<div class="section" id="stream">
+<h4><span class="section-number">2.2.1.1.6. </span>Stream<a class="headerlink" href="#stream" title="Permalink to this headline">¶</a></h4>
+<p>STREAM is a microbenchmark for measuring data memory system performance without
+any data reuse. It is designed to miss on caches and exercise data prefetcher
+and speculative accesses.
+It uses double precision floating point (64bit) but in
+most modern processors the memory access will be the bottleneck.
+The four individual scores are copy, scale as in multiply by constant,
+add two numbers, and triad for multiply accumulate.
+For bandwidth, a byte read counts as one and a byte written counts as one,
+resulting in a score that is double the bandwidth LMBench will show.</p>
+<p>Execute the benchmark with the following:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>stream_c
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Benchmarks</p></th>
+<th class="head"><p>am68_sk-fs: perf</p></th>
+<th class="head"><p>am69_sk-fs: perf</p></th>
+<th class="head"><p>j7200-evm: perf</p></th>
+<th class="head"><p>j721e-idk-gw: perf</p></th>
+<th class="head"><p>j721s2-evm: perf</p></th>
+<th class="head"><p>j784s4-evm: perf</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>add (MB/s)</p></td>
+<td><p>6364.50</p></td>
+<td><p>6216.20</p></td>
+<td><p>5459.10</p></td>
+<td><p>5380.80</p></td>
+<td><p>6340.50</p></td>
+<td><p>6150.90</p></td>
+</tr>
+<tr class="row-odd"><td><p>copy (MB/s)</p></td>
+<td><p>6930.30</p></td>
+<td><p>7145.70</p></td>
+<td><p>4779.80</p></td>
+<td><p>5631.00</p></td>
+<td><p>7001.30</p></td>
+<td><p>7047.50</p></td>
+</tr>
+<tr class="row-even"><td><p>scale (MB/s)</p></td>
+<td><p>7063.10</p></td>
+<td><p>7159.50</p></td>
+<td><p>4836.90</p></td>
+<td><p>5504.10</p></td>
+<td><p>7133.30</p></td>
+<td><p>7073.70</p></td>
+</tr>
+<tr class="row-odd"><td><p>triad (MB/s)</p></td>
+<td><p>6372.60</p></td>
+<td><p>6213.70</p></td>
+<td><p>5460.50</p></td>
+<td><p>5361.60</p></td>
+<td><p>6350.40</p></td>
+<td><p>6150.40</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  <strong>Stream</strong></p>
+</div>
+<div class="section" id="coremarkpro">
+<h4><span class="section-number">2.2.1.1.7. </span>CoreMarkPro<a class="headerlink" href="#coremarkpro" title="Permalink to this headline">¶</a></h4>
+<p>CoreMark®-Pro is a comprehensive, advanced processor benchmark that works with
+and enhances the market-proven industry-standard EEMBC CoreMark® benchmark.
+While CoreMark stresses the CPU pipeline, CoreMark-Pro tests the entire processor,
+adding comprehensive support for multicore technology, a combination of integer
+and floating-point workloads, and data sets for utilizing larger memory subsystems.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Benchmarks</p></th>
+<th class="head"><p>am68_sk-fs: perf</p></th>
+<th class="head"><p>am69_sk-fs: perf</p></th>
+<th class="head"><p>j7200-evm: perf</p></th>
+<th class="head"><p>j721e-idk-gw: perf</p></th>
+<th class="head"><p>j721s2-evm: perf</p></th>
+<th class="head"><p>j784s4-evm: perf</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>cjpeg-rose7-preset (workloads/)</p></td>
+<td><p>82.64</p></td>
+<td><p>82.64</p></td>
+<td><p>82.64</p></td>
+<td><p>83.33</p></td>
+<td><p>81.97</p></td>
+<td><p>82.64</p></td>
+</tr>
+<tr class="row-odd"><td><p>core (workloads/)</p></td>
+<td><p>0.77</p></td>
+<td><p>0.78</p></td>
+<td><p>0.78</p></td>
+<td><p>0.78</p></td>
+<td><p>0.78</p></td>
+<td><p>0.78</p></td>
+</tr>
+<tr class="row-even"><td><p>coremark-pro ()</p></td>
+<td><p>2504.00</p></td>
+<td><p>2518.83</p></td>
+<td><p>2424.25</p></td>
+<td><p>2465.22</p></td>
+<td><p>2475.03</p></td>
+<td><p>2499.36</p></td>
+</tr>
+<tr class="row-odd"><td><p>linear_alg-mid-100x100-sp (workloads/)</p></td>
+<td><p>80.52</p></td>
+<td><p>79.87</p></td>
+<td><p>79.62</p></td>
+<td><p>80.52</p></td>
+<td><p>80.91</p></td>
+<td><p>81.57</p></td>
+</tr>
+<tr class="row-even"><td><p>loops-all-mid-10k-sp (workloads/)</p></td>
+<td><p>2.47</p></td>
+<td><p>2.47</p></td>
+<td><p>2.45</p></td>
+<td><p>2.46</p></td>
+<td><p>2.49</p></td>
+<td><p>2.47</p></td>
+</tr>
+<tr class="row-odd"><td><p>nnet_test (workloads/)</p></td>
+<td><p>3.64</p></td>
+<td><p>3.84</p></td>
+<td><p>3.58</p></td>
+<td><p>3.61</p></td>
+<td><p>3.65</p></td>
+<td><p>3.59</p></td>
+</tr>
+<tr class="row-even"><td><p>parser-125k (workloads/)</p></td>
+<td><p>11.11</p></td>
+<td><p>10.87</p></td>
+<td><p>11.11</p></td>
+<td><p>10.99</p></td>
+<td><p>11.11</p></td>
+<td><p>10.87</p></td>
+</tr>
+<tr class="row-odd"><td><p>radix2-big-64k (workloads/)</p></td>
+<td><p>283.29</p></td>
+<td><p>274.35</p></td>
+<td><p>216.64</p></td>
+<td><p>250.56</p></td>
+<td><p>253.94</p></td>
+<td><p>267.95</p></td>
+</tr>
+<tr class="row-even"><td><p>sha-test (workloads/)</p></td>
+<td><p>158.73</p></td>
+<td><p>158.73</p></td>
+<td><p>158.73</p></td>
+<td><p>156.25</p></td>
+<td><p>156.25</p></td>
+<td><p>158.73</p></td>
+</tr>
+<tr class="row-odd"><td><p>zip-test (workloads/)</p></td>
+<td><p>47.62</p></td>
+<td><p>50.00</p></td>
+<td><p>47.62</p></td>
+<td><p>47.62</p></td>
+<td><p>47.62</p></td>
+<td><p>50.00</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  <strong>CoreMarkPro</strong></p>
+</div>
+<div class="section" id="multibench">
+<h4><span class="section-number">2.2.1.1.8. </span>MultiBench<a class="headerlink" href="#multibench" title="Permalink to this headline">¶</a></h4>
+<p>MultiBench™ is a suite of benchmarks that allows processor and system designers to
+analyze, test, and improve multicore processors. It uses three forms of concurrency:
+Data decomposition: multiple threads cooperating on achieving a unified goal and
+demonstrating a processor’s support for fine grain parallelism.
+Processing multiple data streams: uses common code running over multiple threads and
+demonstrating how well a processor scales over scalable data inputs.
+Multiple workload processing: shows the scalability of general-purpose processing,
+demonstrating concurrency over both code and data.
+MultiBench combines a wide variety of application-specific workloads with the EEMBC
+Multi-Instance-Test Harness (MITH), compatible and portable with most any multicore
+processors and operating systems. MITH uses a thread-based API (POSIX-compliant) to
+establish a common programming model that communicates with the benchmark through an
+abstraction layer and provides a flexible interface to allow a wide variety of
+thread-enabled workloads to be tested.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Benchmarks</p></th>
+<th class="head"><p>am68_sk-fs: perf</p></th>
+<th class="head"><p>am69_sk-fs: perf</p></th>
+<th class="head"><p>j7200-evm: perf</p></th>
+<th class="head"><p>j721e-idk-gw: perf</p></th>
+<th class="head"><p>j721s2-evm: perf</p></th>
+<th class="head"><p>j784s4-evm: perf</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>4m-check (workloads/)</p></td>
+<td><p>901.55</p></td>
+<td><p>1035.20</p></td>
+<td><p>935.28</p></td>
+<td><p>931.79</p></td>
+<td><p>888.73</p></td>
+<td><p>1050.42</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m-check-reassembly (workloads/)</p></td>
+<td><p>153.37</p></td>
+<td><p>202.84</p></td>
+<td><p>120.92</p></td>
+<td><p>147.28</p></td>
+<td><p>148.81</p></td>
+<td><p>200.40</p></td>
+</tr>
+<tr class="row-even"><td><p>4m-check-reassembly-tcp (workloads/)</p></td>
+<td><p>99.21</p></td>
+<td><p>115.74</p></td>
+<td><p>93.28</p></td>
+<td><p>101.22</p></td>
+<td><p>94.34</p></td>
+<td><p>116.28</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m-check-reassembly-tcp-cmykw2-rotatew2 (workloads/)</p></td>
+<td><p>41.52</p></td>
+<td><p>36.25</p></td>
+<td><p>40.82</p></td>
+<td><p>44.05</p></td>
+<td><p>41.61</p></td>
+<td><p>38.61</p></td>
+</tr>
+<tr class="row-even"><td><p>4m-check-reassembly-tcp-x264w2 (workloads/)</p></td>
+<td><p>2.67</p></td>
+<td><p>4.67</p></td>
+<td><p>2.70</p></td>
+<td><p>2.72</p></td>
+<td><p>2.67</p></td>
+<td><p>4.89</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m-cmykw2 (workloads/)</p></td>
+<td><p>314.96</p></td>
+<td><p>604.23</p></td>
+<td><p>313.48</p></td>
+<td><p>317.46</p></td>
+<td><p>313.48</p></td>
+<td><p>598.80</p></td>
+</tr>
+<tr class="row-even"><td><p>4m-cmykw2-rotatew2 (workloads/)</p></td>
+<td><p>58.54</p></td>
+<td><p>48.00</p></td>
+<td><p>58.88</p></td>
+<td><p>62.24</p></td>
+<td><p>59.23</p></td>
+<td><p>53.86</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m-reassembly (workloads/)</p></td>
+<td><p>125.95</p></td>
+<td><p>152.44</p></td>
+<td><p>108.70</p></td>
+<td><p>129.87</p></td>
+<td><p>126.58</p></td>
+<td><p>150.15</p></td>
+</tr>
+<tr class="row-even"><td><p>4m-rotatew2 (workloads/)</p></td>
+<td><p>71.53</p></td>
+<td><p>52.85</p></td>
+<td><p>70.87</p></td>
+<td><p>74.02</p></td>
+<td><p>70.87</p></td>
+<td><p>56.53</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m-tcp-mixed (workloads/)</p></td>
+<td><p>250.00</p></td>
+<td><p>253.97</p></td>
+<td><p>280.70</p></td>
+<td><p>280.70</p></td>
+<td><p>266.67</p></td>
+<td><p>271.19</p></td>
+</tr>
+<tr class="row-even"><td><p>4m-x264w2 (workloads/)</p></td>
+<td><p>2.75</p></td>
+<td><p>4.78</p></td>
+<td><p>2.76</p></td>
+<td><p>2.76</p></td>
+<td><p>2.72</p></td>
+<td><p>5.10</p></td>
+</tr>
+<tr class="row-odd"><td><p>idct-4m (workloads/)</p></td>
+<td><p>35.00</p></td>
+<td><p>35.15</p></td>
+<td><p>34.94</p></td>
+<td><p>35.09</p></td>
+<td><p>34.98</p></td>
+<td><p>35.11</p></td>
+</tr>
+<tr class="row-even"><td><p>idct-4mw1 (workloads/)</p></td>
+<td><p>35.01</p></td>
+<td><p>35.11</p></td>
+<td><p>34.94</p></td>
+<td><p>35.08</p></td>
+<td><p>34.98</p></td>
+<td><p>35.14</p></td>
+</tr>
+<tr class="row-odd"><td><p>ippktcheck-4m (workloads/)</p></td>
+<td><p>893.82</p></td>
+<td><p>1035.63</p></td>
+<td><p>926.27</p></td>
+<td><p>928.68</p></td>
+<td><p>851.79</p></td>
+<td><p>1042.10</p></td>
+</tr>
+<tr class="row-even"><td><p>ippktcheck-4mw1 (workloads/)</p></td>
+<td><p>913.74</p></td>
+<td><p>1025.43</p></td>
+<td><p>951.29</p></td>
+<td><p>916.09</p></td>
+<td><p>884.02</p></td>
+<td><p>1028.38</p></td>
+</tr>
+<tr class="row-odd"><td><p>ipres-4m (workloads/)</p></td>
+<td><p>168.73</p></td>
+<td><p>208.04</p></td>
+<td><p>158.06</p></td>
+<td><p>179.86</p></td>
+<td><p>163.40</p></td>
+<td><p>202.98</p></td>
+</tr>
+<tr class="row-even"><td><p>ipres-4mw1 (workloads/)</p></td>
+<td><p>169.68</p></td>
+<td><p>202.98</p></td>
+<td><p>155.44</p></td>
+<td><p>181.60</p></td>
+<td><p>165.20</p></td>
+<td><p>201.61</p></td>
+</tr>
+<tr class="row-odd"><td><p>md5-4m (workloads/)</p></td>
+<td><p>45.50</p></td>
+<td><p>47.57</p></td>
+<td><p>45.87</p></td>
+<td><p>48.61</p></td>
+<td><p>44.68</p></td>
+<td><p>47.87</p></td>
+</tr>
+<tr class="row-even"><td><p>md5-4mw1 (workloads/)</p></td>
+<td><p>46.27</p></td>
+<td><p>47.44</p></td>
+<td><p>45.68</p></td>
+<td><p>48.85</p></td>
+<td><p>46.17</p></td>
+<td><p>47.30</p></td>
+</tr>
+<tr class="row-odd"><td><p>rgbcmyk-4m (workloads/)</p></td>
+<td><p>163.13</p></td>
+<td><p>164.20</p></td>
+<td><p>163.13</p></td>
+<td><p>163.93</p></td>
+<td><p>163.13</p></td>
+<td><p>164.07</p></td>
+</tr>
+<tr class="row-even"><td><p>rgbcmyk-4mw1 (workloads/)</p></td>
+<td><p>163.13</p></td>
+<td><p>163.80</p></td>
+<td><p>163.13</p></td>
+<td><p>163.80</p></td>
+<td><p>161.81</p></td>
+<td><p>163.93</p></td>
+</tr>
+<tr class="row-odd"><td><p>rotate-4ms1 (workloads/)</p></td>
+<td><p>52.25</p></td>
+<td><p>55.07</p></td>
+<td><p>52.36</p></td>
+<td><p>54.64</p></td>
+<td><p>51.76</p></td>
+<td><p>54.70</p></td>
+</tr>
+<tr class="row-even"><td><p>rotate-4ms1w1 (workloads/)</p></td>
+<td><p>52.14</p></td>
+<td><p>55.07</p></td>
+<td><p>52.47</p></td>
+<td><p>54.95</p></td>
+<td><p>51.49</p></td>
+<td><p>55.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>rotate-4ms64 (workloads/)</p></td>
+<td><p>52.85</p></td>
+<td><p>55.56</p></td>
+<td><p>52.91</p></td>
+<td><p>55.37</p></td>
+<td><p>52.19</p></td>
+<td><p>55.49</p></td>
+</tr>
+<tr class="row-even"><td><p>rotate-4ms64w1 (workloads/)</p></td>
+<td><p>52.80</p></td>
+<td><p>55.62</p></td>
+<td><p>53.08</p></td>
+<td><p>55.25</p></td>
+<td><p>52.74</p></td>
+<td><p>55.37</p></td>
+</tr>
+<tr class="row-odd"><td><p>x264-4mq (workloads/)</p></td>
+<td><p>1.42</p></td>
+<td><p>1.41</p></td>
+<td><p>1.42</p></td>
+<td><p>1.43</p></td>
+<td><p>1.42</p></td>
+<td><p>1.43</p></td>
+</tr>
+<tr class="row-even"><td><p>x264-4mqw1 (workloads/)</p></td>
+<td><p>1.41</p></td>
+<td><p>1.43</p></td>
+<td><p>1.42</p></td>
+<td><p>1.44</p></td>
+<td><p>1.41</p></td>
+<td><p>1.43</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  <strong>Multibench</strong></p>
+</div>
+</div>
+<div class="section" id="boot-time-measurement">
+<h3><span class="section-number">2.2.1.2. </span>Boot-time Measurement<a class="headerlink" href="#boot-time-measurement" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="boot-media-mmcsd">
+<h4><span class="section-number">2.2.1.2.1. </span>Boot media: MMCSD<a class="headerlink" href="#boot-media-mmcsd" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Boot Configuration</p></th>
+<th class="head"><p>am68_sk-fs: boot time (sec)</p></th>
+<th class="head"><p>am69_sk-fs: boot time (sec)</p></th>
+<th class="head"><p>j7200-evm: boot time (sec)</p></th>
+<th class="head"><p>j721e-idk-gw: boot time (sec)</p></th>
+<th class="head"><p>j721s2-evm: boot time (sec)</p></th>
+<th class="head"><p>j784s4-evm: boot time (sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Kernel boot time test when bootloader, kernel and sdk-rootfs are in mmc-sd</p></td>
+<td><p>13.81 (min 13.69, max 13.89)</p></td>
+<td><p>14.55 (min 14.47, max 14.68)</p></td>
+<td><p>13.55 (min 13.28, max 14.12)</p></td>
+<td><p>17.38 (min 17.05, max 18.16)</p></td>
+<td><p>18.58 (min 18.49, max 18.79)</p></td>
+<td><p>16.22 (min 15.57, max 18.18)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Kernel boot time test when init is /bin/sh and bootloader, kernel and sdk-rootfs are in mmc-sd</p></td>
+<td><p>4.58 (min 4.57, max 4.61)</p></td>
+<td><p>5.22 (min 5.20, max 5.24)</p></td>
+<td><p>4.31 (min 4.28, max 4.33)</p></td>
+<td><p>5.03 (min 5.01, max 5.07)</p></td>
+<td><p>5.33 (min 5.32, max 5.33)</p></td>
+<td><p>6.41 (min 6.29, max 6.45)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  <strong>Boot time MMC/SD</strong></p>
+</div>
+</div>
+<div class="section" id="alsa-soc-audio-driver">
+<h3><span class="section-number">2.2.1.3. </span>ALSA SoC Audio Driver<a class="headerlink" href="#alsa-soc-audio-driver" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Access type - RW_INTERLEAVED</p></li>
+<li><p>Channels - 2</p></li>
+<li><p>Format - S16_LE</p></li>
+<li><p>Period size - 64</p></li>
+</ol>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Sampling Rate (Hz)</p></th>
+<th class="head"><p>j721e-idk-gw: Throughput (bits/sec)</p></th>
+<th class="head"><p>j721e-idk-gw: CPU Load (%)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>11025</p></td>
+<td><p>352793.00</p></td>
+<td><p>0.16</p></td>
+</tr>
+<tr class="row-odd"><td><p>16000</p></td>
+<td><p>511992.00</p></td>
+<td><p>0.28</p></td>
+</tr>
+<tr class="row-even"><td><p>22050</p></td>
+<td><p>705576.00</p></td>
+<td><p>0.23</p></td>
+</tr>
+<tr class="row-odd"><td><p>24000</p></td>
+<td><p>705583.00</p></td>
+<td><p>0.27</p></td>
+</tr>
+<tr class="row-even"><td><p>32000</p></td>
+<td><p>1023980.00</p></td>
+<td><p>0.36</p></td>
+</tr>
+<tr class="row-odd"><td><p>44100</p></td>
+<td><p>1411175.00</p></td>
+<td><p>0.45</p></td>
+</tr>
+<tr class="row-even"><td><p>48000</p></td>
+<td><p>1535974.00</p></td>
+<td><p>0.27</p></td>
+</tr>
+<tr class="row-odd"><td><p>88200</p></td>
+<td><p>2822351.00</p></td>
+<td><p>0.83</p></td>
+</tr>
+<tr class="row-even"><td><p>96000</p></td>
+<td><p>3071946.00</p></td>
+<td><p>1.12</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  <strong>Audio Capture</strong></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Sampling Rate (Hz)</p></th>
+<th class="head"><p>j721e-idk-gw: Throughput (bits/sec)</p></th>
+<th class="head"><p>j721e-idk-gw: CPU Load (%)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>11025</p></td>
+<td><p>352935.00</p></td>
+<td><p>0.14</p></td>
+</tr>
+<tr class="row-odd"><td><p>16000</p></td>
+<td><p>512198.00</p></td>
+<td><p>0.19</p></td>
+</tr>
+<tr class="row-even"><td><p>22050</p></td>
+<td><p>705872.00</p></td>
+<td><p>0.23</p></td>
+</tr>
+<tr class="row-odd"><td><p>24000</p></td>
+<td><p>705872.00</p></td>
+<td><p>0.24</p></td>
+</tr>
+<tr class="row-even"><td><p>32000</p></td>
+<td><p>1024396.00</p></td>
+<td><p>0.32</p></td>
+</tr>
+<tr class="row-odd"><td><p>44100</p></td>
+<td><p>1411745.00</p></td>
+<td><p>0.42</p></td>
+</tr>
+<tr class="row-even"><td><p>48000</p></td>
+<td><p>1536594.00</p></td>
+<td><p>0.45</p></td>
+</tr>
+<tr class="row-odd"><td><p>88200</p></td>
+<td><p>2823489.00</p></td>
+<td><p>0.79</p></td>
+</tr>
+<tr class="row-even"><td><p>96000</p></td>
+<td><p>2964662.00</p></td>
+<td><p>1.25</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  <strong>Audio Playback</strong></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="graphics-sgx-rgx-driver">
+<h3><span class="section-number">2.2.1.4. </span>Graphics SGX/RGX Driver<a class="headerlink" href="#graphics-sgx-rgx-driver" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="glmark2">
+<h4><span class="section-number">2.2.1.4.1. </span>Glmark2<a class="headerlink" href="#glmark2" title="Permalink to this headline">¶</a></h4>
+<p>Run Glmark2 and capture performance reported (Score). All display outputs (HDMI, Displayport and/or LCD) are connected when running these tests</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Benchmark</p></th>
+<th class="head"><p>am68_sk-fs: Score</p></th>
+<th class="head"><p>am69_sk-fs: Score</p></th>
+<th class="head"><p>j721e-idk-gw: Score</p></th>
+<th class="head"><p>j721s2-evm: Score</p></th>
+<th class="head"><p>j784s4-evm: Score</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Glmark2-DRM</p></td>
+<td><p>56.00</p></td>
+<td><p>56.00</p></td>
+<td><p>28.00</p></td>
+<td><p>28.00</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Glmark2-Wayland</p></td>
+<td><p>1332.00</p></td>
+<td><p>1401.00</p></td>
+<td><p>1180.00</p></td>
+<td><p>1286.00</p></td>
+<td><p>1333.00</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  <strong>Glmark2</strong></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="ethernet">
+<h3><span class="section-number">2.2.1.5. </span>Ethernet<a class="headerlink" href="#ethernet" title="Permalink to this headline">¶</a></h3>
+<p>Ethernet performance benchmarks were measured using Netperf 2.7.1 <a class="reference external" href="https://hewlettpackard.github.io/netperf/doc/netperf.html">https://hewlettpackard.github.io/netperf/doc/netperf.html</a>
+Test procedures were modeled after those defined in RFC-2544:
+<a class="reference external" href="https://tools.ietf.org/html/rfc2544">https://tools.ietf.org/html/rfc2544</a>, where the DUT is the TI device
+and the “tester” used was a Linux PC. To produce consistent results,
+it is recommended to carry out performance tests in a private network and to avoid
+running NFS on the same interface used in the test. In these results,
+CPU utilization was captured as the total percentage used across all cores on the device,
+while running the performance test over one external interface.</p>
+<p>UDP Throughput (0% loss) was measured by the procedure defined in RFC-2544 section 26.1: Throughput.
+In this scenario, netperf options burst_size (-b) and wait_time (-w) are used to limit bandwidth
+during different trials of the test, with the goal of finding the highest rate at which
+no loss is seen. For example, to limit bandwidth to 500Mbits/sec with 1472B datagram:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>burst_size = &lt;bandwidth (bits/sec)&gt; / 8 (bits -&gt; bytes) / &lt;UDP datagram size&gt; / 100 (seconds -&gt; 10 ms)
+burst_size = 500000000 / 8 / 1472 / 100 = 425
+
+wait_time = 10 milliseconds (minimum supported by Linux PC used for testing)
+</pre></div>
+</div>
+<p>UDP Throughput (possible loss) was measured by capturing throughput and packet loss statistics when
+running the netperf test with no bandwidth limit (remove -b/-w options).</p>
+<p>In order to start a netperf client on one device, the other device must have netserver running.
+To start netserver:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>netserver [-p &lt;port_number&gt;] [-4 (IPv4 addressing)] [-6 (IPv6 addressing)]
+</pre></div>
+</div>
+<p>Running the following shell script from the DUT will trigger netperf clients to measure
+bidirectional TCP performance for 60 seconds and report CPU utilization. Parameter -k is used in
+client commands to summarize selected statistics on their own line and -j is used to gain
+additional timing measurements during the test.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+for i in 1
+do
+   netperf -H &lt;tester ip&gt; -j -c -l 60 -t TCP_STREAM --
+      -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE &amp;
+
+   netperf -H &lt;tester ip&gt; -j -c -l 60 -t TCP_MAERTS --
+      -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE &amp;
+done
+</pre></div>
+</div>
+<p>Running the following commands will trigger netperf clients to measure UDP burst performance for
+60 seconds at various burst/datagram sizes and report CPU utilization.</p>
+<ul class="simple">
+<li><p>For UDP egress tests, run netperf client from DUT and start netserver on tester.</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>netperf -H &lt;tester ip&gt; -j -c -l 60 -t UDP_STREAM -b &lt;burst_size&gt; -w &lt;wait_time&gt; -- -m &lt;UDP datagram size&gt;
+   -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>For UDP ingress tests, run netperf client from tester and start netserver on DUT.</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>netperf -H &lt;DUT ip&gt; -j -C -l 60 -t UDP_STREAM -b &lt;burst_size&gt; -w &lt;wait_time&gt; -- -m &lt;UDP datagram size&gt;
+   -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="cpsw-cpsw2g-cpsw3g-ethernet-driver">
+<h4><span class="section-number">2.2.1.5.1. </span>CPSW/CPSW2g/CPSW3g Ethernet Driver<a class="headerlink" href="#cpsw-cpsw2g-cpsw3g-ethernet-driver" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>CPSW2g: AM65x, J7200, J721e, J721S2, J784S4</p></li>
+<li><p>CPSW3g: AM64x</p></li>
+</ul>
+<p class="rubric" id="cpsw2g-tcp-bidirectional-throughput">TCP Bidirectional Throughput</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command Used</p></th>
+<th class="head"><p>j721e-idk-gw: THROUGHPUT (Mbits/sec)</p></th>
+<th class="head"><p>j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)</p></th>
+<th class="head"><p>j721s2-evm: THROUGHPUT (Mbits/sec)</p></th>
+<th class="head"><p>j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)</p></th>
+<th class="head"><p>j784s4-evm: THROUGHPUT (Mbits/sec)</p></th>
+<th class="head"><p>j784s4-evm: CPU Load % (LOCAL_CPU_UTIL)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS</p></td>
+<td><p>1834.33</p></td>
+<td><p>73.50</p></td>
+<td><p>1864.35</p></td>
+<td><p>75.70</p></td>
+<td><p>1855.53</p></td>
+<td><p>18.66</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table: <strong>CPSW TCP Bidirectional Throughput</strong></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p class="rubric" id="cpsw2g-tcp-bidirectional-throughput-interrupt-pacing">TCP Bidirectional Throughput Interrupt Pacing</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command Used</p></th>
+<th class="head"><p>j721e-idk-gw: THROUGHPUT (Mbits/sec)</p></th>
+<th class="head"><p>j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)</p></th>
+<th class="head"><p>j721s2-evm: THROUGHPUT (Mbits/sec)</p></th>
+<th class="head"><p>j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS</p></td>
+<td><p>1859.60</p></td>
+<td><p>34.09</p></td>
+<td><p>1873.43</p></td>
+<td><p>38.54</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table: <strong>CPSW TCP Bidirectional Throughput Interrupt Pacing</strong></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p class="rubric" id="cpsw2g-udp-throughput-0-loss">UDP Throughput</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Frame Size(bytes)</p></th>
+<th class="head"><p>j721e-idk-gw: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)</p></th>
+<th class="head"><p>j721e-idk-gw: THROUGHPUT (Mbits/sec)</p></th>
+<th class="head"><p>j721e-idk-gw: Packets Per Second (kPPS)</p></th>
+<th class="head"><p>j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)</p></th>
+<th class="head"><p>j721s2-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)</p></th>
+<th class="head"><p>j721s2-evm: THROUGHPUT (Mbits/sec)</p></th>
+<th class="head"><p>j721s2-evm: Packets Per Second (kPPS)</p></th>
+<th class="head"><p>j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>64</p></td>
+<td><p>18.00</p></td>
+<td><p>32.39</p></td>
+<td><p>225.00</p></td>
+<td><p>88.25</p></td>
+<td><p>18.00</p></td>
+<td><p>3.63</p></td>
+<td><p>25.00</p></td>
+<td><p>18.05</p></td>
+</tr>
+<tr class="row-odd"><td><p>128</p></td>
+<td><p>82.00</p></td>
+<td><p>146.16</p></td>
+<td><p>223.00</p></td>
+<td><p>88.80</p></td>
+<td><p>82.00</p></td>
+<td><p>138.80</p></td>
+<td><p>212.00</p></td>
+<td><p>90.72</p></td>
+</tr>
+<tr class="row-even"><td><p>256</p></td>
+<td><p>210.00</p></td>
+<td><p>368.14</p></td>
+<td><p>219.00</p></td>
+<td><p>87.76</p></td>
+<td><p>210.00</p></td>
+<td><p>27.55</p></td>
+<td><p>16.00</p></td>
+<td><p>12.52</p></td>
+</tr>
+<tr class="row-odd"><td><p>1024</p></td>
+<td><p>978.00</p></td>
+<td><p>675.97</p></td>
+<td><p>86.00</p></td>
+<td><p>35.83</p></td>
+<td><p>978.00</p></td>
+<td><p>936.05</p></td>
+<td><p>120.00</p></td>
+<td><p>55.72</p></td>
+</tr>
+<tr class="row-even"><td><p>1518</p></td>
+<td><p>1472.00</p></td>
+<td><p>592.23</p></td>
+<td><p>50.00</p></td>
+<td><p>23.48</p></td>
+<td><p>1472.00</p></td>
+<td><p>955.98</p></td>
+<td><p>81.00</p></td>
+<td><p>42.40</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table: <strong>CPSW UDP Egress Throughput</strong>
+|</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Frame Size(bytes)</p></th>
+<th class="head"><p>j721e-idk-gw: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)</p></th>
+<th class="head"><p>j721e-idk-gw: THROUGHPUT (Mbits/sec)</p></th>
+<th class="head"><p>j721e-idk-gw: Packets Per Second (kPPS)</p></th>
+<th class="head"><p>j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)</p></th>
+<th class="head"><p>j721s2-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)</p></th>
+<th class="head"><p>j721s2-evm: THROUGHPUT (Mbits/sec)</p></th>
+<th class="head"><p>j721s2-evm: Packets Per Second (kPPS)</p></th>
+<th class="head"><p>j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>64</p></td>
+<td><p>18.00</p></td>
+<td><p>7.26</p></td>
+<td><p>50.00</p></td>
+<td><p>18.15</p></td>
+<td><p>18.00</p></td>
+<td><p>1.28</p></td>
+<td><p>9.00</p></td>
+<td><p>6.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>128</p></td>
+<td><p>82.00</p></td>
+<td><p>8.20</p></td>
+<td><p>13.00</p></td>
+<td><p>5.59</p></td>
+<td><p>82.00</p></td>
+<td><p>20.53</p></td>
+<td><p>31.00</p></td>
+<td><p>21.86</p></td>
+</tr>
+<tr class="row-even"><td><p>256</p></td>
+<td><p>210.00</p></td>
+<td><p>18.31</p></td>
+<td><p>11.00</p></td>
+<td><p>4.62</p></td>
+<td><p>210.00</p></td>
+<td><p>76.44</p></td>
+<td><p>46.00</p></td>
+<td><p>29.70</p></td>
+</tr>
+<tr class="row-odd"><td><p>1024</p></td>
+<td><p>978.00</p></td>
+<td><p>107.19</p></td>
+<td><p>14.00</p></td>
+<td><p>8.80</p></td>
+<td><p>978.00</p></td>
+<td><p>180.73</p></td>
+<td><p>23.00</p></td>
+<td><p>15.57</p></td>
+</tr>
+<tr class="row-even"><td><p>1518</p></td>
+<td><p>1472.00</p></td>
+<td><p>216.68</p></td>
+<td><p>18.00</p></td>
+<td><p>13.52</p></td>
+<td><p>1472.00</p></td>
+<td><p>956.98</p></td>
+<td><p>81.00</p></td>
+<td><p>64.71</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table: <strong>CPSW UDP Ingress Throughput (0% loss)</strong></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Frame Size(bytes)</p></th>
+<th class="head"><p>j721e-idk-gw: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)</p></th>
+<th class="head"><p>j721e-idk-gw: THROUGHPUT (Mbits/sec)</p></th>
+<th class="head"><p>j721e-idk-gw: Packets Per Second (kPPS)</p></th>
+<th class="head"><p>j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)</p></th>
+<th class="head"><p>j721e-idk-gw: Packet Loss %</p></th>
+<th class="head"><p>j721s2-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)</p></th>
+<th class="head"><p>j721s2-evm: THROUGHPUT (Mbits/sec)</p></th>
+<th class="head"><p>j721s2-evm: Packets Per Second (kPPS)</p></th>
+<th class="head"><p>j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)</p></th>
+<th class="head"><p>j721s2-evm: Packet Loss %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>64</p></td>
+<td><p>18.00</p></td>
+<td><p>59.08</p></td>
+<td><p>410.00</p></td>
+<td><p>88.04</p></td>
+<td><p>1.78</p></td>
+<td><p>18.00</p></td>
+<td><p>18.61</p></td>
+<td><p>129.00</p></td>
+<td><p>71.03</p></td>
+<td><p>0.04</p></td>
+</tr>
+<tr class="row-odd"><td><p>128</p></td>
+<td><p>82.00</p></td>
+<td><p>261.28</p></td>
+<td><p>398.00</p></td>
+<td><p>90.62</p></td>
+<td><p>1.68</p></td>
+<td><p>82.00</p></td>
+<td><p>86.81</p></td>
+<td><p>132.00</p></td>
+<td><p>72.16</p></td>
+<td><p>4.34</p></td>
+</tr>
+<tr class="row-even"><td><p>256</p></td>
+<td><p>210.00</p></td>
+<td><p>669.82</p></td>
+<td><p>399.00</p></td>
+<td><p>92.76</p></td>
+<td><p>1.82</p></td>
+<td><p>210.00</p></td>
+<td><p>234.27</p></td>
+<td><p>139.00</p></td>
+<td><p>80.60</p></td>
+<td><p>0.06</p></td>
+</tr>
+<tr class="row-odd"><td><p>1024</p></td>
+<td><p>978.00</p></td>
+<td><p>928.84</p></td>
+<td><p>119.00</p></td>
+<td><p>83.35</p></td>
+<td><p>0.03</p></td>
+<td><p>978.00</p></td>
+<td><p>930.94</p></td>
+<td><p>119.00</p></td>
+<td><p>84.56</p></td>
+<td><p>0.61</p></td>
+</tr>
+<tr class="row-even"><td><p>1518</p></td>
+<td><p>1472.00</p></td>
+<td><p>949.65</p></td>
+<td><p>81.00</p></td>
+<td><p>60.31</p></td>
+<td><p>0.02</p></td>
+<td><p>1472.00</p></td>
+<td><p>956.98</p></td>
+<td><p>81.00</p></td>
+<td><p>64.71</p></td>
+<td><p>0.00</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table: <strong>CPSW UDP Ingress Throughput (possible loss)</strong></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="pcie-driver">
+<h3><span class="section-number">2.2.1.6. </span>PCIe Driver<a class="headerlink" href="#pcie-driver" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="pcie-eth">
+<h4><span class="section-number">2.2.1.6.1. </span>PCIe-ETH<a class="headerlink" href="#pcie-eth" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>TCP Window Size(Kbytes)</p></th>
+<th class="head"><p>j7200-evm: Bandwidth (Mbits/sec)</p></th>
+<th class="head"><p>j721e-idk-gw: Bandwidth (Mbits/sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>225.60</p></td>
+<td><p>268.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>225.60</p></td>
+<td><p>243.20</p></td>
+</tr>
+<tr class="row-even"><td><p>32</p></td>
+<td><p>357.60</p></td>
+<td><p>367.20</p></td>
+</tr>
+<tr class="row-odd"><td><p>64</p></td>
+<td><p>561.60</p></td>
+<td><p>595.20</p></td>
+</tr>
+<tr class="row-even"><td><p>128</p></td>
+<td><p>737.60</p></td>
+<td><p>751.20</p></td>
+</tr>
+<tr class="row-odd"><td><p>256</p></td>
+<td><p>808.00</p></td>
+<td><p>808.00</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table: <strong>PCI Ethernet</strong></p>
+</div>
+<div class="section" id="pcie-nvme-ssd">
+<h4><span class="section-number">2.2.1.6.2. </span>PCIe-NVMe-SSD<a class="headerlink" href="#pcie-nvme-ssd" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="j721e-idk-gw">
+<h5><span class="section-number">2.2.1.6.2.1. </span>J721E-IDK-GW<a class="headerlink" href="#j721e-idk-gw" title="Permalink to this headline">¶</a></h5>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Buffer size (bytes)</p></th>
+<th class="head"><p>j721e-idk-gw: Write EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j721e-idk-gw: Write EXT4 CPU Load (%)</p></th>
+<th class="head"><p>j721e-idk-gw: Read EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j721e-idk-gw: Read EXT4 CPU Load (%)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1m</p></td>
+<td><p>720.00</p></td>
+<td><p>13.11</p></td>
+<td><p>1521.00</p></td>
+<td><p>6.09</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m</p></td>
+<td><p>721.00</p></td>
+<td><p>11.86</p></td>
+<td><p>1523.00</p></td>
+<td><p>5.01</p></td>
+</tr>
+<tr class="row-even"><td><p>4k</p></td>
+<td><p>187.00</p></td>
+<td><p>48.64</p></td>
+<td><p>166.00</p></td>
+<td><p>36.34</p></td>
+</tr>
+<tr class="row-odd"><td><p>256k</p></td>
+<td><p>740.00</p></td>
+<td><p>12.56</p></td>
+<td><p>1520.00</p></td>
+<td><p>11.87</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Filesize used is: 10G</p></li>
+<li><p>FIO command options: –ioengine=libaio –iodepth=4 –numjobs=1 –direct=1 –runtime=60 –time_based</p></li>
+<li><p>Platform: Speed 8GT/s, Width x2</p></li>
+<li><p>SSD being used: PLEXTOR PX-128M8PeY</p></li>
+</ul>
+</div>
+<div class="section" id="j7200-evm">
+<h5><span class="section-number">2.2.1.6.2.2. </span>J7200-EVM<a class="headerlink" href="#j7200-evm" title="Permalink to this headline">¶</a></h5>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Buffer size (bytes)</p></th>
+<th class="head"><p>j7200-evm: Write EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j7200-evm: Write EXT4 CPU Load (%)</p></th>
+<th class="head"><p>j7200-evm: Read EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j7200-evm: Read EXT4 CPU Load (%)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1m</p></td>
+<td><p>722.00</p></td>
+<td><p>14.86</p></td>
+<td><p>1524.00</p></td>
+<td><p>6.79</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m</p></td>
+<td><p>718.00</p></td>
+<td><p>13.94</p></td>
+<td><p>1524.00</p></td>
+<td><p>5.74</p></td>
+</tr>
+<tr class="row-even"><td><p>4k</p></td>
+<td><p>184.00</p></td>
+<td><p>48.57</p></td>
+<td><p>166.00</p></td>
+<td><p>36.55</p></td>
+</tr>
+<tr class="row-odd"><td><p>256k</p></td>
+<td><p>742.00</p></td>
+<td><p>14.18</p></td>
+<td><p>1521.00</p></td>
+<td><p>11.99</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Filesize used is: 10G</p></li>
+<li><p>FIO command options: –ioengine=libaio –iodepth=4 –numjobs=1 –direct=1 –runtime=60 –time_based</p></li>
+<li><p>Platform: Speed 8GT/s, Width x2</p></li>
+<li><p>SSD being used: PLEXTOR PX-128M8PeY</p></li>
+</ul>
+</div>
+<div class="section" id="j721s2-evm">
+<h5><span class="section-number">2.2.1.6.2.3. </span>J721S2-EVM<a class="headerlink" href="#j721s2-evm" title="Permalink to this headline">¶</a></h5>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Buffer size (bytes)</p></th>
+<th class="head"><p>j721s2-evm: Write EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j721s2-evm: Write EXT4 CPU Load (%)</p></th>
+<th class="head"><p>j721s2-evm: Read EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j721s2-evm: Read EXT4 CPU Load (%)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1m</p></td>
+<td><p>744.00</p></td>
+<td><p>17.41</p></td>
+<td><p>781.00</p></td>
+<td><p>5.54</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m</p></td>
+<td><p>744.00</p></td>
+<td><p>15.43</p></td>
+<td><p>782.00</p></td>
+<td><p>5.31</p></td>
+</tr>
+<tr class="row-even"><td><p>4k</p></td>
+<td><p>184.00</p></td>
+<td><p>51.52</p></td>
+<td><p>284.00</p></td>
+<td><p>51.48</p></td>
+</tr>
+<tr class="row-odd"><td><p>256k</p></td>
+<td><p>744.00</p></td>
+<td><p>16.66</p></td>
+<td><p>780.00</p></td>
+<td><p>7.99</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Filesize used is: 10G</p></li>
+<li><p>FIO command options: –ioengine=libaio –iodepth=4 –numjobs=1 –direct=1 –runtime=60 –time_based</p></li>
+<li><p>Platform: Speed 8GT/s, Width x2</p></li>
+<li><p>SSD being used: PLEXTOR PX-128M8PeY</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="ospi-flash-driver">
+<h3><span class="section-number">2.2.1.7. </span>OSPI Flash Driver<a class="headerlink" href="#ospi-flash-driver" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h4><span class="section-number">2.2.1.7.1. </span>J721E-IDK-GW<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="raw">
+<h5><span class="section-number">2.2.1.7.1.1. </span>RAW<a class="headerlink" href="#raw" title="Permalink to this headline">¶</a></h5>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File size (Mbytes)</p></th>
+<th class="head"><p>j721e-idk-gw: Raw Read Throughput (Mbytes/sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>50</p></td>
+<td><p>38.17</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="id2">
+<h4><span class="section-number">2.2.1.7.2. </span>J7200-EVM<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id3">
+<h5><span class="section-number">2.2.1.7.2.1. </span>RAW<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h5>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File size (Mbytes)</p></th>
+<th class="head"><p>j7200-evm: Raw Read Throughput (Mbytes/sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>50</p></td>
+<td><p>208.33</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="j784s4-evm">
+<h4><span class="section-number">2.2.1.7.3. </span>J784S4-EVM<a class="headerlink" href="#j784s4-evm" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id4">
+<h5><span class="section-number">2.2.1.7.3.1. </span>RAW<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h5>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File size (Mbytes)</p></th>
+<th class="head"><p>j784s4-evm: Raw Read Throughput (Mbytes/sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>50</p></td>
+<td><p>263.16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="uboot-qspi-ospi-driver">
+<h3><span class="section-number">2.2.1.8. </span>UBoot QSPI/OSPI Driver<a class="headerlink" href="#uboot-qspi-ospi-driver" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h4><span class="section-number">2.2.1.8.1. </span>J721E-IDK-GW<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File size (bytes in hex)</p></th>
+<th class="head"><p>j721e-idk-gw: Write Throughput (Kbytes/sec)</p></th>
+<th class="head"><p>j721e-idk-gw: Read Throughput (Kbytes/sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>400000</p></td>
+<td><p>1539.85</p></td>
+<td><p>37577.98</p></td>
+</tr>
+<tr class="row-odd"><td><p>800000</p></td>
+<td><p>1541.59</p></td>
+<td><p>39009.52</p></td>
+</tr>
+<tr class="row-even"><td><p>1000000</p></td>
+<td><p>1542.89</p></td>
+<td><p>39766.99</p></td>
+</tr>
+<tr class="row-odd"><td><p>2000000</p></td>
+<td><p>1542.75</p></td>
+<td><p>40206.13</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id6">
+<h4><span class="section-number">2.2.1.8.2. </span>J7200-EVM<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File size (bytes in hex)</p></th>
+<th class="head"><p>j7200-evm: Write Throughput (Kbytes/sec)</p></th>
+<th class="head"><p>j7200-evm: Read Throughput (Kbytes/sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>400000</p></td>
+<td><p>345.83</p></td>
+<td><p>204800.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>800000</p></td>
+<td><p>349.46</p></td>
+<td><p>240941.18</p></td>
+</tr>
+<tr class="row-even"><td><p>1000000</p></td>
+<td><p>348.70</p></td>
+<td><p>277694.92</p></td>
+</tr>
+<tr class="row-odd"><td><p>2000000</p></td>
+<td><p>343.68</p></td>
+<td><p>300623.85</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id7">
+<h4><span class="section-number">2.2.1.8.3. </span>J721S2-EVM<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File size (bytes in hex)</p></th>
+<th class="head"><p>j721s2-evm: Write Throughput (Kbytes/sec)</p></th>
+<th class="head"><p>j721s2-evm: Read Throughput (Kbytes/sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>400000</p></td>
+<td><p>377.86</p></td>
+<td><p>204800.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>800000</p></td>
+<td><p>379.70</p></td>
+<td><p>248242.42</p></td>
+</tr>
+<tr class="row-even"><td><p>1000000</p></td>
+<td><p>381.30</p></td>
+<td><p>277694.92</p></td>
+</tr>
+<tr class="row-odd"><td><p>2000000</p></td>
+<td><p>375.68</p></td>
+<td><p>300623.85</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="uboot-ufs-driver">
+<h3><span class="section-number">2.2.1.9. </span>UBoot UFS Driver<a class="headerlink" href="#uboot-ufs-driver" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="id8">
+<h4><span class="section-number">2.2.1.9.1. </span>J721E-IDK-GW<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File size (bytes in hex)</p></th>
+<th class="head"><p>j721e-idk-gw: Write Throughput (Kbytes/sec)</p></th>
+<th class="head"><p>j721e-idk-gw: Read Throughput (Kbytes/sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>400000</p></td>
+<td><p>93090.91</p></td>
+<td><p>341333.33</p></td>
+</tr>
+<tr class="row-odd"><td><p>800000</p></td>
+<td><p>97523.81</p></td>
+<td><p>481882.35</p></td>
+</tr>
+<tr class="row-even"><td><p>1000000</p></td>
+<td><p>91530.73</p></td>
+<td><p>606814.81</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="emmc-driver">
+<h3><span class="section-number">2.2.1.10. </span>EMMC Driver<a class="headerlink" href="#emmc-driver" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>IMPORTANT</strong>: The performance numbers can be severely affected if the media is
+mounted in sync mode. Hot plug scripts in the filesystem mount
+removable media in sync mode to ensure data integrity. For performance
+sensitive applications, umount the auto-mounted filesystem and
+re-mount in async mode.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="id9">
+<h4><span class="section-number">2.2.1.10.1. </span>J7200-EVM<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Buffer size (bytes)</p></th>
+<th class="head"><p>j7200-evm: Write EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j7200-evm: Write EXT4 CPU Load (%)</p></th>
+<th class="head"><p>j7200-evm: Read EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j7200-evm: Read EXT4 CPU Load (%)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1m</p></td>
+<td><p>56.20</p></td>
+<td><p>1.52</p></td>
+<td><p>314.00</p></td>
+<td><p>1.92</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m</p></td>
+<td><p>56.40</p></td>
+<td><p>1.27</p></td>
+<td><p>314.00</p></td>
+<td><p>1.31</p></td>
+</tr>
+<tr class="row-even"><td><p>4k</p></td>
+<td><p>54.50</p></td>
+<td><p>25.02</p></td>
+<td><p>55.90</p></td>
+<td><p>23.44</p></td>
+</tr>
+<tr class="row-odd"><td><p>256k</p></td>
+<td><p>56.30</p></td>
+<td><p>1.67</p></td>
+<td><p>314.00</p></td>
+<td><p>3.42</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h4><span class="section-number">2.2.1.10.2. </span>J721E-IDK-GW<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Buffer size (bytes)</p></th>
+<th class="head"><p>j721e-idk-gw: Write EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j721e-idk-gw: Write EXT4 CPU Load (%)</p></th>
+<th class="head"><p>j721e-idk-gw: Read EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j721e-idk-gw: Read EXT4 CPU Load (%)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1m</p></td>
+<td><p>59.50</p></td>
+<td><p>1.25</p></td>
+<td><p>175.00</p></td>
+<td><p>1.02</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m</p></td>
+<td><p>59.10</p></td>
+<td><p>1.10</p></td>
+<td><p>175.00</p></td>
+<td><p>0.66</p></td>
+</tr>
+<tr class="row-even"><td><p>4k</p></td>
+<td><p>49.80</p></td>
+<td><p>23.01</p></td>
+<td><p>56.60</p></td>
+<td><p>23.65</p></td>
+</tr>
+<tr class="row-odd"><td><p>256k</p></td>
+<td><p>58.90</p></td>
+<td><p>1.70</p></td>
+<td><p>174.00</p></td>
+<td><p>1.93</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h4><span class="section-number">2.2.1.10.3. </span>J721S2-EVM<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Buffer size (bytes)</p></th>
+<th class="head"><p>j721s2-evm: Write EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j721s2-evm: Write EXT4 CPU Load (%)</p></th>
+<th class="head"><p>j721s2-evm: Read EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j721s2-evm: Read EXT4 CPU Load (%)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1m</p></td>
+<td><p>45.20</p></td>
+<td><p>3.56</p></td>
+<td><p>301.00</p></td>
+<td><p>3.76</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m</p></td>
+<td><p>45.30</p></td>
+<td><p>3.35</p></td>
+<td><p>278.00</p></td>
+<td><p>3.54</p></td>
+</tr>
+<tr class="row-even"><td><p>4k</p></td>
+<td><p>5.27</p></td>
+<td><p>5.12</p></td>
+<td><p>36.20</p></td>
+<td><p>19.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>256k</p></td>
+<td><p>36.40</p></td>
+<td><p>3.18</p></td>
+<td><p>284.00</p></td>
+<td><p>5.53</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h4><span class="section-number">2.2.1.10.4. </span>J784S4-EVM<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Buffer size (bytes)</p></th>
+<th class="head"><p>j784s4-evm: Write EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j784s4-evm: Write EXT4 CPU Load (%)</p></th>
+<th class="head"><p>j784s4-evm: Read EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j784s4-evm: Read EXT4 CPU Load (%)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1m</p></td>
+<td><p>90.80</p></td>
+<td><p>0.45</p></td>
+<td><p>173.00</p></td>
+<td><p>0.30</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m</p></td>
+<td><p>97.50</p></td>
+<td><p>0.50</p></td>
+<td><p>150.00</p></td>
+<td><p>0.20</p></td>
+</tr>
+<tr class="row-even"><td><p>4k</p></td>
+<td><p>63.50</p></td>
+<td><p>8.85</p></td>
+<td><p>93.20</p></td>
+<td><p>10.70</p></td>
+</tr>
+<tr class="row-odd"><td><p>256k</p></td>
+<td><p>90.80</p></td>
+<td><p>0.59</p></td>
+<td><p>172.00</p></td>
+<td><p>0.55</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="uboot-emmc-driver">
+<h3><span class="section-number">2.2.1.11. </span>UBoot EMMC Driver<a class="headerlink" href="#uboot-emmc-driver" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="id13">
+<h4><span class="section-number">2.2.1.11.1. </span>J7200-EVM<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File size (bytes in hex)</p></th>
+<th class="head"><p>j7200-evm: Write Throughput (Kbytes/sec)</p></th>
+<th class="head"><p>j7200-evm: Read Throughput (Kbytes/sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2000000</p></td>
+<td><p>56109.59</p></td>
+<td><p>309132.08</p></td>
+</tr>
+<tr class="row-odd"><td><p>4000000</p></td>
+<td><p>56496.55</p></td>
+<td><p>321254.90</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id14">
+<h4><span class="section-number">2.2.1.11.2. </span>J721E-IDK-GW<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File size (bytes in hex)</p></th>
+<th class="head"><p>j721e-idk-gw: Write Throughput (Kbytes/sec)</p></th>
+<th class="head"><p>j721e-idk-gw: Read Throughput (Kbytes/sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2000000</p></td>
+<td><p>59686.70</p></td>
+<td><p>173375.66</p></td>
+</tr>
+<tr class="row-odd"><td><p>4000000</p></td>
+<td><p>60513.39</p></td>
+<td><p>176646.90</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id15">
+<h4><span class="section-number">2.2.1.11.3. </span>J721S2-EVM<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File size (bytes in hex)</p></th>
+<th class="head"><p>j721s2-evm: Write Throughput (Kbytes/sec)</p></th>
+<th class="head"><p>j721s2-evm: Read Throughput (Kbytes/sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2000000</p></td>
+<td><p>60014.65</p></td>
+<td><p>303407.41</p></td>
+</tr>
+<tr class="row-odd"><td><p>4000000</p></td>
+<td><p>60346.22</p></td>
+<td><p>303407.41</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id16">
+<h4><span class="section-number">2.2.1.11.4. </span>J784S4-EVM<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File size (bytes in hex)</p></th>
+<th class="head"><p>j784s4-evm: Write Throughput (Kbytes/sec)</p></th>
+<th class="head"><p>j784s4-evm: Read Throughput (Kbytes/sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2000000</p></td>
+<td><p>98402.40</p></td>
+<td><p>159067.96</p></td>
+</tr>
+<tr class="row-odd"><td><p>4000000</p></td>
+<td><p>97090.37</p></td>
+<td><p>186181.82</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="mmc-sd-driver">
+<h3><span class="section-number">2.2.1.12. </span>MMC/SD Driver<a class="headerlink" href="#mmc-sd-driver" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>IMPORTANT</strong>: The performance numbers can be severely affected if the media is
+mounted in sync mode. Hot plug scripts in the filesystem mount
+removable media in sync mode to ensure data integrity. For performance
+sensitive applications, umount the auto-mounted filesystem and
+re-mount in async mode.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="id17">
+<h4><span class="section-number">2.2.1.12.1. </span>J7200-EVM<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Buffer size (bytes)</p></th>
+<th class="head"><p>j7200-evm: Write EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j7200-evm: Write EXT4 CPU Load (%)</p></th>
+<th class="head"><p>j7200-evm: Read EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j7200-evm: Read EXT4 CPU Load (%)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1m</p></td>
+<td><p>19.40</p></td>
+<td><p>0.77</p></td>
+<td><p>86.30</p></td>
+<td><p>0.68</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m</p></td>
+<td><p>19.90</p></td>
+<td><p>0.66</p></td>
+<td><p>86.40</p></td>
+<td><p>0.53</p></td>
+</tr>
+<tr class="row-even"><td><p>4k</p></td>
+<td><p>5.42</p></td>
+<td><p>3.35</p></td>
+<td><p>16.70</p></td>
+<td><p>7.25</p></td>
+</tr>
+<tr class="row-odd"><td><p>256k</p></td>
+<td><p>19.40</p></td>
+<td><p>0.88</p></td>
+<td><p>84.30</p></td>
+<td><p>1.19</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id18">
+<h4><span class="section-number">2.2.1.12.2. </span>J721S2-EVM<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h4>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Buffer size (bytes)</p></th>
+<th class="head"><p>j721s2-evm: Write EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j721s2-evm: Write EXT4 CPU Load (%)</p></th>
+<th class="head"><p>j721s2-evm: Read EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j721s2-evm: Read EXT4 CPU Load (%)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1m</p></td>
+<td><p>20.40</p></td>
+<td><p>2.83</p></td>
+<td><p>86.20</p></td>
+<td><p>2.42</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m</p></td>
+<td><p>20.70</p></td>
+<td><p>2.77</p></td>
+<td><p>86.40</p></td>
+<td><p>2.82</p></td>
+</tr>
+<tr class="row-even"><td><p>4k</p></td>
+<td><p>5.64</p></td>
+<td><p>5.67</p></td>
+<td><p>16.60</p></td>
+<td><p>9.83</p></td>
+</tr>
+<tr class="row-odd"><td><p>256k</p></td>
+<td><p>20.00</p></td>
+<td><p>2.48</p></td>
+<td><p>83.80</p></td>
+<td><p>3.17</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id19">
+<h4><span class="section-number">2.2.1.12.3. </span>J784S4-EVM<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Buffer size (bytes)</p></th>
+<th class="head"><p>j784s4-evm: Write EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j784s4-evm: Write EXT4 CPU Load (%)</p></th>
+<th class="head"><p>j784s4-evm: Read EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j784s4-evm: Read EXT4 CPU Load (%)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1m</p></td>
+<td><p>18.50</p></td>
+<td><p>0.15</p></td>
+<td><p>86.90</p></td>
+<td><p>0.21</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m</p></td>
+<td><p>19.00</p></td>
+<td><p>0.18</p></td>
+<td><p>86.90</p></td>
+<td><p>0.18</p></td>
+</tr>
+<tr class="row-even"><td><p>4k</p></td>
+<td><p>4.65</p></td>
+<td><p>0.83</p></td>
+<td><p>16.50</p></td>
+<td><p>2.18</p></td>
+</tr>
+<tr class="row-odd"><td><p>256k</p></td>
+<td><p>18.10</p></td>
+<td><p>0.17</p></td>
+<td><p>84.80</p></td>
+<td><p>0.38</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id20">
+<h4><span class="section-number">2.2.1.12.4. </span>J721E-IDK-GW<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h4>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Buffer size (bytes)</p></th>
+<th class="head"><p>j721e-idk-gw: Write EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j721e-idk-gw: Write EXT4 CPU Load (%)</p></th>
+<th class="head"><p>j721e-idk-gw: Read EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j721e-idk-gw: Read EXT4 CPU Load (%)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1m</p></td>
+<td><p>18.80</p></td>
+<td><p>0.70</p></td>
+<td><p>43.50</p></td>
+<td><p>0.48</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m</p></td>
+<td><p>19.40</p></td>
+<td><p>0.59</p></td>
+<td><p>43.50</p></td>
+<td><p>0.45</p></td>
+</tr>
+<tr class="row-even"><td><p>4k</p></td>
+<td><p>4.75</p></td>
+<td><p>2.76</p></td>
+<td><p>13.70</p></td>
+<td><p>5.93</p></td>
+</tr>
+<tr class="row-odd"><td><p>256k</p></td>
+<td><p>18.50</p></td>
+<td><p>0.70</p></td>
+<td><p>42.80</p></td>
+<td><p>0.71</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The performance numbers were captured using the following:</p>
+<ul class="simple">
+<li><p>SanDisk 8GB MicroSDHC Class 10 Memory Card</p></li>
+<li><p>Partition was mounted with async option</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="uboot-mmc-sd-driver">
+<h3><span class="section-number">2.2.1.13. </span>UBoot MMC/SD Driver<a class="headerlink" href="#uboot-mmc-sd-driver" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="id21">
+<h4><span class="section-number">2.2.1.13.1. </span>J721E-IDK-GW<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File size (bytes in hex)</p></th>
+<th class="head"><p>j721e-idk-gw: Write Throughput (Kbytes/sec)</p></th>
+<th class="head"><p>j721e-idk-gw: Read Throughput (Kbytes/sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>400000</p></td>
+<td><p>27125.83</p></td>
+<td><p>35617.39</p></td>
+</tr>
+<tr class="row-odd"><td><p>800000</p></td>
+<td><p>28743.86</p></td>
+<td><p>40554.46</p></td>
+</tr>
+<tr class="row-even"><td><p>1000000</p></td>
+<td><p>36167.77</p></td>
+<td><p>43574.47</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id22">
+<h4><span class="section-number">2.2.1.13.2. </span>J7200-EVM<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File size (bytes in hex)</p></th>
+<th class="head"><p>j7200-evm: Write Throughput (Kbytes/sec)</p></th>
+<th class="head"><p>j7200-evm: Read Throughput (Kbytes/sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>400000</p></td>
+<td><p>19230.05</p></td>
+<td><p>71859.65</p></td>
+</tr>
+<tr class="row-odd"><td><p>800000</p></td>
+<td><p>21903.74</p></td>
+<td><p>81108.91</p></td>
+</tr>
+<tr class="row-even"><td><p>1000000</p></td>
+<td><p>14615.52</p></td>
+<td><p>85780.10</p></td>
+</tr>
+</tbody>
+</table>
+<p>The performance numbers were captured using the following:</p>
+<ul class="simple">
+<li><p>SanDisk 8GB MicroSDHC Class 10 Memory Card</p></li>
+</ul>
+</div>
+<div class="section" id="id23">
+<h4><span class="section-number">2.2.1.13.3. </span>J721S2-EVM<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File size (bytes in hex)</p></th>
+<th class="head"><p>j721s2-evm: Write Throughput (Kbytes/sec)</p></th>
+<th class="head"><p>j721s2-evm: Read Throughput (Kbytes/sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>400000</p></td>
+<td><p>34133.33</p></td>
+<td><p>60235.29</p></td>
+</tr>
+<tr class="row-odd"><td><p>800000</p></td>
+<td><p>21671.96</p></td>
+<td><p>73142.86</p></td>
+</tr>
+<tr class="row-even"><td><p>1000000</p></td>
+<td><p>20924.65</p></td>
+<td><p>82331.66</p></td>
+</tr>
+</tbody>
+</table>
+<p>The performance numbers were captured using the following:</p>
+<ul class="simple">
+<li><p>SanDisk 8GB MicroSDHC Class 10 Memory Card</p></li>
+</ul>
+</div>
+<div class="section" id="id24">
+<h4><span class="section-number">2.2.1.13.4. </span>J784S4-EVM<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File size (bytes in hex)</p></th>
+<th class="head"><p>j784s4-evm: Write Throughput (Kbytes/sec)</p></th>
+<th class="head"><p>j784s4-evm: Read Throughput (Kbytes/sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>400000</p></td>
+<td><p>24380.95</p></td>
+<td><p>56888.89</p></td>
+</tr>
+<tr class="row-odd"><td><p>800000</p></td>
+<td><p>17886.46</p></td>
+<td><p>70620.69</p></td>
+</tr>
+<tr class="row-even"><td><p>1000000</p></td>
+<td><p>18347.14</p></td>
+<td><p>80313.73</p></td>
+</tr>
+</tbody>
+</table>
+<p>The performance numbers were captured using the following:</p>
+<ul class="simple">
+<li><p>SanDisk 8GB MicroSDHC Class 10 Memory Card</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="usb-driver">
+<h3><span class="section-number">2.2.1.14. </span>USB Driver<a class="headerlink" href="#usb-driver" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="usb-host-controller">
+<h4><span class="section-number">2.2.1.14.1. </span>USB Host Controller<a class="headerlink" href="#usb-host-controller" title="Permalink to this headline">¶</a></h4>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>IMPORTANT</strong>: For Mass-storage applications, the performance numbers can be severely
+affected if the media is mounted in sync mode. Hot plug scripts in the
+filesystem mount removable media in sync mode to ensure data
+integrity. For performance sensitive applications, umount the
+auto-mounted filesystem and re-mount in async mode.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Setup</strong> : Inateck ASM1153E USB hard disk is
+connected to usb0 port. File read/write performance data on usb0 port is
+captured.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="id25">
+<h5><span class="section-number">2.2.1.14.1.1. </span>J721E-IDK-GW<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h5>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Buffer size (bytes)</p></th>
+<th class="head"><p>j721e-idk-gw: Write EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j721e-idk-gw: Write EXT4 CPU Load (%)</p></th>
+<th class="head"><p>j721e-idk-gw: Read EXT4 Throughput (Mbytes/sec)</p></th>
+<th class="head"><p>j721e-idk-gw: Read EXT4 CPU Load (%)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1m</p></td>
+<td><p>402.00</p></td>
+<td><p>8.33</p></td>
+<td><p>426.00</p></td>
+<td><p>2.42</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m</p></td>
+<td><p>405.00</p></td>
+<td><p>7.11</p></td>
+<td><p>425.00</p></td>
+<td><p>2.34</p></td>
+</tr>
+<tr class="row-even"><td><p>4k</p></td>
+<td><p>30.90</p></td>
+<td><p>24.50</p></td>
+<td><p>61.70</p></td>
+<td><p>28.20</p></td>
+</tr>
+<tr class="row-odd"><td><p>256k</p></td>
+<td><p>351.00</p></td>
+<td><p>12.18</p></td>
+<td><p>404.00</p></td>
+<td><p>4.72</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="usb-device-controller">
+<h4><span class="section-number">2.2.1.14.2. </span>USB Device Controller<a class="headerlink" href="#usb-device-controller" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Number of Blocks</p></th>
+<th class="head"><p>j721e-idk-gw: Throughput (MB/sec)</p></th>
+<th class="head"><p>j721s2-evm: Throughput (MB/sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>150</p></td>
+<td><p>42.40</p></td>
+<td><p>32.80</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table: <strong>USBDEVICE HIGHSPEED SLAVE READ THROUGHPUT</strong></p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Number of Blocks</p></th>
+<th class="head"><p>j721e-idk-gw: Throughput (MB/sec)</p></th>
+<th class="head"><p>j721s2-evm: Throughput (MB/sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>150</p></td>
+<td><p>42.60</p></td>
+<td><p>29.90</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table: <strong>USBDEVICE HIGHSPEED SLAVE WRITE THROUGHPUT</strong></p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="crypto-driver">
+<h3><span class="section-number">2.2.1.15. </span>CRYPTO Driver<a class="headerlink" href="#crypto-driver" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="openssl-performance">
+<h4><span class="section-number">2.2.1.15.1. </span>OpenSSL Performance<a class="headerlink" href="#openssl-performance" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Algorithm</p></th>
+<th class="head"><p>Buffer Size (in bytes)</p></th>
+<th class="head"><p>am68_sk-fs: throughput (KBytes/Sec)</p></th>
+<th class="head"><p>am69_sk-fs: throughput (KBytes/Sec)</p></th>
+<th class="head"><p>j721e-idk-gw: throughput (KBytes/Sec)</p></th>
+<th class="head"><p>j721s2-evm: throughput (KBytes/Sec)</p></th>
+<th class="head"><p>j784s4-evm: throughput (KBytes/Sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>aes-128-cbc</p></td>
+<td><p>1024</p></td>
+<td><p>46429.53</p></td>
+<td><p>45751.30</p></td>
+<td><p>49285.46</p></td>
+<td><p>46068.05</p></td>
+<td><p>45405.18</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes-128-cbc</p></td>
+<td><p>16</p></td>
+<td><p>899.54</p></td>
+<td><p>896.65</p></td>
+<td><p>965.25</p></td>
+<td><p>873.54</p></td>
+<td><p>688.66</p></td>
+</tr>
+<tr class="row-even"><td><p>aes-128-cbc</p></td>
+<td><p>16384</p></td>
+<td><p>186493.61</p></td>
+<td><p>172474.37</p></td>
+<td><p>194794.84</p></td>
+<td><p>183850.33</p></td>
+<td><p>183298.73</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes-128-cbc</p></td>
+<td><p>256</p></td>
+<td><p>13901.14</p></td>
+<td><p>13697.19</p></td>
+<td><p>14749.70</p></td>
+<td><p>13769.05</p></td>
+<td><p>13555.80</p></td>
+</tr>
+<tr class="row-even"><td><p>aes-128-cbc</p></td>
+<td><p>64</p></td>
+<td><p>3633.73</p></td>
+<td><p>3591.83</p></td>
+<td><p>3860.18</p></td>
+<td><p>3516.78</p></td>
+<td><p>3462.95</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes-128-cbc</p></td>
+<td><p>8192</p></td>
+<td><p>153777.49</p></td>
+<td><p>147262.12</p></td>
+<td><p>161376.94</p></td>
+<td><p>152171.86</p></td>
+<td><p>150792.87</p></td>
+</tr>
+<tr class="row-even"><td><p>aes-128-ecb</p></td>
+<td><p>1024</p></td>
+<td><p>46818.65</p></td>
+<td><p>44624.21</p></td>
+<td><p>49023.32</p></td>
+<td><p>46254.42</p></td>
+<td><p>45046.44</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes-128-ecb</p></td>
+<td><p>16</p></td>
+<td><p>909.09</p></td>
+<td><p>681.99</p></td>
+<td><p>951.10</p></td>
+<td><p>897.44</p></td>
+<td><p>691.49</p></td>
+</tr>
+<tr class="row-even"><td><p>aes-128-ecb</p></td>
+<td><p>16384</p></td>
+<td><p>188459.69</p></td>
+<td><p>187711.49</p></td>
+<td><p>196504.23</p></td>
+<td><p>187411.11</p></td>
+<td><p>172862.12</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes-128-ecb</p></td>
+<td><p>256</p></td>
+<td><p>14010.37</p></td>
+<td><p>10779.90</p></td>
+<td><p>14685.01</p></td>
+<td><p>13238.87</p></td>
+<td><p>13818.28</p></td>
+</tr>
+<tr class="row-even"><td><p>aes-128-ecb</p></td>
+<td><p>64</p></td>
+<td><p>3613.55</p></td>
+<td><p>2715.75</p></td>
+<td><p>3786.73</p></td>
+<td><p>3571.09</p></td>
+<td><p>2784.11</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes-128-ecb</p></td>
+<td><p>8192</p></td>
+<td><p>154271.74</p></td>
+<td><p>154959.87</p></td>
+<td><p>165019.65</p></td>
+<td><p>155901.95</p></td>
+<td><p>135113.39</p></td>
+</tr>
+<tr class="row-even"><td><p>aes-192-cbc</p></td>
+<td><p>1024</p></td>
+<td><p>45590.87</p></td>
+<td><p>45221.21</p></td>
+<td><p>48857.77</p></td>
+<td><p>45721.60</p></td>
+<td><p>43852.12</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes-192-cbc</p></td>
+<td><p>16</p></td>
+<td><p>908.77</p></td>
+<td><p>893.10</p></td>
+<td><p>961.37</p></td>
+<td><p>900.54</p></td>
+<td><p>843.21</p></td>
+</tr>
+<tr class="row-even"><td><p>aes-192-cbc</p></td>
+<td><p>16384</p></td>
+<td><p>175876.78</p></td>
+<td><p>169558.02</p></td>
+<td><p>182856.36</p></td>
+<td><p>176062.46</p></td>
+<td><p>174729.90</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes-192-cbc</p></td>
+<td><p>256</p></td>
+<td><p>13746.01</p></td>
+<td><p>13827.50</p></td>
+<td><p>14706.94</p></td>
+<td><p>13150.55</p></td>
+<td><p>13602.13</p></td>
+</tr>
+<tr class="row-even"><td><p>aes-192-cbc</p></td>
+<td><p>64</p></td>
+<td><p>3624.64</p></td>
+<td><p>3574.81</p></td>
+<td><p>3836.20</p></td>
+<td><p>3602.20</p></td>
+<td><p>3517.42</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes-192-cbc</p></td>
+<td><p>8192</p></td>
+<td><p>146046.98</p></td>
+<td><p>145697.45</p></td>
+<td><p>153318.74</p></td>
+<td><p>148149.59</p></td>
+<td><p>144788.14</p></td>
+</tr>
+<tr class="row-even"><td><p>aes-192-ecb</p></td>
+<td><p>1024</p></td>
+<td><p>46128.81</p></td>
+<td><p>43304.62</p></td>
+<td><p>48797.70</p></td>
+<td><p>45928.45</p></td>
+<td><p>45101.74</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes-192-ecb</p></td>
+<td><p>16</p></td>
+<td><p>909.42</p></td>
+<td><p>705.83</p></td>
+<td><p>952.48</p></td>
+<td><p>869.00</p></td>
+<td><p>669.34</p></td>
+</tr>
+<tr class="row-even"><td><p>aes-192-ecb</p></td>
+<td><p>16384</p></td>
+<td><p>182621.53</p></td>
+<td><p>181600.26</p></td>
+<td><p>186772.14</p></td>
+<td><p>184232.62</p></td>
+<td><p>180240.38</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes-192-ecb</p></td>
+<td><p>256</p></td>
+<td><p>13871.62</p></td>
+<td><p>12962.39</p></td>
+<td><p>14603.09</p></td>
+<td><p>13866.41</p></td>
+<td><p>11489.54</p></td>
+</tr>
+<tr class="row-even"><td><p>aes-192-ecb</p></td>
+<td><p>64</p></td>
+<td><p>3624.51</p></td>
+<td><p>3164.12</p></td>
+<td><p>3799.83</p></td>
+<td><p>3612.59</p></td>
+<td><p>2712.49</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes-192-ecb</p></td>
+<td><p>8192</p></td>
+<td><p>150522.54</p></td>
+<td><p>150000.98</p></td>
+<td><p>156499.97</p></td>
+<td><p>149656.92</p></td>
+<td><p>148531.88</p></td>
+</tr>
+<tr class="row-even"><td><p>aes-256-cbc</p></td>
+<td><p>1024</p></td>
+<td><p>45124.95</p></td>
+<td><p>36672.17</p></td>
+<td><p>48109.23</p></td>
+<td><p>45196.97</p></td>
+<td><p>43773.27</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes-256-cbc</p></td>
+<td><p>16</p></td>
+<td><p>906.81</p></td>
+<td><p>665.95</p></td>
+<td><p>958.40</p></td>
+<td><p>868.80</p></td>
+<td><p>819.19</p></td>
+</tr>
+<tr class="row-even"><td><p>aes-256-cbc</p></td>
+<td><p>16384</p></td>
+<td><p>164719.27</p></td>
+<td><p>163119.10</p></td>
+<td><p>168564.05</p></td>
+<td><p>164620.97</p></td>
+<td><p>163856.38</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes-256-cbc</p></td>
+<td><p>256</p></td>
+<td><p>13724.76</p></td>
+<td><p>10673.07</p></td>
+<td><p>14615.81</p></td>
+<td><p>13721.26</p></td>
+<td><p>13660.50</p></td>
+</tr>
+<tr class="row-even"><td><p>aes-256-cbc</p></td>
+<td><p>64</p></td>
+<td><p>3626.05</p></td>
+<td><p>2970.82</p></td>
+<td><p>3816.23</p></td>
+<td><p>3614.87</p></td>
+<td><p>3540.99</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes-256-cbc</p></td>
+<td><p>8192</p></td>
+<td><p>139332.27</p></td>
+<td><p>138343.77</p></td>
+<td><p>144236.54</p></td>
+<td><p>137336.15</p></td>
+<td><p>138859.86</p></td>
+</tr>
+<tr class="row-even"><td><p>aes-256-ecb</p></td>
+<td><p>1024</p></td>
+<td><p>45514.75</p></td>
+<td><p>45401.43</p></td>
+<td><p>48356.35</p></td>
+<td><p>45915.48</p></td>
+<td><p>44286.98</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes-256-ecb</p></td>
+<td><p>16</p></td>
+<td><p>907.07</p></td>
+<td><p>668.95</p></td>
+<td><p>950.36</p></td>
+<td><p>907.41</p></td>
+<td><p>779.80</p></td>
+</tr>
+<tr class="row-even"><td><p>aes-256-ecb</p></td>
+<td><p>16384</p></td>
+<td><p>167832.23</p></td>
+<td><p>170366.29</p></td>
+<td><p>173850.62</p></td>
+<td><p>169590.78</p></td>
+<td><p>169749.16</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes-256-ecb</p></td>
+<td><p>256</p></td>
+<td><p>13864.96</p></td>
+<td><p>13832.87</p></td>
+<td><p>14673.07</p></td>
+<td><p>13498.88</p></td>
+<td><p>13754.88</p></td>
+</tr>
+<tr class="row-even"><td><p>aes-256-ecb</p></td>
+<td><p>64</p></td>
+<td><p>3630.02</p></td>
+<td><p>3580.22</p></td>
+<td><p>3791.19</p></td>
+<td><p>3584.51</p></td>
+<td><p>3547.41</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes-256-ecb</p></td>
+<td><p>8192</p></td>
+<td><p>142980.44</p></td>
+<td><p>142453.42</p></td>
+<td><p>148744.87</p></td>
+<td><p>143480.15</p></td>
+<td><p>142060.20</p></td>
+</tr>
+<tr class="row-even"><td><p>des3</p></td>
+<td><p>1024</p></td>
+<td><p>39280.64</p></td>
+<td><p>39346.18</p></td>
+<td><p>41344.68</p></td>
+<td><p>38780.93</p></td>
+<td><p>38940.67</p></td>
+</tr>
+<tr class="row-odd"><td><p>des3</p></td>
+<td><p>16</p></td>
+<td><p>906.81</p></td>
+<td><p>856.34</p></td>
+<td><p>964.57</p></td>
+<td><p>886.84</p></td>
+<td><p>823.60</p></td>
+</tr>
+<tr class="row-even"><td><p>des3</p></td>
+<td><p>16384</p></td>
+<td><p>95901.01</p></td>
+<td><p>96485.38</p></td>
+<td><p>97086.12</p></td>
+<td><p>95917.40</p></td>
+<td><p>96266.92</p></td>
+</tr>
+<tr class="row-odd"><td><p>des3</p></td>
+<td><p>256</p></td>
+<td><p>13052.33</p></td>
+<td><p>13075.29</p></td>
+<td><p>13924.35</p></td>
+<td><p>13061.21</p></td>
+<td><p>12959.74</p></td>
+</tr>
+<tr class="row-even"><td><p>des3</p></td>
+<td><p>64</p></td>
+<td><p>3618.90</p></td>
+<td><p>3584.28</p></td>
+<td><p>3846.66</p></td>
+<td><p>3593.13</p></td>
+<td><p>3550.76</p></td>
+</tr>
+<tr class="row-odd"><td><p>des3</p></td>
+<td><p>8192</p></td>
+<td><p>87111.00</p></td>
+<td><p>87569.75</p></td>
+<td><p>88896.85</p></td>
+<td><p>87192.92</p></td>
+<td><p>87545.17</p></td>
+</tr>
+<tr class="row-even"><td><p>sha1</p></td>
+<td><p>1024</p></td>
+<td><p>58287.79</p></td>
+<td><p>56244.22</p></td>
+<td><p>59582.81</p></td>
+<td><p>59465.39</p></td>
+<td><p>58433.54</p></td>
+</tr>
+<tr class="row-odd"><td><p>sha1</p></td>
+<td><p>16</p></td>
+<td><p>971.70</p></td>
+<td><p>941.21</p></td>
+<td><p>994.48</p></td>
+<td><p>1005.63</p></td>
+<td><p>979.65</p></td>
+</tr>
+<tr class="row-even"><td><p>sha1</p></td>
+<td><p>16384</p></td>
+<td><p>466239.49</p></td>
+<td><p>460155.56</p></td>
+<td><p>460565.16</p></td>
+<td><p>461651.97</p></td>
+<td><p>466337.79</p></td>
+</tr>
+<tr class="row-odd"><td><p>sha1</p></td>
+<td><p>256</p></td>
+<td><p>15351.38</p></td>
+<td><p>14636.97</p></td>
+<td><p>15500.03</p></td>
+<td><p>15607.98</p></td>
+<td><p>15352.15</p></td>
+</tr>
+<tr class="row-even"><td><p>sha1</p></td>
+<td><p>64</p></td>
+<td><p>3890.01</p></td>
+<td><p>3716.97</p></td>
+<td><p>3922.92</p></td>
+<td><p>3873.47</p></td>
+<td><p>3886.74</p></td>
+</tr>
+<tr class="row-odd"><td><p>sha1</p></td>
+<td><p>8192</p></td>
+<td><p>310583.30</p></td>
+<td><p>308401.49</p></td>
+<td><p>316347.73</p></td>
+<td><p>319629.99</p></td>
+<td><p>318354.77</p></td>
+</tr>
+<tr class="row-even"><td><p>sha256</p></td>
+<td><p>1024</p></td>
+<td><p>58359.13</p></td>
+<td><p>56272.21</p></td>
+<td><p>57865.22</p></td>
+<td><p>57578.50</p></td>
+<td><p>57274.71</p></td>
+</tr>
+<tr class="row-odd"><td><p>sha256</p></td>
+<td><p>16</p></td>
+<td><p>982.96</p></td>
+<td><p>945.89</p></td>
+<td><p>967.27</p></td>
+<td><p>990.46</p></td>
+<td><p>960.04</p></td>
+</tr>
+<tr class="row-even"><td><p>sha256</p></td>
+<td><p>16384</p></td>
+<td><p>465906.35</p></td>
+<td><p>448664.92</p></td>
+<td><p>459806.04</p></td>
+<td><p>456873.30</p></td>
+<td><p>455010.99</p></td>
+</tr>
+<tr class="row-odd"><td><p>sha256</p></td>
+<td><p>256</p></td>
+<td><p>15389.18</p></td>
+<td><p>14776.75</p></td>
+<td><p>15104.26</p></td>
+<td><p>15438.08</p></td>
+<td><p>15057.83</p></td>
+</tr>
+<tr class="row-even"><td><p>sha256</p></td>
+<td><p>64</p></td>
+<td><p>3863.55</p></td>
+<td><p>3746.39</p></td>
+<td><p>3846.72</p></td>
+<td><p>3906.03</p></td>
+<td><p>3792.98</p></td>
+</tr>
+<tr class="row-odd"><td><p>sha256</p></td>
+<td><p>8192</p></td>
+<td><p>314160.47</p></td>
+<td><p>302336.68</p></td>
+<td><p>311252.31</p></td>
+<td><p>315692.37</p></td>
+<td><p>310941.01</p></td>
+</tr>
+<tr class="row-even"><td><p>sha512</p></td>
+<td><p>1024</p></td>
+<td><p>46239.06</p></td>
+<td><p>45265.58</p></td>
+<td><p>47265.11</p></td>
+<td><p>46406.31</p></td>
+<td><p>45240.32</p></td>
+</tr>
+<tr class="row-odd"><td><p>sha512</p></td>
+<td><p>16</p></td>
+<td><p>987.65</p></td>
+<td><p>953.66</p></td>
+<td><p>1006.12</p></td>
+<td><p>991.33</p></td>
+<td><p>948.78</p></td>
+</tr>
+<tr class="row-even"><td><p>sha512</p></td>
+<td><p>16384</p></td>
+<td><p>149990.06</p></td>
+<td><p>149946.37</p></td>
+<td><p>151273.47</p></td>
+<td><p>149908.14</p></td>
+<td><p>150017.37</p></td>
+</tr>
+<tr class="row-odd"><td><p>sha512</p></td>
+<td><p>256</p></td>
+<td><p>14336.60</p></td>
+<td><p>14068.39</p></td>
+<td><p>14751.57</p></td>
+<td><p>14560.77</p></td>
+<td><p>13920.60</p></td>
+</tr>
+<tr class="row-even"><td><p>sha512</p></td>
+<td><p>64</p></td>
+<td><p>3937.83</p></td>
+<td><p>3831.42</p></td>
+<td><p>4029.18</p></td>
+<td><p>3834.90</p></td>
+<td><p>3780.39</p></td>
+</tr>
+<tr class="row-odd"><td><p>sha512</p></td>
+<td><p>8192</p></td>
+<td><p>130927.27</p></td>
+<td><p>130034.35</p></td>
+<td><p>131989.50</p></td>
+<td><p>130588.67</p></td>
+<td><p>129982.46</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Algorithm</p></th>
+<th class="head"><p>am68_sk-fs: CPU Load</p></th>
+<th class="head"><p>am69_sk-fs: CPU Load</p></th>
+<th class="head"><p>j721e-idk-gw: CPU Load</p></th>
+<th class="head"><p>j721s2-evm: CPU Load</p></th>
+<th class="head"><p>j784s4-evm: CPU Load</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>aes-128-cbc</p></td>
+<td><p>34.00</p></td>
+<td><p>34.00</p></td>
+<td><p>34.00</p></td>
+<td><p>34.00</p></td>
+<td><p>33.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes-128-ecb</p></td>
+<td><p>34.00</p></td>
+<td><p>33.00</p></td>
+<td><p>35.00</p></td>
+<td><p>34.00</p></td>
+<td><p>34.00</p></td>
+</tr>
+<tr class="row-even"><td><p>aes-192-cbc</p></td>
+<td><p>33.00</p></td>
+<td><p>33.00</p></td>
+<td><p>34.00</p></td>
+<td><p>33.00</p></td>
+<td><p>33.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes-192-ecb</p></td>
+<td><p>34.00</p></td>
+<td><p>33.00</p></td>
+<td><p>35.00</p></td>
+<td><p>34.00</p></td>
+<td><p>33.00</p></td>
+</tr>
+<tr class="row-even"><td><p>aes-256-cbc</p></td>
+<td><p>33.00</p></td>
+<td><p>32.00</p></td>
+<td><p>34.00</p></td>
+<td><p>33.00</p></td>
+<td><p>33.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes-256-ecb</p></td>
+<td><p>33.00</p></td>
+<td><p>33.00</p></td>
+<td><p>34.00</p></td>
+<td><p>33.00</p></td>
+<td><p>33.00</p></td>
+</tr>
+<tr class="row-even"><td><p>des3</p></td>
+<td><p>30.00</p></td>
+<td><p>29.00</p></td>
+<td><p>30.00</p></td>
+<td><p>30.00</p></td>
+<td><p>30.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>sha1</p></td>
+<td><p>98.00</p></td>
+<td><p>98.00</p></td>
+<td><p>99.00</p></td>
+<td><p>99.00</p></td>
+<td><p>99.00</p></td>
+</tr>
+<tr class="row-even"><td><p>sha256</p></td>
+<td><p>98.00</p></td>
+<td><p>98.00</p></td>
+<td><p>99.00</p></td>
+<td><p>99.00</p></td>
+<td><p>99.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>sha512</p></td>
+<td><p>98.00</p></td>
+<td><p>98.00</p></td>
+<td><p>99.00</p></td>
+<td><p>99.00</p></td>
+<td><p>99.00</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Listed for each algorithm are the code snippets used to run each</dt><dd><p>benchmark test.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>::</dt><dd><p>time -v openssl speed -elapsed -evp aes-128-cbc</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="ipsec-software-performance">
+<h4><span class="section-number">2.2.1.15.2. </span>IPSec Software Performance<a class="headerlink" href="#ipsec-software-performance" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Algorithm</p></th>
+<th class="head"><p>j721e-idk-gw: Throughput (Mbps)</p></th>
+<th class="head"><p>j721e-idk-gw: Packets/Sec</p></th>
+<th class="head"><p>j721e-idk-gw: CPU Load</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>3des</p></td>
+<td><p>215.30</p></td>
+<td><p>19.00</p></td>
+<td><p>33.54</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes128</p></td>
+<td><p>650.30</p></td>
+<td><p>58.00</p></td>
+<td><p>57.70</p></td>
+</tr>
+<tr class="row-even"><td><p>aes192</p></td>
+<td><p>639.60</p></td>
+<td><p>57.00</p></td>
+<td><p>57.70</p></td>
+</tr>
+<tr class="row-odd"><td><p>aes256</p></td>
+<td><p>626.50</p></td>
+<td><p>55.00</p></td>
+<td><p>57.58</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="dcan-driver">
+<h3><span class="section-number">2.2.1.16. </span>DCAN Driver<a class="headerlink" href="#dcan-driver" title="Permalink to this headline">¶</a></h3>
+<p>Performance and Benchmarks not available in this release.</p>
+</div>
+</div>
+<div class="section" id="rt-linux-09-01-00-performance-guide">
+<h2><span class="section-number">2.2.2. </span>RT-linux 09.01.00 Performance Guide<a class="headerlink" href="#rt-linux-09-01-00-performance-guide" title="Permalink to this headline">¶</a></h2>
+<p class="rubric" id="read-this-first-rt-kernel-perf-guide"><strong>Read This First</strong></p>
+<p><strong>All performance numbers provided in this document are gathered using
+following Evaluation Modules unless otherwise specified.</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 88%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>J7200 EVM</p></td>
+<td><p>J7200 Evaluation Module rev E2 with ARM running at 2GHz, DDR data rate 2666 MT/S, L3 Cache size 3MB</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  Evaluation Modules</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p class="rubric" id="about-this-manual-rt-kernel-perf-guide">About This Manual</p>
+<p>This document provides performance data for each of the device drivers
+which are part of the Processor SDK Linux package. This document should be
+used in conjunction with release notes and user guides provided with the
+Processor SDK Linux package for information on specific issues present
+with drivers included in a particular release.</p>
+<p class="rubric" id="if-you-need-assistance-rt-kernel-perf-guide">If You Need Assistance</p>
+<p>For further information or to report any problems, contact
+<a class="reference external" href="http://e2e.ti.com/">http://e2e.ti.com/</a> or <a class="reference external" href="http://support.ti.com/">http://support.ti.com/</a></p>
+<div class="section" id="id26">
+<h3><span class="section-number">2.2.2.1. </span>System Benchmarks<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id27">
+<h4><span class="section-number">2.2.2.1.1. </span>LMBench<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h4>
+<p>LMBench is a collection of microbenchmarks of which the memory bandwidth
+and latency related ones are typically used to estimate processor
+memory system performance. More information about lmbench at
+<a class="reference external" href="http://lmbench.sourceforge.net/whatis_lmbench.html">http://lmbench.sourceforge.net/whatis_lmbench.html</a> and
+<a class="reference external" href="http://lmbench.sourceforge.net/man/lmbench.8.html">http://lmbench.sourceforge.net/man/lmbench.8.html</a></p>
+<p><strong>Latency</strong>: lat_mem_rd-stride128-szN, where N is equal to or smaller than the cache
+size at given level measures the cache miss penalty. N that is at least
+double the size of last level cache is the latency to external memory.</p>
+<p><strong>Bandwidth</strong>: bw_mem_bcopy-N, where N is equal to or smaller than the cache size at
+a given level measures the achievable memory bandwidth from software doing
+a memcpy() type operation. Typical use is for external memory bandwidth
+calculation. The bandwidth is calculated as byte read and written counts
+as 1 which should be roughly half of STREAM copy result.</p>
+<p>Execute the LMBench with the following:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>cd /opt/ltp
+./runltp -P j721e-idk-gw -f ddt/lmbench -s LMBENCH_L_PERF_0001
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Benchmarks</p></th>
+<th class="head"><p>j7200-evm: perf</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>af_unix_sock_stream_latency (microsec)</p></td>
+<td><p>20.81</p></td>
+</tr>
+<tr class="row-odd"><td><p>af_unix_socket_stream_bandwidth (MBs)</p></td>
+<td><p>1623.79</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_file_rd-io-1mb (MB/s)</p></td>
+<td><p>2711.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_file_rd-o2c-1mb (MB/s)</p></td>
+<td><p>1301.36</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-bcopy-16mb (MB/s)</p></td>
+<td><p>2353.63</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-bcopy-1mb (MB/s)</p></td>
+<td><p>3405.22</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-bcopy-2mb (MB/s)</p></td>
+<td><p>2473.06</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-bcopy-4mb (MB/s)</p></td>
+<td><p>2380.48</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-bcopy-8mb (MB/s)</p></td>
+<td><p>2365.11</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-bzero-16mb (MB/s)</p></td>
+<td><p>2341.58</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-bzero-1mb (MB/s)</p></td>
+<td><p>4145.11 (min 3405.22, max 4885.00)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-bzero-2mb (MB/s)</p></td>
+<td><p>2709.56 (min 2473.06, max 2946.05)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-bzero-4mb (MB/s)</p></td>
+<td><p>2421.39 (min 2380.48, max 2462.30)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-bzero-8mb (MB/s)</p></td>
+<td><p>2357.13 (min 2349.14, max 2365.11)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-cp-16mb (MB/s)</p></td>
+<td><p>988.08</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-cp-1mb (MB/s)</p></td>
+<td><p>3038.13 (min 1286.06, max 4790.19)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-cp-2mb (MB/s)</p></td>
+<td><p>1968.99 (min 1015.06, max 2922.91)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-cp-4mb (MB/s)</p></td>
+<td><p>1723.52 (min 992.68, max 2454.36)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-cp-8mb (MB/s)</p></td>
+<td><p>1662.28 (min 989.12, max 2335.43)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-fcp-16mb (MB/s)</p></td>
+<td><p>2396.64</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-fcp-1mb (MB/s)</p></td>
+<td><p>4130.11 (min 3375.21, max 4885.00)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-fcp-2mb (MB/s)</p></td>
+<td><p>2746.68 (min 2547.31, max 2946.05)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-fcp-4mb (MB/s)</p></td>
+<td><p>2442.05 (min 2421.80, max 2462.30)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-fcp-8mb (MB/s)</p></td>
+<td><p>2380.85 (min 2349.14, max 2412.55)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-frd-16mb (MB/s)</p></td>
+<td><p>6225.68</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-frd-1mb (MB/s)</p></td>
+<td><p>5010.20 (min 3375.21, max 6645.19)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-frd-2mb (MB/s)</p></td>
+<td><p>4486.22 (min 2547.31, max 6425.13)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-frd-4mb (MB/s)</p></td>
+<td><p>4271.93 (min 2421.80, max 6122.06)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-frd-8mb (MB/s)</p></td>
+<td><p>4304.17 (min 2412.55, max 6195.79)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-fwr-16mb (MB/s)</p></td>
+<td><p>2320.86</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-fwr-1mb (MB/s)</p></td>
+<td><p>5717.69 (min 4790.19, max 6645.19)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-fwr-2mb (MB/s)</p></td>
+<td><p>4674.02 (min 2922.91, max 6425.13)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-fwr-4mb (MB/s)</p></td>
+<td><p>4288.21 (min 2454.36, max 6122.06)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-fwr-8mb (MB/s)</p></td>
+<td><p>4265.61 (min 2335.43, max 6195.79)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-rd-16mb (MB/s)</p></td>
+<td><p>6508.47</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-rd-1mb (MB/s)</p></td>
+<td><p>9989.53 (min 7710.24, max 12268.82)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-rd-2mb (MB/s)</p></td>
+<td><p>4022.61 (min 975.45, max 7069.77)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-rd-4mb (MB/s)</p></td>
+<td><p>3706.22 (min 791.14, max 6621.30)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-rd-8mb (MB/s)</p></td>
+<td><p>3609.94 (min 748.43, max 6471.44)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-rdwr-16mb (MB/s)</p></td>
+<td><p>752.09</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-rdwr-1mb (MB/s)</p></td>
+<td><p>4606.50 (min 1286.06, max 7926.93)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-rdwr-2mb (MB/s)</p></td>
+<td><p>1001.20 (min 987.33, max 1015.06)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-rdwr-4mb (MB/s)</p></td>
+<td><p>894.79 (min 796.89, max 992.68)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-rdwr-8mb (MB/s)</p></td>
+<td><p>873.82 (min 758.51, max 989.12)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-wr-16mb (MB/s)</p></td>
+<td><p>745.64</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-wr-1mb (MB/s)</p></td>
+<td><p>7818.59 (min 7710.24, max 7926.93)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-wr-2mb (MB/s)</p></td>
+<td><p>981.39 (min 975.45, max 987.33)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mem-wr-4mb (MB/s)</p></td>
+<td><p>794.02 (min 791.14, max 796.89)</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mem-wr-8mb (MB/s)</p></td>
+<td><p>753.47 (min 748.43, max 758.51)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_mmap_rd-mo-1mb (MB/s)</p></td>
+<td><p>9830.38</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_mmap_rd-o2c-1mb (MB/s)</p></td>
+<td><p>1413.93</p></td>
+</tr>
+<tr class="row-odd"><td><p>bw_pipe (MB/s)</p></td>
+<td><p>644.50</p></td>
+</tr>
+<tr class="row-even"><td><p>bw_unix (MB/s)</p></td>
+<td><p>1623.79</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_connect (us)</p></td>
+<td><p>41.38</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_ctx-2-128k (us)</p></td>
+<td><p>3.25</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_ctx-2-256k (us)</p></td>
+<td><p>2.57</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_ctx-4-128k (us)</p></td>
+<td><p>3.23</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_ctx-4-256k (us)</p></td>
+<td><p>2.25</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_fs-0k (num_files)</p></td>
+<td><p>439.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_fs-10k (num_files)</p></td>
+<td><p>129.00</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_fs-1k (num_files)</p></td>
+<td><p>228.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_fs-4k (num_files)</p></td>
+<td><p>238.00</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_mem_rd-stride128-sz1000k (ns)</p></td>
+<td><p>11.24</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_mem_rd-stride128-sz125k (ns)</p></td>
+<td><p>5.57</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_mem_rd-stride128-sz250k (ns)</p></td>
+<td><p>5.57</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_mem_rd-stride128-sz31k (ns)</p></td>
+<td><p>4.66</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_mem_rd-stride128-sz50 (ns)</p></td>
+<td><p>2.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_mem_rd-stride128-sz500k (ns)</p></td>
+<td><p>5.58</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_mem_rd-stride128-sz62k (ns)</p></td>
+<td><p>5.57</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_mmap-1m (us)</p></td>
+<td><p>38.00</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_ops-double-add (ns)</p></td>
+<td><p>1.96</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_ops-double-div (ns)</p></td>
+<td><p>9.01</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_ops-double-mul (ns)</p></td>
+<td><p>2.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_ops-float-add (ns)</p></td>
+<td><p>1.96</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_ops-float-div (ns)</p></td>
+<td><p>5.51</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_ops-float-mul (ns)</p></td>
+<td><p>2.01</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_ops-int-add (ns)</p></td>
+<td><p>0.50</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_ops-int-bit (ns)</p></td>
+<td><p>0.33</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_ops-int-div (ns)</p></td>
+<td><p>4.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_ops-int-mod (ns)</p></td>
+<td><p>4.68</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_ops-int-mul (ns)</p></td>
+<td><p>1.52</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_ops-int64-add (ns)</p></td>
+<td><p>0.50</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_ops-int64-bit (ns)</p></td>
+<td><p>0.33</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_ops-int64-div (ns)</p></td>
+<td><p>3.01</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_ops-int64-mod (ns)</p></td>
+<td><p>5.68</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_ops-int64-mul (ns)</p></td>
+<td><p>2.52</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_pagefault (us)</p></td>
+<td><p>0.55</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_pipe (us)</p></td>
+<td><p>11.11</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_proc-exec (us)</p></td>
+<td><p>493.67</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_proc-fork (us)</p></td>
+<td><p>417.69</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_proc-proccall (us)</p></td>
+<td><p>0.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_select (us)</p></td>
+<td><p>12.48</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_sem (us)</p></td>
+<td><p>1.76</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_sig-catch (us)</p></td>
+<td><p>2.83</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_sig-install (us)</p></td>
+<td><p>0.49</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_sig-prot (us)</p></td>
+<td><p>0.44</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_syscall-fstat (us)</p></td>
+<td><p>1.60</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_syscall-null (us)</p></td>
+<td><p>0.38</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_syscall-open (us)</p></td>
+<td><p>150.97</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_syscall-read (us)</p></td>
+<td><p>0.49</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_syscall-stat (us)</p></td>
+<td><p>2.10</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_syscall-write (us)</p></td>
+<td><p>0.42</p></td>
+</tr>
+<tr class="row-even"><td><p>lat_tcp (us)</p></td>
+<td><p>0.78</p></td>
+</tr>
+<tr class="row-odd"><td><p>lat_unix (us)</p></td>
+<td><p>20.81</p></td>
+</tr>
+<tr class="row-even"><td><p>latency_for_0.50_mb_block_size (nanosec)</p></td>
+<td><p>5.58</p></td>
+</tr>
+<tr class="row-odd"><td><p>latency_for_1.00_mb_block_size (nanosec)</p></td>
+<td><p>5.62 (min 0.00, max 11.24)</p></td>
+</tr>
+<tr class="row-even"><td><p>pipe_bandwidth (MBs)</p></td>
+<td><p>644.50</p></td>
+</tr>
+<tr class="row-odd"><td><p>pipe_latency (microsec)</p></td>
+<td><p>11.11</p></td>
+</tr>
+<tr class="row-even"><td><p>procedure_call (microsec)</p></td>
+<td><p>0.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>select_on_200_tcp_fds (microsec)</p></td>
+<td><p>12.48</p></td>
+</tr>
+<tr class="row-even"><td><p>semaphore_latency (microsec)</p></td>
+<td><p>1.76</p></td>
+</tr>
+<tr class="row-odd"><td><p>signal_handler_latency (microsec)</p></td>
+<td><p>0.49</p></td>
+</tr>
+<tr class="row-even"><td><p>signal_handler_overhead (microsec)</p></td>
+<td><p>2.83</p></td>
+</tr>
+<tr class="row-odd"><td><p>tcp_ip_connection_cost_to_localhost (microsec)</p></td>
+<td><p>41.38</p></td>
+</tr>
+<tr class="row-even"><td><p>tcp_latency_using_localhost (microsec)</p></td>
+<td><p>0.78</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  <strong>LM Bench Metrics</strong></p>
+</div>
+<div class="section" id="id28">
+<h4><span class="section-number">2.2.2.1.2. </span>Dhrystone<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h4>
+<p>Dhrystone is a core only benchmark that runs from warm L1 caches in all
+modern processors. It scales linearly with clock speed. For standard ARM
+cores the DMIPS/MHz score will be identical with the same compiler and flags.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Benchmarks</p></th>
+<th class="head"><p>j7200-evm: perf</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>cpu_clock (MHz)</p></td>
+<td><p>2000.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>dhrystone_per_mhz (DMIPS/MHz)</p></td>
+<td><p>5.70</p></td>
+</tr>
+<tr class="row-even"><td><p>dhrystone_per_second (DhrystoneP)</p></td>
+<td><p>20000000.00</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  <strong>Dhrystone Benchmark</strong></p>
+</div>
+<div class="section" id="id29">
+<h4><span class="section-number">2.2.2.1.3. </span>Whetstone<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Benchmarks</p></th>
+<th class="head"><p>j7200-evm: perf</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>whetstone (MIPS)</p></td>
+<td><p>10000.00</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  <strong>Whetstone Benchmark</strong></p>
+</div>
+<div class="section" id="id30">
+<h4><span class="section-number">2.2.2.1.4. </span>Linpack<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h4>
+<p>Linpack measures peak double precision (64 bit) floating point performance in
+solving a dense linear system.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Benchmarks</p></th>
+<th class="head"><p>j7200-evm: perf</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>linpack (Kflops)</p></td>
+<td><p>2618867.00</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  <strong>Linpack Benchmark</strong></p>
+</div>
+<div class="section" id="id31">
+<h4><span class="section-number">2.2.2.1.5. </span>NBench<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h4>
+<p>NBench which stands for Native Benchmark is used to measure macro benchmarks
+for commonly used operations such as sorting and analysis algorithms.
+More information about NBench at
+<a class="reference external" href="https://en.wikipedia.org/wiki/NBench">https://en.wikipedia.org/wiki/NBench</a> and
+<a class="reference external" href="https://nbench.io/articles/index.html">https://nbench.io/articles/index.html</a></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Benchmarks</p></th>
+<th class="head"><p>j7200-evm: perf</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>assignment (Iterations)</p></td>
+<td><p>30.76</p></td>
+</tr>
+<tr class="row-odd"><td><p>fourier (Iterations)</p></td>
+<td><p>50468.00</p></td>
+</tr>
+<tr class="row-even"><td><p>fp_emulation (Iterations)</p></td>
+<td><p>214.60</p></td>
+</tr>
+<tr class="row-odd"><td><p>huffman (Iterations)</p></td>
+<td><p>2382.70</p></td>
+</tr>
+<tr class="row-even"><td><p>idea (Iterations)</p></td>
+<td><p>7996.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>lu_decomposition (Iterations)</p></td>
+<td><p>1338.50</p></td>
+</tr>
+<tr class="row-even"><td><p>neural_net (Iterations)</p></td>
+<td><p>30.07</p></td>
+</tr>
+<tr class="row-odd"><td><p>numeric_sort (Iterations)</p></td>
+<td><p>853.41</p></td>
+</tr>
+<tr class="row-even"><td><p>string_sort (Iterations)</p></td>
+<td><p>416.14</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  <strong>NBench Benchmarks</strong></p>
+</div>
+<div class="section" id="id32">
+<h4><span class="section-number">2.2.2.1.6. </span>Stream<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h4>
+<p>STREAM is a microbenchmark for measuring data memory system performance without
+any data reuse. It is designed to miss on caches and exercise data prefetcher
+and speculative accesses.
+It uses double precision floating point (64bit) but in
+most modern processors the memory access will be the bottleneck.
+The four individual scores are copy, scale as in multiply by constant,
+add two numbers, and triad for multiply accumulate.
+For bandwidth, a byte read counts as one and a byte written counts as one,
+resulting in a score that is double the bandwidth LMBench will show.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Benchmarks</p></th>
+<th class="head"><p>j7200-evm: perf</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>add (MB/s)</p></td>
+<td><p>5421.70</p></td>
+</tr>
+<tr class="row-odd"><td><p>copy (MB/s)</p></td>
+<td><p>4767.00</p></td>
+</tr>
+<tr class="row-even"><td><p>scale (MB/s)</p></td>
+<td><p>4815.60</p></td>
+</tr>
+<tr class="row-odd"><td><p>triad (MB/s)</p></td>
+<td><p>5426.20</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  <strong>Stream</strong></p>
+</div>
+<div class="section" id="id33">
+<h4><span class="section-number">2.2.2.1.7. </span>CoreMarkPro<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h4>
+<p>CoreMark®-Pro is a comprehensive, advanced processor benchmark that works with
+and enhances the market-proven industry-standard EEMBC CoreMark® benchmark.
+While CoreMark stresses the CPU pipeline, CoreMark-Pro tests the entire processor,
+adding comprehensive support for multicore technology, a combination of integer
+and floating-point workloads, and data sets for utilizing larger memory subsystems.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Benchmarks</p></th>
+<th class="head"><p>j7200-evm: perf</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>cjpeg-rose7-preset (workloads/)</p></td>
+<td><p>81.97</p></td>
+</tr>
+<tr class="row-odd"><td><p>core (workloads/)</p></td>
+<td><p>0.78</p></td>
+</tr>
+<tr class="row-even"><td><p>coremark-pro ()</p></td>
+<td><p>2435.28</p></td>
+</tr>
+<tr class="row-odd"><td><p>linear_alg-mid-100x100-sp (workloads/)</p></td>
+<td><p>80.65</p></td>
+</tr>
+<tr class="row-even"><td><p>loops-all-mid-10k-sp (workloads/)</p></td>
+<td><p>2.46</p></td>
+</tr>
+<tr class="row-odd"><td><p>nnet_test (workloads/)</p></td>
+<td><p>3.65</p></td>
+</tr>
+<tr class="row-even"><td><p>parser-125k (workloads/)</p></td>
+<td><p>10.99</p></td>
+</tr>
+<tr class="row-odd"><td><p>radix2-big-64k (workloads/)</p></td>
+<td><p>225.33</p></td>
+</tr>
+<tr class="row-even"><td><p>sha-test (workloads/)</p></td>
+<td><p>156.25</p></td>
+</tr>
+<tr class="row-odd"><td><p>zip-test (workloads/)</p></td>
+<td><p>47.62</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  <strong>CoreMarkPro</strong></p>
+</div>
+<div class="section" id="id34">
+<h4><span class="section-number">2.2.2.1.8. </span>MultiBench<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h4>
+<p>MultiBench™ is a suite of benchmarks that allows processor and system designers to
+analyze, test, and improve multicore processors. It uses three forms of concurrency:
+Data decomposition: multiple threads cooperating on achieving a unified goal and
+demonstrating a processor’s support for fine grain parallelism.
+Processing multiple data streams: uses common code running over multiple threads and
+demonstrating how well a processor scales over scalable data inputs.
+Multiple workload processing: shows the scalability of general-purpose processing,
+demonstrating concurrency over both code and data.
+MultiBench combines a wide variety of application-specific workloads with the EEMBC
+Multi-Instance-Test Harness (MITH), compatible and portable with most any multicore
+processors and operating systems. MITH uses a thread-based API (POSIX-compliant) to
+establish a common programming model that communicates with the benchmark through an
+abstraction layer and provides a flexible interface to allow a wide variety of
+thread-enabled workloads to be tested.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Benchmarks</p></th>
+<th class="head"><p>j7200-evm: perf</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>4m-check (workloads/)</p></td>
+<td><p>904.16</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m-check-reassembly (workloads/)</p></td>
+<td><p>118.77</p></td>
+</tr>
+<tr class="row-even"><td><p>4m-check-reassembly-tcp (workloads/)</p></td>
+<td><p>90.58</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m-check-reassembly-tcp-cmykw2-rotatew2 (workloads/)</p></td>
+<td><p>40.71</p></td>
+</tr>
+<tr class="row-even"><td><p>4m-check-reassembly-tcp-x264w2 (workloads/)</p></td>
+<td><p>2.68</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m-cmykw2 (workloads/)</p></td>
+<td><p>309.12</p></td>
+</tr>
+<tr class="row-even"><td><p>4m-cmykw2-rotatew2 (workloads/)</p></td>
+<td><p>59.35</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m-reassembly (workloads/)</p></td>
+<td><p>104.17</p></td>
+</tr>
+<tr class="row-even"><td><p>4m-rotatew2 (workloads/)</p></td>
+<td><p>70.27</p></td>
+</tr>
+<tr class="row-odd"><td><p>4m-tcp-mixed (workloads/)</p></td>
+<td><p>280.70</p></td>
+</tr>
+<tr class="row-even"><td><p>4m-x264w2 (workloads/)</p></td>
+<td><p>2.73</p></td>
+</tr>
+<tr class="row-odd"><td><p>idct-4m (workloads/)</p></td>
+<td><p>34.87</p></td>
+</tr>
+<tr class="row-even"><td><p>idct-4mw1 (workloads/)</p></td>
+<td><p>34.83</p></td>
+</tr>
+<tr class="row-odd"><td><p>ippktcheck-4m (workloads/)</p></td>
+<td><p>892.86</p></td>
+</tr>
+<tr class="row-even"><td><p>ippktcheck-4mw1 (workloads/)</p></td>
+<td><p>899.93</p></td>
+</tr>
+<tr class="row-odd"><td><p>ipres-4m (workloads/)</p></td>
+<td><p>157.23</p></td>
+</tr>
+<tr class="row-even"><td><p>ipres-4mw1 (workloads/)</p></td>
+<td><p>157.23</p></td>
+</tr>
+<tr class="row-odd"><td><p>md5-4m (workloads/)</p></td>
+<td><p>44.17</p></td>
+</tr>
+<tr class="row-even"><td><p>md5-4mw1 (workloads/)</p></td>
+<td><p>44.29</p></td>
+</tr>
+<tr class="row-odd"><td><p>rgbcmyk-4m (workloads/)</p></td>
+<td><p>162.34</p></td>
+</tr>
+<tr class="row-even"><td><p>rgbcmyk-4mw1 (workloads/)</p></td>
+<td><p>162.34</p></td>
+</tr>
+<tr class="row-odd"><td><p>rotate-4ms1 (workloads/)</p></td>
+<td><p>51.71</p></td>
+</tr>
+<tr class="row-even"><td><p>rotate-4ms1w1 (workloads/)</p></td>
+<td><p>51.60</p></td>
+</tr>
+<tr class="row-odd"><td><p>rotate-4ms64 (workloads/)</p></td>
+<td><p>52.30</p></td>
+</tr>
+<tr class="row-even"><td><p>rotate-4ms64w1 (workloads/)</p></td>
+<td><p>52.41</p></td>
+</tr>
+<tr class="row-odd"><td><p>x264-4mq (workloads/)</p></td>
+<td><p>1.41</p></td>
+</tr>
+<tr class="row-even"><td><p>x264-4mqw1 (workloads/)</p></td>
+<td><p>1.42</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  <strong>Multibench</strong></p>
+</div>
+</div>
+<div class="section" id="id35">
+<h3><span class="section-number">2.2.2.2. </span>Boot-time Measurement<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id36">
+<h4><span class="section-number">2.2.2.2.1. </span>Boot media: MMCSD<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Boot Configuration</p></th>
+<th class="head"><p>j7200-evm: boot time (sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Kernel boot time test when bootloader, kernel and sdk-rootfs are in mmc-sd</p></td>
+<td><p>15.32 (min 15.19, max 15.43)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Kernel boot time test when init is /bin/sh and bootloader, kernel and sdk-rootfs are in mmc-sd</p></td>
+<td><p>4.12 (min 4.08, max 4.18)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table:  <strong>Boot time MMC/SD</strong></p>
+</div>
+</div>
+<div class="section" id="id37">
+<h3><span class="section-number">2.2.2.3. </span>PCIe Driver<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id38">
+<h4><span class="section-number">2.2.2.3.1. </span>PCIe-ETH<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>TCP Window Size(Kbytes)</p></th>
+<th class="head"><p>j7200-evm: Bandwidth (Mbits/sec)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>226.40</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>224.80</p></td>
+</tr>
+<tr class="row-even"><td><p>32</p></td>
+<td><p>381.60</p></td>
+</tr>
+<tr class="row-odd"><td><p>64</p></td>
+<td><p>564.80</p></td>
+</tr>
+<tr class="row-even"><td><p>128</p></td>
+<td><p>733.60</p></td>
+</tr>
+<tr class="row-odd"><td><p>256</p></td>
+<td><p>800.00</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table: <strong>PCI Ethernet</strong></p>
+</div>
+</div>
+<div class="section" id="cyclic-test">
+<h3><span class="section-number">2.2.2.4. </span>Cyclic Test<a class="headerlink" href="#cyclic-test" title="Permalink to this headline">¶</a></h3>
+<p># cyclictest –mlockall –smp –priority=80 –interval=200 –distance=0
+policy: fifo: loadavg: 0.24 0.27 0.22 1/169 679</p>
+<p>T: 0 (  678) P:80 I:200 C:  13973 Min:      3 Act:    3 Avg:    3 Max:      24
+T: 1 (  679) P:80 I:200 C:  13923 Min:      3 Act:    3 Avg:    3 Max:      13</p>
+</div>
+<div class="section" id="id39">
+<h3><span class="section-number">2.2.2.5. </span>DCAN Driver<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
+<p>Performance and Benchmarks not available in this release.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Release_Specific_Yocto_layer_Configuration.html" class="btn btn-neutral float-right" title="2.3. Yocto Layer Configuration" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Release_Specific_Release_Notes.html" class="btn btn-neutral" title="2.1. Release Notes" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2023</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'09_01_00',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>
